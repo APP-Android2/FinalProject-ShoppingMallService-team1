@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- (화면 가득 채우는) 큰 버튼 텍스트 크기 14sp(기본값 크기) -->
+    <dimen name="BigButton_Text_Size">14sp</dimen>
+
+    <!-- 작은 버튼 크기 -->
+    <dimen name="SmallButton_Text_Size">12sp</dimen>
+
+    <!-- 툴바 제목 -->
+    <dimen name="Toolbar_Title_Size">20sp</dimen>
+
+    <!-- 탭 -->
+    <dimen name="Tap_Text_Size">16sp</dimen>
+
+    <!-- 칩 -->
+    <dimen name="Chip_Text_Size">12sp</dimen>
+
+    <!-- 대 : 제목 -->
+    <dimen name="Big_Text_Size">14sp</dimen>
+
+    <!-- 중 : 내용 -->
+    <dimen name="Medium_Text_Size">12sp</dimen>
+
+    <!-- 소 : 부가적인 내용 -->
+    <dimen name="Small_Text_Size">10sp</dimen>
+
     <!-- 양옆 패딩 -->
     <dimen name="Side_Padding">20sp</dimen>-->
 
