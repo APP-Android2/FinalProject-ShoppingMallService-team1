@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#FF0000</color>
+    <color name="blue">#304FFE</color>
+    <color name="green">#00C853</color>
+    <color name="pupple">#AA00FF</color>
+
+    <!-- 앱 주요 컬러-->
+    <color name="Pup_Color">#9B44DF</color>
+
+    <!-- 입력칸 윤곽선 컬러-->
+    <color name="InputCompartmentOutline_Color">#DBDBDB</color>
+
+    <!-- 입력칸 컬러 -->
+    <color name="InputCompartment_Color">#F9F9F9</color>
+
+    <!-- 입력칸 내용 컬러 -->
+    <color name="ContentsOfTheEntryCompartment_Color">#989898</color>
+
+    <!-- 표 칸 컬러 -->
+    <color name="SpaceOfTable_Color">#FBFBFB</color>
+
+    <!-- 표 선 컬러 -->
+    <color name="LineOfTable_Color">#D6D6D6</color>
+
+    <!-- 글 컬러 -->
+    <color name="Writing_Color">#575757</color>
+
 </resources>
