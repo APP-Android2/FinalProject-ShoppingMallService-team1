@@ -6,7 +6,11 @@ class Tools {
     }
 }
 
+enum class MAIN_FRAGMENT_NAME(var num:Int, var str:String){
 
+    PERMISSION_FRAGMENT(0, "권한 안내"),
+    MEMBER_EXPLANATION_FRAGMENT(1, "회원 설명"),
+}
 
 enum class Navigation_FRAGMENT_NAME(var num:Int, var str:String){
 
