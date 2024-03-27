@@ -18,5 +18,12 @@
 
     <style name="Theme.FinalProjectShoppingMallServiceteam1" parent="Base.Theme.FinalProjectShoppingMallServiceteam1" />
 
+    <!-- Splash Screen Theme -->
+    <style name="AppTheme.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/fitmoa_logo</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="postSplashScreenTheme">@style/Theme.FinalProjectShoppingMallServiceteam1</item>
+    </style>
 
 </resources>
