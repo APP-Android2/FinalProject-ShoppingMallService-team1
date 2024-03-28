@@ -23,6 +23,7 @@ class TrainerFragment : Fragment() {
         navigationActivity = activity as NavigationActivity
 
 
+
         settingToolbarTrainer()
 
         return fragmentTrainerBinding.root
