@@ -27,7 +27,7 @@ class NavigationActivity : AppCompatActivity() {
         activityNavigationBinding = ActivityNavigationBinding.inflate(layoutInflater)
         setContentView(activityNavigationBinding.root)
 
-        replaceFragment(Navigation_FRAGMENT_NAME.HOME_FRAGMENT, true, true, null)
+        replaceFragment(Navigation_FRAGMENT_NAME.MY_FRAGMENT, true, true, null)
     }
 
     // 지정한 Fragment를 보여주는 메서드
@@ -53,7 +53,7 @@ class NavigationActivity : AppCompatActivity() {
 
             // 홈 화면
             Navigation_FRAGMENT_NAME.HOME_FRAGMENT -> {
-                newFragment = HomeFragment()
+                HomeFragment()
             }
 
             // 시설 화면
@@ -73,7 +73,7 @@ class NavigationActivity : AppCompatActivity() {
 
             // MY 화면
             Navigation_FRAGMENT_NAME.MY_FRAGMENT -> {
-                MyFragment()
+                newFragment = MyFragment()
             }
 
         }
