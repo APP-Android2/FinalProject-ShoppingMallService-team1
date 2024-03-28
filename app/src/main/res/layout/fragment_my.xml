@@ -1,14 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragment.MyFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="#FFFFFF"
+        android:orientation="vertical"
+        tools:context=".fragment.MyFragment">
 
-</FrameLayout>
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbarMy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/Side_Padding">
+
+                    <ImageView
+                        android:id="@+id/imageViewMyPage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/black"
+                        android:padding="@dimen/Side_Padding"
+                        android:src="@drawable/person" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/Side_Padding"
+                        android:orientation="vertical"
+                        tools:layout_weight="1">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/textViewMyName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="닉네임"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                android:textSize="@dimen/Big_Text_Size" />
+
+                            <TextView
+                                android:id="@+id/myEditProfile"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/Side_Padding"
+                                android:layout_marginTop="1dp"
+                                android:text=">"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/textViewMyEmail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="abc@naver.com"
+                            android:textSize="@dimen/Medium_Text_Size" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/Side_Padding"
+                    android:paddingRight="@dimen/Side_Padding">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/myPointCardView"
+                        android:layout_width="match_parent"
+                        android:layout_height="65sp"
+                        android:layout_marginRight="10sp"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="@color/InputCompartmentOutline_Color">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textView5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="포인트"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                android:textSize="@dimen/Big_Text_Size" />
+
+                            <TextView
+                                android:id="@+id/textViewMyPointCnt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="0P"
+                                android:textSize="@dimen/Medium_Text_Size" />
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/myCouponCardView"
+                        android:layout_width="match_parent"
+                        android:layout_height="65sp"
+                        android:layout_marginLeft="10sp"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="@color/InputCompartmentOutline_Color"
+                        tools:cardBackgroundColor="@color/InputCompartmentOutline_Color">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textView7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="쿠폰"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                                android:textSize="@dimen/Big_Text_Size" />
+
+                            <TextView
+                                android:id="@+id/textViewCouponCnt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="0장"
+                                android:textSize="@dimen/Medium_Text_Size" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/Up_Down_Margin"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="회원권"
+                        android:textSize="@dimen/Big_Text_Size" />
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="리뷰 관리"
+                        android:textSize="@dimen/Big_Text_Size" />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="찜"
+                        android:textSize="@dimen/Big_Text_Size" />
+                </LinearLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/view3"
+                    android:layout_width="match_parent"
+                    android:layout_height="15sp"
+                    android:layout_marginTop="@dimen/Up_Down_Margin" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

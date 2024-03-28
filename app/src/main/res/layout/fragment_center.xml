@@ -1,14 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragment.CenterFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+        <variable
+            name="homeViewModel"
+            type="kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.HomeViewModel" />
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="#FFFFFF"
+        tools:context=".fragment.HomeFragment">
 
-</FrameLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/Side_Padding"
+                android:paddingRight="@dimen/Side_Padding">
+
+
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbarCenter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/colorPrimary"
+                    android:minHeight="?attr/actionBarSize"
+                    android:theme="?attr/actionBarTheme" />
+
+                <Button
+                    android:id="@+id/myButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="내 버튼"
+                    app:layout_anchor="toolbarCenter"
+                    app:layout_anchorGravity="end|bottom" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"></LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/Detail_Padding"
+                    android:orientation="vertical">
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chipGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        app:singleLine="true">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_distance"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="거리순"
+                            android:checkable="true" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_daily_pass"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="일일권"
+                            android:checkable="true" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_discount"
+                            style="@style/Widget.MaterialComponents.Chip.Choice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="할인시설"
+                            android:checkable="true" />
+                    </com.google.android.material.chip.ChipGroup>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/buttonHomeCategoryHealth"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="헬스"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/Medium_Text_Size" />
+
+                        <Button
+                            android:id="@+id/buttonHomeCategoryPilates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="필라테스"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/Medium_Text_Size" />
+
+                        <Button
+                            android:id="@+id/buttonHomeCategorySwim"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="수영"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/Medium_Text_Size" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"/>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp">
+
+                        <!-- 센터 사진 -->
+                        <ImageView
+                            android:id="@+id/imageCenter"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/center_image_placeholder"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <!-- 센터 이름 -->
+                        <TextView
+                            android:id="@+id/textCenterName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="센터 이름"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toEndOf="@id/imageCenter"
+                            app:layout_constraintTop_toTopOf="@id/imageCenter"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
+                        <!-- 주소 -->
+                        <TextView
+                            android:id="@+id/textAddress"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="주소"
+                            app:layout_constraintStart_toEndOf="@id/imageCenter"
+                            app:layout_constraintTop_toBottomOf="@id/textCenterName"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
+                        <!-- 거리 -->
+                        <TextView
+                            android:id="@+id/textDistance"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="거리"
+                            app:layout_constraintStart_toEndOf="@id/imageCenter"
+                            app:layout_constraintTop_toBottomOf="@id/textAddress"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
+                        <!-- 가격 -->
+                        <TextView
+                            android:id="@+id/textPrice"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="가격"
+                            app:layout_constraintStart_toEndOf="@id/imageCenter"
+                            app:layout_constraintTop_toBottomOf="@id/textDistance"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+    </FrameLayout>
+</layout>
