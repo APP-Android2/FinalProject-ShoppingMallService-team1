@@ -28,7 +28,6 @@ class NavigationActivity : AppCompatActivity() {
         setContentView(activityNavigationBinding.root)
 
         replaceFragment(Navigation_FRAGMENT_NAME.HOME_FRAGMENT, true, true, null)
-        replaceFragment(Navigation_FRAGMENT_NAME.TRAINER_FRAGMENT, true, true, null)
     }
 
 
