@@ -8,8 +8,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#FFFFFF"
         android:orientation="vertical"
-        tools:context=".fragment.MyFragment" >
+        tools:context=".fragment.MyFragment">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbarMy"
@@ -26,13 +27,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="@dimen/Side_Padding">
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="@dimen/Side_Padding">
 
                     <ImageView
                         android:id="@+id/imageViewMyPage"
@@ -86,8 +87,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/Up_Down_Margin"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/Side_Padding"
+                    android:paddingRight="@dimen/Side_Padding">
 
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/myPointCardView"
@@ -117,7 +119,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:text="0P"
-                                android:textColor="@color/ContentsOfTheEntryCompartment_Color"
                                 android:textSize="@dimen/Medium_Text_Size" />
                         </LinearLayout>
 
@@ -152,7 +153,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:text="0장"
-                                android:textColor="@color/ContentsOfTheEntryCompartment_Color"
                                 android:textSize="@dimen/Medium_Text_Size" />
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
