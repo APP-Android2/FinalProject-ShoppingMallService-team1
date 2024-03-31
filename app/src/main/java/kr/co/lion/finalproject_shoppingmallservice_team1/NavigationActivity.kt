@@ -1,8 +1,8 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.transition.MaterialSharedAxis
@@ -27,8 +27,9 @@ class NavigationActivity : AppCompatActivity() {
         activityNavigationBinding = ActivityNavigationBinding.inflate(layoutInflater)
         setContentView(activityNavigationBinding.root)
 
-        replaceFragment(Navigation_FRAGMENT_NAME.MY_FRAGMENT, true, true, null)
+        replaceFragment(Navigation_FRAGMENT_NAME.HOME_FRAGMENT, true, true, null)
     }
+
 
     // 지정한 Fragment를 보여주는 메서드
     // name : 프래그먼트 이름
@@ -53,22 +54,22 @@ class NavigationActivity : AppCompatActivity() {
 
             // 홈 화면
             Navigation_FRAGMENT_NAME.HOME_FRAGMENT -> {
-                HomeFragment()
+                newFragment = HomeFragment()
             }
 
             // 시설 화면
             Navigation_FRAGMENT_NAME.CENTER_FRAGMENT -> {
-                CenterFragment()
+                newFragment = CenterFragment()
             }
 
             // 트레이너 화면
             Navigation_FRAGMENT_NAME.TRAINER_FRAGMENT -> {
-                TrainerFragment()
+                newFragment = TrainerFragment()
             }
 
             // 커뮤니티 화면
             Navigation_FRAGMENT_NAME.COMMUNITY_FRAGMENT -> {
-                CommunityFragment()
+                newFragment = CommunityFragment()
             }
 
             // MY 화면
