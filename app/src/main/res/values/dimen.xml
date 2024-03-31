@@ -26,15 +26,15 @@
     <dimen name="Small_Text_Size">10sp</dimen>
 
     <!-- 양옆 패딩 -->
-    <dimen name="Side_Padding">20sp</dimen>-->
+    <dimen name="Side_Padding">20dp</dimen>-->
 
     <!-- 칩과 목록 사이 마진 -->
-    <dimen name="Chip_List_Margin">18sp</dimen>
+    <dimen name="Chip_List_Margin">18dp</dimen>
 
     <!-- 목록 위 아래 마진 -->
-    <dimen name="Up_Down_Margin">20sp</dimen>
+    <dimen name="Up_Down_Margin">20dp</dimen>
 
     <!-- 상세 페이지 내용 패딩 -->
-    <dimen name="Detail_Padding">14sp</dimen>
+    <dimen name="Detail_Padding">14dp</dimen>
 
 </resources>

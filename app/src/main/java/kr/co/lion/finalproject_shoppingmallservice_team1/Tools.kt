@@ -8,7 +8,7 @@ class Tools {
 
 enum class MAIN_FRAGMENT_NAME(var num:Int, var str:String){
 
-    PERMISSION_FRAGMENT(0, "권한 안내"),
+    MAIN_LOGO_FRAGMENT(0, "메인 로고"),
     MEMBER_EXPLANATION_FRAGMENT(1, "회원 설명"),
 }
 

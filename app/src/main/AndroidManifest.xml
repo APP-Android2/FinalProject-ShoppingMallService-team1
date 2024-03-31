@@ -10,22 +10,21 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.Starting"
+        android:theme="@style/Theme.FinalProjectShoppingMallServiceteam1"
         tools:targetApi="31">
         <activity
             android:name=".NavigationActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Base.Theme.FinalProjectShoppingMallServiceteam1"/>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".LoginActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Base.Theme.FinalProjectShoppingMallServiceteam1"/>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
