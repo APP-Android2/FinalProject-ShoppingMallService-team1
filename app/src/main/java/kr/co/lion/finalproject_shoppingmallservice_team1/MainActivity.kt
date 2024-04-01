@@ -1,5 +1,6 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -24,8 +25,24 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
 
+        settingOnBoarding()
+        startLoginActivity()
+    }
+
+    private fun settingOnBoarding(){
         activityMainBinding.mainViewPager2.adapter = ViewPageAdapter(this@MainActivity)
         activityMainBinding.mainCircleIndicator.setViewPager(activityMainBinding.mainViewPager2)
+    }
+
+    private fun startLoginActivity(){
+
+        activityMainBinding.mainButton.setOnClickListener {
+
+            val intent = Intent(this@MainActivity, NavigationActivity::class.java)
+            startActivity(intent)
+
+            finish()
+        }
     }
 }
 

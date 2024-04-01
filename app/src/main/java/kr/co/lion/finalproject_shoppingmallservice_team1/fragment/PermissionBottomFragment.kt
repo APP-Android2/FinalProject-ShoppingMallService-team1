@@ -36,12 +36,7 @@ class PermissionBottomFragment : BottomSheetDialogFragment() {
 
         fragmentPermissionBottomBinding.PermissionButton.setOnClickListener {
 
-            // 다음 페이지 이동
-            val navigationActivityIntent = Intent(mainActivity, NavigationActivity::class.java)
-            startActivity(navigationActivityIntent)
-
-            // 메인 액티비티 종료
-            mainActivity.finish()
+            // 권한 설정
         }
     }
 
