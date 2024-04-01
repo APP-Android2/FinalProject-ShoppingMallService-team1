@@ -37,6 +37,9 @@ class PermissionBottomFragment : BottomSheetDialogFragment() {
         fragmentPermissionBottomBinding.PermissionButton.setOnClickListener {
 
             // 권한 설정
+
+            // 닫기
+            dismiss()
         }
     }
 

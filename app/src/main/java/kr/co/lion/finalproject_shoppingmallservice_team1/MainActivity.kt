@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         activityMainBinding.mainButton.setOnClickListener {
 
-            val intent = Intent(this@MainActivity, NavigationActivity::class.java)
+            val intent = Intent(this@MainActivity, LoginActivity::class.java)
             startActivity(intent)
 
             finish()

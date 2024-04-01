@@ -19,4 +19,7 @@
     <string name="onboarding_Title">우리 동네 운동정보를\n 한 번에!</string>
     <string name="onboarding_Explain">가까운 우리 동네 센터, 강사를 쉽게 찾아보세요.</string>
 
+    <!-- Login fragment -->
+    <string name="SignUp"><u>회원가입</u></string>
+
 </resources>
