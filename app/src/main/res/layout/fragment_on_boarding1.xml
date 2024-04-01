@@ -15,17 +15,20 @@
             android:id="@+id/main_imageView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/Up_Down_Margin"
             android:adjustViewBounds="true"
-            android:src="@mipmap/fitmoa_logo_foreground" />
+            android:padding="@dimen/Side_Padding"
+            android:src="@drawable/ic_launcher_background" />
 
         <TextView
             android:id="@+id/main_Title_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="제목111"
+            android:layout_marginTop="@dimen/Up_Down_Margin"
+            android:text="@string/onboarding_Title"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="50sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <TextView
@@ -35,8 +38,8 @@
             android:layout_marginTop="@dimen/Up_Down_Margin"
             android:paddingStart="@dimen/Side_Padding"
             android:paddingEnd="@dimen/Side_Padding"
-            android:text="설명111"
-            android:textSize="25sp" />
+            android:text="@string/onboarding_Explain"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
