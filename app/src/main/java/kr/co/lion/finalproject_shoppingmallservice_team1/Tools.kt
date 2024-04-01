@@ -19,8 +19,14 @@ enum class Navigation_FRAGMENT_NAME(var num:Int, var str:String){
 
 enum class HOME_FRAGMENT_NAME(var num:Int, var str:String){
 
-    HOME_A_FRAGMENT(0, "A"),
-    HOME_B_FRAGMENT(1, "B"),
+    HOME_ALARM_FRAGMENT(0, "알림"),
+    HOME_CHAT_FRAGMENT(1, "쪽지"),
+    HOME_SHOP_FRAGMENT(2, "장바구니")
+
+}
+enum class HOME_BOTTOM_FRAGMENT_NAME(var num:Int, var str:String){
+
+    HOME_ADDRESS_BOTTOM_MAP_FRAGMENT(0, "현재 위치")
 }
 
 enum class CENTER_FRAGMENT_NAME(var num:Int, var str:String){
