@@ -12,14 +12,13 @@ enum class MAIN_FRAGMENT_NAME(var num:Int, var str:String){
     MEMBER_EXPLANATION_FRAGMENT(1, "회원 설명"),
 }
 
-enum class Navigation_FRAGMENT_NAME(var str:String){
+enum class NAVIGATION_FRAGMENT_NAME(var num:Int, var str:String){
 
-    HOME_FRAGMENT("홈"),
-    CENTER_FRAGMENT( "운동 센터"),
-    TRAINER_FRAGMENT( "TrainerFragment"),
-    COMMUNITY_FRAGMENT( "커뮤니티"),
-    MY_FRAGMENT("MY"),
-    READ_TRAINER_FRAGMENT("ReadTrainerFragment")
+    HOME_FRAGMENT(0, "홈"),
+    CENTER_FRAGMENT(1, "운동 센터"),
+    TRAINER_FRAGMENT(2, "트레이너"),
+    COMMUNITY_FRAGMENT(3, "커뮤니티"),
+    MY_FRAGMENT(4, "MY"),
 }
 
 enum class HOME_FRAGMENT_NAME(var num:Int, var str:String){

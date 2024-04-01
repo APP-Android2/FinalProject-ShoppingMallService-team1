@@ -11,7 +11,6 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.CenterFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.CommunityFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.HomeFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.ReadTrainerFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.TrainerFragment
 
 class NavigationActivity : AppCompatActivity() {
@@ -28,11 +27,10 @@ class NavigationActivity : AppCompatActivity() {
         activityNavigationBinding = ActivityNavigationBinding.inflate(layoutInflater)
         setContentView(activityNavigationBinding.root)
 
-        //replaceFragment(Navigation_FRAGMENT_NAME.HOME_FRAGMENT, true, true, null)
-        replaceFragment(Navigation_FRAGMENT_NAME.TRAINER_FRAGMENT, true, true, null)
+        replaceFragment(NAVIGATION_FRAGMENT_NAME.HOME_FRAGMENT, true, true, null)
     }
 
-    fun replaceFragment(name:Navigation_FRAGMENT_NAME, addToBackStack:Boolean, isAnimate:Boolean, data:Bundle?){
+    fun replaceFragment(name:NAVIGATION_FRAGMENT_NAME, addToBackStack:Boolean, isAnimate:Boolean, data:Bundle?){
 
         SystemClock.sleep(200)
 
@@ -44,28 +42,24 @@ class NavigationActivity : AppCompatActivity() {
 
         when(name){
 
-            Navigation_FRAGMENT_NAME.HOME_FRAGMENT -> {
+            NAVIGATION_FRAGMENT_NAME.HOME_FRAGMENT -> {
                 newFragment = HomeFragment()
             }
 
-            Navigation_FRAGMENT_NAME.CENTER_FRAGMENT -> {
+            NAVIGATION_FRAGMENT_NAME.CENTER_FRAGMENT -> {
                 newFragment = CenterFragment()
             }
 
-            Navigation_FRAGMENT_NAME.TRAINER_FRAGMENT -> {
+            NAVIGATION_FRAGMENT_NAME.TRAINER_FRAGMENT -> {
                 newFragment = TrainerFragment()
             }
 
-            Navigation_FRAGMENT_NAME.COMMUNITY_FRAGMENT -> {
+            NAVIGATION_FRAGMENT_NAME.COMMUNITY_FRAGMENT -> {
                 newFragment = CommunityFragment()
             }
 
-            Navigation_FRAGMENT_NAME.MY_FRAGMENT -> {
+            NAVIGATION_FRAGMENT_NAME.MY_FRAGMENT -> {
                 newFragment = MyFragment()
-            }
-
-            Navigation_FRAGMENT_NAME.READ_TRAINER_FRAGMENT -> {
-                newFragment = ReadTrainerFragment()
             }
 
         }
@@ -113,7 +107,7 @@ class NavigationActivity : AppCompatActivity() {
     }
 
     // BackStack에서 Fragment를 제거한다.
-    fun removeFragment(name:Navigation_FRAGMENT_NAME){
+    fun removeFragment(name:NAVIGATION_FRAGMENT_NAME){
         SystemClock.sleep(200)
 
         // 지정한 이름으로 있는 Fragment를 BackStack에서 제거한다.
