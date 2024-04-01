@@ -8,8 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
-import kr.co.lion.finalproject_shoppingmallservice_team1.Navigation_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentReadTrainerBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowReadTrainerMembershipBinding
@@ -54,7 +54,7 @@ class ReadTrainerFragment : Fragment() {
     }
 
     fun backProcess(){
-        navigationActivity.removeFragment(Navigation_FRAGMENT_NAME.READ_TRAINER_FRAGMENT)
+        navigationActivity.removeFragment(NAVIGATION_FRAGMENT_NAME.READ_TRAINER_FRAGMENT)
     }
 
 

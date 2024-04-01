@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/Side_Padding"
+        tools:context=".fragment.OnBoarding3Fragment">
+
+        <ImageView
+            android:id="@+id/main_imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/Up_Down_Margin"
+            android:adjustViewBounds="true"
+            android:padding="@dimen/Side_Padding"
+            android:src="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/main_Title_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/Up_Down_Margin"
+            android:text="@string/onboarding_Title"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/main_Detail_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/Up_Down_Margin"
+            android:paddingStart="@dimen/Side_Padding"
+            android:paddingEnd="@dimen/Side_Padding"
+            android:text="@string/onboarding_Explain"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+</layout>

@@ -6,22 +6,33 @@ class Tools {
     }
 }
 
+enum class MAIN_FRAGMENT_NAME(var num:Int, var str:String){
+
+    MAIN_LOGO_FRAGMENT(0, "메인 로고"),
+    MEMBER_EXPLANATION_FRAGMENT(1, "회원 설명"),
+}
 
 
-enum class Navigation_FRAGMENT_NAME(var str:String){
+enum class NAVIGATION_FRAGMENT_NAME(var num:Int, var str:String){
 
-    HOME_FRAGMENT("홈"),
-    CENTER_FRAGMENT( "운동 센터"),
-    TRAINER_FRAGMENT( "TrainerFragment"),
-    COMMUNITY_FRAGMENT( "커뮤니티"),
-    MY_FRAGMENT("MY"),
-    READ_TRAINER_FRAGMENT("ReadTrainerFragment")
+    HOME_FRAGMENT(0, "홈"),
+    CENTER_FRAGMENT(1, "운동 센터"),
+    TRAINER_FRAGMENT(2, "트레이너"),
+    COMMUNITY_FRAGMENT(3, "커뮤니티"),
+    MY_FRAGMENT(4, "MY"),
+    READ_TRAINER_FRAGMENT(5, "ReadTrainerFragment")
 }
 
 enum class HOME_FRAGMENT_NAME(var num:Int, var str:String){
 
-    HOME_A_FRAGMENT(0, "A"),
-    HOME_B_FRAGMENT(1, "B"),
+    HOME_ALARM_FRAGMENT(0, "알림"),
+    HOME_CHAT_FRAGMENT(1, "쪽지"),
+    HOME_SHOP_FRAGMENT(2, "장바구니")
+
+}
+enum class HOME_BOTTOM_FRAGMENT_NAME(var num:Int, var str:String){
+
+    HOME_ADDRESS_BOTTOM_MAP_FRAGMENT(0, "현재 위치")
 }
 
 enum class CENTER_FRAGMENT_NAME(var num:Int, var str:String){

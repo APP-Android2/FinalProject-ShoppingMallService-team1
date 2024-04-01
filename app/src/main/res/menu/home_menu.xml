@@ -3,10 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/menuItemHomeChat"
         android:icon="@drawable/mail"
         android:title="Item"
         app:showAsAction="always" />
     <item
+        android:id="@+id/menuItemHomeShopping"
         android:icon="@drawable/shopping_cart"
         android:title="Item"
         app:showAsAction="always" />
