@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -45,6 +46,7 @@ class HomeAddressBottomFragment : BottomSheetDialogFragment() {
         settingToolbar()
         settingRecyclerViewAddressMain()
         settingEvent()
+        initSearchView()
 
         return fragmentHomeAddressBottomBinding.root
     }
@@ -78,6 +80,24 @@ class HomeAddressBottomFragment : BottomSheetDialogFragment() {
                 addItemDecoration(deco)
             }
         }
+    }
+    fun initSearchView() {
+        fragmentHomeAddressBottomBinding.searchViewHomeBottom.isSubmitButtonEnabled = false
+        fragmentHomeAddressBottomBinding.searchViewHomeBottom.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            // 검색을 완료하였을 경우 (키보드에 있는 '검색' 돋보기 버튼을 선택하였을 경우)
+            // return False : 검색 키보드를 내림
+            // return True : 검색 키보드를 내리지 않음
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                // @TODO
+                return false
+            }
+
+            // 검색어를 변경할 때마다 실행됨
+            override fun onQueryTextChange(newText: String?): Boolean {
+                // @TODO
+                return true
+            }
+        })
     }
 
     inner class BottomRecyclerViewAdapter : RecyclerView.Adapter<BottomRecyclerViewAdapter.BottomViewHoleder>(){
