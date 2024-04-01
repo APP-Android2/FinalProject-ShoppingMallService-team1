@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
+import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
-import kr.co.lion.finalproject_shoppingmallservice_team1.Navigation_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentTrainerBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowTrainerBinding
@@ -109,7 +109,7 @@ class TrainerFragment : Fragment() {
                 // 이미지 클릭 시 상세페이지 이동 설정
                 this.rowTrainerBinding.apply {
                     trainerProfileImageView.setOnClickListener {
-                        navigationActivity.replaceFragment(Navigation_FRAGMENT_NAME.READ_TRAINER_FRAGMENT, true, true, null)
+                        navigationActivity.replaceFragment(NAVIGATION_FRAGMENT_NAME.READ_TRAINER_FRAGMENT, true, true, null)
                     }
                 }
             }
@@ -161,7 +161,7 @@ class TrainerFragment : Fragment() {
                 // 이미지 클릭 시 상세페이지 이동 설정
                 this.rowTrainerBinding.apply {
                     trainerProfileImageView.setOnClickListener {
-                        navigationActivity.replaceFragment(Navigation_FRAGMENT_NAME.READ_TRAINER_FRAGMENT, true, true, null)
+                        navigationActivity.replaceFragment(NAVIGATION_FRAGMENT_NAME.READ_TRAINER_FRAGMENT, true, true, null)
                     }
                 }
             }
