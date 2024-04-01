@@ -12,7 +12,7 @@ enum class MAIN_FRAGMENT_NAME(var num:Int, var str:String){
     MEMBER_EXPLANATION_FRAGMENT(1, "회원 설명"),
 }
 
-enum class Navigation_FRAGMENT_NAME(var num:Int, var str:String){
+enum class NAVIGATION_FRAGMENT_NAME(var num:Int, var str:String){
 
     HOME_FRAGMENT(0, "홈"),
     CENTER_FRAGMENT(1, "운동 센터"),
