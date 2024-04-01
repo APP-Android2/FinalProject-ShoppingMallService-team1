@@ -54,7 +54,7 @@
                         android:paddingLeft="@dimen/Side_Padding"
                         android:paddingRight="@dimen/Side_Padding">
 
-                        <SearchView
+                        <android.widget.SearchView
                             android:id="@+id/searchViewHomeBottom"
                             android:layout_width="371dp"
                             android:layout_height="48dp"
