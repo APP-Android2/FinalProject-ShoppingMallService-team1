@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="피트모아에 오신걸 환영합니다!"
+            android:text="@string/login_welcome"
             android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="65dp"
             android:backgroundTint="#FCE400"
-            android:text="카카오 계정으로 계속하기"
+            android:text="@string/kakao_Login"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textStyle="bold"
             app:cornerRadius="10dp" />
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:backgroundTint="#03C65A"
-            android:text="NAVER 계정으로 계속하기"
+            android:text="@string/naver_Login"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/white"
             android:textStyle="bold"
@@ -58,7 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
-            android:text="Google 계정으로 계속하기"
+            android:text="@string/google_Login"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textStyle="bold"
             app:cornerRadius="10dp" />

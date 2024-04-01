@@ -20,6 +20,10 @@
     <string name="onboarding_Explain">가까운 우리 동네 센터, 강사를 쉽게 찾아보세요.</string>
 
     <!-- Login fragment -->
-    <string name="SignUp"><u>회원가입</u></string>
+    <string name="login_welcome">피트모아에 오신걸 환영합니다!</string>
+
+    <string name="kakao_Login">카카오 계정으로 계속하기</string>
+    <string name="naver_Login">NAVER 계정으로 계속하기</string>
+    <string name="google_Login">Google 계정으로 계속하기</string>
 
 </resources>
