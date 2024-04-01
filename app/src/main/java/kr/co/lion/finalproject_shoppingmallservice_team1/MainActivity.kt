@@ -31,10 +31,8 @@ class MainActivity : AppCompatActivity() {
 
 class ViewPageAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter(fragmentActivity) {
 
-    // 페이지 갯수 설정
     override fun getItemCount(): Int = 3
 
-    // 불러올 Fragment 정의
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> OnBoarding1Fragment()
