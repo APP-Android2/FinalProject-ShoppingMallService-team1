@@ -10,6 +10,7 @@
         android:layout_height="match_parent"
         android:background="#FFFFFF"
         android:orientation="vertical"
+        android:transitionGroup="true"
         tools:context=".fragment.MyFragment">
 
         <com.google.android.material.appbar.MaterialToolbar
@@ -36,14 +37,15 @@
                     android:padding="@dimen/Side_Padding">
 
                     <ImageView
-                        android:id="@+id/imageViewMyPage"
+                        android:id="@+id/imageViewMy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/black"
+                        android:background="#FAF0FF"
                         android:padding="@dimen/Side_Padding"
                         android:src="@drawable/person" />
 
                     <LinearLayout
+                        android:id="@+id/myProfile"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/Side_Padding"
@@ -61,10 +63,11 @@
                                 android:layout_height="wrap_content"
                                 android:text="닉네임"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                                android:textSize="@dimen/Big_Text_Size" />
+                                android:textSize="@dimen/Big_Text_Size"
+                                android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/myEditProfile"
+                                android:id="@+id/myProfileIcon"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/Side_Padding"
@@ -97,7 +100,7 @@
                         android:layout_height="65sp"
                         android:layout_marginRight="10sp"
                         android:layout_weight="1"
-                        app:cardBackgroundColor="@color/InputCompartmentOutline_Color">
+                        app:cardBackgroundColor="#FAF0FF">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -130,7 +133,7 @@
                         android:layout_height="65sp"
                         android:layout_marginLeft="10sp"
                         android:layout_weight="1"
-                        app:cardBackgroundColor="@color/InputCompartmentOutline_Color"
+                        app:cardBackgroundColor="#FAF0FF"
                         tools:cardBackgroundColor="@color/InputCompartmentOutline_Color">
 
                         <LinearLayout
@@ -159,35 +162,63 @@
 
                 </LinearLayout>
 
+                <Button
+                    android:id="@+id/buttonQrCode"
+                    style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/Side_Padding"
+                    android:layout_marginTop="@dimen/Side_Padding"
+                    android:layout_marginRight="@dimen/Side_Padding"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/Pup_Color"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="QR 출석체크"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/SmallButton_Text_Size"
+                    app:icon="@drawable/qr_code"
+                    app:iconGravity="textStart" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="40sp"
                     android:layout_marginTop="@dimen/Up_Down_Margin"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/Side_Padding"
+                    android:paddingEnd="@dimen/Side_Padding">
 
                     <TextView
-                        android:id="@+id/textView9"
+                        android:id="@+id/textViewMyMembership"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
                         android:gravity="center"
                         android:text="회원권"
                         android:textSize="@dimen/Big_Text_Size" />
 
                     <TextView
-                        android:id="@+id/textView10"
+                        android:id="@+id/textViewMyReview"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
                         android:gravity="center"
                         android:text="리뷰 관리"
                         android:textSize="@dimen/Big_Text_Size" />
 
                     <TextView
-                        android:id="@+id/textView11"
+                        android:id="@+id/textViewMyPick"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
                         android:gravity="center"
                         android:text="찜"
                         android:textSize="@dimen/Big_Text_Size" />
@@ -197,7 +228,184 @@
                     android:id="@+id/view3"
                     android:layout_width="match_parent"
                     android:layout_height="15sp"
-                    android:layout_marginTop="@dimen/Up_Down_Margin" />
+                    android:layout_marginTop="@dimen/Up_Down_Margin"
+                    app:dividerColor="#FAF0FF" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/Up_Down_Margin"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/myNotification"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textViewMyNotification"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/Up_Down_Margin"
+                            android:paddingLeft="@dimen/Side_Padding"
+                            android:paddingRight="@dimen/Side_Padding"
+                            android:text="공지/이벤트" />
+
+                        <com.google.android.material.divider.MaterialDivider
+                            android:id="@+id/line1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textViewMyPayment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/Up_Down_Margin"
+                            android:paddingLeft="@dimen/Side_Padding"
+                            android:paddingRight="@dimen/Side_Padding"
+                            android:text="결제 내역" />
+
+                        <com.google.android.material.divider.MaterialDivider
+                            android:id="@+id/line2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textViewMyCustomerService"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/Up_Down_Margin"
+                            android:paddingLeft="@dimen/Side_Padding"
+                            android:paddingRight="@dimen/Side_Padding"
+                            android:text="고객센터" />
+
+                        <com.google.android.material.divider.MaterialDivider
+                            android:id="@+id/line3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textViewMyFAQ"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/Up_Down_Margin"
+                            android:paddingLeft="@dimen/Side_Padding"
+                            android:paddingRight="@dimen/Side_Padding"
+                            android:text="FAQ" />
+
+                        <com.google.android.material.divider.MaterialDivider
+                            android:id="@+id/line4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textViewMySetting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/Up_Down_Margin"
+                            android:paddingLeft="@dimen/Side_Padding"
+                            android:paddingRight="@dimen/Side_Padding"
+                            android:text="설정" />
+
+                        <com.google.android.material.divider.MaterialDivider
+                            android:id="@+id/line5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/view2"
+                    android:layout_width="match_parent"
+                    android:layout_height="65sp"
+                    app:cardBackgroundColor="@color/ContentsOfTheEntryCompartment_Color">
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="이벤트 배너" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/Up_Down_Margin"
+                    android:background="#FAF0FF"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@mipmap/fitmoa_logo_foreground" />
+
+                    <TextView
+                        android:id="@+id/textViewMyMoreTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10sp"
+                        android:text="(주) 멋쟁이사자처럼"
+                        android:textSize="@dimen/Big_Text_Size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewMyMoreDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10sp"
+                        android:layout_marginBottom="@dimen/Up_Down_Margin"
+                        android:text="대표자 : 넥스트레벨\n주소 : 서울시 종로구 종로 3길\n이메일 : abcd@gmail.com"
+                        android:textSize="@dimen/Small_Text_Size" />
+
+                </LinearLayout>
 
             </LinearLayout>
         </ScrollView>

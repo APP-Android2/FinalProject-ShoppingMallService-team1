@@ -11,6 +11,8 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.CenterFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.CommunityFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.HomeFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyFragment
+import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyNotificationFragment
+import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyProfileFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.TrainerFragment
 
 class NavigationActivity : AppCompatActivity() {
@@ -27,7 +29,7 @@ class NavigationActivity : AppCompatActivity() {
         activityNavigationBinding = ActivityNavigationBinding.inflate(layoutInflater)
         setContentView(activityNavigationBinding.root)
 
-        replaceFragment(Navigation_FRAGMENT_NAME.HOME_FRAGMENT, true, true, null)
+        replaceFragment(Navigation_FRAGMENT_NAME.MY_FRAGMENT, true, true, null)
     }
 
 
@@ -75,6 +77,14 @@ class NavigationActivity : AppCompatActivity() {
             // MY 화면
             Navigation_FRAGMENT_NAME.MY_FRAGMENT -> {
                 newFragment = MyFragment()
+            }
+
+            Navigation_FRAGMENT_NAME.MY_PROFILE_FRAGMENT -> {
+                newFragment = MyProfileFragment()
+            }
+
+            Navigation_FRAGMENT_NAME.MY_NOTIFICATION_FRAGMENT -> {
+                newFragment = MyNotificationFragment()
             }
 
         }

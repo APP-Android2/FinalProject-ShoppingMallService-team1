@@ -41,7 +41,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="내 버튼"
-                    app:layout_anchor="toolbarCenter"
                     app:layout_anchorGravity="end|bottom" />
 
                 <LinearLayout
@@ -135,7 +134,7 @@
                             android:layout_width="120dp"
                             android:layout_height="120dp"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/center_image_placeholder"
+                            android:src="@drawable/send"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
