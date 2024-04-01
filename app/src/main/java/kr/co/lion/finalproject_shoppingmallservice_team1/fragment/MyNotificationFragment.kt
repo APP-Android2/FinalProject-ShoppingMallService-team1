@@ -9,11 +9,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.divider.MaterialDividerItemDecoration
+import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
-import kr.co.lion.finalproject_shoppingmallservice_team1.Navigation_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentMyNotificationBinding
-import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentMyProfileBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowMyNotificationBinding
 
 class MyNotificationFragment : Fragment() {
@@ -41,7 +40,7 @@ class MyNotificationFragment : Fragment() {
                 // 뒤로가기
                 setNavigationIcon(R.drawable.arrow_back)
                 setNavigationOnClickListener {
-                    navigationActivity.removeFragment(Navigation_FRAGMENT_NAME.MY_NOTIFICATION_FRAGMENT)
+                    navigationActivity.removeFragment(NAVIGATION_FRAGMENT_NAME.MY_NOTIFICATION_FRAGMENT)
                 }
             }
         }

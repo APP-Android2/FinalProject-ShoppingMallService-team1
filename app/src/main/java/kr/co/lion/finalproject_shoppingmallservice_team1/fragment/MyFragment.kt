@@ -13,7 +13,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kr.co.lion.finalproject_shoppingmallservice_team1.MY_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
-import kr.co.lion.finalproject_shoppingmallservice_team1.Navigation_FRAGMENT_NAME
+import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentMyBinding
 
@@ -80,7 +80,7 @@ class MyFragment : Fragment() {
             // 프로필 클릭 시
             myProfile.setOnClickListener {
                 // MyProfile 프래그먼트 실행
-                navigationActivity.replaceFragment(Navigation_FRAGMENT_NAME.MY_PROFILE_FRAGMENT, true, true, null)
+                navigationActivity.replaceFragment(NAVIGATION_FRAGMENT_NAME.MY_PROFILE_FRAGMENT, true, true, null)
             }
         }
     }
@@ -90,7 +90,7 @@ class MyFragment : Fragment() {
         fragmentMyBinding.apply {
             // 공지/이벤트
             myNotification.setOnClickListener {
-                navigationActivity.replaceFragment(Navigation_FRAGMENT_NAME.MY_NOTIFICATION_FRAGMENT, true, true, null)
+                navigationActivity.replaceFragment(NAVIGATION_FRAGMENT_NAME.MY_NOTIFICATION_FRAGMENT, true, true, null)
             }
             // 결제 내역
 
