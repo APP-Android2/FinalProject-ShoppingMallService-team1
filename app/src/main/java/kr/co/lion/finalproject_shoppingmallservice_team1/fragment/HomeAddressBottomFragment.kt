@@ -104,7 +104,7 @@ class HomeAddressBottomFragment : BottomSheetDialogFragment() {
         }
 
         override fun onBindViewHolder(holder: BottomViewHoleder, position: Int) {
-            holder.rowAddressBottomBinding.textView13.text = "서울시 중랑구 00동 00아파트"
+            holder.rowAddressBottomBinding.textViewHomeAddress.text = "서울시 중랑구 00동 00아파트"
         }
     }
 
