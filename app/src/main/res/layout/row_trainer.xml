@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="172dp"
+                android:layout_height="238dp"
+                android:layout_marginTop="@dimen/Up_Down_Margin"
+                android:layout_marginLeft="@dimen/Side_Padding"
+                android:layout_marginRight="@dimen/Side_Padding"
+                android:layout_weight="1"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|top"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/trainerProfileImageView"
+                            android:layout_width="180dp"
+                            android:layout_height="178dp"
+                            android:layout_gravity="center"
+                            app:srcCompat="@drawable/fitmoa_logo_background"
+                            android:onClick="onImageViewTrainerClick"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|left"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textViewType"
+                                android:layout_width="50dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="bottom|left"
+                                android:background="@color/Pup_Color"
+                                android:gravity="center"
+                                android:text="헬스"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/Small_Text_Size" />
+                        </LinearLayout>
+
+                        <ImageButton
+                            android:id="@+id/trainerImageButton"
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_gravity="bottom|center|right"
+                            android:background="@android:color/transparent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/favorite" />
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginBottom="6dp"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/healthTrainerNameTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="트레이너 이름"
+                        android:textSize="@dimen/Medium_Text_Size" />
+
+                    <TextView
+                        android:id="@+id/healthTrainerOrgNameTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="트레이너 소속 센터"
+                        android:textSize="@dimen/Big_Text_Size" />
+
+                    <TextView
+                        android:id="@+id/healthTrainerAddressTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="센터 주소"
+                        android:textSize="@dimen/Small_Text_Size" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>
