@@ -183,6 +183,7 @@ class TrainerFragment : Fragment() {
             holder.rowTrainerBinding.healthTrainerOrgNameTextView.text = "필라테스 센터${position}"
             holder.rowTrainerBinding.healthTrainerAddressTextView.text = "주소${position}"
             holder.rowTrainerBinding.textViewType.text = "필라타입"
+
         }
     }
 }
