@@ -16,95 +16,102 @@
         android:layout_height="match_parent"
         android:background="@color/white">
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbarAddressMain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme">
 
-                <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/toolbarAddressMain"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/textViewHomeBottomToolbar"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="?attr/colorPrimary"
-                    android:minHeight="?attr/actionBarSize"
-                    android:theme="?attr/actionBarTheme">
+                    android:layout_gravity="center"
+                    android:text="주소 설정"
+                    android:textSize="@dimen/Toolbar_Title_Size" />
+            </com.google.android.material.appbar.MaterialToolbar>
 
-                    <TextView
-                        android:id="@+id/textViewHomeBottomToolbar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="주소 설정"
-                        android:textSize="@dimen/Toolbar_Title_Size" />
-                </com.google.android.material.appbar.MaterialToolbar>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingLeft="@dimen/Side_Padding"
-                    android:paddingRight="@dimen/Side_Padding">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                    <androidx.coordinatorlayout.widget.CoordinatorLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <com.google.android.material.search.SearchBar
-                            android:id="@+id/searchBarHomeBottom"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@color/white"
-                            android:hint="주소를 입력해 주세요"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                            app:backgroundTint="@color/InputCompartment_Color"
-                            app:navigationIconTint="@color/Writing_Color" />
-
-                        <com.google.android.material.search.SearchView
-                            android:id="@+id/searchViewHomeBottom"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#03A9F4"
-                            app:backgroundTint="@color/InputCompartment_Color"
-                            app:queryHint="검색어를 입력해 주세요">
-
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/recyclerViewHomeBottomSearch"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-                        </com.google.android.material.search.SearchView>
-                    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-                    <TextView
-                        android:id="@+id/textViewHomeBottomNowAddress"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/Detail_Padding"
-                        android:clickable="false"
-                        android:text="현재 위치로 주소 설정"
-                        android:textSize="@dimen/BigButton_Text_Size" />
-
-                    <View
-                        android:id="@+id/dividerHomeBottom"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="@dimen/Up_Down_Margin"
-                        android:background="?android:attr/listDivider" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerViewHomeBottomAddress"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/Up_Down_Margin" />
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/Side_Padding"
+                        android:paddingRight="@dimen/Side_Padding">
 
+                        <androidx.coordinatorlayout.widget.CoordinatorLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <com.google.android.material.search.SearchBar
+                                android:id="@+id/searchBarHomeBottom"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:hint="주소를 입력해 주세요"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                app:backgroundTint="@color/InputCompartment_Color"
+                                app:navigationIconTint="@color/Writing_Color" />
+
+                            <com.google.android.material.search.SearchView
+                                android:id="@+id/searchViewHomeBottom"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="#03A9F4"
+                                app:backgroundTint="@color/InputCompartment_Color"
+                                app:queryHint="검색어를 입력해 주세요">
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/recyclerViewHomeBottomSearch"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+                            </com.google.android.material.search.SearchView>
+                        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+                        <TextView
+                            android:id="@+id/textViewHomeBottomNowAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/Detail_Padding"
+                            android:clickable="false"
+                            android:text="현재 위치로 주소 설정"
+                            android:textSize="@dimen/BigButton_Text_Size" />
+
+                        <View
+                            android:id="@+id/dividerHomeBottom"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/Up_Down_Margin"
+                            android:background="?android:attr/listDivider" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewHomeBottomAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="@dimen/Up_Down_Margin" />
+
+
+                    </LinearLayout>
 
                 </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
 
-            </LinearLayout>
-        </ScrollView>
     </FrameLayout>
 
 </layout>

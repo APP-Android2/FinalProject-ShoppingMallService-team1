@@ -14,74 +14,80 @@
         android:layout_height="match_parent"
         android:background="@color/white">
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbarHomeChat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme">
 
-                <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/toolbarHomeChat"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="?attr/colorPrimary"
-                    android:minHeight="?attr/actionBarSize"
-                    android:theme="?attr/actionBarTheme" >
+                    android:layout_gravity="center"
+                    android:text="쪽지"
+                    android:textSize="@dimen/Toolbar_Title_Size" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="쪽지"
-                        android:textSize="@dimen/Toolbar_Title_Size" />
+            </com.google.android.material.appbar.MaterialToolbar>
 
-                </com.google.android.material.appbar.MaterialToolbar>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingLeft="@dimen/Side_Padding"
-                    android:paddingRight="@dimen/Side_Padding">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/Side_Padding"
+                        android:paddingRight="@dimen/Side_Padding">
 
-                        <TextView
-                            android:id="@+id/textView16"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="20"
-                            android:text="본인 이름"
-                            android:textSize="16sp" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
 
-                        <Button
-                            android:id="@+id/button2"
-                            style="@style/Widget.Material3.Button.Icon"
-                            android:layout_width="30dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.1"
-                            app:icon="@drawable/settings"
-                            tools:iconGravity="textEnd" />
+                            <TextView
+                                android:id="@+id/textView16"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="20"
+                                android:text="본인 이름"
+                                android:textSize="16sp" />
+
+                            <Button
+                                android:id="@+id/button2"
+                                style="@style/Widget.Material3.Button.Icon"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                app:icon="@drawable/settings"
+                                app:iconGravity="textEnd" />
+
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewHomeChat"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="@dimen/Up_Down_Margin"
+                            android:layout_weight="20" />
 
                     </LinearLayout>
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerViewHomeChat"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="20" />
 
                 </LinearLayout>
-
-
-            </LinearLayout>
-        </ScrollView>
+            </ScrollView>
+        </LinearLayout>
 
     </FrameLayout>
 </layout>
