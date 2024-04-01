@@ -19,8 +19,6 @@ enum class NAVIGATION_FRAGMENT_NAME(var num:Int, var str:String){
     TRAINER_FRAGMENT(2, "트레이너"),
     COMMUNITY_FRAGMENT(3, "커뮤니티"),
     MY_FRAGMENT(4, "MY"),
-    MY_PROFILE_FRAGMENT(5, "MyProfileFragment"),
-    MY_NOTIFICATION_FRAGMENT(6, "MyNotificationFragment")
 }
 
 enum class HOME_FRAGMENT_NAME(var num:Int, var str:String){

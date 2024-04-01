@@ -11,8 +11,6 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.CenterFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.CommunityFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.HomeFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyNotificationFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyProfileFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.TrainerFragment
 
 class NavigationActivity : AppCompatActivity() {
@@ -62,12 +60,6 @@ class NavigationActivity : AppCompatActivity() {
 
             NAVIGATION_FRAGMENT_NAME.MY_FRAGMENT -> {
                 newFragment = MyFragment()
-            }
-            NAVIGATION_FRAGMENT_NAME.MY_PROFILE_FRAGMENT -> {
-                newFragment = MyProfileFragment()
-            }
-            NAVIGATION_FRAGMENT_NAME.MY_NOTIFICATION_FRAGMENT -> {
-                newFragment = MyNotificationFragment()
             }
 
         }
