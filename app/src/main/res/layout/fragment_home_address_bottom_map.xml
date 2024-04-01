@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="homeAddressBottomMapViewModel"
+            type="kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.HomeAddressBottomMapViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbarAddressMap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme">
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="지도에서 위치 확인"
+                    android:textSize="@dimen/Toolbar_Title_Size" />
+
+            </com.google.android.material.appbar.MaterialToolbar>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.gms.maps.MapView
+                        android:id="@+id/mapView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="483dp" />
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/floatingActionButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|right"
+                        android:layout_marginLeft="@dimen/Up_Down_Margin"
+                        android:layout_marginRight="@dimen/Up_Down_Margin"
+                        android:clickable="true"
+                        android:foregroundTint="@color/white"
+                        app:backgroundTint="@color/Pup_Color"
+                        app:srcCompat="@drawable/my_location" />
+                </LinearLayout>
+            </ScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/Up_Down_Margin"
+                    android:layout_weight="1"
+                    android:text="선택한 주소"
+                    android:textSize="@dimen/Big_Text_Size" />
+
+                <Button
+                    style="@style/Widget.Material3.Button.IconButton.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="@dimen/Up_Down_Margin"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/Pup_Color"
+                    android:text="주소 설정"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </FrameLayout>
+
+
+</layout>

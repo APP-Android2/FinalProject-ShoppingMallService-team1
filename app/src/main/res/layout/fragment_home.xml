@@ -9,340 +9,350 @@
             type="kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.HomeViewModel" />
     </data>
 
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    tools:context=".fragment.HomeFragment">
-
-    <ScrollView
+    <FrameLayout
+        android:id="@+id/fragmentHome"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        tools:context=".fragment.HomeFragment">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/Side_Padding"
-            android:paddingRight="@dimen/Side_Padding">
-
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbarHome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?attr/colorPrimary"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme" />
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"></LinearLayout>
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/Side_Padding"
+                android:paddingRight="@dimen/Side_Padding">
 
-            <Button
-                android:id="@+id/btnHomeNowLocation"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="현재 위치로 설정"
-                android:textAlignment="viewStart"
-                android:textColor="@color/black" />
 
-            <androidx.coordinatorlayout.widget.CoordinatorLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.search.SearchBar
-                    android:id="@+id/searchBarHome"
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbarHome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:hint="검색어를 입력해 주세요"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                    app:backgroundTint="@color/InputCompartment_Color"
-                    app:navigationIconTint="@color/Writing_Color" />
+                    android:background="?attr/colorPrimary"
+                    android:minHeight="?attr/actionBarSize"
+                    android:theme="?attr/actionBarTheme">
 
-                <com.google.android.material.search.SearchView
-                    android:id="@+id/searchViewHome"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#03A9F4"
-                    app:backgroundTint = "@color/InputCompartment_Color"
-                    app:queryHint="검색어를 입력해 주세요">
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="40sp"
+                        android:layout_height="40sp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@mipmap/fitmoa_logo" />
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerViewHomeSearch"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-                </com.google.android.material.search.SearchView>
-            </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewHomeMembership"
-                android:layout_width="match_parent"
-                android:layout_height="100sp"
-                android:layout_marginTop="@dimen/Chip_List_Margin"
-                app:cardBackgroundColor="@color/InputCompartment_Color"
-                app:cardCornerRadius="15sp"
-                app:cardElevation="1sp">
+                </com.google.android.material.appbar.MaterialToolbar>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:orientation="vertical"></LinearLayout>
+
+                <Button
+                    android:id="@+id/btnHomeNowLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="현재 위치로 설정"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/black" />
+
+                <androidx.coordinatorlayout.widget.CoordinatorLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.search.SearchBar
+                        android:id="@+id/searchBarHome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:hint="검색어를 입력해 주세요"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        app:backgroundTint="@color/InputCompartment_Color"
+                        app:navigationIconTint="@color/Writing_Color" />
+
+                    <com.google.android.material.search.SearchView
+                        android:id="@+id/searchViewHome"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#03A9F4"
+                        app:backgroundTint="@color/InputCompartment_Color"
+                        app:queryHint="검색어를 입력해 주세요">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewHomeSearch"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </com.google.android.material.search.SearchView>
+                </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewHomeMembership"
+                    android:layout_width="match_parent"
+                    android:layout_height="100sp"
+                    android:layout_marginTop="@dimen/Chip_List_Margin"
+                    app:cardBackgroundColor="@color/InputCompartment_Color"
+                    app:cardCornerRadius="15sp"
+                    app:cardElevation="1sp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textViewHomeMembership"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/Detail_Padding"
+                            android:text="회원권 정보"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/Big_Text_Size" />
+
+                        <TextView
+                            android:id="@+id/textViewHomeMyCenterInfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="@dimen/Detail_Padding"
+                            android:text="등록한 센터의 공지사항"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/Medium_Text_Size" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/textViewHomeCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/Chip_List_Margin"
+                    android:text="카테고리"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/Big_Text_Size" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/Detail_Padding"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/textViewHomeMembership"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/Detail_Padding"
-                        android:text="회원권 정보"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/Big_Text_Size" />
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/textViewHomeMyCenterInfo"
+                        <Button
+                            android:id="@+id/buttonHomeCategoryHealth"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="헬스"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/Medium_Text_Size" />
+
+                        <Button
+                            android:id="@+id/buttonHomeCategoryPilates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="필라테스"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/Medium_Text_Size" />
+
+                        <Button
+                            android:id="@+id/buttonHomeCategorySwim"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="수영"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/Medium_Text_Size" />
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:paddingLeft="@dimen/Detail_Padding"
-                        android:text="등록한 센터의 공지사항"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/Medium_Text_Size" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/textViewHomeCategory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/Chip_List_Margin"
-                android:text="카테고리"
-                android:textColor="@color/black"
-                android:textSize="@dimen/Big_Text_Size" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/Detail_Padding"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/buttonHomeCategoryHealth"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="헬스"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/Medium_Text_Size" />
+                        android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/buttonHomeCategoryPilates"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="필라테스"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/Medium_Text_Size" />
+                        <Button
+                            android:id="@+id/buttonHomeCategoryDailyTicket"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="일일권"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/Medium_Text_Size" />
 
-                    <Button
-                        android:id="@+id/buttonHomeCategorySwim"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="수영"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/Medium_Text_Size" />
+                        <Button
+                            android:id="@+id/buttonHomeCategorySale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="할인시설"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/Medium_Text_Size" />
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="97dp"
+                    android:layout_marginTop="@dimen/Chip_List_Margin"
                     android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/buttonHomeCategoryDailyTicket"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewHomeAroundCenter"
+                        android:layout_width="match_parent"
+                        android:layout_height="90sp"
+                        android:layout_gravity="center|center_vertical"
+                        android:layout_marginRight="9sp"
                         android:layout_weight="1"
-                        android:text="일일권"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/Medium_Text_Size" />
+                        app:cardBackgroundColor="@color/InputCompartment_Color"
+                        app:cardCornerRadius="15sp"
+                        app:cardElevation="1sp">
 
-                    <Button
-                        android:id="@+id/buttonHomeCategorySale"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textViewHomeAroundCenter"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|center_vertical"
+                                android:text="내 주변 운동 시설"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/Medium_Text_Size" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewHomeAssign"
+                        android:layout_width="match_parent"
+                        android:layout_height="90sp"
+                        android:layout_gravity="center|center_vertical"
+                        android:layout_marginLeft="9dp"
                         android:layout_weight="1"
-                        android:text="할인시설"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/Medium_Text_Size" />
+                        app:cardBackgroundColor="@color/InputCompartment_Color"
+                        app:cardCornerRadius="15sp"
+                        app:cardElevation="1sp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textViewHomeAssign"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|center_vertical"
+                                android:text="양도 회원권"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/Medium_Text_Size" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
                 </LinearLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="97dp"
-                android:layout_marginTop="@dimen/Chip_List_Margin"
-                android:orientation="horizontal">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardViewHomeAroundCenter"
+                <ImageView
+                    android:id="@+id/imageViewHomeEvent"
                     android:layout_width="match_parent"
-                    android:layout_height="90sp"
-                    android:layout_gravity="center|center_vertical"
-                    android:layout_marginRight="9sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/Chip_List_Margin"
+                    app:srcCompat="@drawable/ic_launcher_background" />
+
+                <TextView
+                    android:id="@+id/textViewHomePopularTrainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/Chip_List_Margin"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="@color/InputCompartment_Color"
-                    app:cardCornerRadius="15sp"
-                    app:cardElevation="1sp">
+                    android:text="인기있는 트레이너"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/Big_Text_Size" />
 
-                    <LinearLayout
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/Detail_Padding"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewHomePopulartrainer"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:layout_height="match_parent">
 
-                        <TextView
-                            android:id="@+id/textViewHomeAroundCenter"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center|center_vertical"
-                            android:text="내 주변 운동 시설"
-                            android:textAlignment="center"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/Medium_Text_Size" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardViewHomeAssign"
+                            <ImageView
+                                android:id="@+id/imageViewcardViewHomePopulartrainer"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:srcCompat="@drawable/ic_launcher_background" />
+
+                            <TextView
+                                android:id="@+id/textViewHomeDetailPopulartrainer"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="TextView"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/Medium_Text_Size" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textViewHomeRecentCenterTitle"
                     android:layout_width="match_parent"
-                    android:layout_height="90sp"
-                    android:layout_gravity="center|center_vertical"
-                    android:layout_marginLeft="9dp"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="@color/InputCompartment_Color"
-                    app:cardCornerRadius="15sp"
-                    app:cardElevation="1sp">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/Chip_List_Margin"
+                    android:text="최근 본 시설"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/Big_Text_Size" />
 
-                    <LinearLayout
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/Detail_Padding"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardViewHomeRecentCenter"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:layout_height="match_parent">
 
-                        <TextView
-                            android:id="@+id/textViewHomeAssign"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center|center_vertical"
-                            android:text="양도 회원권"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/Medium_Text_Size" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/imageViewHomeRecentCenter"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:srcCompat="@drawable/ic_launcher_background" />
+
+                            <TextView
+                                android:id="@+id/textViewHomeDetailRecentCenter"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="TextView"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/Medium_Text_Size" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
 
             </LinearLayout>
+        </ScrollView>
 
-            <ImageView
-                android:id="@+id/imageViewHomeEvent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/Chip_List_Margin"
-                app:srcCompat="@drawable/ic_launcher_background"
-                 />
-
-            <TextView
-                android:id="@+id/textViewHomePopularTrainer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/Chip_List_Margin"
-                android:layout_weight="1"
-                android:text="인기있는 트레이너"
-                android:textColor="@color/black"
-                android:textSize="@dimen/Big_Text_Size" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/Detail_Padding"
-                android:orientation="horizontal">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardViewHomePopulartrainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:id="@+id/imageViewcardViewHomePopulartrainer"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/ic_launcher_background" />
-
-                        <TextView
-                            android:id="@+id/textViewHomeDetailPopulartrainer"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="TextView"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/Medium_Text_Size" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/textViewHomeRecentCenterTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/Chip_List_Margin"
-                android:text="최근 본 시설"
-                android:textColor="@color/black"
-                android:textSize="@dimen/Big_Text_Size" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/Detail_Padding"
-                android:orientation="horizontal">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardViewHomeRecentCenter"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:id="@+id/imageViewHomeRecentCenter"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            app:srcCompat="@drawable/ic_launcher_background" />
-
-                        <TextView
-                            android:id="@+id/textViewHomeDetailRecentCenter"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="TextView"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/Medium_Text_Size" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
-
-</FrameLayout>
+    </FrameLayout>
 </layout>
