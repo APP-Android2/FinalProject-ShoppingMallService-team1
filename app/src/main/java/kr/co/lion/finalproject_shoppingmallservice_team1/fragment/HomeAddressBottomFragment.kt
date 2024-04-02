@@ -88,13 +88,11 @@ class HomeAddressBottomFragment : BottomSheetDialogFragment() {
             // return False : 검색 키보드를 내림
             // return True : 검색 키보드를 내리지 않음
             override fun onQueryTextSubmit(query: String?): Boolean {
-                // @TODO
                 return false
             }
 
             // 검색어를 변경할 때마다 실행됨
             override fun onQueryTextChange(newText: String?): Boolean {
-                // @TODO
                 return true
             }
         })

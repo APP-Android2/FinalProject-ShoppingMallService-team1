@@ -23,6 +23,7 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.HOME_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
+import kr.co.lion.finalproject_shoppingmallservice_team1.SearchActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentHomeBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.HomeViewModel
 
@@ -43,6 +44,7 @@ class HomeFragment : Fragment() {
 
         settingToolbar()
         settingAddress()
+        settingSearch()
 
         return fragmentHomeBinding.root
     }
@@ -110,5 +112,16 @@ class HomeFragment : Fragment() {
     fun showHomeAddressBottomSheet(){
         val homeAddressBottomFragment = HomeAddressBottomFragment()
         homeAddressBottomFragment.show(navigationActivity.supportFragmentManager, "HomeAddressBottomSheet")
+    }
+
+    fun settingSearch(){
+        fragmentHomeBinding.apply {
+            searchBarHome.apply {
+                setOnClickListener {
+                    val intent = Intent(navigationActivity, SearchActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+        }
     }
 }

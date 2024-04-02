@@ -16,7 +16,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kr.co.lion.finalproject_shoppingmallservice_team1.HOME_SHOP_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
-import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentHomeShopBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentHomeShopContainBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowShoppingcartBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.HomeShopContainViewModel
