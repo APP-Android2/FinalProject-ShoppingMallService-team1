@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.divider.MaterialDividerItemDecoration
+import kr.co.lion.finalproject_shoppingmallservice_team1.MY_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
@@ -36,12 +37,7 @@ class MyNotificationFragment : Fragment() {
         fragmentMyNotificationBinding.apply {
             toolbarMyNotification.apply {
                 // 타이틀
-                title = "알림"
-                // 뒤로가기
-                setNavigationIcon(R.drawable.arrow_back)
-                setNavigationOnClickListener {
-                    navigationActivity.removeFragment(NAVIGATION_FRAGMENT_NAME.MY_NOTIFICATION_FRAGMENT)
-                }
+                title = "공지 / 이벤트"
             }
         }
     }
@@ -89,7 +85,7 @@ class MyNotificationFragment : Fragment() {
         }
 
         override fun onBindViewHolder(holder: MyNotificationViewHolder, position: Int) {
-            holder.rowMyNotificationBinding.textViewRowMyNotificationTitle.text = "새로운 알림입니다 $position"
+            holder.rowMyNotificationBinding.textViewRowMyNotificationTitle.text = "새로운 공지사항 $position"
             holder.rowMyNotificationBinding.textViewRowMyNotificationDate.text = "${position}일 전"
         }
     }
