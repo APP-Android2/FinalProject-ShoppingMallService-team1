@@ -7,14 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import com.google.android.material.transition.MaterialSharedAxis
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
+import kr.co.lion.finalproject_shoppingmallservice_team1.HOME_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.MY_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
+import kr.co.lion.finalproject_shoppingmallservice_team1.Tools
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentMyBinding
 
 class MyFragment : Fragment() {
@@ -30,20 +33,7 @@ class MyFragment : Fragment() {
 
         settingToolbar()
         settingMyProfile()
-        settingEventTextView()
-
-        /*
-
-
-        상의 해야할 내용
-
-            알림버튼을 눌렀을 때와 공지/이벤트를 눌렀을 때 화면을 나눌것인가
-            만약 나눈다면..
-            알림 = 개인마다 다른 내용 ex) 트레이너 메세지 예약 알림 등
-            공지/이벤트 = 앱에서 올리는 공지사항 및 이벤트
-            나누지 않는다면..
-
-         */
+        settingClickEventTextView()
 
         return fragmentMyBinding.root
     }
@@ -58,10 +48,6 @@ class MyFragment : Fragment() {
                 inflateMenu(R.menu.menu_my)
                 setOnMenuItemClickListener {
                     when(it.itemId){
-                        // 알림
-                        R.id.menuMyNotification -> {
-
-                        }
                         // 장바구니
                         R.id.menuMyShopping -> {
 
@@ -86,10 +72,20 @@ class MyFragment : Fragment() {
     }
 
     // TextView 항목 클릭 시 이벤트
-    fun settingEventTextView(){
+    fun settingClickEventTextView(){
         fragmentMyBinding.apply {
+            // 회원권
+            textViewMyMembership.setOnClickListener {
+                // MyMembershipFragment 실행
+                navigationActivity.replaceFragment(NAVIGATION_FRAGMENT_NAME.MY_MEMBERSHIP_FRAGMENT, true, true, null)
+            }
+            // 리뷰 관리
+
+            // 찜
+
             // 공지/이벤트
             myNotification.setOnClickListener {
+                // MyNotificationFragment 실행
                 navigationActivity.replaceFragment(NAVIGATION_FRAGMENT_NAME.MY_NOTIFICATION_FRAGMENT, true, true, null)
             }
             // 결제 내역
@@ -97,8 +93,15 @@ class MyFragment : Fragment() {
             // 고객 센터
 
             // FAQ
-
+            myFAQ.setOnClickListener {
+                // MyFAQFragment 실행
+                navigationActivity.replaceFragment(NAVIGATION_FRAGMENT_NAME.MY_FAQ_FRAGMENT, true, true, null)
+            }
             // 설정
+            mySetting.setOnClickListener {
+                // MySettingFragment 실행
+                navigationActivity.replaceFragment(NAVIGATION_FRAGMENT_NAME.MY_SETTING_FRAGMENT, true, true, null)
+            }
         }
     }
 }
