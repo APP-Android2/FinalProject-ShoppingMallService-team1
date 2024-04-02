@@ -10,9 +10,12 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivityNav
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.CenterFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.CommunityFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.HomeFragment
+import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyFAQFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyFragment
+import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyMembershipFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyNotificationFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyProfileFragment
+import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MySettingFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.ReadTrainerFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.TrainerFragment
 
@@ -30,7 +33,7 @@ class NavigationActivity : AppCompatActivity() {
         activityNavigationBinding = ActivityNavigationBinding.inflate(layoutInflater)
         setContentView(activityNavigationBinding.root)
 
-        replaceFragment(NAVIGATION_FRAGMENT_NAME.HOME_FRAGMENT, true, true, null)
+        replaceFragment(NAVIGATION_FRAGMENT_NAME.MY_FRAGMENT, true, true, null)
     }
 
     fun replaceFragment(name:NAVIGATION_FRAGMENT_NAME, addToBackStack:Boolean, isAnimate:Boolean, data:Bundle?){
@@ -75,6 +78,18 @@ class NavigationActivity : AppCompatActivity() {
 
             NAVIGATION_FRAGMENT_NAME.MY_NOTIFICATION_FRAGMENT -> {
                 newFragment = MyNotificationFragment()
+            }
+
+            NAVIGATION_FRAGMENT_NAME.MY_SETTING_FRAGMENT -> {
+                newFragment = MySettingFragment()
+            }
+
+            NAVIGATION_FRAGMENT_NAME.MY_FAQ_FRAGMENT -> {
+                newFragment = MyFAQFragment()
+            }
+
+            NAVIGATION_FRAGMENT_NAME.MY_MEMBERSHIP_FRAGMENT -> {
+                newFragment = MyMembershipFragment()
             }
 
         }

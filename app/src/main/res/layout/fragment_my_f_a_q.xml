@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".fragment.MyFAQFragment">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbarMyFAQ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="8sp"
+                app:dividerColor="@color/Light_Purple_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/Side_Padding"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="@dimen/Side_Padding"
+                android:orientation="horizontal">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/myFAQChip1"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5sp"
+                    android:layout_marginEnd="5sp"
+                    android:layout_weight="1"
+                    android:text="서비스 소개"
+                    android:textAlignment="center"
+                    android:textColor="@color/Pup_Color"
+                    app:chipStrokeColor="@color/Pup_Color" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/myFAQChip2"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5sp"
+                    android:layout_marginEnd="5sp"
+                    android:layout_weight="1"
+                    android:text="이용 방법"
+                    android:textAlignment="center"
+                    android:textColor="@color/Pup_Color"
+                    app:chipStrokeColor="@color/Pup_Color" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/myFAQChip3"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5sp"
+                    android:layout_marginEnd="5sp"
+                    android:layout_weight="1"
+                    android:text="결제/환불"
+                    android:textAlignment="center"
+                    android:textColor="@color/Pup_Color"
+                    app:chipStrokeColor="@color/Pup_Color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/Side_Padding"
+                android:layout_marginTop="7sp"
+                android:layout_marginEnd="@dimen/Side_Padding"
+                android:orientation="horizontal">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/myFAQChip4"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5sp"
+                    android:layout_marginEnd="5sp"
+                    android:layout_weight="1"
+                    android:text="제휴 방법"
+                    android:textAlignment="center"
+                    android:textColor="@color/Pup_Color"
+                    app:chipStrokeColor="@color/Pup_Color" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/myFAQChip5"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5sp"
+                    android:layout_marginEnd="5sp"
+                    android:layout_weight="1"
+                    android:text="계정 정보"
+                    android:textAlignment="center"
+                    android:textColor="@color/Pup_Color"
+                    app:chipStrokeColor="@color/Pup_Color" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/myFAQChip6"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5sp"
+                    android:layout_marginEnd="5sp"
+                    android:layout_weight="1"
+                    android:text="어플 문의"
+                    android:textAlignment="center"
+                    android:textColor="@color/Pup_Color"
+                    app:chipStrokeColor="@color/Pup_Color" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/myFAQ1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/Up_Down_Margin"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/Side_Padding"
+                        android:layout_marginEnd="@dimen/Side_Padding" />
+
+                    <TextView
+                        android:id="@+id/textViewFAQ1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="28dp"
+                        android:layout_marginTop="10sp"
+                        android:layout_marginEnd="@dimen/Side_Padding"
+                        android:layout_marginBottom="10sp"
+                        android:text="피트모아는 어떤 서비스인가요?" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/myFAQ2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/Side_Padding"
+                        android:layout_marginEnd="@dimen/Side_Padding" />
+
+                    <TextView
+                        android:id="@+id/textViewFAQ2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="28dp"
+                        android:layout_marginTop="10sp"
+                        android:layout_marginEnd="@dimen/Side_Padding"
+                        android:layout_marginBottom="10sp"
+                        android:text="일일권은 무엇인가요?" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/myFAQ3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/Side_Padding"
+                        android:layout_marginEnd="@dimen/Side_Padding" />
+
+                    <TextView
+                        android:id="@+id/textViewFAQ3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="28dp"
+                        android:layout_marginTop="10sp"
+                        android:layout_marginEnd="@dimen/Side_Padding"
+                        android:layout_marginBottom="10sp"
+                        android:text="양도 게시판은 무엇인가요?" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>
