@@ -68,6 +68,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
+                        android:clickable="true"
                         android:hint="검색어를 입력해 주세요"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         app:backgroundTint="@color/InputCompartment_Color"
