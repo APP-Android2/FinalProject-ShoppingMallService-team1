@@ -30,8 +30,6 @@ class MySettingFragment : Fragment() {
     fun settingToolbar(){
         fragmentMySettingBinding.apply {
             toolbarMySetting.apply {
-                // 타이틀
-                title = "설정"
             }
         }
     }

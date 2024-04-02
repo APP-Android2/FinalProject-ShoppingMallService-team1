@@ -30,8 +30,7 @@ class MyFAQFragment : Fragment() {
         fragmentMyFAQBinding.apply {
             fragmentMyFAQBinding.apply {
                 toolbarMyFAQ.apply {
-                    // 타이틀
-                    title = "FAQ"
+
                 }
             }
         }

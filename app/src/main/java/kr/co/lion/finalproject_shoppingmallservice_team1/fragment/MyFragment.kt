@@ -42,8 +42,6 @@ class MyFragment : Fragment() {
     fun settingToolbar(){
         fragmentMyBinding.apply {
             toolbarMy.apply {
-                // 타이틀
-                title = "마이페이지"
                 // 메뉴
                 inflateMenu(R.menu.menu_my)
                 setOnMenuItemClickListener {

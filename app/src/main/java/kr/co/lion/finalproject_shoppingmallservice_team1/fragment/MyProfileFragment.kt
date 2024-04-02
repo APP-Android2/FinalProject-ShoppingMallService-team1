@@ -28,8 +28,6 @@ class MyProfileFragment : Fragment() {
     fun settingToolbar(){
         fragmentMyProfileBinding.apply {
             toolbarMyProfile.apply {
-                // 타이틀
-                title = "프로필"
                 // 메뉴
                 inflateMenu(R.menu.menu_my_profile)
             }

@@ -36,8 +36,7 @@ class MyNotificationFragment : Fragment() {
     fun settingToolbar(){
         fragmentMyNotificationBinding.apply {
             toolbarMyNotification.apply {
-                // 타이틀
-                title = "공지 / 이벤트"
+
             }
         }
     }
