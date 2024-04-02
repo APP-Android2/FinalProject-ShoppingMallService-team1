@@ -63,34 +63,15 @@
                         android:textAlignment="viewStart"
                         android:textColor="@color/black" />
 
-                    <androidx.coordinatorlayout.widget.CoordinatorLayout
+                    <com.google.android.material.search.SearchBar
+                        android:id="@+id/searchBarHome"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <com.google.android.material.search.SearchBar
-                            android:id="@+id/searchBarHome"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@color/white"
-                            android:hint="검색어를 입력해 주세요"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                            app:backgroundTint="@color/InputCompartment_Color"
-                            app:navigationIconTint="@color/Writing_Color" />
-
-                        <com.google.android.material.search.SearchView
-                            android:id="@+id/searchViewHome"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#03A9F4"
-                            app:backgroundTint="@color/InputCompartment_Color"
-                            app:queryHint="검색어를 입력해 주세요">
-
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/recyclerViewHomeSearch"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-                        </com.google.android.material.search.SearchView>
-                    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:hint="검색어를 입력해 주세요"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        app:backgroundTint="@color/InputCompartment_Color"
+                        app:navigationIconTint="@color/Writing_Color" />
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardViewHomeMembership"
