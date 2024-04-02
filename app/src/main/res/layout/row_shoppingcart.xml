@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="80dp"
+                android:layout_height="110dp"
+                android:layout_marginTop="@dimen/Up_Down_Margin"
+                android:layout_marginBottom="@dimen/Up_Down_Margin"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/photo" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
+                android:layout_marginTop="@dimen/Up_Down_Margin"
+                android:layout_marginBottom="@dimen/Up_Down_Margin"
+                android:layout_weight="5"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textViewHomeShopCenterName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="20"
+                        android:text="운동센터 이름"
+                        android:textSize="@dimen/Big_Text_Size" />
+
+                    <Button
+                        android:id="@+id/buttonHomeShopDelete"
+                        style="@style/Widget.Material3.Button.Icon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:icon="@drawable/close"
+                        app:iconGravity="textEnd" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textViewHomeShopMembershipName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10sp"
+                    android:text="제품명"
+                    android:textColor="@color/Writing_Color"
+                    android:textSize="@dimen/Medium_Text_Size" />
+
+                <TextView
+                    android:id="@+id/textViewShopPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="36dp"
+                    android:text="가격"
+                    android:textColor="@color/Pup_Color"
+                    android:textSize="@dimen/Big_Text_Size"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_weight="1"
+            android:background="?android:attr/listDivider" />
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
+</layout>

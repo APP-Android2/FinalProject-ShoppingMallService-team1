@@ -29,8 +29,39 @@ class NavigationActivity : AppCompatActivity() {
 
         activityNavigationBinding = ActivityNavigationBinding.inflate(layoutInflater)
         setContentView(activityNavigationBinding.root)
+        setBottomNavigationView()
 
-        replaceFragment(NAVIGATION_FRAGMENT_NAME.CENTER_FRAGMENT, true, true, null)
+        // 앱 초기 실행 시 홈화면으로 설정
+        if (savedInstanceState == null) {
+            activityNavigationBinding.bottomNavigationView.selectedItemId = R.id.fragment_home
+        }
+    }
+    fun setBottomNavigationView() {
+        activityNavigationBinding.bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.fragment_home -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.main_container, HomeFragment()).commit()
+                    true
+                }
+                R.id.fragment_center -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.main_container, CenterFragment()).commit()
+                    true
+                }
+                R.id.fragment_trainer -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.main_container, TrainerFragment()).commit()
+                    true
+                }
+                R.id.fragment_comunity-> {
+                    supportFragmentManager.beginTransaction().replace(R.id.main_container, CommunityFragment()).commit()
+                    true
+                }
+                R.id.fragment_my -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.main_container, MyFragment()).commit()
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     fun replaceFragment(name:NAVIGATION_FRAGMENT_NAME, addToBackStack:Boolean, isAnimate:Boolean, data:Bundle?){
@@ -109,7 +140,7 @@ class NavigationActivity : AppCompatActivity() {
             // Fragment를 교체한다.(이전 Fragment가 없으면 새롭게 추가하는 역할을 수행한다)
             // 첫 번째 매개 변수 : Fragment를 배치할 FragmentContainerView의 ID
             // 두 번째 매개 변수 : 보여주고하는 Fragment 객체를
-            fragmentTransaction.replace(R.id.Navigation_fragmentContainerView, newFragment!!)
+            fragmentTransaction.replace(R.id.main_container, newFragment!!)
 
             // addToBackStack 변수의 값이 true면 새롭게 보여질 Fragment를 BackStack에 포함시켜 준다.
             if(addToBackStack == true){
