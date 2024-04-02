@@ -2,6 +2,7 @@ package kr.co.lion.finalproject_shoppingmallservice_team1
 
 import android.os.Bundle
 import android.os.SystemClock
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -29,12 +30,13 @@ class NavigationActivity : AppCompatActivity() {
 
         activityNavigationBinding = ActivityNavigationBinding.inflate(layoutInflater)
         setContentView(activityNavigationBinding.root)
-        setBottomNavigationView()
 
         // 앱 초기 실행 시 홈화면으로 설정
         if (savedInstanceState == null) {
-            activityNavigationBinding.bottomNavigationView.selectedItemId = R.id.fragment_home
+            replaceFragment(NAVIGATION_FRAGMENT_NAME.HOME_FRAGMENT, false, true, null)
         }
+
+        setBottomNavigationView()
     }
     fun setBottomNavigationView() {
         activityNavigationBinding.bottomNavigationView.setOnItemSelectedListener { item ->
@@ -82,6 +84,7 @@ class NavigationActivity : AppCompatActivity() {
 
             NAVIGATION_FRAGMENT_NAME.CENTER_FRAGMENT -> {
                 newFragment = CenterFragment()
+
             }
 
             NAVIGATION_FRAGMENT_NAME.TRAINER_FRAGMENT -> {

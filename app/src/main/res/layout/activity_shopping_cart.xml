@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:id="@+id/frameHomeShop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbarHomeShop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="장바구니"
+                    android:textSize="@dimen/Toolbar_Title_Size" />
+
+            </com.google.android.material.appbar.MaterialToolbar>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/Side_Padding"
+                        android:paddingRight="@dimen/Side_Padding">
+
+                        <TextView
+                            android:id="@+id/textViewHomeShopEmpty1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="장바구니에 상품이 없습니다. "
+                            android:textAlignment="center"
+                            android:textColor="@color/Writing_Color" />
+
+                        <TextView
+                            android:id="@+id/textViewHomeShopEmpty2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="상품을 추가해보세요."
+                            android:textAlignment="center"
+                            android:textColor="@color/Writing_Color" />
+
+                        <Button
+                            android:id="@+id/buttonHomeShopHeartMembership"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/Up_Down_Margin"
+                            android:backgroundTint="@color/InputCompartment_Color"
+                            android:text="찜한 회원권 보러 가기"
+                            android:textColor="@color/ContentsOfTheEntryCompartment_Color" />
+
+                        <Button
+                            android:id="@+id/buttonHomeShopContain"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/Up_Down_Margin"
+                            android:backgroundTint="@color/InputCompartment_Color"
+                            android:text="제품 담기"
+                            android:textColor="@color/ContentsOfTheEntryCompartment_Color" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </ScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+
+                <Button
+                    android:id="@+id/buttonHomeShopSwap"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="@dimen/Up_Down_Margin"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/Pup_Color"
+                    android:text="다양한 시설 보러가기"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </FrameLayout>
+
+</layout>
