@@ -36,7 +36,11 @@ class MyNotificationFragment : Fragment() {
     fun settingToolbar(){
         fragmentMyNotificationBinding.apply {
             toolbarMyNotification.apply {
-
+                // 뒤로가기
+                setNavigationIcon(R.drawable.arrow_back)
+                setNavigationOnClickListener {
+                    navigationActivity.removeFragment(NAVIGATION_FRAGMENT_NAME.MY_NOTIFICATION_FRAGMENT)
+                }
             }
         }
     }

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentMyFAQBinding
@@ -30,7 +31,11 @@ class MyFAQFragment : Fragment() {
         fragmentMyFAQBinding.apply {
             fragmentMyFAQBinding.apply {
                 toolbarMyFAQ.apply {
-
+                    // 뒤로가기
+                    setNavigationIcon(R.drawable.arrow_back)
+                    setNavigationOnClickListener {
+                        navigationActivity.removeFragment(NAVIGATION_FRAGMENT_NAME.MY_FAQ_FRAGMENT)
+                    }
                 }
             }
         }
