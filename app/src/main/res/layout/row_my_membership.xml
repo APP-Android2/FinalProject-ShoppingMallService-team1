@@ -39,21 +39,21 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="상호명"
-                        android:textSize="@dimen/Medium_Text_Size" />
+                        android:textSize="@dimen/Big_Text_Size" />
 
                     <TextView
                         android:id="@+id/tvRowMyCourse"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="과정 이름"
-                        android:textSize="@dimen/Medium_Text_Size" />
+                        android:textSize="@dimen/Big_Text_Size" />
 
                     <TextView
                         android:id="@+id/tvRowMyRemainDays"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="남은 기간"
-                        android:textSize="@dimen/Medium_Text_Size" />
+                        android:textSize="@dimen/Big_Text_Size" />
 
                     <Button
                         android:id="@+id/buttonMyMoreDays"
@@ -61,11 +61,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|end"
-                        android:layout_marginTop="8sp"
+                        android:layout_marginTop="5sp"
                         android:backgroundTint="@color/Pup_Color"
                         android:text="연장하기"
                         android:textColor="@color/white"
-                        tools:textSize="@dimen/SmallButton_Text_Size" />
+                        tools:textSize="10sp" />
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
