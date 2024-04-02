@@ -4,16 +4,17 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/trainerDailyImageView"
-            android:layout_width="180dp"
-            android:layout_height="178dp"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/fitmoa_logo_background"
-            android:onClick="onImageViewTrainerClick"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:scaleType="centerCrop"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/fitmoa_logo_background" />
 
     </LinearLayout>
 </layout>
