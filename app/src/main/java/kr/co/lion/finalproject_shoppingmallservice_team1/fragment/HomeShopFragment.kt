@@ -11,7 +11,7 @@ import com.google.android.material.transition.MaterialSharedAxis
 import kr.co.lion.finalproject_shoppingmallservice_team1.HOME_BOTTOM_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.HOME_SHOP_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
-import kr.co.lion.finalproject_shoppingmallservice_team1.Navigation_FRAGMENT_NAME
+import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentHomeShopBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.HomeShopViewModel
@@ -67,7 +67,7 @@ class HomeShopFragment : Fragment() {
                 setOnClickListener {
                     SystemClock.sleep(200)
                     parentFragmentManager.popBackStack()
-                    navigationActivity.replaceFragment(Navigation_FRAGMENT_NAME.CENTER_FRAGMENT, true, true, null)
+                    navigationActivity.replaceFragment(NAVIGATION_FRAGMENT_NAME.CENTER_FRAGMENT, true, true, null)
                 }
             }
         }
