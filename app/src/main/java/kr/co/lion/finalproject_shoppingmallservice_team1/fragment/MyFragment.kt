@@ -72,6 +72,7 @@ class MyFragment : Fragment() {
     // TextView 항목 클릭 시 이벤트
     fun settingClickEventTextView(){
         fragmentMyBinding.apply {
+            /*  상단 메뉴 탭 구성  */
             // 회원권
             textViewMyMembership.setOnClickListener {
                 // MyMembershipFragment 실행
@@ -81,12 +82,17 @@ class MyFragment : Fragment() {
 
             // 찜
 
+            /*  하단 메뉴 탭 구성  */
             // 공지/이벤트
             myNotification.setOnClickListener {
                 // MyNotificationFragment 실행
                 navigationActivity.replaceFragment(NAVIGATION_FRAGMENT_NAME.MY_NOTIFICATION_FRAGMENT, true, true, null)
             }
             // 결제 내역
+            myPayment.setOnClickListener {
+                // MyPaymentFragment 실행
+                navigationActivity.replaceFragment(NAVIGATION_FRAGMENT_NAME.MY_PAYMENT_FRAGMENT, true, true, null)
+            }
 
             // 고객 센터
 

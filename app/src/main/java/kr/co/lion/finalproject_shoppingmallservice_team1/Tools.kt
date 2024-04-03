@@ -25,6 +25,7 @@ enum class NAVIGATION_FRAGMENT_NAME(var num:Int, var str:String){
     MY_SETTING_FRAGMENT(8, "설정"),
     MY_FAQ_FRAGMENT(9, "FAQ"),
     MY_MEMBERSHIP_FRAGMENT(10, "회원권"),
+    MY_PAYMENT_FRAGMENT(11, "결제 내역"),
 }
 
 enum class HOME_FRAGMENT_NAME(var num:Int, var str:String){

@@ -14,6 +14,7 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyFAQFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyMembershipFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyNotificationFragment
+import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyPaymentFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyProfileFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MySettingFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.ReadTrainerFragment
@@ -90,6 +91,10 @@ class NavigationActivity : AppCompatActivity() {
 
             NAVIGATION_FRAGMENT_NAME.MY_MEMBERSHIP_FRAGMENT -> {
                 newFragment = MyMembershipFragment()
+            }
+
+            NAVIGATION_FRAGMENT_NAME.MY_PAYMENT_FRAGMENT -> {
+                newFragment = MyPaymentFragment()
             }
 
         }
