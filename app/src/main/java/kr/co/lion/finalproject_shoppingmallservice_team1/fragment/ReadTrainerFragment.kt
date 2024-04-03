@@ -1,18 +1,18 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
 import android.os.Bundle
+import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.transition.MaterialSharedAxis
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
+import kr.co.lion.finalproject_shoppingmallservice_team1.TRAINER_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentReadTrainerBinding
-import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowReadTrainerMembershipBinding
 
 
 class ReadTrainerFragment : Fragment() {
@@ -20,16 +20,23 @@ class ReadTrainerFragment : Fragment() {
     lateinit var fragmentReadTrainerBinding: FragmentReadTrainerBinding
     lateinit var navigationActivity: NavigationActivity
 
+    // 프래그먼트 객체를 담을 변수
+    var oldFragment:Fragment? = null
+    var newFragment:Fragment? = null
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         fragmentReadTrainerBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_read_trainer, container, false)
+        fragmentReadTrainerBinding.lifecycleOwner = this
+
         navigationActivity = activity as NavigationActivity
 
+
         settingToolbarReadTrainer()
+        settingTabLayout()
 
-        settingRecyclerView()
 
-
+        replaceFragment(TRAINER_FRAGMENT_NAME.READ_TRAINER_TAB1_FRAGMENT, false, false, null)
         return fragmentReadTrainerBinding.root
     }
 
@@ -54,83 +61,105 @@ class ReadTrainerFragment : Fragment() {
     }
 
     fun backProcess(){
-        navigationActivity.removeFragment(NAVIGATION_FRAGMENT_NAME.READ_TRAINER_FRAGMENT)
+        SystemClock.sleep(200)
+        parentFragmentManager.popBackStack()
     }
 
-
-    // 회원권 RecyclerView 설정
-    fun settingRecyclerView(){
+    // tab 레이아웃 설정
+    fun settingTabLayout(){
         fragmentReadTrainerBinding.apply {
-            recyclerViewTrainerPt.apply {
-                val membershipData = listOf("10회", "15회", "20회", "25회") // 예시 데이터
+            trainerInfoTab.apply {
+                addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+                    override fun onTabSelected(tab: TabLayout.Tab?) {
+                        // 탭이 선택되었을 때 호출되는 메서드
+                        val position = tab?.position
 
-                adapter = TrainerMembershipAdapter(membershipData)
-                layoutManager = LinearLayoutManager(navigationActivity)
-                setHasFixedSize(true)
-                addOnLayoutChangeListener { v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
-                    adjustRecyclerViewHeight()
-                }
+                        when(position){
+                            0 -> {
+                                replaceFragment(TRAINER_FRAGMENT_NAME.READ_TRAINER_TAB1_FRAGMENT, false, false, null)
+                            }
+                            1 -> {
+                                replaceFragment(TRAINER_FRAGMENT_NAME.READ_TRAINER_TAB2_FRAGMENT, false, false, null)
+                            }
+                            2 -> {
 
-                // 모든 Item의 높이를 측정하여 RecyclerView의 높이를 계산.
-                post {
-                    adjustRecyclerViewHeight()
-                }
+                            }
+                        }
+                    }
+
+                    override fun onTabUnselected(tab: TabLayout.Tab?) {
+                        // 선택이 해제된 탭의 경우 처리할 내용
+
+                    }
+
+                    override fun onTabReselected(tab: TabLayout.Tab?) {
+                        // 이미 선택된 탭이 다시 선택된 경우 처리할 내용
+                    }
+                })
             }
         }
     }
 
-    // RecyclerView의 각 Item 크기를 측정.
-    fun adjustRecyclerViewHeight() {
-        val adapter = fragmentReadTrainerBinding.recyclerViewTrainerPt.adapter
-        if (adapter != null && adapter.itemCount > 0) {
-            var totalHeight = 0
-            for (i in 0 until adapter.itemCount) {
-                val view = adapter.createViewHolder(fragmentReadTrainerBinding.recyclerViewTrainerPt, 0).itemView
-                adapter.bindViewHolder(adapter.createViewHolder(fragmentReadTrainerBinding.recyclerViewTrainerPt, 0), i)
-                view.measure(
-                    View.MeasureSpec.makeMeasureSpec(fragmentReadTrainerBinding.recyclerViewTrainerPt.width, View.MeasureSpec.EXACTLY),
-                    View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
-                )
-                totalHeight += view.measuredHeight
+
+    fun replaceFragment(name: TRAINER_FRAGMENT_NAME, addToBackStack:Boolean, isAnimate:Boolean, data:Bundle?){
+
+        SystemClock.sleep(50)
+
+        val fragmentTransaction = childFragmentManager.beginTransaction()
+        fragmentTransaction.setReorderingAllowed(true)
+
+        if(newFragment != null){
+            oldFragment = newFragment
+        }
+
+        when(name){
+            TRAINER_FRAGMENT_NAME.READ_TRAINER_FRAGMENT -> {
+                newFragment = ReadTrainerFragment()
             }
-            val layoutParams = fragmentReadTrainerBinding.recyclerViewTrainerPt.layoutParams
-            layoutParams.height = totalHeight
-            fragmentReadTrainerBinding.recyclerViewTrainerPt.layoutParams = layoutParams
+            TRAINER_FRAGMENT_NAME.READ_TRAINER_TAB1_FRAGMENT -> {
+                newFragment = ReadTrainerTab1Fragment()
+            }
+            TRAINER_FRAGMENT_NAME.READ_TRAINER_TAB2_FRAGMENT -> {
+                newFragment = ReadTrainerTab2Fragment()
+            }
+            TRAINER_FRAGMENT_NAME.READ_TRAINER_TAB3_FRAGMENT ->{}
+        }
+
+        if(data != null){
+            newFragment?.arguments = data
+        }
+
+        if(newFragment != null){
+
+            // 애니메이션 설정
+            if(isAnimate == true){
+
+                if(oldFragment != null){
+                    // old에서 new가 새롭게 보여질 때 old의 애니메이션
+                    oldFragment?.exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, true)
+                    // new에서 old로 되돌아갈때 old의 애니메이션
+                    oldFragment?.reenterTransition = MaterialSharedAxis(MaterialSharedAxis.X, false)
+
+                    oldFragment?.enterTransition = null
+                    oldFragment?.returnTransition = null
+                }
+
+                // old에서 new가 새롭게 보여질 때 new의 애니메이션
+                newFragment?.enterTransition = MaterialSharedAxis(MaterialSharedAxis.X, true)
+                // new에서 old로 되돌아갈때 new의 애니메이션
+                newFragment?.returnTransition = MaterialSharedAxis(MaterialSharedAxis.X, false)
+
+                newFragment?.exitTransition = null
+                newFragment?.reenterTransition = null
+            }
+
+            fragmentTransaction.replace(R.id.readTrainerTabView, newFragment!!)
+
+            if(addToBackStack == true){
+                fragmentTransaction.addToBackStack(name.str)
+            }
+            fragmentTransaction.commit()
         }
     }
-
 }
 
-
-// 회원권 RecyclerView
-class TrainerMembershipAdapter(val dataList: List<String>) : RecyclerView.Adapter<TrainerMembershipViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrainerMembershipViewHolder {
-        // 뷰 홀더를 만들어준다.
-        val inflater = LayoutInflater.from(parent.context)
-        val rowReadTrainerMembershipBinding = RowReadTrainerMembershipBinding.inflate(inflater, parent, false)
-
-        return TrainerMembershipViewHolder(rowReadTrainerMembershipBinding)
-
-    }
-
-    override fun getItemCount(): Int {
-        return dataList.size
-    }
-
-    override fun onBindViewHolder(holder: TrainerMembershipViewHolder, position: Int) {
-        holder.holderBind(dataList[position])
-    }
-}
-
-// 회원권 ViewHolder
-class TrainerMembershipViewHolder(private val rowReadTrainerMembershipBinding: RowReadTrainerMembershipBinding) : RecyclerView.ViewHolder(rowReadTrainerMembershipBinding.root) {
-    fun holderBind(data: String) {
-        rowReadTrainerMembershipBinding.textViewMembershipCount.text = data
-        rowReadTrainerMembershipBinding.textViewMembershipMoney.text = "${data}원"
-        rowReadTrainerMembershipBinding.textViewMembershipTotalMoney.text = "총 결제금액${data}원"
-    }
-}
-
-
-
-// 트레이너 사진 RecyclerView 설정
