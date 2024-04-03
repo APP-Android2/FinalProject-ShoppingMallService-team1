@@ -42,23 +42,23 @@ class NavigationActivity : AppCompatActivity() {
         activityNavigationBinding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.fragment_home -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.main_container, HomeFragment()).commit()
+                    replaceFragment(NAVIGATION_FRAGMENT_NAME.HOME_FRAGMENT, true, true, null)
                     true
                 }
                 R.id.fragment_center -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.main_container, CenterFragment()).commit()
+                    replaceFragment(NAVIGATION_FRAGMENT_NAME.CENTER_FRAGMENT, true, true, null)
                     true
                 }
                 R.id.fragment_trainer -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.main_container, TrainerFragment()).commit()
+                    replaceFragment(NAVIGATION_FRAGMENT_NAME.TRAINER_FRAGMENT, true, true, null)
                     true
                 }
                 R.id.fragment_comunity-> {
-                    supportFragmentManager.beginTransaction().replace(R.id.main_container, CommunityFragment()).commit()
+                    replaceFragment(NAVIGATION_FRAGMENT_NAME.COMMUNITY_FRAGMENT, true, true, null)
                     true
                 }
                 R.id.fragment_my -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.main_container, MyFragment()).commit()
+                    replaceFragment(NAVIGATION_FRAGMENT_NAME.MY_FRAGMENT, true, true, null)
                     true
                 }
                 else -> false
@@ -84,7 +84,6 @@ class NavigationActivity : AppCompatActivity() {
 
             NAVIGATION_FRAGMENT_NAME.CENTER_FRAGMENT -> {
                 newFragment = CenterFragment()
-
             }
 
             NAVIGATION_FRAGMENT_NAME.TRAINER_FRAGMENT -> {
