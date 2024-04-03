@@ -3,120 +3,133 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="trainerViewModel"
+            type="kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.TrainerViewModel" />
+    </data>
 
-    <LinearLayout
+
+    <FrameLayout
+        android:id="@+id/fragmentTrainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:background="@color/white"
         tools:context=".fragment.TrainerFragment">
 
-        <!--  툴바  -->
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbarTrainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme">
-
-            <TextView
-                android:id="@+id/toolbarTrainer_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="트레이너"
-                android:textSize="@dimen/Toolbar_Title_Size" />
-        </com.google.android.material.appbar.MaterialToolbar>
-
-
-        <!-- Tab 메뉴 레이아웃 -->
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/trainerTab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            app:tabIndicatorHeight="1dp"
-            app:tabIndicatorColor="@color/black"
-            app:tabIndicatorFullWidth="true"
-            app:tabTextColor="@color/black">
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="헬스" />
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="필라테스" />
-
-        </com.google.android.material.tabs.TabLayout>
-
-
-        <!-- chip을 묶기 위한 LinearLayout -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20sp"
-            android:layout_marginTop="18sp"
-            android:layout_marginRight="20sp"
-            android:orientation="horizontal">
-
-            <com.google.android.material.chip.ChipGroup
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip2"
-                    style="@style/Widget.Material3.Chip.Assist"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="인기순" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip3"
-                    style="@style/Widget.Material3.Chip.Assist"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="일일 체험" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip4"
-                    style="@style/Widget.Material3.Chip.Assist"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="거리순" />
-            </com.google.android.material.chip.ChipGroup>
-        </LinearLayout>
-
-
-        <!-- 구분선을 두기 위함 -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18sp"
-            android:orientation="horizontal">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5sp"
-                android:background="@color/black" />
-        </LinearLayout>
-
-
-        <!-- 카드 뷰를 보여주기 위함 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewTrainer"
+            <!--  툴바  -->
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbarTrainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme">
 
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/toolbarTrainer_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="트레이너"
+                    android:textSize="@dimen/Toolbar_Title_Size" />
+            </com.google.android.material.appbar.MaterialToolbar>
+
+
+            <!-- Tab 메뉴 레이아웃 -->
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/trainerTab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:tabIndicatorHeight="1dp"
+                app:tabIndicatorColor="@color/black"
+                app:tabIndicatorFullWidth="true"
+                app:tabTextColor="@color/black">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="헬스" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="필라테스" />
+
+            </com.google.android.material.tabs.TabLayout>
+
+
+            <!-- chip을 묶기 위한 LinearLayout -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:layout_marginTop="18sp"
+                android:layout_marginRight="20sp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip2"
+                        style="@style/Widget.Material3.Chip.Assist"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="인기순" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip3"
+                        style="@style/Widget.Material3.Chip.Assist"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="일일 체험" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip4"
+                        style="@style/Widget.Material3.Chip.Assist"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="거리순" />
+                </com.google.android.material.chip.ChipGroup>
+            </LinearLayout>
+
+
+            <!-- 구분선을 두기 위함 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18sp"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5sp"
+                    android:background="@color/black" />
+            </LinearLayout>
+
+
+            <!-- 카드 뷰를 보여주기 위함 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewTrainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </FrameLayout>
 </layout>
