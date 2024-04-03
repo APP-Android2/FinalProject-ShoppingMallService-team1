@@ -83,6 +83,14 @@ class ChatActivity : AppCompatActivity() {
             holder.rowHomeChatBinding.textViewHomeChatName.text = "홍길동"
             holder.rowHomeChatBinding.textViewHomeChatContent.text = "헬스장 가격 문의 답장입니다."
             holder.rowHomeChatBinding.textViewHomeChatDate.text = "2024-03-29"
+
+            holder.rowHomeChatBinding.root.setOnClickListener {
+                // 필요한 데이터를 담아준다.
+                //val readBundle = Bundle()
+                //readBundle.putInt("contentIdx", mainList[position].contentIdx)
+                val intent = Intent(this@ChatActivity, ChattingActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 }
