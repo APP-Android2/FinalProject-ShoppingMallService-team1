@@ -2,7 +2,9 @@ package kr.co.lion.finalproject_shoppingmallservice_team1
 
 import android.os.Bundle
 import android.os.SystemClock
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.transition.MaterialSharedAxis
@@ -29,34 +31,36 @@ class NavigationActivity : AppCompatActivity() {
 
         activityNavigationBinding = ActivityNavigationBinding.inflate(layoutInflater)
         setContentView(activityNavigationBinding.root)
-        setBottomNavigationView()
 
         // 앱 초기 실행 시 홈화면으로 설정
         if (savedInstanceState == null) {
-            activityNavigationBinding.bottomNavigationView.selectedItemId = R.id.fragment_home
+            replaceFragment(NAVIGATION_FRAGMENT_NAME.HOME_FRAGMENT, false, true, null)
         }
+
+        setBottomNavigationView()
     }
+    // 하단 네비게이션뷰 설정
     fun setBottomNavigationView() {
         activityNavigationBinding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.fragment_home -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.main_container, HomeFragment()).commit()
+                    replaceFragment(NAVIGATION_FRAGMENT_NAME.HOME_FRAGMENT, true, true, null)
                     true
                 }
                 R.id.fragment_center -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.main_container, CenterFragment()).commit()
+                    replaceFragment(NAVIGATION_FRAGMENT_NAME.CENTER_FRAGMENT, true, true, null)
                     true
                 }
                 R.id.fragment_trainer -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.main_container, TrainerFragment()).commit()
+                    replaceFragment(NAVIGATION_FRAGMENT_NAME.TRAINER_FRAGMENT, true, true, null)
                     true
                 }
                 R.id.fragment_comunity-> {
-                    supportFragmentManager.beginTransaction().replace(R.id.main_container, CommunityFragment()).commit()
+                    replaceFragment(NAVIGATION_FRAGMENT_NAME.COMMUNITY_FRAGMENT, true, true, null)
                     true
                 }
                 R.id.fragment_my -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.main_container, MyFragment()).commit()
+                    replaceFragment(NAVIGATION_FRAGMENT_NAME.MY_FRAGMENT, true, true, null)
                     true
                 }
                 else -> false
@@ -158,5 +162,23 @@ class NavigationActivity : AppCompatActivity() {
 
         // 지정한 이름으로 있는 Fragment를 BackStack에서 제거한다.
         supportFragmentManager.popBackStack(name.str, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+    }
+
+    // 하단 네비게이션뷰의 아이콘 색상 업데이트
+    fun updateIconColors(selectedItemId: Int) {
+        activityNavigationBinding.apply {
+            val menu = bottomNavigationView.menu
+            for (i in 0 until menu.size()) {
+                val menuItem = menu.getItem(i)
+                val icon = menuItem.icon
+
+                // 선택된 아이템이면 활성화 색으로, 아니면 비활성화 색으로 설정
+                if (menuItem.itemId == selectedItemId) {
+                    icon?.setTint(ContextCompat.getColor(this@NavigationActivity, R.color.black))
+                } else {
+                    icon?.setTint(ContextCompat.getColor(this@NavigationActivity, R.color.Pup_Color))
+                }
+            }
+        }
     }
 }

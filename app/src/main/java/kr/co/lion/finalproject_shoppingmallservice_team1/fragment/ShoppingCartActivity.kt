@@ -1,53 +1,49 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
+import android.util.Log
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
 import com.google.android.material.transition.MaterialSharedAxis
-import kr.co.lion.finalproject_shoppingmallservice_team1.HOME_BOTTOM_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.HOME_SHOP_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
-import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
-import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentHomeShopBinding
-import kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.HomeShopViewModel
+import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivityShoppingCartBinding
 
-class HomeShopFragment : Fragment() {
-    lateinit var fragmentHomeShopBinding: FragmentHomeShopBinding
+class ShoppingCartActivity : AppCompatActivity() {
+
+    lateinit var activityShoppingcartBinding: ActivityShoppingCartBinding
     lateinit var navigationActivity: NavigationActivity
-    lateinit var homeShopViewModel: HomeShopViewModel
 
     var oldFragment: Fragment? = null
     var newFragment: Fragment? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        fragmentHomeShopBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_shop, container, false)
-        homeShopViewModel = HomeShopViewModel()
-        fragmentHomeShopBinding.homeShopViewModel = homeShopViewModel
-        fragmentHomeShopBinding.lifecycleOwner = this
+        activityShoppingcartBinding = ActivityShoppingCartBinding.inflate(layoutInflater)
+        setContentView(activityShoppingcartBinding.root)
 
-        navigationActivity = activity as NavigationActivity
+
 
         settingToolbar()
         settingEvent()
-
-        return fragmentHomeShopBinding.root
     }
-
     fun settingToolbar() {
-        fragmentHomeShopBinding.apply {
+        activityShoppingcartBinding.apply {
             toolbarHomeShop.apply {
                 setNavigationIcon(R.drawable.arrow_back)
 
                 setNavigationOnClickListener {
-                    SystemClock.sleep(200)
-                    parentFragmentManager.popBackStack()
+                    // 바로 finish()해야 애니메이션이 제대로 구현됨(안하면 반대로 됨)
+//                    val Backintent = Intent(this@ShoppingCartActivity,  NavigationActivity::class.java)
+//                    startActivity(Backintent)
+                    finish()
                 }
 
                 inflateMenu(R.menu.empty_menu)
@@ -56,18 +52,21 @@ class HomeShopFragment : Fragment() {
     }
 
     fun settingEvent(){
-        fragmentHomeShopBinding.apply {
+        activityShoppingcartBinding.apply {
+            // 제품을 담았을 때 장바구니 화면이 나옴
             buttonHomeShopContain.apply {
                 setOnClickListener {
                     replaceFragment(HOME_SHOP_FRAGMENT_NAME.SHOP_CONTAIN_FRAGMENT, true, false, null)
                 }
             }
 
+            // 다양한 운동시설 보러가기 버튼
             buttonHomeShopSwap.apply {
                 setOnClickListener {
-                    SystemClock.sleep(200)
-                    parentFragmentManager.popBackStack()
-                    navigationActivity.replaceFragment(NAVIGATION_FRAGMENT_NAME.CENTER_FRAGMENT, true, true, null)
+                    val resultIntent = Intent()
+                    resultIntent.putExtra("buttonHomeShopSwap", 1)
+                    setResult(RESULT_OK, resultIntent)
+                    finish()
                 }
             }
         }
@@ -77,7 +76,8 @@ class HomeShopFragment : Fragment() {
 
         SystemClock.sleep(200)
 
-        val fragmentTransaction = childFragmentManager.beginTransaction().setReorderingAllowed(true)
+        // 액티비티와 프래그먼트 사이의 전환이므로 supportFragmentManager이용
+        val fragmentTransaction = supportFragmentManager.beginTransaction().setReorderingAllowed(true)
 
         if(newFragment != null){
             oldFragment = newFragment
@@ -119,4 +119,12 @@ class HomeShopFragment : Fragment() {
             fragmentTransaction.commit()
         }
     }
+
+    fun removeFragment(name:HOME_SHOP_FRAGMENT_NAME){
+        SystemClock.sleep(200)
+
+        // 지정한 이름으로 있는 Fragment를 BackStack에서 제거한다.
+        supportFragmentManager.popBackStack(name.str, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+    }
+
 }

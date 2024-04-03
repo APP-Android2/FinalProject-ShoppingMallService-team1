@@ -18,7 +18,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.google.android.material.transition.MaterialSharedAxis
 import kr.co.lion.finalproject_shoppingmallservice_team1.HOME_BOTTOM_FRAGMENT_NAME
-import kr.co.lion.finalproject_shoppingmallservice_team1.HOME_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentHomeAddressBottomBinding
@@ -61,6 +60,7 @@ class HomeAddressBottomFragment : BottomSheetDialogFragment() {
 
     fun settingEvent(){
         fragmentHomeAddressBottomBinding.apply {
+            // 현재 위치로 설정 버튼
             textViewHomeBottomNowAddress.apply {
                 setOnClickListener {
                     replaceFragment(HOME_BOTTOM_FRAGMENT_NAME.HOME_ADDRESS_BOTTOM_MAP_FRAGMENT, true, true, null)
@@ -68,7 +68,24 @@ class HomeAddressBottomFragment : BottomSheetDialogFragment() {
             }
         }
     }
+    // 검색창
+    fun initSearchView() {
+        fragmentHomeAddressBottomBinding.searchViewHomeBottom.isSubmitButtonEnabled = false
+        fragmentHomeAddressBottomBinding.searchViewHomeBottom.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            // 검색을 완료하였을 경우 (키보드에 있는 '검색' 돋보기 버튼을 선택하였을 경우)
+            // return False : 검색 키보드를 내림
+            // return True : 검색 키보드를 내리지 않음
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
 
+            // 검색어를 변경할 때마다 실행됨
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return true
+            }
+        })
+    }
+    // 검색 기록
     fun settingRecyclerViewAddressMain(){
         fragmentHomeAddressBottomBinding.apply {
             recyclerViewHomeBottomAddress.apply {
@@ -80,24 +97,6 @@ class HomeAddressBottomFragment : BottomSheetDialogFragment() {
                 addItemDecoration(deco)
             }
         }
-    }
-    fun initSearchView() {
-        fragmentHomeAddressBottomBinding.searchViewHomeBottom.isSubmitButtonEnabled = false
-        fragmentHomeAddressBottomBinding.searchViewHomeBottom.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            // 검색을 완료하였을 경우 (키보드에 있는 '검색' 돋보기 버튼을 선택하였을 경우)
-            // return False : 검색 키보드를 내림
-            // return True : 검색 키보드를 내리지 않음
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                // @TODO
-                return false
-            }
-
-            // 검색어를 변경할 때마다 실행됨
-            override fun onQueryTextChange(newText: String?): Boolean {
-                // @TODO
-                return true
-            }
-        })
     }
 
     inner class BottomRecyclerViewAdapter : RecyclerView.Adapter<BottomRecyclerViewAdapter.BottomViewHoleder>(){
@@ -132,6 +131,8 @@ class HomeAddressBottomFragment : BottomSheetDialogFragment() {
 
         SystemClock.sleep(200)
 
+        // 프래그먼트와 프래그먼트 사이 전환이므로 childFragmentManager, parentFragmentManager이용해 전환
+        // setReorderingAllowed(true): 재정렬 허용
         val fragmentTransaction = childFragmentManager.beginTransaction().setReorderingAllowed(true)
 
         if(newFragment != null){
@@ -168,6 +169,7 @@ class HomeAddressBottomFragment : BottomSheetDialogFragment() {
                 newFragment?.reenterTransition = null
             }
 
+            // FrameLayout을 이용한 전환
             fragmentTransaction.replace(R.id.frameHomeAddress, newFragment!!)
 
             if(addToBackStack == true){
@@ -177,6 +179,7 @@ class HomeAddressBottomFragment : BottomSheetDialogFragment() {
         }
     }
 
+    // BottomSheet설정
     // 다이얼로그가 만들어질 때 자동으로 호출되는 메서드
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         // 다이얼로그를 받는다.

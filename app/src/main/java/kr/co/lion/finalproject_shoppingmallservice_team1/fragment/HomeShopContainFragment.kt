@@ -1,6 +1,7 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.SystemClock
@@ -12,9 +13,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kr.co.lion.finalproject_shoppingmallservice_team1.HOME_SHOP_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
-import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentHomeShopBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentHomeShopContainBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowShoppingcartBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.HomeShopContainViewModel
@@ -22,7 +23,7 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.HomeShopViewM
 
 class HomeShopContainFragment : Fragment() {
     lateinit var fragmentHomeShopContainBinding: FragmentHomeShopContainBinding
-    lateinit var navigationActivity: NavigationActivity
+    lateinit var shoppingCartActivity: ShoppingCartActivity
     lateinit var homeShopContainViewModel: HomeShopContainViewModel
 
     override fun onCreateView(
@@ -33,7 +34,7 @@ class HomeShopContainFragment : Fragment() {
         fragmentHomeShopContainBinding.homeShopContainViewModel = homeShopContainViewModel
         fragmentHomeShopContainBinding.lifecycleOwner = this
 
-        navigationActivity = activity as NavigationActivity
+        shoppingCartActivity = activity as ShoppingCartActivity
 
         settingToolbar()
         settingReclyerViewHomeShop()
@@ -48,8 +49,7 @@ class HomeShopContainFragment : Fragment() {
                 setNavigationIcon(R.drawable.arrow_back)
 
                 setNavigationOnClickListener {
-                    SystemClock.sleep(200)
-                    parentFragmentManager.popBackStack()
+                    shoppingCartActivity.removeFragment(HOME_SHOP_FRAGMENT_NAME.SHOP_CONTAIN_FRAGMENT)
                 }
 
                 inflateMenu(R.menu.empty_menu)
@@ -59,13 +59,17 @@ class HomeShopContainFragment : Fragment() {
 
     fun settingEvent(){
         fragmentHomeShopContainBinding.apply {
+            // 결제하기 버튼 클릭
             buttonHomeShopPayment.apply {
                 setOnClickListener {
                     val materialAlertDialogBuilder = MaterialAlertDialogBuilder(context)
                     materialAlertDialogBuilder.setTitle("결제")
                     materialAlertDialogBuilder.setMessage("결제 완료했습니다!")
+                    // 확인 버튼 누르면  다시 NavigationActivity로 돌아감
                     materialAlertDialogBuilder.setPositiveButton("확인"){ dialogInterface: DialogInterface, i: Int ->
-                        textColors
+                        val intent = Intent(shoppingCartActivity,  NavigationActivity::class.java)
+                        startActivity(intent)
+                        shoppingCartActivity.finish()
                     }
                     materialAlertDialogBuilder.show()
                 }
@@ -73,12 +77,14 @@ class HomeShopContainFragment : Fragment() {
         }
     }
 
+
+    // 장바구니 목록
     fun settingReclyerViewHomeShop(){
         fragmentHomeShopContainBinding.apply {
             recyclerViewHomeShop.apply {
                 adapter = HomeShopRecyclerViewAdapter()
 
-                layoutManager = LinearLayoutManager(navigationActivity)
+                layoutManager = LinearLayoutManager(shoppingCartActivity)
             }
         }
     }

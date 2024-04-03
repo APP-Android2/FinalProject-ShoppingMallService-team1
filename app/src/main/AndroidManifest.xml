@@ -19,6 +19,21 @@
             android:name=".ReviewInputActivity"
             android:exported="false" />
         <activity
+            android:name=".ChattingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fragment.ShoppingCartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AlarmActivity"
+            android:exported="false" />
+        <activity
             android:name=".NavigationActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
