@@ -71,3 +71,9 @@ enum class MY_FRAGMENT_NAME(var num:Int, var str:String){
     MY_FAQ_FRAGMENT(7, "FAQ"),
     MY_SETTING_FRAGMENT(8, "설정"),
 }
+
+enum class MY_REVIEW_TAB_NAME(var num: Int, var str: String){
+
+    MY_REVIEW_TAB1_FRAGMENT(0, "체육시설 리뷰"),
+    MY_REVIEW_TAB2_FRAGMENT(1, "트레이너 리뷰"),
+}
