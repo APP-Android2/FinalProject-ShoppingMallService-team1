@@ -20,12 +20,6 @@ enum class NAVIGATION_FRAGMENT_NAME(var num:Int, var str:String){
     COMMUNITY_FRAGMENT(3, "커뮤니티"),
     MY_FRAGMENT(4, "MY"),
     READ_TRAINER_FRAGMENT(5, "ReadTrainerFragment"),
-    MY_PROFILE_FRAGMENT(6, "MyProfileFragment"),
-    MY_NOTIFICATION_FRAGMENT(7, "공지/이벤트"),
-    MY_SETTING_FRAGMENT(8, "설정"),
-    MY_FAQ_FRAGMENT(9, "FAQ"),
-    MY_MEMBERSHIP_FRAGMENT(10, "회원권"),
-    MY_PAYMENT_FRAGMENT(11, "결제 내역"),
 }
 
 enum class HOME_FRAGMENT_NAME(var num:Int, var str:String){
@@ -66,6 +60,14 @@ enum class COMMUNITY_FRAGMENT_NAME(var num:Int, var str:String){
 }
 
 enum class MY_FRAGMENT_NAME(var num:Int, var str:String){
-    MY_A_FRAGMENT(0, "A"),
-    MY_B_FRAGMENT(1, "B"),
+
+    MY_PROFILE_FRAGMENT(0, "프로필"),
+    MY_MEMBERSHIP_FRAGMENT(1, "회원권"),
+    // 리뷰 관리 프래그먼트 2
+    // 찜 프래그먼트 3
+    MY_NOTIFICATION_FRAGMENT(4, "공지/이벤트"),
+    MY_PAYMENT_FRAGMENT(5, "결제 내역"),
+    // 고객센터 프래그먼트 6
+    MY_FAQ_FRAGMENT(7, "FAQ"),
+    MY_SETTING_FRAGMENT(8, "설정"),
 }

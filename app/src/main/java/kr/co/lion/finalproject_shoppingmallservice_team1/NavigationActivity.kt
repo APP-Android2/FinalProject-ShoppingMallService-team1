@@ -105,31 +105,6 @@ class NavigationActivity : AppCompatActivity() {
             NAVIGATION_FRAGMENT_NAME.READ_TRAINER_FRAGMENT -> {
                 newFragment = ReadTrainerFragment()
             }
-
-            NAVIGATION_FRAGMENT_NAME.MY_PROFILE_FRAGMENT -> {
-                newFragment = MyProfileFragment()
-            }
-
-            NAVIGATION_FRAGMENT_NAME.MY_NOTIFICATION_FRAGMENT -> {
-                newFragment = MyNotificationFragment()
-            }
-
-            NAVIGATION_FRAGMENT_NAME.MY_SETTING_FRAGMENT -> {
-                newFragment = MySettingFragment()
-            }
-
-            NAVIGATION_FRAGMENT_NAME.MY_FAQ_FRAGMENT -> {
-                newFragment = MyFAQFragment()
-            }
-
-            NAVIGATION_FRAGMENT_NAME.MY_MEMBERSHIP_FRAGMENT -> {
-                newFragment = MyMembershipFragment()
-            }
-
-            NAVIGATION_FRAGMENT_NAME.MY_PAYMENT_FRAGMENT -> {
-                newFragment = MyPaymentFragment()
-            }
-
         }
 
         if(data != null){

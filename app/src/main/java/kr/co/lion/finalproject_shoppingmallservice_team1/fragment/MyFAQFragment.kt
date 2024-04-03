@@ -1,6 +1,7 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
 import android.os.Bundle
+import android.os.SystemClock
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -34,10 +35,16 @@ class MyFAQFragment : Fragment() {
                     // 뒤로가기
                     setNavigationIcon(R.drawable.arrow_back)
                     setNavigationOnClickListener {
-                        navigationActivity.removeFragment(NAVIGATION_FRAGMENT_NAME.MY_FAQ_FRAGMENT)
+                        backProcess()
                     }
                 }
             }
         }
+    }
+
+    // 뒤로가기 처리
+    fun backProcess(){
+        SystemClock.sleep(200)
+        parentFragmentManager.popBackStack()
     }
 }
