@@ -63,9 +63,9 @@ enum class MY_FRAGMENT_NAME(var num:Int, var str:String){
 
     MY_PROFILE_FRAGMENT(0, "프로필"),
     MY_MEMBERSHIP_FRAGMENT(1, "회원권"),
-    // 리뷰 관리 프래그먼트 2
+    MY_REVIEW_FRAGMENT(2, "리뷰 관리"),
     // 찜 프래그먼트 3
-    MY_NOTIFICATION_FRAGMENT(4, "공지/이벤트"),
+    // 공지/이벤트
     MY_PAYMENT_FRAGMENT(5, "결제 내역"),
     // 고객센터 프래그먼트 6
     MY_FAQ_FRAGMENT(7, "FAQ"),

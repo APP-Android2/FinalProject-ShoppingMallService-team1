@@ -84,14 +84,16 @@ class MyFragment : Fragment() {
                 replaceFragment(MY_FRAGMENT_NAME.MY_MEMBERSHIP_FRAGMENT, true, true, null)
             }
             // 리뷰 관리
-
+            textViewMyReview.setOnClickListener {
+                // MyReviewFragment 실행
+                replaceFragment(MY_FRAGMENT_NAME.MY_REVIEW_FRAGMENT, true, true, null)
+            }
             // 찜
 
             /*  하단 메뉴 탭 구성  */
             // 공지/이벤트
             myNotification.setOnClickListener {
-                // MyNotificationFragment 실행
-                replaceFragment(MY_FRAGMENT_NAME.MY_NOTIFICATION_FRAGMENT, true, true, null)
+                // 알림 화면 실행하기
             }
             // 결제 내역
             myPayment.setOnClickListener {
@@ -139,13 +141,13 @@ class MyFragment : Fragment() {
             }
 
             // 리뷰 관리
+            MY_FRAGMENT_NAME.MY_REVIEW_FRAGMENT -> {
+                newFragment = MyReviewFragment()
+            }
 
             // 찜
 
             // 공지/이벤트
-            MY_FRAGMENT_NAME.MY_NOTIFICATION_FRAGMENT -> {
-                newFragment = MyNotificationFragment()
-            }
 
             // 결제 내역
             MY_FRAGMENT_NAME.MY_PAYMENT_FRAGMENT -> {

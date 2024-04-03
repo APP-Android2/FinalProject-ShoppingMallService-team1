@@ -10,13 +10,7 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivityNav
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.CenterFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.CommunityFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.HomeFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyFAQFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyMembershipFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyNotificationFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyPaymentFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyProfileFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MySettingFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.ReadTrainerFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.TrainerFragment
 
