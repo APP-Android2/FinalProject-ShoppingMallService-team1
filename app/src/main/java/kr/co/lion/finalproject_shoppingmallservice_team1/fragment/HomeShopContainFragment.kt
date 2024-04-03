@@ -59,11 +59,13 @@ class HomeShopContainFragment : Fragment() {
 
     fun settingEvent(){
         fragmentHomeShopContainBinding.apply {
+            // 결제하기 버튼 클릭
             buttonHomeShopPayment.apply {
                 setOnClickListener {
                     val materialAlertDialogBuilder = MaterialAlertDialogBuilder(context)
                     materialAlertDialogBuilder.setTitle("결제")
                     materialAlertDialogBuilder.setMessage("결제 완료했습니다!")
+                    // 확인 버튼 누르면  다시 NavigationActivity로 돌아감
                     materialAlertDialogBuilder.setPositiveButton("확인"){ dialogInterface: DialogInterface, i: Int ->
                         val intent = Intent(shoppingCartActivity,  NavigationActivity::class.java)
                         startActivity(intent)
@@ -75,6 +77,8 @@ class HomeShopContainFragment : Fragment() {
         }
     }
 
+
+    // 장바구니 목록
     fun settingReclyerViewHomeShop(){
         fragmentHomeShopContainBinding.apply {
             recyclerViewHomeShop.apply {

@@ -41,21 +41,25 @@ class HomeFragment : Fragment() {
         return fragmentHomeBinding.root
     }
 
+
+    // 다른 액티비티 다녀온 후 변화를 반영하려면 onViewCreated()에서 작성해야 함
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // 장바구니에서 다양한 운동 시설 보러가기 버튼 클릭 후 NavigationActivty(에서 HomeFragment)로 돌아왔을 때 실행
         val contract = ActivityResultContracts.StartActivityForResult()
         shoppingCartActivityLauncher = registerForActivityResult(contract){
             if(it != null){
                 when(it.resultCode){
                     Activity.RESULT_OK -> {
                         if (it.data!= null){
+                            // 데이터 얻음
                             val value = it?.data!!.getIntExtra("buttonHomeShopSwap", 0)
 
-                            //fragmentHomeBinding.textViewHomeMembership.append("${value}")
                             // 네비게이션 아이템의 선택 상태 변경
                             navigationActivity.activityNavigationBinding.bottomNavigationView.menu.findItem(R.id.fragment_center).isChecked = true
                             // 아이템의 색상 변경
                             navigationActivity.updateIconColors(R.id.fragment_center)
+                            // 운동 센터로 화면 전환
                             navigationActivity.replaceFragment(NAVIGATION_FRAGMENT_NAME.CENTER_FRAGMENT, false, true, null)
                         }
                     }
@@ -72,6 +76,7 @@ class HomeFragment : Fragment() {
                 setNavigationOnClickListener {
                     val intent = Intent(navigationActivity, AlarmActivity::class.java)
                     startActivity(intent)
+                    // finish()하지 않아도 됨 -> navigationActivity는 모든 화면의 상위 화면이므로 절대 종료시키면 안됨!
                 }
 
                 inflateMenu(R.menu.home_menu)
@@ -94,6 +99,7 @@ class HomeFragment : Fragment() {
         }
     }
 
+    // 현재 위치로 설정 클릭 시
     fun settingAddress(){
         fragmentHomeBinding.apply {
             btnHomeNowLocation.apply {
@@ -104,11 +110,14 @@ class HomeFragment : Fragment() {
         }
 
     }
+
+    // BottomSheet 설정
     fun showHomeAddressBottomSheet(){
         val homeAddressBottomFragment = HomeAddressBottomFragment()
         homeAddressBottomFragment.show(navigationActivity.supportFragmentManager, "HomeAddressBottomSheet")
     }
 
+    // 검색창 클릭 시 SearchActivity로 전환
     fun settingSearch(){
         fragmentHomeBinding.apply {
             searchBarHome.apply {

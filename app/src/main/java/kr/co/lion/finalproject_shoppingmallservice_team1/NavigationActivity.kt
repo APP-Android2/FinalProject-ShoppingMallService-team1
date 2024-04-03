@@ -39,6 +39,7 @@ class NavigationActivity : AppCompatActivity() {
 
         setBottomNavigationView()
     }
+    // 하단 네비게이션뷰 설정
     fun setBottomNavigationView() {
         activityNavigationBinding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -163,6 +164,7 @@ class NavigationActivity : AppCompatActivity() {
         supportFragmentManager.popBackStack(name.str, FragmentManager.POP_BACK_STACK_INCLUSIVE)
     }
 
+    // 하단 네비게이션뷰의 아이콘 색상 업데이트
     fun updateIconColors(selectedItemId: Int) {
         activityNavigationBinding.apply {
             val menu = bottomNavigationView.menu

@@ -41,6 +41,7 @@ class ShoppingCartActivity : AppCompatActivity() {
                 setNavigationIcon(R.drawable.arrow_back)
 
                 setNavigationOnClickListener {
+                    // 바로 finish()해야 애니메이션이 제대로 구현됨(안하면 반대로 됨)
 //                    val Backintent = Intent(this@ShoppingCartActivity,  NavigationActivity::class.java)
 //                    startActivity(Backintent)
                     finish()
@@ -53,12 +54,14 @@ class ShoppingCartActivity : AppCompatActivity() {
 
     fun settingEvent(){
         activityShoppingcartBinding.apply {
+            // 제품을 담았을 때 장바구니 화면이 나옴
             buttonHomeShopContain.apply {
                 setOnClickListener {
                     replaceFragment(HOME_SHOP_FRAGMENT_NAME.SHOP_CONTAIN_FRAGMENT, true, false, null)
                 }
             }
 
+            // 다양한 운동시설 보러가기 버튼
             buttonHomeShopSwap.apply {
                 setOnClickListener {
                     val resultIntent = Intent()
@@ -74,6 +77,7 @@ class ShoppingCartActivity : AppCompatActivity() {
 
         SystemClock.sleep(200)
 
+        // 액티비티와 프래그먼트 사이의 전환이므로 supportFragmentManager이용
         val fragmentTransaction = supportFragmentManager.beginTransaction().setReorderingAllowed(true)
 
         if(newFragment != null){

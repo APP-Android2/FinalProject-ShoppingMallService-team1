@@ -60,6 +60,7 @@ class HomeAddressBottomFragment : BottomSheetDialogFragment() {
 
     fun settingEvent(){
         fragmentHomeAddressBottomBinding.apply {
+            // 현재 위치로 설정 버튼
             textViewHomeBottomNowAddress.apply {
                 setOnClickListener {
                     replaceFragment(HOME_BOTTOM_FRAGMENT_NAME.HOME_ADDRESS_BOTTOM_MAP_FRAGMENT, true, true, null)
@@ -67,19 +68,7 @@ class HomeAddressBottomFragment : BottomSheetDialogFragment() {
             }
         }
     }
-
-    fun settingRecyclerViewAddressMain(){
-        fragmentHomeAddressBottomBinding.apply {
-            recyclerViewHomeBottomAddress.apply {
-                adapter = BottomRecyclerViewAdapter()
-
-                layoutManager = LinearLayoutManager(navigationActivity)
-
-                val deco = MaterialDividerItemDecoration(navigationActivity, MaterialDividerItemDecoration.VERTICAL)
-                addItemDecoration(deco)
-            }
-        }
-    }
+    // 검색창
     fun initSearchView() {
         fragmentHomeAddressBottomBinding.searchViewHomeBottom.isSubmitButtonEnabled = false
         fragmentHomeAddressBottomBinding.searchViewHomeBottom.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -95,6 +84,19 @@ class HomeAddressBottomFragment : BottomSheetDialogFragment() {
                 return true
             }
         })
+    }
+    // 검색 기록
+    fun settingRecyclerViewAddressMain(){
+        fragmentHomeAddressBottomBinding.apply {
+            recyclerViewHomeBottomAddress.apply {
+                adapter = BottomRecyclerViewAdapter()
+
+                layoutManager = LinearLayoutManager(navigationActivity)
+
+                val deco = MaterialDividerItemDecoration(navigationActivity, MaterialDividerItemDecoration.VERTICAL)
+                addItemDecoration(deco)
+            }
+        }
     }
 
     inner class BottomRecyclerViewAdapter : RecyclerView.Adapter<BottomRecyclerViewAdapter.BottomViewHoleder>(){
@@ -129,6 +131,8 @@ class HomeAddressBottomFragment : BottomSheetDialogFragment() {
 
         SystemClock.sleep(200)
 
+        // 프래그먼트와 프래그먼트 사이 전환이므로 childFragmentManager, parentFragmentManager이용해 전환
+        // setReorderingAllowed(true): 재정렬 허용
         val fragmentTransaction = childFragmentManager.beginTransaction().setReorderingAllowed(true)
 
         if(newFragment != null){
@@ -165,6 +169,7 @@ class HomeAddressBottomFragment : BottomSheetDialogFragment() {
                 newFragment?.reenterTransition = null
             }
 
+            // FrameLayout을 이용한 전환
             fragmentTransaction.replace(R.id.frameHomeAddress, newFragment!!)
 
             if(addToBackStack == true){
@@ -174,6 +179,7 @@ class HomeAddressBottomFragment : BottomSheetDialogFragment() {
         }
     }
 
+    // BottomSheet설정
     // 다이얼로그가 만들어질 때 자동으로 호출되는 메서드
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         // 다이얼로그를 받는다.

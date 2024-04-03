@@ -33,8 +33,6 @@ class ChatActivity : AppCompatActivity() {
                 setNavigationIcon(R.drawable.arrow_back)
 
                 setNavigationOnClickListener {
-//                    val intent = Intent(this@ChatActivity, NavigationActivity::class.java)
-//                    startActivity(intent)
                     finish()
                 }
 
@@ -43,6 +41,7 @@ class ChatActivity : AppCompatActivity() {
         }
     }
 
+    // 쪽지 목록
     fun settingRecyclerViewChat(){
         activityChatBinding.apply {
             recyclerViewHomeChat.apply {
@@ -84,6 +83,7 @@ class ChatActivity : AppCompatActivity() {
             holder.rowHomeChatBinding.textViewHomeChatContent.text = "헬스장 가격 문의 답장입니다."
             holder.rowHomeChatBinding.textViewHomeChatDate.text = "2024-03-29"
 
+            // 쪽지 목록 클릭 시 채팅 액티비티로 넘어감
             holder.rowHomeChatBinding.root.setOnClickListener {
                 // 필요한 데이터를 담아준다.
                 //val readBundle = Bundle()

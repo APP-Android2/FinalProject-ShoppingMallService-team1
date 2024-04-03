@@ -35,8 +35,6 @@ class AlarmActivity : AppCompatActivity() {
                 setNavigationIcon(R.drawable.arrow_back)
 
                 setNavigationOnClickListener {
-//                    val intent = Intent(this@AlarmActivity, NavigationActivity::class.java)
-//                    startActivity(intent)
                     finish()
                 }
 
@@ -45,6 +43,8 @@ class AlarmActivity : AppCompatActivity() {
         }
     }
 
+
+    // 알림 목록
     fun settingRecyclerViewAlarm(){
         activityAlarmBinding.apply {
             recyclerViewHomeAlarm.apply {

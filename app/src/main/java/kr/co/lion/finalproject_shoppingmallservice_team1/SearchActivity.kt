@@ -26,11 +26,13 @@ class SearchActivity : AppCompatActivity() {
 
         settingToolbar()
         settingTabLayout()
+        // 리사이클뷰 초기 설정을 해놔야 탭 누르기 전부터 보임
         settingRecyclerViewRecentSearch()
     }
 
     fun settingToolbar(){
         activitySearchBinding.apply {
+            // 검색창 클릭 후 화면이므로 키보드가 올라가고 검색창의 커서 활성화
             Tools.showSoftInput(this@SearchActivity, searchViewSearch)
 
             toolbarSearch.apply {
@@ -54,9 +56,11 @@ class SearchActivity : AppCompatActivity() {
 
                         when(position){
                             0 -> {
+                                // 최근 검색어
                                 settingRecyclerViewRecentSearch()
                             }
                             1 -> {
+                                // 인기 검색어
                                 settingRecyclerViewRecentPopular()
                             }
                         }
@@ -75,6 +79,7 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
+    // 최근 검색어 목록
     fun settingRecyclerViewRecentSearch(){
         activitySearchBinding.apply {
             recyclerVIewSearch.apply {
@@ -114,6 +119,7 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
+    // 인기 검색어 목록
     fun settingRecyclerViewRecentPopular(){
         activitySearchBinding.apply {
             recyclerVIewSearch.apply {
