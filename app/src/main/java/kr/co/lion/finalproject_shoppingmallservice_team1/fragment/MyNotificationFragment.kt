@@ -95,8 +95,8 @@ class MyNotificationFragment : Fragment() {
         }
 
         override fun onBindViewHolder(holder: MyNotificationViewHolder, position: Int) {
-            holder.rowMyNotificationBinding.textViewRowMyNotificationTitle.text = "새로운 공지사항 $position"
-            holder.rowMyNotificationBinding.textViewRowMyNotificationDate.text = "${position}일 전"
+            holder.rowMyNotificationBinding.tvRowMyNotificationTitle.text = "새로운 공지사항 $position"
+            holder.rowMyNotificationBinding.tvRowMyNotificationDate.text = "${position}일 전"
         }
     }
 }

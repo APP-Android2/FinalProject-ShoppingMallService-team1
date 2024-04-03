@@ -9,14 +9,14 @@
         android:padding="@dimen/Side_Padding">
 
         <TextView
-            android:id="@+id/textViewRowMyNotificationTitle"
+            android:id="@+id/tvRowMyNotificationTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textSize="@dimen/Big_Text_Size" />
 
         <TextView
-            android:id="@+id/textViewRowMyNotificationDate"
+            android:id="@+id/tvRowMyNotificationDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10sp"
