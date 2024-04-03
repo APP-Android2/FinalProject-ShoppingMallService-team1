@@ -52,8 +52,11 @@ class HomeFragment : Fragment() {
                             val value = it?.data!!.getIntExtra("buttonHomeShopSwap", 0)
 
                             //fragmentHomeBinding.textViewHomeMembership.append("${value}")
+                            // 네비게이션 아이템의 선택 상태 변경
+                            navigationActivity.activityNavigationBinding.bottomNavigationView.menu.findItem(R.id.fragment_center).isChecked = true
+                            // 아이템의 색상 변경
+                            navigationActivity.updateIconColors(R.id.fragment_center)
                             navigationActivity.replaceFragment(NAVIGATION_FRAGMENT_NAME.CENTER_FRAGMENT, false, true, null)
-
                         }
                     }
                 }

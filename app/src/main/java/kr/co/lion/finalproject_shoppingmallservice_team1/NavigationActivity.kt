@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.transition.MaterialSharedAxis
@@ -160,5 +161,22 @@ class NavigationActivity : AppCompatActivity() {
 
         // 지정한 이름으로 있는 Fragment를 BackStack에서 제거한다.
         supportFragmentManager.popBackStack(name.str, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+    }
+
+    fun updateIconColors(selectedItemId: Int) {
+        activityNavigationBinding.apply {
+            val menu = bottomNavigationView.menu
+            for (i in 0 until menu.size()) {
+                val menuItem = menu.getItem(i)
+                val icon = menuItem.icon
+
+                // 선택된 아이템이면 활성화 색으로, 아니면 비활성화 색으로 설정
+                if (menuItem.itemId == selectedItemId) {
+                    icon?.setTint(ContextCompat.getColor(this@NavigationActivity, R.color.black))
+                } else {
+                    icon?.setTint(ContextCompat.getColor(this@NavigationActivity, R.color.Pup_Color))
+                }
+            }
+        }
     }
 }
