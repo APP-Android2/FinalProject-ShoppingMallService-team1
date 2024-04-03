@@ -90,7 +90,7 @@ class HomeChatFragment : Fragment() {
         }
 
         override fun onBindViewHolder(holder: HomeChatViewHolder, position: Int) {
-            holder.rowHomeChatBinding.textViewHomeChatName.text = "홀길동"
+            holder.rowHomeChatBinding.textViewHomeChatName.text = "홍길동"
             holder.rowHomeChatBinding.textViewHomeChatContent.text = "헬스장 가격 문의 답장입니다."
             holder.rowHomeChatBinding.textViewHomeChatDate.text = "2024-03-29"
         }

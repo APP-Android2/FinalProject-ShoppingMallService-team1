@@ -40,6 +40,11 @@ enum class HOME_BOTTOM_FRAGMENT_NAME(var num:Int, var str:String){
     HOME_ADDRESS_BOTTOM_MAP_FRAGMENT(0, "현재 위치")
 }
 
+enum class HOME_SHOP_FRAGMENT_NAME(var num:Int, var str:String){
+
+    SHOP_CONTAIN_FRAGMENT(0, "장바구니담기")
+}
+
 enum class CENTER_FRAGMENT_NAME(var num:Int, var str:String){
 
     CENTER_A_FRAGMENT(0, "A"),
@@ -48,8 +53,10 @@ enum class CENTER_FRAGMENT_NAME(var num:Int, var str:String){
 
 enum class TRAINER_FRAGMENT_NAME(var num:Int, var str:String){
 
-    TRAINER_A_FRAGMENT(0, "A"),
-    TRAINER_B_FRAGMENT(1, "B"),
+    READ_TRAINER_FRAGMENT(0, "ReadTrainerFragment"),
+    READ_TRAINER_TAB1_FRAGMENT(1, "ReadTrainerTab1Fragment"),
+    READ_TRAINER_TAB2_FRAGMENT(2, "ReadTrainerTab2Fragment"),
+    READ_TRAINER_TAB3_FRAGMENT(3, "ReadTrainerTab3Fragment"),
 }
 
 enum class COMMUNITY_FRAGMENT_NAME(var num:Int, var str:String){
