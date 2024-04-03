@@ -27,132 +27,137 @@
                 android:textSize="@dimen/Toolbar_Title_Size" />
         </com.google.android.material.appbar.MaterialToolbar>
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/Up_Down_Margin"
-            android:orientation="vertical">
+            android:layout_height="match_parent" >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/Side_Padding"
-                android:layout_marginEnd="@dimen/Side_Padding"
-                android:orientation="horizontal">
+                android:layout_marginTop="@dimen/Up_Down_Margin"
+                android:orientation="vertical">
 
-                <com.google.android.material.materialswitch.MaterialSwitch
-                    android:id="@+id/mySettingPushAlarm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50sp"
-                    android:layout_weight="1"
-                    android:checked="false"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/Side_Padding"
+                    android:layout_marginEnd="@dimen/Side_Padding"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.materialswitch.MaterialSwitch
+                        android:id="@+id/mySettingPushAlarm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50sp"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:clickable="true"
+                        android:text="푸시 알림"
+                        android:textSize="@dimen/Big_Text_Size"
+                        app:trackTint="@color/Light_Purple_color" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:clickable="true"
-                    android:text="푸시 알림"
-                    android:textSize="@dimen/Big_Text_Size"
-                    app:trackTint="@color/Light_Purple_color" />
-            </LinearLayout>
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:orientation="vertical">
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-                <com.google.android.material.divider.MaterialDivider
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/textViewMySetting1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/Side_Padding"
+                        android:layout_marginTop="12sp"
+                        android:layout_marginEnd="@dimen/Side_Padding"
+                        android:layout_marginBottom="12sp"
+                        android:gravity="center_vertical"
+                        android:text="서비스 이용약관"
+                        android:textSize="@dimen/Big_Text_Size" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textViewMySetting1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/Side_Padding"
-                    android:layout_marginTop="12sp"
-                    android:layout_marginEnd="@dimen/Side_Padding"
-                    android:layout_marginBottom="12sp"
-                    android:gravity="center_vertical"
-                    android:text="서비스 이용약관"
-                    android:textSize="@dimen/Big_Text_Size" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:orientation="vertical">
-
-                <com.google.android.material.divider.MaterialDivider
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/textViewMySetting2"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/Side_Padding"
-                    android:layout_marginTop="12sp"
-                    android:layout_marginEnd="@dimen/Side_Padding"
-                    android:layout_marginBottom="12sp"
-                    android:gravity="center_vertical"
-                    android:text="위치기반 서비스 약관"
-                    android:textSize="@dimen/Big_Text_Size" />
-            </LinearLayout>
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:orientation="vertical">
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-                <com.google.android.material.divider.MaterialDivider
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/textViewMySetting2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/Side_Padding"
+                        android:layout_marginTop="12sp"
+                        android:layout_marginEnd="@dimen/Side_Padding"
+                        android:layout_marginBottom="12sp"
+                        android:gravity="center_vertical"
+                        android:text="위치기반 서비스 약관"
+                        android:textSize="@dimen/Big_Text_Size" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textViewMySetting3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/Side_Padding"
-                    android:layout_marginTop="12sp"
-                    android:layout_marginEnd="@dimen/Side_Padding"
-                    android:layout_marginBottom="12sp"
-                    android:gravity="center_vertical"
-                    android:text="개인정보 처리방침"
-                    android:textSize="@dimen/Big_Text_Size" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:orientation="vertical">
-
-                <com.google.android.material.divider.MaterialDivider
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/textViewSettingVersion"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/Side_Padding"
-                    android:layout_marginTop="12sp"
-                    android:layout_marginEnd="@dimen/Side_Padding"
-                    android:layout_marginBottom="12sp"
-                    android:gravity="center_vertical"
-                    android:text="현재 버전 V1.0.0"
-                    android:textSize="@dimen/Big_Text_Size" />
-            </LinearLayout>
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:orientation="vertical">
 
-        </LinearLayout>
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/textViewMySetting3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/Side_Padding"
+                        android:layout_marginTop="12sp"
+                        android:layout_marginEnd="@dimen/Side_Padding"
+                        android:layout_marginBottom="12sp"
+                        android:gravity="center_vertical"
+                        android:text="개인정보 처리방침"
+                        android:textSize="@dimen/Big_Text_Size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/textViewSettingVersion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/Side_Padding"
+                        android:layout_marginTop="12sp"
+                        android:layout_marginEnd="@dimen/Side_Padding"
+                        android:layout_marginBottom="12sp"
+                        android:gravity="center_vertical"
+                        android:text="현재 버전 V1.0.0"
+                        android:textSize="@dimen/Big_Text_Size" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
 </layout>
