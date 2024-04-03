@@ -22,8 +22,8 @@
     <!-- Login fragment -->
     <string name="login_welcome">피트모아에 오신걸 환영합니다!</string>
 
-    <string name="kakao_Login">카카오 계정으로 계속하기</string>
-    <string name="naver_Login">NAVER 계정으로 계속하기</string>
-    <string name="google_Login">Google 계정으로 계속하기</string>
+    <string name="kakao_Login">카카오로 로그인</string>
+    <string name="naver_Login">NAVER로 로그인</string>
+    <string name="google_Login">Google로 로그인</string>
 
 </resources>

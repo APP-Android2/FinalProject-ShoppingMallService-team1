@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun settingOnBoarding(){
-        activityMainBinding.mainViewPager2.adapter = ViewPageAdapter(this@MainActivity)
+        activityMainBinding.mainViewPager2.adapter = MainViewPageAdapter(this@MainActivity)
         activityMainBinding.mainCircleIndicator.setViewPager(activityMainBinding.mainViewPager2)
     }
 
@@ -41,21 +41,21 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, LoginActivity::class.java)
             startActivity(intent)
 
-            finish()
+            this@MainActivity.finish()
         }
     }
-}
 
-class ViewPageAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter(fragmentActivity) {
+    inner class MainViewPageAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter(fragmentActivity) {
 
-    override fun getItemCount(): Int = 3
+        override fun getItemCount(): Int = 3
 
-    override fun createFragment(position: Int): Fragment {
-        return when (position) {
-            0 -> OnBoarding1Fragment()
-            1 -> OnBoarding2Fragment()
-            2 -> OnBoarding3Fragment()
-            else -> throw IllegalArgumentException("Invalid position $position")
+        override fun createFragment(position: Int): Fragment {
+            return when (position) {
+                0 -> OnBoarding1Fragment()
+                1 -> OnBoarding2Fragment()
+                2 -> OnBoarding3Fragment()
+                else -> throw IllegalArgumentException("Invalid position $position")
+            }
         }
     }
 }

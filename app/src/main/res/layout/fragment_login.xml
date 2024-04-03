@@ -7,10 +7,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
+        android:background="@color/white"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/Up_Down_Margin"
+        android:transitionGroup="true"
         tools:context=".fragment.LoginFragment">
 
         <ImageView
@@ -54,14 +55,18 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/login_googlelogin_button"
-            style="Button"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="10dp"
             android:text="@string/google_Login"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black"
             android:textStyle="bold"
-            app:cornerRadius="10dp" />
+            app:backgroundTint="@color/white"
+            app:cornerRadius="10dp"
+            app:strokeColor="@color/ContentsOfTheEntryCompartment_Color"
+            app:strokeWidth="1dp" />
 
     </LinearLayout>
 

@@ -7,15 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.transition.MaterialSharedAxis
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivityLoginBinding
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.CenterFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.CommunityFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.HomeFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.LoginFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyNotificationFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyProfileFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.ReadTrainerFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.TrainerFragment
+import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.LoginSignUpFragment
 
 class LoginActivity : AppCompatActivity() {
 
@@ -45,8 +38,13 @@ class LoginActivity : AppCompatActivity() {
         }
 
         newFragment = when(name){
+
             LOGIN_FRAGMENT_NAME.LOGIN_FRAGMENT -> {
                 LoginFragment()
+            }
+
+            LOGIN_FRAGMENT_NAME.LOGIN_SIGNUP_FRAGMENT -> {
+                LoginSignUpFragment()
             }
         }
 
@@ -99,4 +97,5 @@ class LoginActivity : AppCompatActivity() {
         // 지정한 이름으로 있는 Fragment를 BackStack에서 제거한다.
         supportFragmentManager.popBackStack(name.str, FragmentManager.POP_BACK_STACK_INCLUSIVE)
     }
+
 }

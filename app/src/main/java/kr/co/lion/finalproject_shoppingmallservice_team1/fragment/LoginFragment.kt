@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kr.co.lion.finalproject_shoppingmallservice_team1.LOGIN_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.LoginActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
@@ -35,8 +36,12 @@ class LoginFragment : Fragment() {
 
         fragmentLoginBinding.loginKakaologinButton.setOnClickListener {
 
-            val intent = Intent(loginActivity, NavigationActivity::class.java)
-            startActivity(intent)
+            loginActivity.replaceFragment(LOGIN_FRAGMENT_NAME.LOGIN_SIGNUP_FRAGMENT, true, true, null)
+
+//            val intent = Intent(loginActivity, NavigationActivity::class.java)
+//            startActivity(intent)
+//
+//            loginActivity.finish()
         }
     }
 
@@ -46,6 +51,8 @@ class LoginFragment : Fragment() {
 
             val intent = Intent(loginActivity, NavigationActivity::class.java)
             startActivity(intent)
+
+            loginActivity.finish()
         }
     }
 
@@ -55,6 +62,8 @@ class LoginFragment : Fragment() {
 
             val intent = Intent(loginActivity, NavigationActivity::class.java)
             startActivity(intent)
+
+            loginActivity.finish()
         }
     }
 
