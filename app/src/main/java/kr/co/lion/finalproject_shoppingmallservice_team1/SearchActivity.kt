@@ -25,8 +25,8 @@ class SearchActivity : AppCompatActivity() {
 
 
         settingToolbar()
-        //settingRecyclerViewRecentSearch()
         settingTabLayout()
+        settingRecyclerViewRecentSearch()
     }
 
     fun settingToolbar(){
