@@ -54,10 +54,16 @@ class Tools {
     }
 }
 
-enum class MAIN_FRAGMENT_NAME(var num:Int, var str:String){
+enum class LOGIN_FRAGMENT_NAME(var num:Int, var str:String){
 
-    MAIN_LOGO_FRAGMENT(0, "메인 로고"),
-    MEMBER_EXPLANATION_FRAGMENT(1, "회원 설명"),
+    LOGIN_FRAGMENT(0, "로그인"),
+    LOGIN_SIGNUP_FRAGMENT(1, "회원가입"),
+}
+
+enum class LOGIN_SIGNUP_FRAGMENT_NAME(var num:Int, var str:String){
+
+    LOGIN_SIGNUP1_FRAGMENT(0, "회원가입1"),
+    LOGIN_SIGNUP2_FRAGMENT(1, "회원가입2"),
 }
 
 enum class NAVIGATION_FRAGMENT_NAME(var num:Int, var str:String){
@@ -90,8 +96,10 @@ enum class CENTER_FRAGMENT_NAME(var num:Int, var str:String){
 
 enum class TRAINER_FRAGMENT_NAME(var num:Int, var str:String){
 
-    TRAINER_A_FRAGMENT(0, "A"),
-    TRAINER_B_FRAGMENT(1, "B"),
+    READ_TRAINER_FRAGMENT(0, "ReadTrainerFragment"),
+    READ_TRAINER_TAB1_FRAGMENT(1, "ReadTrainerTab1Fragment"),
+    READ_TRAINER_TAB2_FRAGMENT(2, "ReadTrainerTab2Fragment"),
+    READ_TRAINER_TAB3_FRAGMENT(3, "ReadTrainerTab3Fragment"),
 }
 
 enum class COMMUNITY_FRAGMENT_NAME(var num:Int, var str:String){

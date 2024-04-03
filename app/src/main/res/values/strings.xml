@@ -19,4 +19,11 @@
     <string name="onboarding_Title">우리 동네 운동정보를\n 한 번에!</string>
     <string name="onboarding_Explain">가까운 우리 동네 센터, 강사를 쉽게 찾아보세요.</string>
 
+    <!-- Login fragment -->
+    <string name="login_welcome">피트모아에 오신걸 환영합니다!</string>
+
+    <string name="kakao_Login">카카오로 로그인</string>
+    <string name="naver_Login">NAVER로 로그인</string>
+    <string name="google_Login">Google로 로그인</string>
+
 </resources>

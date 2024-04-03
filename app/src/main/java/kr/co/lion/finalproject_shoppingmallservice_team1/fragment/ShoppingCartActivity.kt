@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.transition.MaterialSharedAxis
 import kr.co.lion.finalproject_shoppingmallservice_team1.HOME_SHOP_FRAGMENT_NAME
-import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivityShoppingCartBinding
