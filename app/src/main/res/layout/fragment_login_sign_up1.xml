@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="LoginSignUp1ViewModel"
+            type="kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.LoginSignUp1ViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:transitionGroup="true"
+        tools:context=".fragment.LoginSignUp1Fragment">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:orientation="vertical"
+                android:padding="@dimen/Side_Padding">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="이용약관 동의"
+                    android:textColor="@color/black"
+                    android:textSize="34sp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.Material3.CardView.Filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/Up_Down_Margin"
+                    app:cardBackgroundColor="@color/Light_Purple_color">
+
+                    <CheckBox
+                        android:id="@+id/login_signup1_totalcheckbox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="전체 이용약관에 동의합니다."
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:theme="@style/CustomCheckBox"
+                        android:checked="@={LoginSignUp1ViewModel.totalCheckBox}"
+                        android:onClickListener="@{view -> LoginSignUp1ViewModel.onClickTotalCheckBox()}"/>
+                </com.google.android.material.card.MaterialCardView>
+
+                <CheckBox
+                    android:id="@+id/login_signup1_checkbox1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/Up_Down_Margin"
+                    android:text="(필수) 개인정보 수집ㆍ이용에 동의합니다."
+                    android:textColor="@color/black"
+                    android:theme="@style/CustomCheckBox"
+                    android:checked="@={LoginSignUp1ViewModel.checkBox1}"
+                    android:onClickListener="@{view -> LoginSignUp1ViewModel.onClickCheckBox()}"/>
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.Material3.CardView.Outlined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:contentPadding="15dp"
+                    app:strokeColor="@color/ContentsOfTheEntryCompartment_Color">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="개인정보보호법에 따라 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간, 동의 거부권 및 동의 거부 시 불이익에 관한 사항을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다."
+                        android:textColor="@color/ContentsOfTheEntryCompartment_Color" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <CheckBox
+                    android:id="@+id/login_signup1_checkbox2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/Up_Down_Margin"
+                    android:text="(필수) 이용약관에 동의합니다."
+                    android:textColor="@color/black"
+                    android:theme="@style/CustomCheckBox"
+                    android:checked="@={LoginSignUp1ViewModel.checkBox2}"
+                    android:onClickListener="@{view -> LoginSignUp1ViewModel.onClickCheckBox()}"/>
+
+                <CheckBox
+                    android:id="@+id/login_signup1_checkbox3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="(필수) 위치기반 서비스 약관에 동의합니다."
+                    android:textColor="@color/black"
+                    android:theme="@style/CustomCheckBox"
+                    android:checked="@={LoginSignUp1ViewModel.checkBox3}"
+                    android:onClickListener="@{view -> LoginSignUp1ViewModel.onClickCheckBox()}"/>
+
+                <CheckBox
+                    android:id="@+id/login_signup1_checkbox4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="(선택) 마케팅 정보 수신에 동의합니다."
+                    android:textColor="@color/black"
+                    android:theme="@style/CustomCheckBox"
+                    android:checked="@={LoginSignUp1ViewModel.checkBox4}"
+                    android:onClickListener="@{view -> LoginSignUp1ViewModel.onClickCheckBox()}"/>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/login_signup1_agreebutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/Up_Down_Margin"
+            android:layout_marginBottom="@dimen/Up_Down_Margin"
+            android:backgroundTint="@color/Pup_Color"
+            android:text="동의하기"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:cornerRadius="10dp"
+            android:enabled="@{LoginSignUp1ViewModel.agreeButtonEnabled}"
+            android:alpha="@{LoginSignUp1ViewModel.agreeButtonAlpha}"/>
+
+    </LinearLayout>
+
+</layout>

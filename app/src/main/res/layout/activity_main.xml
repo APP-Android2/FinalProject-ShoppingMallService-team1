@@ -6,7 +6,8 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/main_viewPager2"
@@ -26,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:background="@android:color/transparent"
-                app:ci_drawable="@drawable/pupple_radius"/>
+                app:ci_drawable="@drawable/pupple_radius" />
 
             <Button
                 android:id="@+id/main_button"
