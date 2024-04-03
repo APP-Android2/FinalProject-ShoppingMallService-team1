@@ -47,11 +47,10 @@
 
                     <ImageView
                         android:id="@+id/imageView6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#FAF0FF"
-                        android:padding="25sp"
-                        android:src="@drawable/person" />
+                        android:layout_width="80sp"
+                        android:layout_height="80sp"
+                        android:src="@drawable/person"
+                        app:srcCompat="@drawable/profile" />
 
                     <ImageView
                         android:id="@+id/imageView7"

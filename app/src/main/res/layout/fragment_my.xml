@@ -50,11 +50,10 @@
 
                         <ImageView
                             android:id="@+id/imageViewMy"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="#FAF0FF"
-                            android:padding="@dimen/Side_Padding"
-                            android:src="@drawable/person" />
+                            android:layout_width="60sp"
+                            android:layout_height="60sp"
+                            android:src="@drawable/person"
+                            app:srcCompat="@drawable/profile" />
 
                         <LinearLayout
                             android:id="@+id/myProfile"

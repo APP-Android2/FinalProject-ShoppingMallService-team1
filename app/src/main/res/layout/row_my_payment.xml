@@ -146,7 +146,8 @@
                 android:layout_marginRight="@dimen/Side_Padding"
                 android:layout_marginBottom="@dimen/Up_Down_Margin"
                 android:backgroundTint="@color/Pup_Color"
-                android:text="리뷰 쓰러 가기" />
+                android:text="리뷰 쓰러 가기"
+                android:textSize="@dimen/SmallButton_Text_Size" />
 
         </LinearLayout>
 

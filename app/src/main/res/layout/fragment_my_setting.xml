@@ -34,8 +34,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/Up_Down_Margin"
                 android:orientation="vertical">
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="8sp"
+                    app:dividerColor="@color/Light_Purple_color" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
