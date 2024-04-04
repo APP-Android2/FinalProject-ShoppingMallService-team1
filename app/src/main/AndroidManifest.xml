@@ -16,6 +16,9 @@
             android:name=".LoginSignUpActivity"
             android:exported="false" />
         <activity
+            android:name=".ConsultingActivity"
+            android:exported="false" />
+        <activity
             android:name=".ReviewInputActivity"
             android:exported="false" />
         <activity

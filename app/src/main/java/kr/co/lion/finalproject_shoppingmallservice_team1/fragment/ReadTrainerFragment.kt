@@ -82,7 +82,7 @@ class ReadTrainerFragment : Fragment() {
                                 replaceFragment(TRAINER_FRAGMENT_NAME.READ_TRAINER_TAB2_FRAGMENT, false, false, null)
                             }
                             2 -> {
-
+                                replaceFragment(TRAINER_FRAGMENT_NAME.READ_TRAINER_TAB3_FRAGMENT, false, false, null)
                             }
                         }
                     }
@@ -122,7 +122,9 @@ class ReadTrainerFragment : Fragment() {
             TRAINER_FRAGMENT_NAME.READ_TRAINER_TAB2_FRAGMENT -> {
                 newFragment = ReadTrainerTab2Fragment()
             }
-            TRAINER_FRAGMENT_NAME.READ_TRAINER_TAB3_FRAGMENT ->{}
+            TRAINER_FRAGMENT_NAME.READ_TRAINER_TAB3_FRAGMENT -> {
+                newFragment = ReadTrainerTab3Fragment()
+            }
         }
 
         if(data != null){

@@ -102,6 +102,12 @@ enum class TRAINER_FRAGMENT_NAME(var num:Int, var str:String){
     READ_TRAINER_TAB3_FRAGMENT(3, "ReadTrainerTab3Fragment"),
 }
 
+enum class CONSULTING_FRAGMENT_NAME(var num: Int, var str:String){
+
+    CONSULTING_CALENDAR_FRAGMENT(0, "ConsultingCalendarFragment"),
+    CONSULTING_A(1, "A")
+}
+
 enum class COMMUNITY_FRAGMENT_NAME(var num:Int, var str:String){
 
     COMMUNITY_A_FRAGMENT(0, "A"),
