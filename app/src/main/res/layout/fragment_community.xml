@@ -1,14 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragment.CommunityFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <FrameLayout
+            android:id="@+id/fragmentCommunity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            tools:context=".fragment.CommunityFragment">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <!--  툴바  -->
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbarCommunity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/colorPrimary"
+                    android:minHeight="?attr/actionBarSize"
+                    android:theme="?attr/actionBarTheme">
+
+                    <TextView
+                        android:id="@+id/toolbarCommunity_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="커뮤니티"
+                        android:textSize="@dimen/Toolbar_Title_Size" />
+                </com.google.android.material.appbar.MaterialToolbar>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/Side_Padding"
+                    android:layout_marginRight="@dimen/Side_Padding"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip1"
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="전체"
+                            android:textColor="@color/white"
+                            app:chipBackgroundColor="@color/Pup_Color" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip2"
+                            style="@style/Widget.Material3.Chip.Input.Icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="거리순" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip3"
+                            style="@style/Widget.Material3.Chip.Input.Icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="인기글" />
+
+                    </com.google.android.material.chip.ChipGroup>
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/divider3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/Detail_Padding"
+                    android:background="?android:attr/listDivider" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/Side_Padding"
+                        android:layout_marginRight="@dimen/Side_Padding">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                    <Button
+                        android:id="@+id/buttonWrite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+                        android:layout_marginBottom="@dimen/Up_Down_Margin"
+                        android:backgroundTint="@color/Pup_Color"
+                        android:padding="0dp"
+                        android:text="글 쓰기"
+                        android:textColor="@color/white"
+                        app:icon="@drawable/edit"
+                        app:iconGravity="textStart"
+                        app:iconTint="@color/white" />
+
+                </FrameLayout>
+
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:background="@color/white"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textViewDrawerCommunity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:paddingLeft="@dimen/Detail_Padding"
+                android:paddingTop="@dimen/Up_Down_Margin"
+                android:paddingBottom="@dimen/Up_Down_Margin"
+                android:text="커뮤니티" />
+
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:id="@+id/textViewDrawerMyContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:paddingLeft="@dimen/Detail_Padding"
+                android:paddingTop="@dimen/Up_Down_Margin"
+                android:paddingBottom="@dimen/Up_Down_Margin"
+                android:text="내가 쓴 게시글" />
+
+            <View
+                android:id="@+id/divider5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:id="@+id/textViewDrawerCommentContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:paddingLeft="@dimen/Detail_Padding"
+                android:paddingTop="@dimen/Up_Down_Margin"
+                android:paddingBottom="@dimen/Up_Down_Margin"
+                android:text="댓글 단 게시글" />
+
+            <View
+                android:id="@+id/divider6"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:id="@+id/textViewDrawerLikeContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:paddingLeft="@dimen/Detail_Padding"
+                android:paddingTop="@dimen/Up_Down_Margin"
+                android:paddingBottom="@dimen/Up_Down_Margin"
+                android:text="추천한 게시글" />
+
+            <View
+                android:id="@+id/divider7"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+        </LinearLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+
+</layout>

@@ -104,8 +104,10 @@ enum class TRAINER_FRAGMENT_NAME(var num:Int, var str:String){
 
 enum class COMMUNITY_FRAGMENT_NAME(var num:Int, var str:String){
 
-    COMMUNITY_A_FRAGMENT(0, "A"),
-    COMMUNITY_B_FRAGMENT(1, "B"),
+    COMMUNITY_SEARCH_FRAGMENT(0, "CommunitySearchFragment"),
+    COMMUNITY_MYCONTENT_FRAGMENT(1, "CommunityMyContentFragment"),
+    COMMUNITY_COMMENTCONTENT_FRAGMENT(2, "CommunityCommentContentFragment"),
+    COMMUNITY_LIKECONTENT_FRAGMENT(3, "CommunityLikeContentFragment")
 }
 
 enum class MY_FRAGMENT_NAME(var num:Int, var str:String){

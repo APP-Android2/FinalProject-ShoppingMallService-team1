@@ -25,7 +25,7 @@
             android:name=".SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".fragment.ShoppingCartActivity"
+            android:name=".ShoppingCartActivity"
             android:exported="false" />
         <activity
             android:name=".ChatActivity"
