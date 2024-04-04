@@ -23,13 +23,13 @@ class MyReviewTab1Fragment : Fragment() {
         fragmentMyReviewTab1Binding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_review_tab1, container, false)
         navigationActivity = activity as NavigationActivity
 
-        settingRecyclerViewMyReview()
+        settingRecyclerViewMyReviewTab1()
 
         return fragmentMyReviewTab1Binding.root
     }
 
     // RecyclerView 설정
-    fun settingRecyclerViewMyReview(){
+    fun settingRecyclerViewMyReviewTab1(){
         fragmentMyReviewTab1Binding.apply {
             recyclerViewMyReviewTab1.apply {
                 // 어댑터
