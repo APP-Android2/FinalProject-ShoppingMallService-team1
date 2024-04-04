@@ -59,7 +59,11 @@ class MyReviewFragment : Fragment() {
     // Tab 레이아웃 설정
     fun settingTabLayout(){
         fragmentMyReviewBinding.apply {
-            reviewTab.apply {
+
+            // 시작 시 Tab1 호출
+            replaceFragment(MY_REVIEW_TAB_NAME.MY_REVIEW_TAB1_FRAGMENT, false, false, null)
+
+            myReviewTab.apply {
                 addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
                     override fun onTabSelected(tab: TabLayout.Tab?) {
                         // 탭이 선택되었을 때 호출되는 메서드
