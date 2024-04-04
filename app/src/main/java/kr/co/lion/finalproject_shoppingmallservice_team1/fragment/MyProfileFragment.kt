@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
@@ -23,6 +24,7 @@ class MyProfileFragment : Fragment() {
         navigationActivity = activity as NavigationActivity
 
         settingToolbar()
+        handleBackPress()
 
         return fragmentMyProfileBinding.root
     }
@@ -43,8 +45,19 @@ class MyProfileFragment : Fragment() {
     }
 
     // 뒤로가기 처리
-    fun backProcess(){
+    private fun backProcess(){
         SystemClock.sleep(200)
         parentFragmentManager.popBackStack()
+    }
+
+    // 뒤로가기 처리(단말기)
+    private fun handleBackPress() {
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // 뒤로가기
+                backProcess()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 }

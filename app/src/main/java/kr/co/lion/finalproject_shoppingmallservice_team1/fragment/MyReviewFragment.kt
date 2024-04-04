@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.transition.MaterialSharedAxis
@@ -30,6 +31,7 @@ class MyReviewFragment : Fragment() {
         navigationActivity = activity as NavigationActivity
 
         settingToolbar()
+        handleBackPress()
         settingTabLayout()
 
         return fragmentMyReviewBinding.root
@@ -51,9 +53,20 @@ class MyReviewFragment : Fragment() {
     }
 
     // 뒤로가기 버튼
-    fun backProcess(){
+    private fun backProcess(){
         SystemClock.sleep(200)
         parentFragmentManager.popBackStack()
+    }
+
+    // 뒤로가기 처리(단말기)
+    private fun handleBackPress() {
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // 뒤로가기
+                backProcess()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 
     // Tab 레이아웃 설정
