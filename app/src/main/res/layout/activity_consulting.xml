@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:id="@+id/consultingActivityReplace"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ConsultingActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbarConsulting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme">
+
+                <TextView
+                    android:id="@+id/toolbarConsulting_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="방문 상담 신청"
+                    android:textSize="@dimen/Toolbar_Title_Size" />
+            </com.google.android.material.appbar.MaterialToolbar>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/Side_Padding"
+                android:layout_marginRight="@dimen/Side_Padding"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="이름" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="@dimen/Side_Padding"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/Side_Padding"
+                    android:layout_marginBottom="10dp"
+                    app:cardBackgroundColor="@color/InputCompartment_Color">
+
+                    <EditText
+                        android:id="@+id/editTextNameConsulting"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/InputCompartment_Color"
+                        android:hint="이름을 입력해주세요."
+                        android:inputType="text"
+                        android:textSize="@dimen/Small_Text_Size" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="희망 신청시간" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="@dimen/Side_Padding"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/Side_Padding"
+                    android:layout_marginBottom="10dp"
+                    app:cardBackgroundColor="@color/InputCompartment_Color">
+
+                    <EditText
+                        android:id="@+id/editTextDateConsulting"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/InputCompartment_Color"
+                        android:hint="희망 날짜 선택해주세요."
+                        android:inputType="text"
+                        android:textSize="@dimen/Small_Text_Size" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="운동 목적" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="@dimen/Side_Padding"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/Side_Padding"
+                    android:layout_marginBottom="10dp"
+                    app:cardBackgroundColor="@color/InputCompartment_Color">
+
+                    <EditText
+                        android:id="@+id/editTextPurposeConsulting"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@color/InputCompartment_Color"
+                        android:hint="운동 목적을 적어주세요."
+                        android:inputType="text"
+                        android:textSize="@dimen/Small_Text_Size" />
+
+                    <ImageView
+                        android:id="@+id/imageViewConsultingDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="7dp"
+                        android:src="@drawable/date"
+                        android:clickable="true"
+                        android:onClick="onImageClick" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="기타" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginLeft="@dimen/Side_Padding"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/Side_Padding"
+                    android:layout_marginBottom="10dp"
+                    app:cardBackgroundColor="@color/InputCompartment_Color">
+
+                    <EditText
+                        android:id="@+id/editTextEtcConsulting"
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/InputCompartment_Color"
+                        android:gravity="top"
+                        android:hint="궁금한 점 적어주세요."
+                        android:inputType="text"
+                        android:textSize="@dimen/Small_Text_Size" />
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/consultingAddButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginBottom="@dimen/Up_Down_Margin"
+            android:backgroundTint="@color/Pup_Color"
+            android:text="신청 하기"
+            android:textColor="@color/white" />
+
+    </FrameLayout>
+</layout>

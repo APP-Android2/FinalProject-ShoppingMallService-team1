@@ -3,17 +3,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".fragment.ReadTrainerTab3Fragment">
+        android:layout_height="match_parent" >
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/Side_Padding"
+            android:layout_marginRight="@dimen/Side_Padding"
+            android:layout_marginTop="@dimen/Up_Down_Margin"
+            android:orientation="vertical"
+            tools:context=".fragment.ReadTrainerTab3Fragment">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="트레이너님과 상담하실 방법을 선택해 주세요." />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonChatting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/Pup_Color"
+                    android:text="채팅 상담"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/buttonConsulting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/Pup_Color"
+                    android:text="방문 상담"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
 </layout>
