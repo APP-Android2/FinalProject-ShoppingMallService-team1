@@ -8,21 +8,28 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.divider.MaterialDividerItemDecoration
 import kr.co.lion.finalproject_shoppingmallservice_team1.COMMUNITY_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentCommunityMyContentBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowMycontentBinding
 
 class CommunityMyContentFragment : Fragment() {
     lateinit var fragmentCommunityMyContentBinding: FragmentCommunityMyContentBinding
+    lateinit var navigationActivity:NavigationActivity
     lateinit var communityFragment: CommunityFragment
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         fragmentCommunityMyContentBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_community_my_content, container, false)
         communityFragment = parentFragment as CommunityFragment
+        navigationActivity = activity as NavigationActivity
 
         settingToolbar()
         handleBackPress()
+        settingRecyclerMyContent()
 
         return fragmentCommunityMyContentBinding.root
     }
@@ -38,6 +45,53 @@ class CommunityMyContentFragment : Fragment() {
 
                 inflateMenu(R.menu.empty_menu)
             }
+        }
+    }
+
+    fun settingRecyclerMyContent(){
+        fragmentCommunityMyContentBinding.apply {
+            recyclerViewCommunityMyContent.apply {
+                adapter = MyContentRecyclerViewAdapter()
+
+                layoutManager = LinearLayoutManager(navigationActivity)
+
+                val deco = MaterialDividerItemDecoration(navigationActivity, MaterialDividerItemDecoration.VERTICAL)
+                addItemDecoration(deco)
+            }
+        }
+    }
+
+    inner class MyContentRecyclerViewAdapter:RecyclerView.Adapter<MyContentRecyclerViewAdapter.MyContentViewHolder>(){
+        inner class MyContentViewHolder(rowMycontentBinding: RowMycontentBinding):RecyclerView.ViewHolder(rowMycontentBinding.root){
+            val rowMycontentBinding:RowMycontentBinding
+
+            init {
+                this.rowMycontentBinding = rowMycontentBinding
+            }
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyContentViewHolder {
+            val rowMycontentBinding = RowMycontentBinding.inflate(layoutInflater)
+            val myContentViewHolder = MyContentViewHolder(rowMycontentBinding)
+
+            return myContentViewHolder
+        }
+
+        override fun getItemCount(): Int {
+            return 5
+        }
+
+        override fun onBindViewHolder(holder: MyContentViewHolder, position: Int) {
+            holder.rowMycontentBinding.textViewCommmunityTitle.text = "글 제목"
+            holder.rowMycontentBinding.textViewCommunityTag.text = "해시태그"
+            holder.rowMycontentBinding.textViewCommnunityContent.text = "글 내용--------------------"
+            holder.rowMycontentBinding.textViewCommunityNickname.text = "닉네임"
+            holder.rowMycontentBinding.textViewCommunityAddress.text = "서울 서초구"
+            holder.rowMycontentBinding.textViewCommunityTime.text = "3시간 전"
+
+            holder.rowMycontentBinding.textViewCommunityLike.text = "1"
+            holder.rowMycontentBinding.textViewCommunityComment.text = "2"
+            holder.rowMycontentBinding.textViewCommunityView.text = "3"
         }
     }
 
