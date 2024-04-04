@@ -71,7 +71,7 @@ class MyReviewTab1Fragment : Fragment() {
             holder.rowMyReviewTab1Binding.tvRowMyReviewTab1Name.text = "홍길동"
             holder.rowMyReviewTab1Binding.tvRowMyReviewTab1Date.text = "2024-04-04"
             holder.rowMyReviewTab1Binding.tvRowMyReviewProductName.text = "제품명 $position"
-            holder.rowMyReviewTab1Binding.tvRowMyReviewTab1Text.text = "우리 체육관 조아요 $position"
+            holder.rowMyReviewTab1Binding.tvRowMyReviewTab1Contents.text = "우리 체육관 조아요 $position"
         }
     }
 }

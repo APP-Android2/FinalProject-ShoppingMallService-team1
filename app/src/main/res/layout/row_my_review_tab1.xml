@@ -114,7 +114,7 @@
                     android:padding="12sp">
 
                     <TextView
-                        android:id="@+id/tvRowMyReviewTab1Text"
+                        android:id="@+id/tvRowMyReviewTab1Contents"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="리뷰 내용"
