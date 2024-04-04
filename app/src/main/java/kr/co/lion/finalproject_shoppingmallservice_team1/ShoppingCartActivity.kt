@@ -1,20 +1,14 @@
-package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
+package kr.co.lion.finalproject_shoppingmallservice_team1
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
-import android.util.Log
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.transition.MaterialSharedAxis
-import kr.co.lion.finalproject_shoppingmallservice_team1.HOME_SHOP_FRAGMENT_NAME
-import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
-import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivityShoppingCartBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.HomeShopContainFragment
 
 class ShoppingCartActivity : AppCompatActivity() {
 

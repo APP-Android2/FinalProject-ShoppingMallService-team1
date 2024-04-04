@@ -3,6 +3,7 @@ package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,15 +16,14 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.divider.MaterialDividerItemDecoration
 import kr.co.lion.finalproject_shoppingmallservice_team1.AlarmActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.ChatActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.SearchActivity
+import kr.co.lion.finalproject_shoppingmallservice_team1.ShoppingCartActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentHomeBinding
-import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowPopularTrainerBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.HomeViewModel
 import kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.RecyclerPopulatTrainerModel
 import kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.RecyclerRecentCenterModel
@@ -33,7 +33,6 @@ class HomeFragment : Fragment() {
     lateinit var navigationActivity: NavigationActivity
     lateinit var homeViewModel: HomeViewModel
     lateinit var shoppingCartActivityLauncher:ActivityResultLauncher<Intent>
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         fragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
