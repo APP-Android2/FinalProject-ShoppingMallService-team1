@@ -8,7 +8,9 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingTop="@dimen/Up_Down_Margin"
-        android:paddingBottom="@dimen/Up_Down_Margin">
+        android:paddingBottom="@dimen/Up_Down_Margin"
+        android:paddingLeft="@dimen/Side_Padding"
+        android:paddingRight="@dimen/Side_Padding">
 
         <TextView
             android:id="@+id/textViewComment"

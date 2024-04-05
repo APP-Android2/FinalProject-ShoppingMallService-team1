@@ -1,5 +1,6 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import kr.co.lion.finalproject_shoppingmallservice_team1.COMMUNITY_FRAGMENT_NAME
+import kr.co.lion.finalproject_shoppingmallservice_team1.ContentActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentCommunityMyContentBinding
@@ -85,13 +87,17 @@ class CommunityMyContentFragment : Fragment() {
             holder.rowMycontentBinding.textViewCommmunityTitle.text = "글 제목"
             holder.rowMycontentBinding.textViewCommunityTag.text = "해시태그"
             holder.rowMycontentBinding.textViewCommnunityContent.text = "글 내용--------------------"
-            holder.rowMycontentBinding.textViewCommunityNickname.text = "닉네임"
             holder.rowMycontentBinding.textViewCommunityAddress.text = "서울 서초구"
             holder.rowMycontentBinding.textViewCommunityTime.text = "3시간 전"
 
             holder.rowMycontentBinding.textViewCommunityLike.text = "1"
             holder.rowMycontentBinding.textViewCommunityComment.text = "2"
             holder.rowMycontentBinding.textViewCommunityView.text = "3"
+
+            holder.rowMycontentBinding.root.setOnClickListener {
+                val intent = Intent(navigationActivity, ContentActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 

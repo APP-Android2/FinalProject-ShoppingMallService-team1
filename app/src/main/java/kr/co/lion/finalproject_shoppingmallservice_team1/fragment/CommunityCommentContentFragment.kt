@@ -1,5 +1,6 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import kr.co.lion.finalproject_shoppingmallservice_team1.COMMUNITY_FRAGMENT_NAME
+import kr.co.lion.finalproject_shoppingmallservice_team1.ContentActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.LOGIN_SIGNUP_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
@@ -87,6 +89,11 @@ class CommunityCommentContentFragment : Fragment() {
         override fun onBindViewHolder(holder: CommentContentViewHolder, position: Int) {
             holder.rowCommentcontentBinding.textViewComment.text = "내가 단 댓글"
             holder.rowCommentcontentBinding.textViewCommentDate.text = "3시간 전"
+
+            holder.rowCommentcontentBinding.root.setOnClickListener {
+                val intent = Intent(navigationActivity, ContentActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 

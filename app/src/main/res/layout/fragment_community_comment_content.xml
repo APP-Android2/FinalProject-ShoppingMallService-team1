@@ -44,8 +44,7 @@
                     android:id="@+id/recyclerViewCommunityCommentContent"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/Side_Padding"
-                    android:layout_marginRight="@dimen/Side_Padding">
+                    >
 
                 </androidx.recyclerview.widget.RecyclerView>
 
