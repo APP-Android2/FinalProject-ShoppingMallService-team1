@@ -38,6 +38,7 @@ class MyFragment : Fragment() {
 
         settingToolbar()
         settingMyProfile()
+        settingMyBenefit()
         settingClickEventTextView()
 
         return fragmentMyBinding.root
@@ -70,6 +71,19 @@ class MyFragment : Fragment() {
             myProfile.setOnClickListener {
                 // MyProfile 프래그먼트 실행
                 replaceFragment(MY_FRAGMENT_NAME.MY_PROFILE_FRAGMENT, true, true, null)
+            }
+        }
+    }
+
+    // 포인트, 쿠폰
+    fun settingMyBenefit(){
+        fragmentMyBinding.apply {
+            // 포인트
+
+            // 쿠폰
+            myCouponCardView.setOnClickListener {
+                // MyCouponFragment 실행
+                replaceFragment(MY_FRAGMENT_NAME.MY_COUPON_FRAGMENT, true, true, null)
             }
         }
     }
@@ -137,6 +151,13 @@ class MyFragment : Fragment() {
             // 프로필 설정
             MY_FRAGMENT_NAME.MY_PROFILE_FRAGMENT -> {
                 newFragment = MyProfileFragment()
+            }
+
+            // 포인트
+
+            // 쿠폰
+            MY_FRAGMENT_NAME.MY_COUPON_FRAGMENT -> {
+                newFragment = MyCouponFragment()
             }
 
             // 회원권

@@ -62,14 +62,16 @@ enum class COMMUNITY_FRAGMENT_NAME(var num:Int, var str:String){
 enum class MY_FRAGMENT_NAME(var num:Int, var str:String){
 
     MY_PROFILE_FRAGMENT(0, "프로필"),
-    MY_MEMBERSHIP_FRAGMENT(1, "회원권"),
-    MY_REVIEW_FRAGMENT(2, "리뷰 관리"),
-    MY_PICK_FRAGMENT(3, "찜"),
+    // 포인트
+    MY_COUPON_FRAGMENT(2, "쿠폰"),
+    MY_MEMBERSHIP_FRAGMENT(3, "회원권"),
+    MY_REVIEW_FRAGMENT(4, "리뷰 관리"),
+    MY_PICK_FRAGMENT(5, "찜"),
     // 공지/이벤트
-    MY_PAYMENT_FRAGMENT(5, "결제 내역"),
-    // 고객센터 프래그먼트 6
-    MY_FAQ_FRAGMENT(7, "FAQ"),
-    MY_SETTING_FRAGMENT(8, "설정"),
+    MY_PAYMENT_FRAGMENT(7, "결제 내역"),
+    // 고객센터 프래그먼트
+    MY_FAQ_FRAGMENT(9, "FAQ"),
+    MY_SETTING_FRAGMENT(10, "설정"),
 }
 
 enum class MY_REVIEW_TAB_NAME(var num: Int, var str: String){
