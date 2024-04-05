@@ -74,7 +74,7 @@ class CommunityFragment : Fragment() {
                 setOnMenuItemClickListener {
                     when(it.itemId){
                         R.id.search -> {
-                            val intent = Intent(navigationActivity, CommunityWriteActivity::class.java)
+                            val intent = Intent(navigationActivity, CommunitySearchActivity::class.java)
                             startActivity(intent)
                         }
                     }
