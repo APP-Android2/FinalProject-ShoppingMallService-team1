@@ -64,7 +64,7 @@ enum class MY_FRAGMENT_NAME(var num:Int, var str:String){
     MY_PROFILE_FRAGMENT(0, "프로필"),
     MY_MEMBERSHIP_FRAGMENT(1, "회원권"),
     MY_REVIEW_FRAGMENT(2, "리뷰 관리"),
-    // 찜 프래그먼트 3
+    MY_PICK_FRAGMENT(3, "찜"),
     // 공지/이벤트
     MY_PAYMENT_FRAGMENT(5, "결제 내역"),
     // 고객센터 프래그먼트 6
@@ -76,4 +76,9 @@ enum class MY_REVIEW_TAB_NAME(var num: Int, var str: String){
 
     MY_REVIEW_TAB1_FRAGMENT(0, "체육시설 리뷰"),
     MY_REVIEW_TAB2_FRAGMENT(1, "트레이너 리뷰"),
+}
+
+enum class MY_PICK_TAB_NAME(var num: Int, var str: String){
+
+
 }

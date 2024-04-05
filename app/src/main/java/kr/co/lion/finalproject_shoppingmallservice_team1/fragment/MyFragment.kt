@@ -89,6 +89,10 @@ class MyFragment : Fragment() {
                 replaceFragment(MY_FRAGMENT_NAME.MY_REVIEW_FRAGMENT, true, true, null)
             }
             // 찜
+            textViewMyPick.setOnClickListener {
+                // MyPickFragment 실행
+                replaceFragment(MY_FRAGMENT_NAME.MY_PICK_FRAGMENT, true, true, null)
+            }
 
             /*  하단 메뉴 탭 구성  */
             // 공지/이벤트
@@ -146,6 +150,9 @@ class MyFragment : Fragment() {
             }
 
             // 찜
+            MY_FRAGMENT_NAME.MY_PICK_FRAGMENT -> {
+                newFragment = MyPickFragment()
+            }
 
             // 공지/이벤트
 
