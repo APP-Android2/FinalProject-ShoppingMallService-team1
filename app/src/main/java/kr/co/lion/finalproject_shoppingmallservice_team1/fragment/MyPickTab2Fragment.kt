@@ -5,56 +5,70 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
+import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentMyPickTab2Binding
+import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowMyPickTab2Binding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [MyPickTab2Fragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MyPickTab2Fragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    lateinit var fragmentMyPickTab2Binding: FragmentMyPickTab2Binding
+    lateinit var navigationActivity: NavigationActivity
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        // Inflate the layout for this fragment
+        fragmentMyPickTab2Binding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_pick_tab2, container, false)
+        navigationActivity = activity as NavigationActivity
+
+        settingRecyclerViewMyPickTab2()
+
+        return fragmentMyPickTab2Binding.root
+    }
+
+    // RecyclerView 설정
+    fun settingRecyclerViewMyPickTab2(){
+        fragmentMyPickTab2Binding.apply {
+            recyclerViewMyPickTab2.apply {
+                // 어댑터
+                adapter = MyPickTab2RecyclerViewAdapter()
+                // 레이아웃 매니저
+                layoutManager = GridLayoutManager(navigationActivity, 2)
+            }
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_pick_tab2, container, false)
-    }
+    // RecyclerView 의 어댑터
+    inner class MyPickTab2RecyclerViewAdapter : RecyclerView.Adapter<MyPickTab2RecyclerViewAdapter.MyPickTab2ViewHolder>() {
+        // ViewHolder
+        inner class MyPickTab2ViewHolder(rowMyPickTab2Binding: RowMyPickTab2Binding) : RecyclerView.ViewHolder(rowMyPickTab2Binding.root){
+            val rowMyPickTab2Binding: RowMyPickTab2Binding
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MyPickTab2Fragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MyPickTab2Fragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+            init {
+                this.rowMyPickTab2Binding = rowMyPickTab2Binding
+
+                this.rowMyPickTab2Binding.root.layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                )
             }
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyPickTab2ViewHolder {
+            val rowMyPickTab2Binding = RowMyPickTab2Binding.inflate(layoutInflater)
+            val myPickTab2ViewHolder = MyPickTab2ViewHolder(rowMyPickTab2Binding)
+
+            return myPickTab2ViewHolder
+        }
+
+        override fun getItemCount(): Int {
+            return 10
+        }
+
+        override fun onBindViewHolder(holder: MyPickTab2ViewHolder, position: Int) {
+            holder.rowMyPickTab2Binding.tvRowMyPickCenterName.text = "시설명 $position"
+        }
     }
 }
