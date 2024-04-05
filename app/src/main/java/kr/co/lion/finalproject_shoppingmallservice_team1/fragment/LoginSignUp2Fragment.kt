@@ -89,6 +89,7 @@ class LoginSignUp2Fragment : Fragment() {
     private fun handleBackPress() {
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
+
                 loginSignUpFragment.removeFragment(LOGIN_SIGNUP_FRAGMENT_NAME.LOGIN_SIGNUP2_FRAGMENT)
                 loginSignUpFragment.settingProgressBar(100, 50)
             }

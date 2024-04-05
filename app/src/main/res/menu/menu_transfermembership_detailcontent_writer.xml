@@ -1,0 +1,11 @@
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/transfermembershipdetailcontent_menuItem_edit"
+        android:title="수정하기"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/transfermembershipdetailcontent_menuItem_delete"
+        android:title="삭제하기"
+        app:showAsAction="never" />
+</menu>

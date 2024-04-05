@@ -72,3 +72,11 @@ enum class MY_FRAGMENT_NAME(var num:Int, var str:String){
     MY_A_FRAGMENT(0, "A"),
     MY_B_FRAGMENT(1, "B"),
 }
+
+enum class TRANSFER_MEMBERSHIP_FRAGMENT_NAME(var num:Int, var str:String){
+    TRANSFER_MEMBERSHIP_CONTENT_LIST_FRAGMENT(0, "양도회원권 글 목록"),
+    TRANSFER_MEMBERSHIP_DETAIL_CONTENT_FRAGMENT(1, "양도회원권 상세 페이지"),
+    TRANSFER_MEMBERSHIP_CREATE_CONTENT_FRAGMENT(2, "양도회원권 글 작성"),
+    TRANSFER_MEMBERSHIP_EDIT_CONTENT_FRAGMENT(3, "양도회원권 글 수정"),
+    TRANSFER_MEMBERSHIP_HOLDING_FRAGMENT(4, "양도회원권 보유 회원권"),
+}

@@ -1,5 +1,6 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import androidx.fragment.app.Fragment
@@ -16,6 +17,7 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.HOME_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
+import kr.co.lion.finalproject_shoppingmallservice_team1.TransferMembershipActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentHomeBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.HomeViewModel
 
@@ -38,6 +40,8 @@ class HomeFragment : Fragment() {
 
         settingToolbar()
         settingAddress()
+
+        startTransferMembershipActivity()
 
         return fragmentHomeBinding.root
     }
@@ -144,6 +148,13 @@ class HomeFragment : Fragment() {
                 fragmentTransaction.addToBackStack(name.str)
             }
             fragmentTransaction.commit()
+        }
+    }
+
+    fun startTransferMembershipActivity(){
+        fragmentHomeBinding.cardViewHomeAssign.setOnClickListener {
+            val intent = Intent(navigationActivity, TransferMembershipActivity::class.java)
+            startActivity(intent)
         }
     }
 }
