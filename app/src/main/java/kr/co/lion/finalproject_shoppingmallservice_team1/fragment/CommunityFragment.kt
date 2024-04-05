@@ -1,5 +1,6 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
@@ -20,6 +21,9 @@ import androidx.viewbinding.ViewBindings
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.google.android.material.transition.MaterialSharedAxis
 import kr.co.lion.finalproject_shoppingmallservice_team1.COMMUNITY_FRAGMENT_NAME
+import kr.co.lion.finalproject_shoppingmallservice_team1.CommunitySearchActivity
+import kr.co.lion.finalproject_shoppingmallservice_team1.CommunityWriteActivity
+import kr.co.lion.finalproject_shoppingmallservice_team1.ContentActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.LOGIN_SIGNUP_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
@@ -46,7 +50,7 @@ class CommunityFragment : Fragment() {
         settingToolbarCommunity()
         settingRecyclerCommnunityContent()
         settingDrawer()
-
+        settingEvent()
 
         return fragmentCommunityBinding.root
     }
@@ -70,7 +74,8 @@ class CommunityFragment : Fragment() {
                 setOnMenuItemClickListener {
                     when(it.itemId){
                         R.id.search -> {
-                            replaceFragment(COMMUNITY_FRAGMENT_NAME.COMMUNITY_SEARCH_FRAGMENT, true, true, null)
+                            val intent = Intent(navigationActivity, CommunityWriteActivity::class.java)
+                            startActivity(intent)
                         }
                     }
                     true
@@ -100,6 +105,18 @@ class CommunityFragment : Fragment() {
             textViewDrawerLikeContent.setOnClickListener {
                 replaceFragment(COMMUNITY_FRAGMENT_NAME.COMMUNITY_LIKECONTENT_FRAGMENT, true, true, null)
                 drawerLayout.closeDrawer(Gravity.LEFT)
+            }
+        }
+    }
+
+    // 글쓰기 버튼
+    fun settingEvent(){
+        fragmentCommunityBinding.apply {
+            buttonWrite.apply {
+                setOnClickListener {
+                    val intent = Intent(navigationActivity, CommunityWriteActivity::class.java)
+                    startActivity(intent)
+                }
             }
         }
     }
@@ -148,6 +165,11 @@ class CommunityFragment : Fragment() {
             holder.rowCommunityBinding.textViewCommunityLike.text = "1"
             holder.rowCommunityBinding.textViewCommunityComment.text = "2"
             holder.rowCommunityBinding.textViewCommunityView.text = "3"
+
+            holder.rowCommunityBinding.root.setOnClickListener {
+                val intent = Intent(navigationActivity, ContentActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 
@@ -173,10 +195,6 @@ class CommunityFragment : Fragment() {
 
             COMMUNITY_FRAGMENT_NAME.COMMUNITY_LIKECONTENT_FRAGMENT -> {
                 newFragment = CommunityLikeContentFragment()
-            }
-
-            COMMUNITY_FRAGMENT_NAME.COMMUNITY_SEARCH_FRAGMENT -> {
-                newFragment = CommunitySearchFragment()
             }
         }
 
