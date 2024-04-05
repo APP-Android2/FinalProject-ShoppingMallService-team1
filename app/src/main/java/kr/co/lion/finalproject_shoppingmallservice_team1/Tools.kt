@@ -80,5 +80,6 @@ enum class MY_REVIEW_TAB_NAME(var num: Int, var str: String){
 
 enum class MY_PICK_TAB_NAME(var num: Int, var str: String){
 
-
+    MY_PICK_TAB1_FRAGMENT(0, "트레이너 찜"),
+    MY_PICK_TAB2_FRAGMENT(1, "체육시설 찜"),
 }
