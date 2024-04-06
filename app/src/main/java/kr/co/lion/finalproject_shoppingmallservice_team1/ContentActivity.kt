@@ -53,26 +53,19 @@ class ContentActivity : AppCompatActivity() {
                         }
 
                         R.id.menuItemContentDeclaration -> {
-                            val materialAlertDialogBuilder = MaterialAlertDialogBuilder(context)
-                            materialAlertDialogBuilder.setTitle("신고")
-                            materialAlertDialogBuilder.setMessage("이 게시글을 신고하시겠습니까?")
-                            // 확인 버튼 누르면  다시 CommunityFragment로 돌아감
-                            materialAlertDialogBuilder.setPositiveButton("확인"){ dialogInterface: DialogInterface, i: Int ->
-                                // 스낵바 띄우기
-                                Snackbar.make(this, "신고를 완료했습니다.", Snackbar.LENGTH_SHORT).show()
-                            }
-                            materialAlertDialogBuilder.show()
+                            AppAlertDialog(this@ContentActivity, "신고", "이 게시글을 신고하시겠습니까?").show(
+                                onClickPositive = {
+                                    Snackbar.make(this, "신고를 완료했습니다.", Snackbar.LENGTH_SHORT).show()
+                                }
+                            )
                         }
 
                         R.id.menuItemContentDel -> {
-                            val materialAlertDialogBuilder = MaterialAlertDialogBuilder(context)
-                            materialAlertDialogBuilder.setTitle("삭제")
-                            materialAlertDialogBuilder.setMessage("이 게시글을 삭제하시겠습니까?")
-                            // 확인 버튼 누르면  다시 CommunityFragment로 돌아감
-                            materialAlertDialogBuilder.setPositiveButton("확인"){ dialogInterface: DialogInterface, i: Int ->
-                                finish()
-                            }
-                            materialAlertDialogBuilder.show()
+                            AppAlertDialog(this@ContentActivity, "삭제", "이 게시글을 삭제하시겠습니까?").show(
+                                onClickPositive = {
+                                    finish()
+                                }
+                            )
                         }
                     }
                     true
@@ -137,16 +130,11 @@ class ContentActivity : AppCompatActivity() {
                         }
 
                         R.id.menuItemCommentDeclaration -> {
-                            val materialAlertDialogBuilder = MaterialAlertDialogBuilder(this@ContentActivity)
-                            materialAlertDialogBuilder.setTitle("신고")
-                            materialAlertDialogBuilder.setMessage("이 게시글을 신고하시겠습니까?")
-                            // 확인 버튼 누르면  다시 CommunityFragment로 돌아감
-                            materialAlertDialogBuilder.setPositiveButton("확인"){ dialogInterface: DialogInterface, i: Int ->
-                                // this로 하면 this가 onMenuItemClickListener를 가리키기 때문에 오류가 발생
-                                // 해당 스낵바를 표시하는 코드가 ContentActivity 내부에 있으므로, ContentActivity의 context를 사용해야 함
-                                Snackbar.make(holder.rowCommentBinding.buttonCommentComment, "신고를 완료했습니다.", Snackbar.LENGTH_SHORT).show()
-                            }
-                            materialAlertDialogBuilder.show()
+                            AppAlertDialog(this@ContentActivity, "신고", "이 게시글을 신고하시겠습니까?").show(
+                                onClickPositive = {
+                                    Snackbar.make(holder.rowCommentBinding.buttonCommentComment, "신고를 완료했습니다.", Snackbar.LENGTH_SHORT).show()
+                                }
+                            )
                         }
                         else -> return@setOnMenuItemClickListener false
                     }

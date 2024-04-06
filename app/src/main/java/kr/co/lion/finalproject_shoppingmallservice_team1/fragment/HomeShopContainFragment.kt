@@ -11,6 +11,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
+import kr.co.lion.finalproject_shoppingmallservice_team1.AppAlertDialog
 import kr.co.lion.finalproject_shoppingmallservice_team1.HOME_SHOP_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
@@ -60,16 +62,13 @@ class HomeShopContainFragment : Fragment() {
             // 결제하기 버튼 클릭
             buttonHomeShopPayment.apply {
                 setOnClickListener {
-                    val materialAlertDialogBuilder = MaterialAlertDialogBuilder(context)
-                    materialAlertDialogBuilder.setTitle("결제")
-                    materialAlertDialogBuilder.setMessage("결제 완료했습니다!")
-                    // 확인 버튼 누르면  다시 NavigationActivity로 돌아감
-                    materialAlertDialogBuilder.setPositiveButton("확인"){ dialogInterface: DialogInterface, i: Int ->
-                        val intent = Intent(shoppingCartActivity,  NavigationActivity::class.java)
-                        startActivity(intent)
-                        shoppingCartActivity.finish()
-                    }
-                    materialAlertDialogBuilder.show()
+                    AppAlertDialog(shoppingCartActivity, "결제", "결제 완료했습니다.").show(
+                        onClickPositive = {
+                            val intent = Intent(shoppingCartActivity,  NavigationActivity::class.java)
+                            startActivity(intent)
+                            shoppingCartActivity.finish()
+                        }
+                    )
                 }
             }
         }

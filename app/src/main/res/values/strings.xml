@@ -26,4 +26,8 @@
     <string name="naver_Login">NAVER로 로그인</string>
     <string name="google_Login">Google로 로그인</string>
 
+    <!-- Dialog Button -->
+    <string name="ok">확인</string>
+    <string name="cancel">취소</string>
+
 </resources>
