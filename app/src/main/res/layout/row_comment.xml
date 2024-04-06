@@ -53,7 +53,7 @@
                 app:iconGravity="textEnd" />
 
             <Button
-                android:id="@+id/buttonCommentView"
+                android:id="@+id/buttonCommentMenu"
                 style="@style/Widget.Material3.Button.Icon"
                 android:layout_width="30dp"
                 android:layout_height="30dp"

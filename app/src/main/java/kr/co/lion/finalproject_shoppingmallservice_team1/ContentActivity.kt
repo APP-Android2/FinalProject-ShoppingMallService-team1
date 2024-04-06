@@ -4,6 +4,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -116,6 +117,45 @@ class ContentActivity : AppCompatActivity() {
             holder.rowCommentBinding.textViewCommentNickname.text = "홍길동"
             holder.rowCommentBinding.textViewComment.text = "댓글 내용----------------"
             holder.rowCommentBinding.textViewCommentDate2.text = "04/05 14:42"
+            holder.rowCommentBinding.buttonCommentMenu.setOnClickListener {
+                // menu_comment의 리소스 ID를 가져옵니다.
+                val menuResId = R.menu.menu_comment
+
+                // 팝업 메뉴를 생성하고 RecyclerView의 버튼을 클릭한 위치에 표시합니다.
+                val popupMenu = PopupMenu(this@ContentActivity, holder.rowCommentBinding.buttonCommentComment)
+
+                // 팝업 메뉴에 menu_comment의 아이템을 추가합니다.
+                popupMenu.inflate(menuResId)
+
+                // 팝업 메뉴의 아이템을 클릭했을 때의 동작을 정의합니다.
+                popupMenu.setOnMenuItemClickListener { menuItem ->
+                    // menuItem의 ID에 따라 필요한 동작을 수행합니다.
+                    when (menuItem.itemId) {
+                        R.id.menuItemCommentChat -> {
+                            val intent = Intent(this@ContentActivity, ChattingActivity::class.java)
+                            startActivity(intent)
+                        }
+
+                        R.id.menuItemCommentDeclaration -> {
+                            val materialAlertDialogBuilder = MaterialAlertDialogBuilder(this@ContentActivity)
+                            materialAlertDialogBuilder.setTitle("신고")
+                            materialAlertDialogBuilder.setMessage("이 게시글을 신고하시겠습니까?")
+                            // 확인 버튼 누르면  다시 CommunityFragment로 돌아감
+                            materialAlertDialogBuilder.setPositiveButton("확인"){ dialogInterface: DialogInterface, i: Int ->
+                                // this로 하면 this가 onMenuItemClickListener를 가리키기 때문에 오류가 발생
+                                // 해당 스낵바를 표시하는 코드가 ContentActivity 내부에 있으므로, ContentActivity의 context를 사용해야 함
+                                Snackbar.make(holder.rowCommentBinding.buttonCommentComment, "신고를 완료했습니다.", Snackbar.LENGTH_SHORT).show()
+                            }
+                            materialAlertDialogBuilder.show()
+                        }
+                        else -> return@setOnMenuItemClickListener false
+                    }
+                    true
+                }
+
+                // 팝업 메뉴를 표시합니다.
+                popupMenu.show()
+            }
         }
     }
 }
