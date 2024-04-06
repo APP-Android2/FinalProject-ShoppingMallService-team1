@@ -1,8 +1,8 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -15,7 +15,6 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.HomeFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyNotificationFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyProfileFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.ReadTrainerFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.TrainerFragment
 
 class NavigationActivity : AppCompatActivity() {
@@ -68,6 +67,12 @@ class NavigationActivity : AppCompatActivity() {
         }
     }
 
+    // ReadTrainerActivity 실행
+    fun readTrainerRequest(){
+        val readTrainerIntent = Intent(this, ReadTrainerActivity::class.java)
+        startActivity(readTrainerIntent)
+    }
+
     fun replaceFragment(name:NAVIGATION_FRAGMENT_NAME, addToBackStack:Boolean, isAnimate:Boolean, data:Bundle?){
 
         SystemClock.sleep(200)
@@ -100,10 +105,6 @@ class NavigationActivity : AppCompatActivity() {
                 newFragment = MyFragment()
             }
 
-            NAVIGATION_FRAGMENT_NAME.READ_TRAINER_FRAGMENT -> {
-                newFragment = ReadTrainerFragment()
-            }
-
             NAVIGATION_FRAGMENT_NAME.MY_PROFILE_FRAGMENT -> {
                 newFragment = MyProfileFragment()
             }
@@ -111,7 +112,6 @@ class NavigationActivity : AppCompatActivity() {
             NAVIGATION_FRAGMENT_NAME.MY_NOTIFICATION_FRAGMENT -> {
                 newFragment = MyNotificationFragment()
             }
-
         }
 
         if(data != null){
