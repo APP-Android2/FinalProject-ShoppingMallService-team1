@@ -9,9 +9,11 @@
         android:orientation="vertical"
         tools:context=".fragment.ReadTrainerTab1Fragment">
 
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,8 +40,8 @@
                             android:layout_marginTop="8dp"
                             android:layout_marginRight="20dp"
                             android:text="공지사항"
-                            android:textStyle="bold"
-                            android:textSize="@dimen/Medium_Text_Size" />
+                            android:textSize="@dimen/Medium_Text_Size"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -91,9 +93,9 @@
                                 android:layout_marginTop="8dp"
                                 android:layout_marginRight="20dp"
                                 android:gravity="right"
+                                android:onClick="clickTextViewCertificate"
                                 android:text="자격 증명 보기"
-                                android:textSize="@dimen/Small_Text_Size"
-                                android:onClick="clickTextViewCertificate"/>
+                                android:textSize="@dimen/Small_Text_Size" />
                         </LinearLayout>
 
                         <TextView
@@ -170,8 +172,8 @@
                         android:layout_marginLeft="@dimen/Side_Padding"
                         android:layout_marginRight="@dimen/Side_Padding"
                         android:text="경력사항"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/Big_Text_Size"/>
+                        android:textSize="@dimen/Big_Text_Size"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -180,7 +182,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="@dimen/Side_Padding"
                         android:text="현) 피트모아 휘트니스 트레이너\n전) 테킷짐 트레이너\n전) Google짐 트레이너\n"
-                        android:textSize="@dimen/Small_Text_Size"/>
+                        android:textSize="@dimen/Small_Text_Size" />
 
                 </LinearLayout>
 
@@ -204,8 +206,8 @@
                         android:layout_marginLeft="@dimen/Side_Padding"
                         android:layout_marginRight="@dimen/Side_Padding"
                         android:text="소속"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/Big_Text_Size"/>
+                        android:textSize="@dimen/Big_Text_Size"
+                        android:textStyle="bold" />
 
                     <FrameLayout
                         android:layout_width="wrap_content"
@@ -216,10 +218,10 @@
                             android:id="@+id/trainerCenterImageView"
                             android:layout_width="180dp"
                             android:layout_height="178dp"
-                            android:layout_marginTop="@dimen/Chip_List_Margin"
                             android:layout_gravity="center"
-                            app:srcCompat="@drawable/fitmoa_logo_background"
-                            android:onClick="onImageViewTrainerClick"/>
+                            android:layout_marginTop="@dimen/Chip_List_Margin"
+                            android:onClick="onImageViewTrainerClick"
+                            app:srcCompat="@drawable/fitmoa_logo_background" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -234,8 +236,9 @@
                                 android:layout_marginBottom="3dp"
                                 android:text="피트모아 휘트니스"
                                 android:textColor="@color/white"
-                                android:textStyle="bold"
-                                android:textSize="@dimen/Small_Text_Size" />
+                                android:textSize="@dimen/Small_Text_Size"
+                                android:textStyle="bold" />
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -269,23 +272,21 @@
                         android:layout_marginLeft="@dimen/Side_Padding"
                         android:layout_marginRight="@dimen/Side_Padding"
                         android:text="사진"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/Big_Text_Size"/>
+                        android:textSize="@dimen/Big_Text_Size"
+                        android:textStyle="bold" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerViewTrainerImage"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="8dp"
                         android:layout_marginLeft="@dimen/Side_Padding"
-                        android:layout_marginRight="@dimen/Side_Padding">
-                    </androidx.recyclerview.widget.RecyclerView>
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="@dimen/Side_Padding"/>
 
                 </LinearLayout>
 
-
             </LinearLayout>
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
 
     </LinearLayout>
 </layout>
