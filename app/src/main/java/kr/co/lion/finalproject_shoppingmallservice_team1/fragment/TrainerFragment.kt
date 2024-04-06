@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -20,6 +21,7 @@ class TrainerFragment : Fragment() {
     lateinit var fragmentTrainerBinding: FragmentTrainerBinding
     lateinit var navigationActivity: NavigationActivity
 
+    var isImageClick = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -90,7 +92,6 @@ class TrainerFragment : Fragment() {
         }
     }
 
-
     fun settingRecyclerViewTrainerHealth(){
         fragmentTrainerBinding.apply {
             recyclerViewTrainer.apply {
@@ -113,9 +114,28 @@ class TrainerFragment : Fragment() {
                 )
 
                 // 이미지 클릭 시 상세페이지 이동 설정
+                // 찜 버튼 클릭 설정
                 this.rowTrainerBinding.apply {
                     cardViewTrainer.setOnClickListener {
                         navigationActivity.readTrainerRequest()
+                    }
+                    trainerMyPickImageButton.setOnClickListener {
+                        // 추후 DB 컬럼 값으로 변경 되도록 하기. (현재 단일 체크 가능)
+                        isImageClick = !isImageClick
+                        updateImageButton()
+                    }
+                }
+            }
+
+            // 찜 버튼 클릭에 따른 이미지 변경
+            fun  updateImageButton(){
+                rowTrainerBinding.apply {
+                    if(isImageClick){
+                        trainerMyPickImageButton.setImageResource(R.drawable.favorite_fill)
+                        Toast.makeText(navigationActivity, "'찜' 선택 되었습니다.", Toast.LENGTH_SHORT).show()
+                    } else{
+                        trainerMyPickImageButton.setImageResource(R.drawable.favorite)
+                        Toast.makeText(navigationActivity, "'찜' 해지 되었습니다.", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -164,9 +184,28 @@ class TrainerFragment : Fragment() {
                 )
 
                 // 이미지 클릭 시 상세페이지 이동 설정
+                // 찜 버튼 클릭 설정
                 this.rowTrainerBinding.apply {
                     cardViewTrainer.setOnClickListener {
                         navigationActivity.readTrainerRequest()
+                    }
+                    trainerMyPickImageButton.setOnClickListener {
+                        // 추후 DB 컬럼 값으로 변경 되도록 하기. (현재 단일 체크 가능)
+                        isImageClick = !isImageClick
+                        updateImageButton()
+                    }
+                }
+            }
+
+            // 찜 버튼 클릭에 따른 이미지 변경
+            fun  updateImageButton(){
+                rowTrainerBinding.apply {
+                    if(isImageClick){
+                        trainerMyPickImageButton.setImageResource(R.drawable.favorite_fill)
+                        Toast.makeText(navigationActivity, "'찜' 선택 되었습니다.", Toast.LENGTH_SHORT).show()
+                    } else{
+                        trainerMyPickImageButton.setImageResource(R.drawable.favorite)
+                        Toast.makeText(navigationActivity, "'찜' 해지 되었습니다.", Toast.LENGTH_SHORT).show()
                     }
                 }
             }

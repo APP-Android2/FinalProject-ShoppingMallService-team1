@@ -2,6 +2,7 @@ package kr.co.lion.finalproject_shoppingmallservice_team1
 
 import android.os.Bundle
 import android.os.SystemClock
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.transition.MaterialSharedAxis
@@ -19,12 +20,15 @@ class ReadTrainerActivity : AppCompatActivity() {
     var oldFragment: Fragment? = null
     var newFragment: Fragment? = null
 
+    var isImageClick = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         activityReadTrainerBinding = ActivityReadTrainerBinding.inflate(layoutInflater)
         setContentView(activityReadTrainerBinding.root)
 
+        myPickButtonClick()
 
         replaceFragment(TRAINER_FRAGMENT_NAME.READ_TRAINER_FRAGMENT, false, false, null)
     }
@@ -32,9 +36,33 @@ class ReadTrainerActivity : AppCompatActivity() {
 
     /**
      * 함수 정리 (작성 순서)
-     * 1. ReadTrainerFragment 실행을 위함
+     * 1. 찜 버튼 이벤트 설정 (myPickButtonClick())
+     * 2. 찜 버튼 이벤트 조건문 (updateImageButton())
+     * 3. ReadTrainerFragment 실행을 위함
      */
 
+
+    fun myPickButtonClick(){
+        activityReadTrainerBinding.apply {
+            readTrainerMyPickImageButton.setOnClickListener {
+                isImageClick = !isImageClick
+                updateImageButton()
+            }
+        }
+    }
+
+    //
+    fun  updateImageButton(){
+        activityReadTrainerBinding.apply {
+            if(isImageClick){
+                readTrainerMyPickImageButton.setImageResource(R.drawable.favorite_fill)
+                Toast.makeText(this@ReadTrainerActivity, "'찜' 선택 되었습니다.", Toast.LENGTH_SHORT).show()
+            } else{
+                readTrainerMyPickImageButton.setImageResource(R.drawable.favorite)
+                Toast.makeText(this@ReadTrainerActivity, "'찜' 해지 되었습니다.", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
     fun replaceFragment(name: TRAINER_FRAGMENT_NAME, addToBackStack:Boolean, isAnimate:Boolean, data:Bundle?){
 
