@@ -1,5 +1,6 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -53,7 +54,8 @@ class TrainerFragment : Fragment() {
                 setOnMenuItemClickListener {
                     when(it.itemId){
                         R.id.menuItemTrainerShopping -> {
-
+                            val shoppingCartIntent = Intent(navigationActivity, ShoppingCartActivity::class.java)
+                            startActivity(shoppingCartIntent)
                         }
                     }
                     true
