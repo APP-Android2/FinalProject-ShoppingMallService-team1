@@ -1,10 +1,13 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
 import android.os.Bundle
+import android.view.ContextThemeWrapper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.divider.MaterialDividerItemDecoration
@@ -13,19 +16,29 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.TRANSFER_MEMBERSHIP_FRA
 import kr.co.lion.finalproject_shoppingmallservice_team1.TransferMembershipActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentTransferMembershipContentListBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowTransfermembershipItemBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.TransferMembershipContentListViewModel
 
 class TransferMembershipContentListFragment : Fragment() {
 
     private lateinit var fragmentTransferMembershipContentListBinding: FragmentTransferMembershipContentListBinding
+    private lateinit var transferMembershipContentListViewModel: TransferMembershipContentListViewModel
     private lateinit var transferMembershipActivity: TransferMembershipActivity
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
 
-        fragmentTransferMembershipContentListBinding = FragmentTransferMembershipContentListBinding.inflate(inflater)
+        fragmentTransferMembershipContentListBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_transfer_membership_content_list, container, false)
+        transferMembershipContentListViewModel = TransferMembershipContentListViewModel()
+        fragmentTransferMembershipContentListBinding.transferMembershipContentListViewModel = transferMembershipContentListViewModel
+        fragmentTransferMembershipContentListBinding.lifecycleOwner = this@TransferMembershipContentListFragment
+
         transferMembershipActivity = activity as TransferMembershipActivity
 
         settingToolbar()
+
+        chip1()
+        chip2()
+
         settingRecyclerView()
         startCreateContent()
 
@@ -50,6 +63,74 @@ class TransferMembershipContentListFragment : Fragment() {
                 }
 
                 true
+            }
+        }
+    }
+
+    fun chip1() {
+        fragmentTransferMembershipContentListBinding.transfermembershipcontentlistChip1.apply {
+            setOnClickListener {
+
+                val contextWrapper = ContextThemeWrapper(context, R.style.popupMenuStyle)
+
+                val popup = PopupMenu(contextWrapper, this)
+                popup.inflate(R.menu.menu_transfermembership_chip1)
+                popup.setOnMenuItemClickListener { item ->
+                    when (item.itemId) {
+                        // 거리순
+                        R.id.transfermembership_menuItem_distance -> {
+                            text = "거리순"
+                        }
+                        // 최신순
+                        R.id.transfermembership_menuItem_latest -> {
+                            text = "최신순"
+                        }
+                    }
+                    true
+                }
+
+                popup.show()
+            }
+        }
+    }
+
+
+    fun chip2(){
+
+        fragmentTransferMembershipContentListBinding.transfermembershipcontentlistChip2.apply {
+
+            setOnClickListener {
+
+                val contextWrapper = ContextThemeWrapper(context, R.style.popupMenuStyle)
+
+                val popup = PopupMenu(contextWrapper, this)
+                popup.inflate(R.menu.menu_transfermembership_chip2)
+                popup.setOnMenuItemClickListener { item ->
+                    when (item.itemId) {
+                        // 모든 운동
+                        R.id.transfermembership_menuItem_total -> {
+                            text = "모든 운동"
+                        }
+
+                        // 헬스
+                        R.id.transfermembership_menuItem_health -> {
+                            text = "헬스"
+                        }
+
+                        // 필라테스
+                        R.id.transfermembership_menuItem_pilates -> {
+                            text = "필라테스"
+                        }
+
+                        // 수영
+                        R.id.transfermembership_menuItem_swimming -> {
+                            text = "수영"
+                        }
+                    }
+                    true
+                }
+
+                popup.show()
             }
         }
     }

@@ -58,9 +58,14 @@ class TransferMembershipEditContentFragment : Fragment() {
         }
     }
 
+    private fun showHoldingMembershipBottomSheet(){
+        val transferMembershipHoldingMembershipBottomFragment = TransferMembershipHoldingMembershipBottomFragment()
+        transferMembershipHoldingMembershipBottomFragment.show(transferMembershipActivity.supportFragmentManager, "HoldingMembershipBottomSheet")
+    }
+
     fun chooseMembership(){
         fragmentTransferMembershipEditContentBinding.transfermembershipEditChooseMembershipButton.setOnClickListener {
-            transferMembershipActivity.replaceFragment(TRANSFER_MEMBERSHIP_FRAGMENT_NAME.TRANSFER_MEMBERSHIP_HOLDING_FRAGMENT, true, true, null)
+            showHoldingMembershipBottomSheet()
         }
     }
 }

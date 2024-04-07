@@ -1,7 +1,6 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
 import android.app.Dialog
-import android.content.Intent
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.LayoutInflater
@@ -11,7 +10,6 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.MainActivity
-import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentPermissionBottomBinding
 
 class PermissionBottomFragment : BottomSheetDialogFragment() {

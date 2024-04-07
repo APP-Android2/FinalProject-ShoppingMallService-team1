@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
+import com.google.android.material.snackbar.Snackbar
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.TRANSFER_MEMBERSHIP_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.TransferMembershipActivity
@@ -25,6 +27,7 @@ class TransferMembershipCreateContentFragment : Fragment() {
 
         settingToolbar()
         chooseMembership()
+        showHoldingMembershipBottomSheet()
 
         return fragmentTransferMembershipCreateContentBinding.root
     }
@@ -59,9 +62,14 @@ class TransferMembershipCreateContentFragment : Fragment() {
         }
     }
 
+    private fun showHoldingMembershipBottomSheet(){
+        val transferMembershipHoldingMembershipBottomFragment = TransferMembershipHoldingMembershipBottomFragment()
+        transferMembershipHoldingMembershipBottomFragment.show(transferMembershipActivity.supportFragmentManager, "HoldingMembershipBottomSheet")
+    }
+
     fun chooseMembership(){
         fragmentTransferMembershipCreateContentBinding.transfermembershipCreateChooseMembershipButton.setOnClickListener {
-            transferMembershipActivity.replaceFragment(TRANSFER_MEMBERSHIP_FRAGMENT_NAME.TRANSFER_MEMBERSHIP_HOLDING_FRAGMENT, true, true, null)
+            showHoldingMembershipBottomSheet()
         }
     }
 }

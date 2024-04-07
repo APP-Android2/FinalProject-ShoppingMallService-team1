@@ -7,19 +7,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.transition.MaterialSharedAxis
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivityTransferMembershipBinding
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.CenterFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.CommunityFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.HomeFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyNotificationFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyProfileFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.ReadTrainerFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.TrainerFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.TransferMembershipContentListFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.TransferMembershipCreateContentFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.TransferMembershipDetailContentFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.TransferMembershipEditContentFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.TransferMembershipHoldingMembershipFragment
 
 class TransferMembershipActivity : AppCompatActivity() {
 
@@ -64,10 +55,6 @@ class TransferMembershipActivity : AppCompatActivity() {
 
             TRANSFER_MEMBERSHIP_FRAGMENT_NAME.TRANSFER_MEMBERSHIP_EDIT_CONTENT_FRAGMENT -> {
                 TransferMembershipEditContentFragment()
-            }
-
-            TRANSFER_MEMBERSHIP_FRAGMENT_NAME.TRANSFER_MEMBERSHIP_HOLDING_FRAGMENT -> {
-                TransferMembershipHoldingMembershipFragment()
             }
         }
 

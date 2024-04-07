@@ -19,7 +19,8 @@
             android:background="@android:color/transparent"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
-            app:navigationIcon="@drawable/arrow_back" />
+            app:navigationIcon="@drawable/arrow_back"
+            app:popupTheme="@style/PopupMenuWhiteBackground"/>
 
         <ScrollView
             android:layout_width="match_parent"
@@ -172,7 +173,7 @@
                 android:textStyle="bold"
                 app:cornerRadius="10dp"
                 app:strokeColor="@color/Pup_Color"
-                app:strokeWidth="1.5dp" />
+                app:strokeWidth="1dp" />
 
             <Button
                 android:id="@+id/transfermembershipdetailcontent_buy_button"

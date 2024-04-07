@@ -4,6 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="TransferMembershipContentListViewModel"
+            type="kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.TransferMembershipContentListViewModel" />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,6 +36,7 @@
             android:paddingVertical="9dp">
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/transfermembershipcontentlist_chip1"
                 style="@style/Widget.Material3.Chip.Suggestion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,12 +49,13 @@
                 app:chipStrokeColor="@color/Pup_Color" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/transfermembershipcontentlist_chip2"
                 style="@style/Widget.Material3.Chip.Suggestion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:backgroundTint="@color/Pup_Color"
-                android:text="운동 종류"
+                android:text="모든 운동"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textStyle="bold"
@@ -60,16 +68,19 @@
                 android:layout_weight="1" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/transfermembershipcontentlist_mycontent_chip"
                 style="@style/Widget.Material3.Chip.Suggestion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/Pup_Color"
+                app:chipBackgroundColor="@{TransferMembershipContentListViewModel.chipChecked ? @color/Pup_Color : @color/white}"
+                android:checked="@={TransferMembershipContentListViewModel.chipChecked}"
                 android:text="내가 쓴 글"
                 android:textAlignment="center"
-                android:textColor="@color/white"
+                android:textColor="@{TransferMembershipContentListViewModel.chipChecked ? @color/white : @color/Pup_Color}"
                 android:textStyle="bold"
                 app:chipCornerRadius="20dp"
-                app:chipStrokeColor="@color/Pup_Color" />
+                app:chipStrokeColor="@color/Pup_Color"
+                android:onClick="@{TransferMembershipContentListViewModel::onChipClicked}" />
 
         </LinearLayout>
 
