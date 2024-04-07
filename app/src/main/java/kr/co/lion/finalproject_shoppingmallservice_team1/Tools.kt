@@ -109,8 +109,9 @@ enum class CONSULTING_FRAGMENT_NAME(var num: Int, var str:String){
 
 enum class COMMUNITY_FRAGMENT_NAME(var num:Int, var str:String){
 
-    COMMUNITY_A_FRAGMENT(0, "A"),
-    COMMUNITY_B_FRAGMENT(1, "B"),
+    COMMUNITY_MYCONTENT_FRAGMENT(0, "CommunityMyContentFragment"),
+    COMMUNITY_COMMENTCONTENT_FRAGMENT(1, "CommunityCommentContentFragment"),
+    COMMUNITY_LIKECONTENT_FRAGMENT(2, "CommunityLikeContentFragment")
 }
 
 enum class MY_FRAGMENT_NAME(var num:Int, var str:String){

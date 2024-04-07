@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuItemCommentChat"
+        android:title="채팅 보내기" />
+    <item
+        android:id="@+id/menuItemCommentDeclaration"
+        android:title="신고하기" />
+</menu>

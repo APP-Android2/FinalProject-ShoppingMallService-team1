@@ -3,28 +3,36 @@ package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kr.co.lion.finalproject_shoppingmallservice_team1.AlarmActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.ChatActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.SearchActivity
+import kr.co.lion.finalproject_shoppingmallservice_team1.ShoppingCartActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentHomeBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.HomeViewModel
+import kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.RecyclerPopulatTrainerModel
+import kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.RecyclerRecentCenterModel
 
 class HomeFragment : Fragment() {
     lateinit var fragmentHomeBinding: FragmentHomeBinding
     lateinit var navigationActivity: NavigationActivity
     lateinit var homeViewModel: HomeViewModel
     lateinit var shoppingCartActivityLauncher:ActivityResultLauncher<Intent>
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         fragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
@@ -37,6 +45,8 @@ class HomeFragment : Fragment() {
         settingToolbar()
         settingAddress()
         settingSearch()
+        initRecyclerPopularTrainer()
+        initRecyclerRecentCenter()
 
         return fragmentHomeBinding.root
     }
@@ -125,6 +135,129 @@ class HomeFragment : Fragment() {
                     val intent = Intent(navigationActivity, SearchActivity::class.java)
                     startActivity(intent)
                 }
+            }
+        }
+    }
+
+    fun initRecyclerPopularTrainer() {
+        val itemList = mutableListOf<RecyclerPopulatTrainerModel>()
+        itemList.add(RecyclerPopulatTrainerModel(R.drawable.populartrainer1, "원 트레이너", "서울 중랑구 신내동"))
+        itemList.add(RecyclerPopulatTrainerModel(R.drawable.populartrainer2, "투 트레이너", "서울 강남구 서초대로"))
+        itemList.add(RecyclerPopulatTrainerModel(R.drawable.populartrainer3, "쓰리 트레이너", "서울 용산구 한남동"))
+        itemList.add(RecyclerPopulatTrainerModel(R.drawable.populartrainer4, "포 트레이너", "서울 노원구 노원동"))
+
+        val adapter = RecyclerPopularTrainerAdapter(itemList)
+        fragmentHomeBinding.recyclerViewPopularTrainer.adapter = adapter
+        fragmentHomeBinding.recyclerViewPopularTrainer.layoutManager = LinearLayoutManager(navigationActivity, LinearLayoutManager.HORIZONTAL, false)
+
+        adapter.setItemClickListener(object: RecyclerPopularTrainerAdapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                Toast.makeText(navigationActivity, "RecyclerView: ${itemList[position].trainerName}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    class RecyclerPopularTrainerAdapter(val items: MutableList<RecyclerPopulatTrainerModel>) :
+        RecyclerView.Adapter<RecyclerPopularTrainerAdapter.ViewHolder>() {
+        interface onItemClickListener {
+            fun onItemClick(position: Int)
+        }
+
+        private lateinit var itemClickListener: onItemClickListener
+
+        fun setItemClickListener(itemClickListener: onItemClickListener) {
+            this.itemClickListener = itemClickListener
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int
+        ): RecyclerPopularTrainerAdapter.ViewHolder {
+            val v = LayoutInflater.from(parent.context).inflate(R.layout.row_popular_trainer, parent, false)
+            return ViewHolder(v)
+        }
+
+        override fun onBindViewHolder(holder: RecyclerPopularTrainerAdapter.ViewHolder, position: Int) {
+            holder.itemView.setOnClickListener {
+                itemClickListener.onItemClick(position)
+            }
+            holder.bindItems(items[position])
+        }
+
+        override fun getItemCount(): Int {
+            return items.count()
+        }
+
+        inner class ViewHolder(itemView: View) :
+            RecyclerView.ViewHolder(itemView) {
+            fun bindItems(items: RecyclerPopulatTrainerModel) {
+                val imageViewPopularTrainer = itemView.findViewById<ImageView>(R.id.imageViewPopularTrainer)
+                val textViewPopularTrainerName = itemView.findViewById<TextView>(R.id.textViewPopularTrainerName)
+                val textViewPopularTrainerAddress = itemView.findViewById<TextView>(R.id.textViewPopularTrainerAddress)
+
+                imageViewPopularTrainer.setImageResource(items.image)
+                textViewPopularTrainerName.text = items.trainerName
+                textViewPopularTrainerAddress.text = items.address
+            }
+        }
+    }
+
+
+    fun initRecyclerRecentCenter() {
+        val itemList = mutableListOf<RecyclerRecentCenterModel>()
+        itemList.add(RecyclerRecentCenterModel(R.drawable.recentcenter1, "원 운동센터", "서울 중랑구 신내동"))
+        itemList.add(RecyclerRecentCenterModel(R.drawable.recentcenter2, "투 운동센터", "서울 강남구 서초대로"))
+        itemList.add(RecyclerRecentCenterModel(R.drawable.recentcenter3, "쓰리 운동센터", "서울 용산구 한남동"))
+        itemList.add(RecyclerRecentCenterModel(R.drawable.recentcenter4, "포 운동센터", "서울 노원구 노원동"))
+
+        val adapter = RecyclerRecentCenterAdapter(itemList)
+        fragmentHomeBinding.recyclerViewRecentCenter.adapter = adapter
+        fragmentHomeBinding.recyclerViewRecentCenter.layoutManager = LinearLayoutManager(navigationActivity, LinearLayoutManager.HORIZONTAL, false)
+
+        adapter.setItemClickListener(object: RecyclerRecentCenterAdapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                Toast.makeText(navigationActivity, "RecyclerView: ${itemList[position].centerName}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    class RecyclerRecentCenterAdapter(val items: MutableList<RecyclerRecentCenterModel>) :
+        RecyclerView.Adapter<RecyclerRecentCenterAdapter.ViewHolder>() {
+        interface onItemClickListener {
+            fun onItemClick(position: Int)
+        }
+
+        private lateinit var itemClickListener: onItemClickListener
+
+        fun setItemClickListener(itemClickListener: onItemClickListener) {
+            this.itemClickListener = itemClickListener
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int
+        ): RecyclerRecentCenterAdapter.ViewHolder {
+            val v = LayoutInflater.from(parent.context).inflate(R.layout.row_recent_center, parent, false)
+            return ViewHolder(v)
+        }
+
+        override fun onBindViewHolder(holder: RecyclerRecentCenterAdapter.ViewHolder, position: Int) {
+            holder.itemView.setOnClickListener {
+                itemClickListener.onItemClick(position)
+            }
+            holder.bindItems(items[position])
+        }
+
+        override fun getItemCount(): Int {
+            return items.count()
+        }
+
+        inner class ViewHolder(itemView: View) :
+            RecyclerView.ViewHolder(itemView) {
+            fun bindItems(items: RecyclerRecentCenterModel) {
+                val imageViewRecentCenter = itemView.findViewById<ImageView>(R.id.imageViewRecentCenter)
+                val textViewRecentCenterName = itemView.findViewById<TextView>(R.id.textViewRecentCenterName)
+                val textViewRecentCenterAddress = itemView.findViewById<TextView>(R.id.textViewRecentCenterAddress)
+
+                imageViewRecentCenter.setImageResource(items.image)
+                textViewRecentCenterName.text = items.centerName
+                textViewRecentCenterAddress.text = items.address
             }
         }
     }
