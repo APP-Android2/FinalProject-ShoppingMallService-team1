@@ -30,4 +30,8 @@
     <string name="ok">확인</string>
     <string name="cancel">취소</string>
 
+    <!-- ReadTrainer fragment -->
+    <string name="appbar_scrolling_view_behavior">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
+>>>>>>> main
+
 </resources>

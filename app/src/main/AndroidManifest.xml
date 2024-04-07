@@ -25,7 +25,13 @@
             android:name=".ContentActivity"
             android:exported="false" />
         <activity
+            android:name=".ReadTrainerActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginSignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ConsultingActivity"
             android:exported="false" />
         <activity
             android:name=".ReviewInputActivity"
