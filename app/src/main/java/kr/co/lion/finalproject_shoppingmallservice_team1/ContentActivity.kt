@@ -3,6 +3,7 @@ package kr.co.lion.finalproject_shoppingmallservice_team1
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.activity.enableEdgeToEdge
@@ -16,6 +17,7 @@ import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.google.android.material.snackbar.Snackbar
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivityContentBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowCommentBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowCommentReplyBinding
 
 class ContentActivity : AppCompatActivity() {
     lateinit var activityContentBinding: ActivityContentBinding
@@ -110,19 +112,21 @@ class ContentActivity : AppCompatActivity() {
             holder.rowCommentBinding.textViewCommentNickname.text = "홍길동"
             holder.rowCommentBinding.textViewComment.text = "댓글 내용----------------"
             holder.rowCommentBinding.textViewCommentDate2.text = "04/05 14:42"
+            holder.rowCommentBinding.buttonCommentComment.setOnClickListener {
+                AppAlertDialog(this@ContentActivity, "대댓글", "대댓글을 작성하시겠습니까?").show(
+                    onClickPositive = {
+                        Tools.showSoftInput(this@ContentActivity, activityContentBinding.editTextComment)
+                        // https://lakue.tistory.com/15 참고해서 대댓글 구현
+                    }
+                )
+            }
             holder.rowCommentBinding.buttonCommentMenu.setOnClickListener {
-                // menu_comment의 리소스 ID를 가져옵니다.
                 val menuResId = R.menu.menu_comment
-
-                // 팝업 메뉴를 생성하고 RecyclerView의 버튼을 클릭한 위치에 표시합니다.
                 val popupMenu = PopupMenu(this@ContentActivity, holder.rowCommentBinding.buttonCommentComment)
 
-                // 팝업 메뉴에 menu_comment의 아이템을 추가합니다.
                 popupMenu.inflate(menuResId)
 
-                // 팝업 메뉴의 아이템을 클릭했을 때의 동작을 정의합니다.
                 popupMenu.setOnMenuItemClickListener { menuItem ->
-                    // menuItem의 ID에 따라 필요한 동작을 수행합니다.
                     when (menuItem.itemId) {
                         R.id.menuItemCommentChat -> {
                             val intent = Intent(this@ContentActivity, ChattingActivity::class.java)
@@ -140,8 +144,6 @@ class ContentActivity : AppCompatActivity() {
                     }
                     true
                 }
-
-                // 팝업 메뉴를 표시합니다.
                 popupMenu.show()
             }
         }
