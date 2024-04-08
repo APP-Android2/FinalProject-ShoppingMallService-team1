@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="닉네임"
-                android:textSize="@dimen/Big_Text_Size"/>
+                android:textSize="@dimen/Medium_T_Text_Size"/>
 
             <TextView
                 android:id="@+id/userReviewCreateDateTextView"
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="7dp"
                 android:text="날짜"
-                android:textSize="@dimen/Small_Text_Size"/>
+                android:textSize="@dimen/Small_Text_Size" />
 
         </LinearLayout>
 
@@ -92,14 +92,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:text="PT 10회"
-                android:textSize="@dimen/Medium_Text_Size" />
+                android:textSize="@dimen/Medium2_T_Text_Size" />
 
             <TextView
                 android:id="@+id/userReviewTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="체계적인 관리를 통해 수업을 받았습니다.\n감사해요"
-                android:textSize="@dimen/Small_Text_Size" />
+                android:textSize="@dimen/Small_T_Text_Size" />
         </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView
@@ -129,7 +129,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginRight="20dp"
                         android:text="트레이너님"
-                        android:textSize="@dimen/Medium_Text_Size"
+                        android:textSize="@dimen/Medium2_T_Text_Size"
                         android:textStyle="bold" />
 
                     <TextView
@@ -151,7 +151,7 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="10dp"
                     android:text="안녕하세요! 라이언 트레이너 입니다.\n앞으로 남은 수업도 열심히 해보아요"
-                    android:textSize="@dimen/Small_Text_Size" />
+                    android:textSize="@dimen/Small_T_Text_Size" />
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>

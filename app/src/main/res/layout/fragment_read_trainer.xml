@@ -20,7 +20,7 @@
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
-                android:layout_height="450dp"
+                android:layout_height="390dp"
                 android:fitsSystemWindows="true"
                 app:expandedTitleGravity="center|bottom"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
@@ -28,19 +28,16 @@
                 app:contentScrim="?attr/colorPrimary"
                 app:expandedTitleMarginBottom="50dp">
 
-                <LinearLayout
+                <ImageButton
+                    android:id="@+id/trainerToolbarImageView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/starReviewImageView111"
-                        android:layout_width="match_parent"
-                        android:layout_height="450dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/star" />
-                </LinearLayout>
-
+                    android:layout_height="180dp"
+                    android:paddingStart="0dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="0dp"
+                    android:paddingBottom="0dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_launcher_background" />
 
                 <LinearLayout
                     android:layout_width="152dp"
@@ -55,7 +52,6 @@
                         android:layout_height="150dp"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
-                        android:clickable="true"
                         android:foreground="?android:attr/selectableItemBackground"
                         app:cardCornerRadius="75dp">
 
@@ -72,7 +68,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:layout_marginTop="@dimen/Chip_List_Margin"
+                    android:layout_marginTop="10dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -80,6 +76,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
+                        android:textSize="@dimen/Big_T_Text_Size"
+                        android:textStyle="bold"
                         android:text="트레이너 이름" />
 
                     <TextView
@@ -87,14 +85,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="센터 이름" />
+                        android:textSize="@dimen/Medium_T_Text_Size"
+                        android:text="투 운동센터" />
 
                     <TextView
                         android:id="@+id/ReadTrainerAddressTextView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:text="주소" />
+                        android:textSize="@dimen/Medium_T_Text_Size"
+                        android:text="서울 강남구 서초대로 5층" />
 
                     <!-- 구분선을 두기 위함 -->
                     <View

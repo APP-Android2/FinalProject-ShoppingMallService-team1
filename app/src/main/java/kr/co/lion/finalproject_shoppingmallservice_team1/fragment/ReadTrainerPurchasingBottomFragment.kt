@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -24,10 +23,6 @@ class ReadTrainerPurchasingBottomFragment : BottomSheetDialogFragment() {
 
     lateinit var fragmentReadTrainerPurchasingBottomBinding: FragmentReadTrainerPurchasingBottomBinding
     lateinit var readTrainerActivity: ReadTrainerActivity
-
-    // 프래그먼트 객체를 담을 변수
-    var oldFragment: Fragment? = null
-    var newFragment: Fragment? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         fragmentReadTrainerPurchasingBottomBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_read_trainer_purchasing_bottom, container, false)
@@ -67,9 +62,9 @@ class ReadTrainerPurchasingBottomFragment : BottomSheetDialogFragment() {
         behavior.state = BottomSheetBehavior.STATE_EXPANDED
     }
 
-    // BottomSheet의 높이를 구한다(화면 액정의 40% 크기)
+    // BottomSheet의 높이를 구한다(화면 액정의 60% 크기)
     fun getBottomSheetDialogHeight() : Int {
-        return (getWindowHeight() * 0.5).toInt()
+        return (getWindowHeight() * 0.6).toInt()
     }
 
     // 사용자 단말기 액정의 길이를 구해 반환하는 메서드
