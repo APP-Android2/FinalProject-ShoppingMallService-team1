@@ -1,7 +1,9 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1
 
+import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.ViewGroup
@@ -56,15 +58,15 @@ class ContentActivity : AppCompatActivity() {
                         }
 
                         R.id.menuItemContentDeclaration -> {
-                            AppAlertDialog(this@ContentActivity, "신고", "이 게시글을 신고하시겠습니까?", "신고", "취소").show(
+                            AppAlertDialog(this@ContentActivity, "신고", "이 게시글을 신고하시겠습니까?", "신고", "취소", 1).show(
                                 onClickPositive = {
-                                    Snackbar.make(this, "신고를 완료했습니다.", Snackbar.LENGTH_SHORT).show()
+
                                 }
                             )
                         }
 
                         R.id.menuItemContentDel -> {
-                            AppAlertDialog(this@ContentActivity, "삭제", "이 게시글을 삭제하시겠습니까?", "삭제", "취소").show(
+                            AppAlertDialog(this@ContentActivity, "삭제", "이 게시글을 삭제하시겠습니까?", "삭제", "취소", 1).show(
                                 onClickPositive = {
                                     finish()
                                 }
@@ -152,7 +154,7 @@ class ContentActivity : AppCompatActivity() {
                         }
 
                         R.id.menuItemCommentDeclaration -> {
-                            AppAlertDialog(this@ContentActivity, "신고", "이 게시글을 신고하시겠습니까?", "신고", "취소").show(
+                            AppAlertDialog(this@ContentActivity, "신고", "이 게시글을 신고하시겠습니까?", "신고", "취소", 1).show(
                                 onClickPositive = {
                                     Snackbar.make(holder.rowCommentBinding.buttonCommentComment, "신고를 완료했습니다.", Snackbar.LENGTH_SHORT).show()
                                 }

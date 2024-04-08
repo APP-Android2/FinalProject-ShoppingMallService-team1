@@ -62,7 +62,7 @@ class HomeShopContainFragment : Fragment() {
             // 결제하기 버튼 클릭
             buttonHomeShopPayment.apply {
                 setOnClickListener {
-                    AppAlertDialog(shoppingCartActivity, "결제", "결제 완료했습니다.").show(
+                    AppAlertDialog(shoppingCartActivity, "결제", "결제 완료했습니다.", "확인", "취소").show(
                         onClickPositive = {
                             val intent = Intent(shoppingCartActivity,  NavigationActivity::class.java)
                             startActivity(intent)

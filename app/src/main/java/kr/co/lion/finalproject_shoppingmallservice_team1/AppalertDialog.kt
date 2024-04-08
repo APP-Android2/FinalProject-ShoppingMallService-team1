@@ -10,7 +10,8 @@ class AppAlertDialog(
     private val title: String? = null,
     private val msg: String?= null,
     private val postive:String? = null,
-    private val negative:String? = null
+    private val negative:String? = null,
+    private val theme:Int = 0
 ) {
     private lateinit var positiveListener: () -> Unit
     private lateinit var negativeListener: () -> Unit
@@ -49,16 +50,26 @@ class AppAlertDialog(
             /**
              * Positive Button
              */
-            findViewById<TextView>(android.R.id.button1)?.apply {
-                textSize = 18f
-                setTextColor(context.getColor(R.color.black))
+            // 신고, 삭제인 경우
+            if (theme == 1){
+                findViewById<TextView>(android.R.id.button1)?.apply {
+                    textSize = 18f
+                    setTextColor(context.getColor(R.color.red))
+                }
             }
+            else {
+                findViewById<TextView>(android.R.id.button1)?.apply {
+                    textSize = 18f
+                    setTextColor(context.getColor(R.color.Pup_Color))
+                }
+            }
+
             /**
              * Negative Button
              */
             findViewById<TextView>(android.R.id.button2)?.apply {
                 textSize = 18f
-                setTextColor(context.getColor(R.color.red))
+                setTextColor(context.getColor(R.color.black))
             }
             /**
              * Neutral Button
