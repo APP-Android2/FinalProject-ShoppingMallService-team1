@@ -52,7 +52,6 @@
                             android:id="@+id/imageViewMy"
                             android:layout_width="60sp"
                             android:layout_height="60sp"
-                            android:src="@drawable/person"
                             app:srcCompat="@drawable/profile" />
 
                         <LinearLayout
