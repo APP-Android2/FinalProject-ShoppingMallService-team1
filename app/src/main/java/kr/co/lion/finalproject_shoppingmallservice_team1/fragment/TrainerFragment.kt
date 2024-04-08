@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
+import kr.co.lion.finalproject_shoppingmallservice_team1.ShoppingCartActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentTrainerBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowTrainerBinding
 
