@@ -102,8 +102,9 @@ class MyCouponFragment : Fragment() {
         }
 
         override fun onBindViewHolder(holder: MyCouponViewHolder, position: Int) {
-            holder.rowMyCouponBinding.textView15.text = "쿠폰 제목 ${position}% 할인 쿠폰"
-            holder.rowMyCouponBinding.textView12.text = "${position}%"
+            holder.rowMyCouponBinding.tvRowMyCouponTitle.text = "쿠폰 제목 ${position}% 쿠폰"
+            holder.rowMyCouponBinding.tvRowMyCouponUntilDays.text = "남은 기간 ${position}일 남음"
+            holder.rowMyCouponBinding.tvRowMyCouponSale.text = "15%"
         }
     }
 }
