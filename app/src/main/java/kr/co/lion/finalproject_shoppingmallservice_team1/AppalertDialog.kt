@@ -8,7 +8,9 @@ import androidx.core.content.res.ResourcesCompat
 class AppAlertDialog(
     private val context: Context,
     private val title: String? = null,
-    private val msg: String?= null
+    private val msg: String?= null,
+    private val postive:String? = null,
+    private val negative:String? = null
 ) {
     private lateinit var positiveListener: () -> Unit
     private lateinit var negativeListener: () -> Unit
@@ -16,10 +18,10 @@ class AppAlertDialog(
         AlertDialog.Builder(context)
             .setTitle(title)
             .setMessage(msg)
-            .setPositiveButton(context.getString(R.string.ok)) { _, _ ->
+            .setPositiveButton(postive) { _, _ ->
                 if (::positiveListener.isInitialized) positiveListener()
             }
-            .setNegativeButton(context.getString(R.string.cancel)) { _, _ ->
+            .setNegativeButton(negative) { _, _ ->
                 if (::negativeListener.isInitialized) negativeListener()
             }.setNeutralButton("") { _, _ ->
 
@@ -49,7 +51,7 @@ class AppAlertDialog(
              */
             findViewById<TextView>(android.R.id.button1)?.apply {
                 textSize = 18f
-                setTextColor(context.getColor(R.color.Pup_Color))
+                setTextColor(context.getColor(R.color.black))
             }
             /**
              * Negative Button

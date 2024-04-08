@@ -70,6 +70,10 @@ class CommunityLikeContentFragment : Fragment() {
 
             init {
                 this.rowLikecontentBinding = rowLikecontentBinding
+                rowLikecontentBinding.root.layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
             }
         }
 

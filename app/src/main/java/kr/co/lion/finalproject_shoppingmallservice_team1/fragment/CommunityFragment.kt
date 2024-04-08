@@ -141,6 +141,11 @@ class CommunityFragment : Fragment() {
 
             init {
                 this.rowCommunityBinding = rowCommunityBinding
+
+                rowCommunityBinding.root.layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
             }
         }
 

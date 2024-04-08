@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -55,7 +56,7 @@ class ContentActivity : AppCompatActivity() {
                         }
 
                         R.id.menuItemContentDeclaration -> {
-                            AppAlertDialog(this@ContentActivity, "신고", "이 게시글을 신고하시겠습니까?").show(
+                            AppAlertDialog(this@ContentActivity, "신고", "이 게시글을 신고하시겠습니까?", "신고", "취소").show(
                                 onClickPositive = {
                                     Snackbar.make(this, "신고를 완료했습니다.", Snackbar.LENGTH_SHORT).show()
                                 }
@@ -63,7 +64,7 @@ class ContentActivity : AppCompatActivity() {
                         }
 
                         R.id.menuItemContentDel -> {
-                            AppAlertDialog(this@ContentActivity, "삭제", "이 게시글을 삭제하시겠습니까?").show(
+                            AppAlertDialog(this@ContentActivity, "삭제", "이 게시글을 삭제하시겠습니까?", "삭제", "취소").show(
                                 onClickPositive = {
                                     finish()
                                 }
@@ -95,6 +96,11 @@ class ContentActivity : AppCompatActivity() {
 
             init {
                 this.rowCommentBinding = rowCommentBinding
+
+                rowCommentBinding.root.layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
             }
         }
 
@@ -112,8 +118,20 @@ class ContentActivity : AppCompatActivity() {
             holder.rowCommentBinding.textViewCommentNickname.text = "홍길동"
             holder.rowCommentBinding.textViewComment.text = "댓글 내용----------------"
             holder.rowCommentBinding.textViewCommentDate2.text = "04/05 14:42"
+            holder.rowCommentBinding.buttonCommentLike.setOnClickListener {
+//                 val button = holder.rowCommentBinding.buttonCommentLike
+//                // 클릭할 때마다 아이콘을 변경합니다
+//                val drawable = if (button.compoundDrawablesRelative[2] == ContextCompat.getDrawable(this@ContentActivity, R.drawable.favorite_fill)) {
+//                    ContextCompat.getDrawable(this@ContentActivity, R.drawable.favorite)
+//
+//                } else {
+//                    ContextCompat.getDrawable(this@ContentActivity, R.drawable.favorite_fill)
+//                }
+//                button.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, drawable, null)
+            }
+
             holder.rowCommentBinding.buttonCommentComment.setOnClickListener {
-                AppAlertDialog(this@ContentActivity, "대댓글", "대댓글을 작성하시겠습니까?").show(
+                AppAlertDialog(this@ContentActivity, "대댓글", "대댓글을 작성하시겠습니까?", "작성", "취소").show(
                     onClickPositive = {
                         Tools.showSoftInput(this@ContentActivity, activityContentBinding.editTextComment)
                         // https://lakue.tistory.com/15 참고해서 대댓글 구현
@@ -134,7 +152,7 @@ class ContentActivity : AppCompatActivity() {
                         }
 
                         R.id.menuItemCommentDeclaration -> {
-                            AppAlertDialog(this@ContentActivity, "신고", "이 게시글을 신고하시겠습니까?").show(
+                            AppAlertDialog(this@ContentActivity, "신고", "이 게시글을 신고하시겠습니까?", "신고", "취소").show(
                                 onClickPositive = {
                                     Snackbar.make(holder.rowCommentBinding.buttonCommentComment, "신고를 완료했습니다.", Snackbar.LENGTH_SHORT).show()
                                 }
