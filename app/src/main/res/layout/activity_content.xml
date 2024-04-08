@@ -211,7 +211,7 @@
 
             <EditText
                 android:id="@+id/editTextComment"
-                android:layout_width="364dp"
+                android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:background="@color/InputCompartment_Color"
                 android:hint=" 댓글을 입력해 주세요."
@@ -222,8 +222,8 @@
             <Button
                 android:id="@+id/btnSend"
                 style="@style/Widget.Material3.Button.IconButton.Filled"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:background="@color/InputCompartment_Color"
                 android:backgroundTint="@color/InputCompartment_Color"
                 app:icon="@drawable/send"

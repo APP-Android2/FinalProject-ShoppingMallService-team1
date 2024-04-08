@@ -1,11 +1,9 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
-import android.util.AttributeSet
-import android.view.View
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -26,6 +24,8 @@ class NavigationActivity : AppCompatActivity() {
     var oldFragment: Fragment? = null
     var newFragment: Fragment? = null
 
+    var currentFragmentId: Int? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -41,7 +41,9 @@ class NavigationActivity : AppCompatActivity() {
     }
     // 하단 네비게이션뷰 설정
     fun setBottomNavigationView() {
+
         activityNavigationBinding.bottomNavigationView.setOnItemSelectedListener { item ->
+
             when (item.itemId) {
                 R.id.fragment_home -> {
                     replaceFragment(NAVIGATION_FRAGMENT_NAME.HOME_FRAGMENT, false, true, null)
@@ -76,11 +78,16 @@ class NavigationActivity : AppCompatActivity() {
 
     fun replaceFragment(name:NAVIGATION_FRAGMENT_NAME, addToBackStack:Boolean, isAnimate:Boolean, data:Bundle?){
 
+        if(currentFragmentId == name.num){
+            return
+        }
+
         SystemClock.sleep(200)
 
         val fragmentTransaction = supportFragmentManager.beginTransaction()
 
         if(newFragment != null){
+
             oldFragment = newFragment
         }
 
@@ -88,22 +95,27 @@ class NavigationActivity : AppCompatActivity() {
 
             NAVIGATION_FRAGMENT_NAME.HOME_FRAGMENT -> {
                 newFragment = HomeFragment()
+                currentFragmentId = NAVIGATION_FRAGMENT_NAME.HOME_FRAGMENT.num
             }
 
             NAVIGATION_FRAGMENT_NAME.CENTER_FRAGMENT -> {
                 newFragment = CenterFragment()
+                currentFragmentId = NAVIGATION_FRAGMENT_NAME.CENTER_FRAGMENT.num
             }
 
             NAVIGATION_FRAGMENT_NAME.TRAINER_FRAGMENT -> {
                 newFragment = TrainerFragment()
+                currentFragmentId = NAVIGATION_FRAGMENT_NAME.TRAINER_FRAGMENT.num
             }
 
             NAVIGATION_FRAGMENT_NAME.COMMUNITY_FRAGMENT -> {
                 newFragment = CommunityFragment()
+                currentFragmentId = NAVIGATION_FRAGMENT_NAME.COMMUNITY_FRAGMENT.num
             }
 
             NAVIGATION_FRAGMENT_NAME.MY_FRAGMENT -> {
                 newFragment = MyFragment()
+                currentFragmentId = NAVIGATION_FRAGMENT_NAME.MY_FRAGMENT.num
             }
         }
 

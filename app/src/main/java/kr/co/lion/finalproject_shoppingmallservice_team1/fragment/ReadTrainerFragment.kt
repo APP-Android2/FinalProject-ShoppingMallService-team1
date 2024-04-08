@@ -1,5 +1,6 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.SystemClock
@@ -13,6 +14,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.transition.MaterialSharedAxis
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.ReadTrainerActivity
+import kr.co.lion.finalproject_shoppingmallservice_team1.ShoppingCartActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.TRAINER_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentReadTrainerBinding
 
@@ -62,7 +64,8 @@ class ReadTrainerFragment : Fragment() {
                 setOnMenuItemClickListener {
                     when(it.itemId){
                         R.id.menuItemTrainerShopping -> {
-
+                            val shoppingCartIntent = Intent(readTrainerActivity, ShoppingCartActivity::class.java)
+                            startActivity(shoppingCartIntent)
                         }
                     }
                     true
