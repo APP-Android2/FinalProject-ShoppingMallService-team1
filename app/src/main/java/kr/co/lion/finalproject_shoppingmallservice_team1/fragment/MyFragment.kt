@@ -1,5 +1,6 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.transition.MaterialSharedAxis
+import kr.co.lion.finalproject_shoppingmallservice_team1.AlarmActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.MY_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
@@ -40,6 +42,12 @@ class MyFragment : Fragment() {
     fun settingToolbar(){
         fragmentMyBinding.apply {
             toolbarMy.apply {
+                // 알림
+                setNavigationIcon(R.drawable.notifications)
+                setNavigationOnClickListener {
+                    val intent = Intent(navigationActivity, AlarmActivity::class.java)
+                    startActivity(intent)
+                }
                 // 메뉴
                 inflateMenu(R.menu.menu_my)
                 setOnMenuItemClickListener {
@@ -105,9 +113,9 @@ class MyFragment : Fragment() {
             }
 
             /*  하단 메뉴 탭 구성  */
-            // 공지/이벤트
-            myNotification.setOnClickListener {
-                // 알림 화면 실행하기
+            // 방문상담신청내역
+            myVisitConsulting.setOnClickListener {
+
             }
             // 결제 내역
             myPayment.setOnClickListener {
@@ -174,7 +182,7 @@ class MyFragment : Fragment() {
                 newFragment = MyPickFragment()
             }
 
-            // 공지/이벤트
+            // 방문상담 신청 내역
 
             // 결제 내역
             MY_FRAGMENT_NAME.MY_PAYMENT_FRAGMENT -> {

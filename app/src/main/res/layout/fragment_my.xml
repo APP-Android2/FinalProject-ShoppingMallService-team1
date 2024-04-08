@@ -247,7 +247,7 @@
                         android:orientation="vertical">
 
                         <LinearLayout
-                            android:id="@+id/myNotification"
+                            android:id="@+id/myVisitConsulting"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:clickable="true"
@@ -256,13 +256,13 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/textViewMyNotification"
+                                android:id="@+id/textViewMyVisitConsulting"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/Up_Down_Margin"
                                 android:paddingLeft="@dimen/Side_Padding"
                                 android:paddingRight="@dimen/Side_Padding"
-                                android:text="공지/이벤트" />
+                                android:text="방문상담 신청 내역" />
 
                             <com.google.android.material.divider.MaterialDivider
                                 android:id="@+id/line1"
