@@ -1,8 +1,11 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
+import android.util.AttributeSet
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -41,23 +44,23 @@ class NavigationActivity : AppCompatActivity() {
         activityNavigationBinding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.fragment_home -> {
-                    replaceFragment(NAVIGATION_FRAGMENT_NAME.HOME_FRAGMENT, true, true, null)
+                    replaceFragment(NAVIGATION_FRAGMENT_NAME.HOME_FRAGMENT, false, true, null)
                     true
                 }
                 R.id.fragment_center -> {
-                    replaceFragment(NAVIGATION_FRAGMENT_NAME.CENTER_FRAGMENT, true, true, null)
+                    replaceFragment(NAVIGATION_FRAGMENT_NAME.CENTER_FRAGMENT, false, true, null)
                     true
                 }
                 R.id.fragment_trainer -> {
-                    replaceFragment(NAVIGATION_FRAGMENT_NAME.TRAINER_FRAGMENT, true, true, null)
+                    replaceFragment(NAVIGATION_FRAGMENT_NAME.TRAINER_FRAGMENT, false, true, null)
                     true
                 }
                 R.id.fragment_comunity-> {
-                    replaceFragment(NAVIGATION_FRAGMENT_NAME.COMMUNITY_FRAGMENT, true, true, null)
+                    replaceFragment(NAVIGATION_FRAGMENT_NAME.COMMUNITY_FRAGMENT, false, true, null)
                     true
                 }
                 R.id.fragment_my -> {
-                    replaceFragment(NAVIGATION_FRAGMENT_NAME.MY_FRAGMENT, true, true, null)
+                    replaceFragment(NAVIGATION_FRAGMENT_NAME.MY_FRAGMENT, false, true, null)
                     true
                 }
                 else -> false
