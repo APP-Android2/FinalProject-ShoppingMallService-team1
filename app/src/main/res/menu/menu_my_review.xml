@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/menuMyShopping"
+        android:id="@+id/menuMyReviewShopping"
         android:icon="@drawable/shopping_cart"
         android:title="장바구니"
         app:showAsAction="ifRoom" />

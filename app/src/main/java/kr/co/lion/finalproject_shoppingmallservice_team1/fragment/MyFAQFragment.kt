@@ -11,35 +11,35 @@ import androidx.databinding.DataBindingUtil
 import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
-import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentMyProfileBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentMyFAQBinding
 
-class MyProfileFragment : Fragment() {
+class MyFAQFragment : Fragment() {
 
-    lateinit var fragmentMyProfileBinding: FragmentMyProfileBinding
+    lateinit var fragmentMyFAQBinding: FragmentMyFAQBinding
     lateinit var navigationActivity: NavigationActivity
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        fragmentMyProfileBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_profile, container, false)
+        fragmentMyFAQBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_f_a_q, container, false)
         navigationActivity = activity as NavigationActivity
 
         settingToolbar()
         handleBackPress()
 
-        return fragmentMyProfileBinding.root
+        return fragmentMyFAQBinding.root
     }
 
     // Toolbar 설정
     fun settingToolbar(){
-        fragmentMyProfileBinding.apply {
-            toolbarMyProfile.apply {
-                // 뒤로가기
-                setNavigationIcon(R.drawable.arrow_back)
-                setNavigationOnClickListener {
-                    backProcess()
+        fragmentMyFAQBinding.apply {
+            fragmentMyFAQBinding.apply {
+                toolbarMyFAQ.apply {
+                    // 뒤로가기
+                    setNavigationIcon(R.drawable.arrow_back)
+                    setNavigationOnClickListener {
+                        backProcess()
+                    }
                 }
-                // 메뉴
-                inflateMenu(R.menu.menu_my_profile)
             }
         }
     }

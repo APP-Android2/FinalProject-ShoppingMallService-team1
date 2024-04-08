@@ -73,8 +73,6 @@ enum class NAVIGATION_FRAGMENT_NAME(var num:Int, var str:String){
     TRAINER_FRAGMENT(2, "트레이너"),
     COMMUNITY_FRAGMENT(3, "커뮤니티"),
     MY_FRAGMENT(4, "MY"),
-    MY_PROFILE_FRAGMENT(6, "MyProfileFragment"),
-    MY_NOTIFICATION_FRAGMENT(7, "MyNotificationFragment"),
 }
 
 enum class HOME_BOTTOM_FRAGMENT_NAME(var num:Int, var str:String){
@@ -116,10 +114,30 @@ enum class COMMUNITY_FRAGMENT_NAME(var num:Int, var str:String){
 
 enum class MY_FRAGMENT_NAME(var num:Int, var str:String){
 
-    MY_A_FRAGMENT(0, "A"),
-    MY_B_FRAGMENT(1, "B"),
+    MY_PROFILE_FRAGMENT(0, "프로필"),
+    // 포인트
+    MY_COUPON_FRAGMENT(2, "쿠폰"),
+    MY_MEMBERSHIP_FRAGMENT(3, "회원권"),
+    MY_REVIEW_FRAGMENT(4, "리뷰 관리"),
+    MY_PICK_FRAGMENT(5, "찜"),
+    // 공지/이벤트
+    MY_PAYMENT_FRAGMENT(7, "결제 내역"),
+    // 고객센터 프래그먼트
+    MY_FAQ_FRAGMENT(9, "FAQ"),
+    MY_SETTING_FRAGMENT(10, "설정"),
 }
 
+enum class MY_REVIEW_TAB_NAME(var num: Int, var str: String){
+
+    MY_REVIEW_TAB1_FRAGMENT(0, "체육시설 리뷰"),
+    MY_REVIEW_TAB2_FRAGMENT(1, "트레이너 리뷰"),
+}
+
+enum class MY_PICK_TAB_NAME(var num: Int, var str: String) {
+
+    MY_PICK_TAB1_FRAGMENT(0, "트레이너 찜"),
+    MY_PICK_TAB2_FRAGMENT(1, "체육시설 찜"),
+}
 enum class TRANSFER_MEMBERSHIP_FRAGMENT_NAME(var num:Int, var str:String){
     TRANSFER_MEMBERSHIP_CONTENT_LIST_FRAGMENT(0, "양도회원권 글 목록"),
     TRANSFER_MEMBERSHIP_DETAIL_CONTENT_FRAGMENT(1, "양도회원권 상세 페이지"),
