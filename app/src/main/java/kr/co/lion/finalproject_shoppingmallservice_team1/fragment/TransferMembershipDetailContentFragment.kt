@@ -57,11 +57,11 @@ class TransferMembershipDetailContentFragment : Fragment() {
                         MaterialAlertDialogBuilder(transferMembershipActivity, R.style.MyDialogTheme).apply {
                             setTitle("게시물 삭제")
                             setMessage("이 게시물을 삭제하시겠습니까?")
-                            setNegativeButton("삭제", null)
-                            setPositiveButton("취소", null)
+                            setNegativeButton("취소", null)
+                            setPositiveButton("삭제", null)
                             show().apply {
-                                getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.RED)  // '삭제' 버튼을 빨간색으로 설정
-                                getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK) // '취소' 버튼을 검은색으로 설정
+                                getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK)
+                                getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.RED)
                             }
                         }
                     }
