@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.ContextThemeWrapper
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.activity.enableEdgeToEdge
@@ -142,7 +143,10 @@ class ContentActivity : AppCompatActivity() {
             }
             holder.rowCommentBinding.buttonCommentMenu.setOnClickListener {
                 val menuResId = R.menu.menu_comment
-                val popupMenu = PopupMenu(this@ContentActivity, holder.rowCommentBinding.buttonCommentComment)
+
+                val contextWrapper = ContextThemeWrapper(this@ContentActivity, R.style.popupMenuStyle)
+
+                val popupMenu = PopupMenu(contextWrapper, it)
 
                 popupMenu.inflate(menuResId)
 
@@ -156,7 +160,7 @@ class ContentActivity : AppCompatActivity() {
                         R.id.menuItemCommentDeclaration -> {
                             AppAlertDialog(this@ContentActivity, "신고", "이 게시글을 신고하시겠습니까?", "신고", "취소", 1).show(
                                 onClickPositive = {
-                                    Snackbar.make(holder.rowCommentBinding.buttonCommentComment, "신고를 완료했습니다.", Snackbar.LENGTH_SHORT).show()
+                                    Snackbar.make(it, "신고를 완료했습니다.", Snackbar.LENGTH_SHORT).show()
                                 }
                             )
                         }
