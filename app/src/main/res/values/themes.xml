@@ -26,4 +26,12 @@
         <item name="postSplashScreenTheme">@style/Theme.FinalProjectShoppingMallServiceteam1</item>
     </style>
 
+    <!-- CheckBox -->
+    <style name="CustomCheckBox" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/Pup_Color</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+
 </resources>

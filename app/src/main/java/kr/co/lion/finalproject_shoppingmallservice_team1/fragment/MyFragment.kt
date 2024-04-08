@@ -8,17 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.transition.MaterialSharedAxis
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import kr.co.lion.finalproject_shoppingmallservice_team1.HOME_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.MY_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
-import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
-import kr.co.lion.finalproject_shoppingmallservice_team1.TRAINER_FRAGMENT_NAME
-import kr.co.lion.finalproject_shoppingmallservice_team1.Tools
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentMyBinding
 
 class MyFragment : Fragment() {

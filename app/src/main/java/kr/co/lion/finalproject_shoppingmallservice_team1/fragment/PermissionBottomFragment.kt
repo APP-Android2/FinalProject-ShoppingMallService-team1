@@ -1,7 +1,6 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
 import android.app.Dialog
-import android.content.Intent
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.LayoutInflater
@@ -11,7 +10,6 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.MainActivity
-import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentPermissionBottomBinding
 
 class PermissionBottomFragment : BottomSheetDialogFragment() {
@@ -36,12 +34,10 @@ class PermissionBottomFragment : BottomSheetDialogFragment() {
 
         fragmentPermissionBottomBinding.PermissionButton.setOnClickListener {
 
-            // 다음 페이지 이동
-            val navigationActivityIntent = Intent(mainActivity, NavigationActivity::class.java)
-            startActivity(navigationActivityIntent)
+            // 권한 설정
 
-            // 메인 액티비티 종료
-            mainActivity.finish()
+            // 닫기
+            dismiss()
         }
     }
 

@@ -9,4 +9,24 @@
         <item name="android:background">#00000000</item>
     </style>
 
+    <!-- MaterialAlertDialog -->
+    <style name="MyDialogTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <!-- 대화 상자 배경 색상 -->
+        <item name="background">@color/white</item>
+    </style>
+
+    <!-- popUpMenu-->
+    <style name="popupMenuStyle" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:itemBackground">@color/white</item>
+    </style>
+
+    <!-- Toolbar popUpMenu-->
+    <style name="PopupMenuWhiteBackground" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:itemBackground">@color/white</item>
+        <item name="popupMenuBackground">@color/white</item>
+    </style>
+
+
 </resources>

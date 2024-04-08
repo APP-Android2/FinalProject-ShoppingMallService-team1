@@ -1,5 +1,6 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -24,21 +25,37 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
 
-        activityMainBinding.mainViewPager2.adapter = ViewPageAdapter(this@MainActivity)
+        settingOnBoarding()
+        startLoginActivity()
+    }
+
+    private fun settingOnBoarding(){
+        activityMainBinding.mainViewPager2.adapter = MainViewPageAdapter(this@MainActivity)
         activityMainBinding.mainCircleIndicator.setViewPager(activityMainBinding.mainViewPager2)
     }
-}
 
-class ViewPageAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter(fragmentActivity) {
+    private fun startLoginActivity(){
 
-    override fun getItemCount(): Int = 3
+        activityMainBinding.mainButton.setOnClickListener {
 
-    override fun createFragment(position: Int): Fragment {
-        return when (position) {
-            0 -> OnBoarding1Fragment()
-            1 -> OnBoarding2Fragment()
-            2 -> OnBoarding3Fragment()
-            else -> throw IllegalArgumentException("Invalid position $position")
+            val intent = Intent(this@MainActivity, LoginActivity::class.java)
+            startActivity(intent)
+
+            this@MainActivity.finish()
+        }
+    }
+
+    inner class MainViewPageAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter(fragmentActivity) {
+
+        override fun getItemCount(): Int = 3
+
+        override fun createFragment(position: Int): Fragment {
+            return when (position) {
+                0 -> OnBoarding1Fragment()
+                1 -> OnBoarding2Fragment()
+                2 -> OnBoarding3Fragment()
+                else -> throw IllegalArgumentException("Invalid position $position")
+            }
         }
     }
 }

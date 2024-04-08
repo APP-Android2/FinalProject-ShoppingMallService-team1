@@ -49,7 +49,6 @@
                         android:id="@+id/imageView6"
                         android:layout_width="80sp"
                         android:layout_height="80sp"
-                        android:src="@drawable/person"
                         app:srcCompat="@drawable/profile" />
 
                     <ImageView

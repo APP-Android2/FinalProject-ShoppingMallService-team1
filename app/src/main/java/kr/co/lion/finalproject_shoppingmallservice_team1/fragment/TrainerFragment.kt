@@ -1,8 +1,6 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
 import android.os.Bundle
-import android.os.SystemClock
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.transition.MaterialSharedAxis
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
-import kr.co.lion.finalproject_shoppingmallservice_team1.TRAINER_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentTrainerBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowTrainerBinding
 
@@ -24,9 +20,6 @@ class TrainerFragment : Fragment() {
     lateinit var fragmentTrainerBinding: FragmentTrainerBinding
     lateinit var navigationActivity: NavigationActivity
 
-    // 프래그먼트의 주소값을 담을 프로퍼티
-    var oldFragment: Fragment? = null
-    var newFragment: Fragment? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -40,14 +33,24 @@ class TrainerFragment : Fragment() {
         return fragmentTrainerBinding.root
     }
 
-    // 툴바 설정
+    /**
+     * 함수 정리 (작성 순서)
+     * 1. 툴바 설정 (settingToolbarTrainer())
+     * 2. Tab 레이아웃 설정 (settingTabLayout())
+     * 3. RecyclerView 설정(헬스) (settingRecyclerViewTrainerHealth())
+     * 4. 헬스 항목의 Adapter와 ViewHolder 설정
+     * 5. RecyclerView 설정(필라테스) (settingRecyclerViewTrainerPilatest())
+     * 6. 필라테스 항목의 Adapter와 ViewHolder 설정
+     */
+
+
     fun settingToolbarTrainer(){
         fragmentTrainerBinding.apply {
             toolbarTrainer.apply {
                 inflateMenu(R.menu.menu_trainer)
                 setOnMenuItemClickListener {
                     when(it.itemId){
-                        R.id.shopping -> {
+                        R.id.menuItemTrainerShopping -> {
 
                         }
                     }
@@ -57,7 +60,6 @@ class TrainerFragment : Fragment() {
         }
     }
 
-    // tab 레이아웃 설정
     fun settingTabLayout(){
         fragmentTrainerBinding.apply {
             trainerTab.apply {
@@ -89,7 +91,6 @@ class TrainerFragment : Fragment() {
     }
 
 
-    // RecyclerView 설정(헬스)
     fun settingRecyclerViewTrainerHealth(){
         fragmentTrainerBinding.apply {
             recyclerViewTrainer.apply {
@@ -99,7 +100,6 @@ class TrainerFragment : Fragment() {
         }
     }
 
-    // RecyclerView (헬스)
     inner class TrainerHealthRecyclerViewAdapter: RecyclerView.Adapter<TrainerHealthRecyclerViewAdapter.TrainerHealthViewHolder>(){
         inner class TrainerHealthViewHolder(rowTrainerBinding: RowTrainerBinding): RecyclerView.ViewHolder(rowTrainerBinding.root){
             val rowTrainerBinding:RowTrainerBinding
@@ -114,8 +114,8 @@ class TrainerFragment : Fragment() {
 
                 // 이미지 클릭 시 상세페이지 이동 설정
                 this.rowTrainerBinding.apply {
-                    trainerProfileImageView.setOnClickListener {
-                        replaceFragment(TRAINER_FRAGMENT_NAME.READ_TRAINER_FRAGMENT, true, true, null)
+                    cardViewTrainer.setOnClickListener {
+                        navigationActivity.readTrainerRequest()
                     }
                 }
             }
@@ -141,7 +141,7 @@ class TrainerFragment : Fragment() {
     }
 
 
-    // RecyclerView 설정(필라테스)
+
     fun settingRecyclerViewTrainerPilatest(){
         fragmentTrainerBinding.apply {
             recyclerViewTrainer.apply {
@@ -151,7 +151,6 @@ class TrainerFragment : Fragment() {
         }
     }
 
-    // RecyclerView(필라테스)
     inner class TrainerPilatestRecyclerViewAdapter: RecyclerView.Adapter<TrainerPilatestRecyclerViewAdapter.TrainerPilatestViewHolder>(){
         inner class TrainerPilatestViewHolder(rowTrainerBinding: RowTrainerBinding): RecyclerView.ViewHolder(rowTrainerBinding.root){
             val rowTrainerBinding:RowTrainerBinding
@@ -166,9 +165,8 @@ class TrainerFragment : Fragment() {
 
                 // 이미지 클릭 시 상세페이지 이동 설정
                 this.rowTrainerBinding.apply {
-                    trainerProfileImageView.setOnClickListener {
-                        Log.d("test1234","123")
-                        replaceFragment(TRAINER_FRAGMENT_NAME.READ_TRAINER_FRAGMENT, true, true, null)
+                    cardViewTrainer.setOnClickListener {
+                        navigationActivity.readTrainerRequest()
                     }
                 }
             }
@@ -190,61 +188,6 @@ class TrainerFragment : Fragment() {
             holder.rowTrainerBinding.healthTrainerOrgNameTextView.text = "필라테스 센터${position}"
             holder.rowTrainerBinding.healthTrainerAddressTextView.text = "주소${position}"
             holder.rowTrainerBinding.textViewType.text = "필라타입"
-        }
-    }
-
-    fun replaceFragment(name: TRAINER_FRAGMENT_NAME, addToBackStack:Boolean, isAnimate:Boolean, data:Bundle?){
-
-        SystemClock.sleep(200)
-
-        val fragmentTransaction = childFragmentManager.beginTransaction()
-        fragmentTransaction.setReorderingAllowed(true)
-
-        if(newFragment != null){
-            oldFragment = newFragment
-        }
-
-        when(name){
-            TRAINER_FRAGMENT_NAME.READ_TRAINER_FRAGMENT -> {
-                newFragment = ReadTrainerFragment()
-            }
-            TRAINER_FRAGMENT_NAME.READ_TRAINER_TAB1_FRAGMENT -> {
-                newFragment = ReadTrainerTab1Fragment()
-            }
-            TRAINER_FRAGMENT_NAME.READ_TRAINER_TAB2_FRAGMENT -> {
-                newFragment = ReadTrainerTab2Fragment()
-            }
-            TRAINER_FRAGMENT_NAME.READ_TRAINER_TAB3_FRAGMENT -> {
-                newFragment = ReadTrainerTab3Fragment()
-            }
-        }
-
-        if(data != null){
-            newFragment?.arguments = data
-        }
-
-        if(newFragment != null){
-            if(isAnimate == true){
-
-                if(oldFragment != null){
-                    oldFragment?.exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, true)
-                    oldFragment?.reenterTransition = MaterialSharedAxis(MaterialSharedAxis.X, false)
-
-                    oldFragment?.enterTransition = null
-                    oldFragment?.returnTransition = null
-                }
-                newFragment?.enterTransition = MaterialSharedAxis(MaterialSharedAxis.X, true)
-                newFragment?.returnTransition = MaterialSharedAxis(MaterialSharedAxis.X, false)
-
-                newFragment?.exitTransition = null
-                newFragment?.reenterTransition = null
-            }
-            fragmentTransaction.replace(R.id.fragmentTrainer, newFragment!!)
-
-            if(addToBackStack == true){
-                fragmentTransaction.addToBackStack(name.str)
-            }
-            fragmentTransaction.commit()
         }
     }
 }
