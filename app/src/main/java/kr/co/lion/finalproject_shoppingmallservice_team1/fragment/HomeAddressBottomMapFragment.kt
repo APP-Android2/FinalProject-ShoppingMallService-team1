@@ -40,6 +40,7 @@ class HomeAddressBottomMapFragment : BottomSheetDialogFragment() {
                 setNavigationIcon(R.drawable.arrow_back)
                 setNavigationOnClickListener {
                     SystemClock.sleep(200)
+                    // 프래그먼트와 프래그먼트 사이 전환이므로 parentFragmentManager 이용
                     parentFragmentManager.popBackStack()
                 }
                 inflateMenu(R.menu.empty_menu)
@@ -47,6 +48,7 @@ class HomeAddressBottomMapFragment : BottomSheetDialogFragment() {
         }
     }
 
+    // Bottom Sheet 설정
     // 다이얼로그가 만들어질 때 자동으로 호출되는 메서드
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         // 다이얼로그를 받는다.

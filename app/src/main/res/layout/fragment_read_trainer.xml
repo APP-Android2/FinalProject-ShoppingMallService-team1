@@ -3,109 +3,138 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
+        android:fitsSystemWindows="true"
         tools:context=".fragment.ReadTrainerFragment">
 
-        <LinearLayout
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbarReadTrainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:fitsSystemWindows="true">
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbarReadTrainer"
+            <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?attr/colorPrimary"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme">
+                android:layout_height="450dp"
+                android:fitsSystemWindows="true"
+                app:expandedTitleGravity="center|bottom"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+                app:statusBarScrim="@android:color/black"
+                app:contentScrim="?attr/colorPrimary"
+                app:expandedTitleMarginBottom="50dp">
 
-                <TextView
-                    android:id="@+id/toolbarReadTrainer_title"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="트레이너"
-                    android:textSize="@dimen/Toolbar_Title_Size" />
-            </com.google.android.material.appbar.MaterialToolbar>
-
-            <LinearLayout
-                android:layout_width="152dp"
-                android:layout_height="152dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/Up_Down_Margin"
-                android:orientation="vertical">
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/trainerProfileCardView"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:clickable="true"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    app:cardCornerRadius="75dp">
+                    android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/trainerProfileImageView"
+                        android:id="@+id/starReviewImageView111"
+                        android:layout_width="match_parent"
+                        android:layout_height="450dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/star" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="152dp"
+                    android:layout_height="152dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/Up_Down_Margin"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/trainerProfileCardView"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:clickable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardCornerRadius="75dp">
+
+                        <ImageView
+                            android:id="@+id/trainerProfileImageView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@drawable/fitmoa_logo_background" />
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="@dimen/Chip_List_Margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/ReadTrainerNameTextView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/fitmoa_logo_background" />
+                        android:gravity="center"
+                        android:text="트레이너 이름" />
 
-                </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/ReadTrainerOrgNameTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="센터 이름" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/Chip_List_Margin">
+                    <TextView
+                        android:id="@+id/ReadTrainerAddressTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="주소" />
 
-                <TextView
-                    android:id="@+id/ReadTrainerNameTextView"
+                    <!-- 구분선을 두기 위함 -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2.5dp"
+                        android:layout_marginTop="@dimen/Chip_List_Margin"
+                        android:background="#AAAAAA" />
+                </LinearLayout>
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbarReadTrainer"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="트레이너 이름" />
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin"
+                    android:background="?attr/colorPrimary"
+                    android:theme="?attr/actionBarTheme"
+                    android:minHeight="?attr/actionBarSize">
 
-                <TextView
-                    android:id="@+id/ReadTrainerOrgNameTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="센터 이름" />
+                    <TextView
+                        android:id="@+id/toolbarReadTrainerTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="트레이너"
+                        android:textSize="@dimen/Toolbar_Title_Size" />
+                </com.google.android.material.appbar.MaterialToolbar>
 
-                <TextView
-                    android:id="@+id/ReadTrainerAddressTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="주소" />
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-                <!-- 구분선을 두기 위함 -->
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2.5dp"
-                    android:layout_marginTop="@dimen/Chip_List_Margin"
-                    android:background="#AAAAAA" />
-            </LinearLayout>
-
-
-            <!-- Tab 레이아웃 -->
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/trainerInfoTab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                app:tabIndicatorHeight="1dp"
                 app:tabIndicatorColor="@color/black"
                 app:tabIndicatorFullWidth="true"
-                app:tabTextColor="@color/black"
-                app:tabMode="fixed">
+                app:tabIndicatorHeight="1dp"
+                app:tabMode="fixed"
+                app:tabTextColor="@color/black">
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="match_parent"
@@ -116,23 +145,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="리뷰" />
+
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="상담" />
             </com.google.android.material.tabs.TabLayout>
 
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/readTrainerTabView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
-
         </LinearLayout>
-    </FrameLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </layout>
