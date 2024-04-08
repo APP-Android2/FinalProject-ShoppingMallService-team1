@@ -115,7 +115,7 @@ enum class COMMUNITY_FRAGMENT_NAME(var num:Int, var str:String){
 enum class MY_FRAGMENT_NAME(var num:Int, var str:String){
 
     MY_PROFILE_FRAGMENT(0, "프로필"),
-    // 포인트
+    MY_POINT_FRAGMENT(1, "포인트"),
     MY_COUPON_FRAGMENT(2, "쿠폰"),
     MY_MEMBERSHIP_FRAGMENT(3, "회원권"),
     MY_REVIEW_FRAGMENT(4, "리뷰 관리"),

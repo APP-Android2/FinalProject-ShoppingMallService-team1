@@ -71,6 +71,10 @@ class MyFragment : Fragment() {
     fun settingMyBenefit(){
         fragmentMyBinding.apply {
             // 포인트
+            myPointCardView.setOnClickListener {
+                // MyPointFragment 실행
+                replaceFragment(MY_FRAGMENT_NAME.MY_POINT_FRAGMENT, true, true, null)
+            }
 
             // 쿠폰
             myCouponCardView.setOnClickListener {
@@ -146,6 +150,9 @@ class MyFragment : Fragment() {
             }
 
             // 포인트
+            MY_FRAGMENT_NAME.MY_POINT_FRAGMENT -> {
+                newFragment = MyPointFragment()
+            }
 
             // 쿠폰
             MY_FRAGMENT_NAME.MY_COUPON_FRAGMENT -> {
