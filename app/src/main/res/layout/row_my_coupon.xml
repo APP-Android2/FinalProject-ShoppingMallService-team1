@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
@@ -26,21 +27,57 @@
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:orientation="vertical"
-                    android:padding="10sp">
+                    android:paddingLeft="@dimen/Side_Padding"
+                    android:paddingTop="@dimen/Up_Down_Margin"
+                    android:paddingRight="@dimen/Side_Padding"
+                    android:paddingBottom="5sp">
 
                     <TextView
-                        android:id="@+id/textView15"
+                        android:id="@+id/tvRowMyCouponTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="TextView" />
+                        android:text="쿠폰명"
+                        android:textSize="@dimen/Big_Text_Size"
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView12"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/tvRowMyCouponUntilDays"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/Up_Down_Margin"
-                        android:text="TextView"
-                        android:textSize="@dimen/Toolbar_Title_Size" />
+                        android:layout_marginTop="5sp"
+                        android:text="남은 기간"
+                        android:textColor="@color/ContentsOfTheEntryCompartment_Color"
+                        android:textSize="@dimen/Medium_Text_Size" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10sp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvRowMyCouponSale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.9"
+                            android:text="쿠폰 할인률"
+                            android:textColor="@color/Pup_Color"
+                            android:textSize="@dimen/Toolbar_Title_Size"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/buttonUseMyCoupon"
+                            style="@style/Widget.Material3.Chip.Assist"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="쿠폰 사용"
+                            android:textColor="@color/Pup_Color"
+                            android:textSize="@dimen/Chip_Text_Size"
+                            app:chipBackgroundColor="@color/Light_Purple_color"
+                            app:chipStrokeColor="@color/Pup_Color" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
