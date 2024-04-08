@@ -38,34 +38,42 @@
                     android:textSize="@dimen/Medium_Text_Size"
                     android:textStyle="bold" />
 
-                <Button
-                    android:id="@+id/buttonCommentLike"
-                    style="@style/Widget.Material3.Button.Icon"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="right|end"
-                    android:layout_marginLeft="220dp"
-                    app:icon="@drawable/favorite"
-                    app:iconGravity="textEnd" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/buttonCommentComment"
-                    style="@style/Widget.Material3.Button.Icon"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="right|end"
-                    app:icon="@drawable/comment"
-                    app:iconGravity="textEnd" />
+                    <LinearLayout
+                        android:layout_width="174dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"></LinearLayout>
 
-                <Button
-                    android:id="@+id/buttonCommentMenu"
-                    style="@style/Widget.Material3.Button.Icon"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="right|end"
-                    app:icon="@drawable/more_vert"
-                    app:iconGravity="textEnd"
-                    app:iconTint="@color/black" />
+                    <Button
+                        android:id="@+id/buttonCommentLike"
+                        style="@style/Widget.Material3.Button.Icon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:icon="@drawable/favorite"
+                        app:iconGravity="textEnd" />
+
+                    <Button
+                        android:id="@+id/buttonCommentComment"
+                        style="@style/Widget.Material3.Button.Icon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:icon="@drawable/comment"
+                        app:iconGravity="textEnd" />
+
+                    <Button
+                        android:id="@+id/buttonCommentMenu"
+                        style="@style/Widget.Material3.Button.Icon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:icon="@drawable/more_vert"
+                        app:iconGravity="textEnd"
+                        app:iconTint="@color/black" />
+                </LinearLayout>
 
             </LinearLayout>
 

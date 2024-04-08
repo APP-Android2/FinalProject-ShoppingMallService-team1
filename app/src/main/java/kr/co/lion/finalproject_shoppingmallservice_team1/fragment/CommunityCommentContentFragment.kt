@@ -72,6 +72,11 @@ class CommunityCommentContentFragment : Fragment() {
 
             init {
                 this.rowCommentcontentBinding = rowCommentcontentBinding
+
+                rowCommentcontentBinding.root.layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
             }
         }
 

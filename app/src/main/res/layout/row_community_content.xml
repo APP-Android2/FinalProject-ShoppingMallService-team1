@@ -21,14 +21,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_weight="1"
             android:text="TextView" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"></LinearLayout>
 
         <TextView
             android:id="@+id/textViewCommunityTag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="TextView"
             android:textAlignment="textEnd"
             android:textColor="@color/Writing_Color"
@@ -59,7 +63,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="251dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
@@ -95,7 +99,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
-                android:layout_weight="1"
                 android:text="TextView"
                 android:textColor="@color/Writing_Color"
                 android:textSize="10sp" />
@@ -104,6 +107,12 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
