@@ -29,7 +29,7 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <ImageButton
-                android:id="@+id/trainerLikeImageButton"
+                android:id="@+id/readTrainerMyPickImageButton"
                 android:layout_width="34dp"
                 android:layout_height="34dp"
                 android:layout_marginTop="8dp"
@@ -38,7 +38,7 @@
                 android:src="@drawable/favorite" />
 
             <Button
-                android:id="@+id/TrainerPurchasingButton"
+                android:id="@+id/trainerPurchasingButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/Side_Padding"

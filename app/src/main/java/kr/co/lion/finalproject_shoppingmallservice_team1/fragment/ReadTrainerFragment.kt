@@ -1,5 +1,6 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.SystemClock
@@ -62,7 +63,8 @@ class ReadTrainerFragment : Fragment() {
                 setOnMenuItemClickListener {
                     when(it.itemId){
                         R.id.menuItemTrainerShopping -> {
-
+                            val shoppingCartIntent = Intent(readTrainerActivity, ShoppingCartActivity::class.java)
+                            startActivity(shoppingCartIntent)
                         }
                     }
                     true
