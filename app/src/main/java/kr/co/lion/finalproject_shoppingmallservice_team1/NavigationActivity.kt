@@ -29,8 +29,6 @@ class NavigationActivity : AppCompatActivity() {
         activityNavigationBinding = ActivityNavigationBinding.inflate(layoutInflater)
         setContentView(activityNavigationBinding.root)
 
-        replaceFragment(NAVIGATION_FRAGMENT_NAME.MY_FRAGMENT, true, true, null)
-
         // 앱 초기 실행 시 홈화면으로 설정
         if (savedInstanceState == null) {
             replaceFragment(NAVIGATION_FRAGMENT_NAME.HOME_FRAGMENT, false, true, null)
