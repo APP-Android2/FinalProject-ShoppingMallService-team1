@@ -37,4 +37,18 @@
     <!-- 상세 페이지 내용 패딩 -->
     <dimen name="Detail_Padding">14dp</dimen>
 
+
+    <!-- 트레이너 화면 글자 크기 -->
+    <!-- 큰 글자 크기 -->
+    <dimen name="Big_T_Text_Size">22sp</dimen>
+
+    <!-- 중간 글자 크기 -->
+    <dimen name="Medium_T_Text_Size">16sp</dimen>
+
+    <!-- 중간 글자 크기2 -->
+    <dimen name="Medium2_T_Text_Size">14sp</dimen>
+
+    <!-- 작은 글자 크기(본문내용) -->
+    <dimen name="Small_T_Text_Size">12sp</dimen>
+
 </resources>

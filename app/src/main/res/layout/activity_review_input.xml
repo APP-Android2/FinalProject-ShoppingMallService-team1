@@ -10,103 +10,105 @@
         tools:context=".ReviewInputActivity">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbarReviewInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme">
-
-            <TextView
-                android:id="@+id/toolbarReviewInput_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="리뷰 작성"
-                android:textSize="@dimen/Toolbar_Title_Size" />
-        </com.google.android.material.appbar.MaterialToolbar>
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="@dimen/Side_Padding"
-            android:layout_marginRight="@dimen/Side_Padding"
-            android:text="트레이너명" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="@dimen/Side_Padding"
-            android:layout_marginRight="@dimen/Side_Padding"
-            android:text="PT 10회" />
-
-        <!-- 구분선을 두기 위함 -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2.5dp"
-            android:layout_marginTop="@dimen/Chip_List_Margin"
-            android:background="#AAAAAA" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/Side_Padding"
-            android:layout_marginTop="@dimen/Up_Down_Margin"
-            android:layout_marginRight="@dimen/Side_Padding"
-            android:text="별점을 선택해주세요" />
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/starReviewImageView1"
-                android:layout_width="wrap_content"
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbarReviewInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme">
+
+                <TextView
+                    android:id="@+id/toolbarReviewInput_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="리뷰 작성"
+                    android:textSize="@dimen/Toolbar_Title_Size" />
+            </com.google.android.material.appbar.MaterialToolbar>
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="@dimen/Side_Padding"
+                android:layout_marginRight="@dimen/Side_Padding"
+                android:textSize="@dimen/Medium_T_Text_Size"
+                android:text="트레이너명" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="@dimen/Side_Padding"
+                android:layout_marginRight="@dimen/Side_Padding"
+                android:textSize="@dimen/Small_T_Text_Size"
+                android:text="PT 10회" />
+
+            <!-- 구분선을 두기 위함 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2.5dp"
+                android:layout_marginTop="@dimen/Chip_List_Margin"
+                android:background="#AAAAAA" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/Side_Padding"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/star_fill" />
-            <ImageView
-                android:id="@+id/starReviewImageView2"
-                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/Up_Down_Margin"
+                android:layout_marginRight="@dimen/Side_Padding"
+                android:text="별점을 선택해주세요" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/star_fill" />
-            <ImageView
-                android:id="@+id/starReviewImageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/star_fill" />
-            <ImageView
-                android:id="@+id/starReviewImageView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/star_fill" />
-            <ImageView
-                android:id="@+id/starReviewImageView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/star" />
-        </LinearLayout>
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/starReviewImageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/Side_Padding"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/star_fill" />
+                <ImageView
+                    android:id="@+id/starReviewImageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/star_fill" />
+                <ImageView
+                    android:id="@+id/starReviewImageView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/star_fill" />
+                <ImageView
+                    android:id="@+id/starReviewImageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/star_fill" />
+                <ImageView
+                    android:id="@+id/starReviewImageView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/star" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -129,115 +131,110 @@
                         android:gravity="top"
                         android:padding="@dimen/Side_Padding"
                         android:hint="리뷰를 작성 해주세요"
-                        android:textSize="@dimen/Small_Text_Size"
+                        android:textSize="@dimen/Small_T_Text_Size"
                         android:background="@color/InputCompartment_Color" />
 
                 </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/Side_Padding"
+                android:layout_marginRight="@dimen/Side_Padding"
+                android:layout_marginTop="@dimen/Up_Down_Margin"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="앨범보기"
+                    app:drawableStartCompat="@drawable/photo" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/Chip_List_Margin"
+                    android:text="사진촬영"
+                    app:drawableStartCompat="@drawable/photo_camera" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/Side_Padding"
+                android:layout_marginRight="@dimen/Side_Padding"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    app:cardBackgroundColor="@color/InputCompartment_Color">
+
+                    <ImageView
+                        android:id="@+id/reviewImageView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_launcher_background" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    app:cardBackgroundColor="@color/InputCompartment_Color">
+
+                    <ImageView
+                        android:id="@+id/reviewImageView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/photo" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    app:cardBackgroundColor="@color/InputCompartment_Color">
+
+                    <ImageView
+                        android:id="@+id/reviewImageView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/photo" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    app:cardBackgroundColor="@color/InputCompartment_Color">
+
+                    <ImageView
+                        android:id="@+id/reviewImageView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/photo" />
+                </com.google.android.material.card.MaterialCardView>
+
 
 
 
             </LinearLayout>
 
 
-
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/Side_Padding"
-            android:layout_marginRight="@dimen/Side_Padding"
-            android:layout_marginTop="@dimen/Up_Down_Margin"
-            android:orientation="horizontal">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="앨범보기"
-                app:drawableStartCompat="@drawable/photo" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/Chip_List_Margin"
-                android:text="사진촬영"
-                app:drawableStartCompat="@drawable/photo_camera" />
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/Side_Padding"
-            android:layout_marginRight="@dimen/Side_Padding"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="70dp"
-                android:layout_height="80dp"
-                android:layout_weight="1"
-                app:cardBackgroundColor="@color/InputCompartment_Color">
-
-                <ImageView
-                    android:id="@+id/reviewImageView1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_launcher_background" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="70dp"
-                android:layout_height="80dp"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
-                app:cardBackgroundColor="@color/InputCompartment_Color">
-
-                <ImageView
-                    android:id="@+id/reviewImageView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/photo" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="70dp"
-                android:layout_height="80dp"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
-                app:cardBackgroundColor="@color/InputCompartment_Color">
-
-                <ImageView
-                    android:id="@+id/reviewImageView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/photo" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="70dp"
-                android:layout_height="80dp"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
-                app:cardBackgroundColor="@color/InputCompartment_Color">
-
-                <ImageView
-                    android:id="@+id/reviewImageView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/photo" />
-            </com.google.android.material.card.MaterialCardView>
-
-
-
-
-        </LinearLayout>
-
-
-    </LinearLayout>
 
         <Button
             android:id="@+id/reviewAddButton"
