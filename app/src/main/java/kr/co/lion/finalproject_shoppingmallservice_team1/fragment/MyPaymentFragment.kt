@@ -110,8 +110,8 @@ class MyPaymentFragment : Fragment() {
                             R.id.menuMyPaymentTypeAll -> {
                                 text = "전체"
                             }
-                            R.id.menuMyPaymentTypeTrainer -> {
-                                text = "트레이너"
+                            R.id.menuMyPaymentTypePT -> {
+                                text = "PT"
                             }
                             R.id.menuMyPaymentTypeCenter -> {
                                 text = "운동센터"

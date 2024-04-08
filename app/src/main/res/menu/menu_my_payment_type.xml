@@ -7,8 +7,8 @@
         android:title="전체"
         app:showAsAction="never" />
     <item
-        android:id="@+id/menuMyPaymentTypeTrainer"
-        android:title="트레이너"
+        android:id="@+id/menuMyPaymentTypePT"
+        android:title="PT"
         app:showAsAction="never" />
     <item
         android:id="@+id/menuMyPaymentTypeCenter"
