@@ -4,12 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
+import android.view.ContextThemeWrapper
 import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
@@ -30,6 +32,7 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentCommunityBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowCommunityContentBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.CommunityViewModel
 
 class CommunityFragment : Fragment() {
     lateinit var fragmentCommunityBinding: FragmentCommunityBinding
@@ -37,6 +40,7 @@ class CommunityFragment : Fragment() {
     lateinit var drawerLayout : DrawerLayout
     val toolbarCommunityTitle = view?.findViewById<TextView>(R.id.toolbarCommunity_title)
     var isDrawerOpen = false
+    private lateinit var communtyViewModel: CommunityViewModel
 
     var oldFragment: Fragment? = null
     var newFragment: Fragment? = null
@@ -44,6 +48,9 @@ class CommunityFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         fragmentCommunityBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_community, container, false)
+        communtyViewModel = CommunityViewModel()
+        fragmentCommunityBinding.communityViewModel = communtyViewModel
+        fragmentCommunityBinding.lifecycleOwner = this
 
         navigationActivity = activity as NavigationActivity
 
@@ -51,6 +58,7 @@ class CommunityFragment : Fragment() {
         settingRecyclerCommnunityContent()
         settingDrawer()
         settingEvent()
+        settingChip()
 
         return fragmentCommunityBinding.root
     }
@@ -131,6 +139,33 @@ class CommunityFragment : Fragment() {
 
                 val deco = MaterialDividerItemDecoration(navigationActivity, MaterialDividerItemDecoration.VERTICAL)
                 addItemDecoration(deco)
+            }
+        }
+    }
+
+    private fun settingChip(){
+        fragmentCommunityBinding.chipCommunityEntire.apply {
+            setOnClickListener {
+                val contextWrapper = ContextThemeWrapper(context, R.style.popupMenuStyle)
+
+                val popup = PopupMenu(contextWrapper, this)
+                popup.inflate(R.menu.menu_community_chip)
+
+                popup.setOnMenuItemClickListener { item ->
+                    when (item.itemId) {
+                        // 거리순
+                        R.id.menuItemCommunityDistance -> {
+                            text = "거리순"
+                        }
+                        // 최신순
+                        R.id.menuItemCommunityRecent -> {
+                            text = "최신순"
+                        }
+                    }
+                    true
+                }
+
+                popup.show()
             }
         }
     }
