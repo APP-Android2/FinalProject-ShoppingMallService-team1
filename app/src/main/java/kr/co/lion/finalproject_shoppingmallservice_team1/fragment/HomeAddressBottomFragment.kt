@@ -42,6 +42,7 @@ class HomeAddressBottomFragment : BottomSheetDialogFragment() {
 
         navigationActivity = activity as NavigationActivity
 
+        settingToolbar()
         settingRecyclerViewAddressMain()
         settingEvent()
         initSearchView()
@@ -49,6 +50,13 @@ class HomeAddressBottomFragment : BottomSheetDialogFragment() {
         return fragmentHomeAddressBottomBinding.root
     }
 
+    fun settingToolbar(){
+        fragmentHomeAddressBottomBinding.apply {
+            toolbarAddressMain.apply {
+                inflateMenu(R.menu.home_address_menu)
+            }
+        }
+    }
 
     fun settingEvent(){
         fragmentHomeAddressBottomBinding.apply {
