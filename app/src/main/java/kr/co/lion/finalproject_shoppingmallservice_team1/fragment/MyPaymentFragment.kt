@@ -2,10 +2,12 @@ package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
 import android.os.Bundle
 import android.os.SystemClock
+import android.view.ContextThemeWrapper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,19 +16,26 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentMyPaymentBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowMyPaymentBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.MyPaymentViewModel
 
 class MyPaymentFragment : Fragment() {
 
     lateinit var fragmentMyPaymentBinding: FragmentMyPaymentBinding
+    lateinit var myPaymentViewModel: MyPaymentViewModel
     lateinit var navigationActivity: NavigationActivity
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         fragmentMyPaymentBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_payment, container, false)
+        myPaymentViewModel = MyPaymentViewModel()
+        fragmentMyPaymentBinding.myPaymentViewModel = myPaymentViewModel
+        fragmentMyPaymentBinding.lifecycleOwner = this@MyPaymentFragment
+
         navigationActivity = activity as NavigationActivity
 
         settingToolbar()
         handleBackPress()
+        settingChipMyPayment()
         settingRecyclerViewMyPayment()
 
         return fragmentMyPaymentBinding.root
@@ -60,6 +69,61 @@ class MyPaymentFragment : Fragment() {
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+    }
+
+    private fun settingChipMyPayment(){
+        fragmentMyPaymentBinding.apply {
+            // 날짜 칩메뉴
+            chipMyPaymentDate.apply {
+                setOnClickListener {
+                    val contextWrapper = ContextThemeWrapper(context, R.style.popupMenuStyle)
+
+                    val popup = PopupMenu(contextWrapper, this)
+
+                    popup.inflate(R.menu.menu_my_payment_term)
+                    popup.setOnMenuItemClickListener { item ->
+                        when (item.itemId){
+                            R.id.menuMyPaymentTermNewly -> {
+                                text = "최신순"
+                            }
+                            R.id.menuMyPaymentTermLastly -> {
+                                text = "오래된순"
+                            }
+                        }
+                        true
+                    }
+
+                    popup.show()
+                }
+            }
+
+            // 타입 칩메뉴
+            chipMyPaymentType.apply {
+                setOnClickListener {
+                    val contextWrapper = ContextThemeWrapper(context, R.style.popupMenuStyle)
+
+                    val popup = PopupMenu(contextWrapper, this)
+
+                    popup.inflate(R.menu.menu_my_payment_type)
+                    popup.setOnMenuItemClickListener { item ->
+                        when (item.itemId){
+                            R.id.menuMyPaymentTypeAll -> {
+                                text = "전체"
+                            }
+                            R.id.menuMyPaymentTypeTrainer -> {
+                                text = "트레이너"
+                            }
+                            R.id.menuMyPaymentTypeCenter -> {
+                                text = "운동센터"
+                            }
+                        }
+                        true
+                    }
+
+                    popup.show()
+                }
+            }
+        }
     }
 
     // RecyclerView 설정
