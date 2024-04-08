@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/transfermembershipdetailcontent_menuItem_message"
+        android:title="채팅하기"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/transfermembershipdetailcontent_menuItem_report"
+        android:title="신고하기"
+        app:showAsAction="never" />
+</menu>

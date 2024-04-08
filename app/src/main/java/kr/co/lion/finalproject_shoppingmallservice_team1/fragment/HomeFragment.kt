@@ -21,6 +21,7 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.ChatActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
+import kr.co.lion.finalproject_shoppingmallservice_team1.TransferMembershipActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.SearchActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.ShoppingCartActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentHomeBinding
@@ -47,6 +48,8 @@ class HomeFragment : Fragment() {
         settingSearch()
         initRecyclerPopularTrainer()
         initRecyclerRecentCenter()
+
+        startTransferMembershipActivity()
 
         return fragmentHomeBinding.root
     }
@@ -259,6 +262,13 @@ class HomeFragment : Fragment() {
                 textViewRecentCenterName.text = items.centerName
                 textViewRecentCenterAddress.text = items.address
             }
+        }
+    }
+
+    fun startTransferMembershipActivity(){
+        fragmentHomeBinding.cardViewHomeAssign.setOnClickListener {
+            val intent = Intent(navigationActivity, TransferMembershipActivity::class.java)
+            startActivity(intent)
         }
     }
 }
