@@ -38,7 +38,7 @@
                 android:src="@drawable/favorite" />
 
             <Button
-                android:id="@+id/TrainerPurchasingButton"
+                android:id="@+id/trainerPurchasingButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/Side_Padding"

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.transition.MaterialSharedAxis
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivityReadTrainerBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.ReadTrainerFragment
+import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.ReadTrainerPurchasingBottomFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.ReadTrainerTab1Fragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.ReadTrainerTab2Fragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.ReadTrainerTab3Fragment
@@ -29,6 +30,7 @@ class ReadTrainerActivity : AppCompatActivity() {
         setContentView(activityReadTrainerBinding.root)
 
         myPickButtonClick()
+        purchasingButtonClick()
 
         replaceFragment(TRAINER_FRAGMENT_NAME.READ_TRAINER_FRAGMENT, false, false, null)
     }
@@ -38,7 +40,9 @@ class ReadTrainerActivity : AppCompatActivity() {
      * 함수 정리 (작성 순서)
      * 1. 찜 버튼 이벤트 설정 (myPickButtonClick())
      * 2. 찜 버튼 이벤트 조건문 (updateImageButton())
-     * 3. ReadTrainerFragment 실행을 위함
+     * 3. 구매하기 버튼 이벤트 설정
+     * 4. 구매하기의 옵션을 보여 주기 위한 BottomSheet를 띄워준다.
+     * 5. ReadTrainerFragment 실행을 위함
      */
 
 
@@ -51,8 +55,7 @@ class ReadTrainerActivity : AppCompatActivity() {
         }
     }
 
-    //
-    fun  updateImageButton(){
+    fun updateImageButton(){
         activityReadTrainerBinding.apply {
             if(isImageClick){
                 readTrainerMyPickImageButton.setImageResource(R.drawable.favorite_fill)
@@ -63,6 +66,22 @@ class ReadTrainerActivity : AppCompatActivity() {
             }
         }
     }
+
+    fun purchasingButtonClick(){
+        activityReadTrainerBinding.apply {
+            trainerPurchasingButton.apply {
+                setOnClickListener {
+                    showReadTrainerPurchasingBottomSheet()
+                }
+            }
+        }
+    }
+    
+    fun showReadTrainerPurchasingBottomSheet(){
+        val readTrainerPurchasingBottomSheet = ReadTrainerPurchasingBottomFragment()
+        readTrainerPurchasingBottomSheet.show(supportFragmentManager, "ReadTrainerPurchasingBottomSheet")
+    }
+
 
     fun replaceFragment(name: TRAINER_FRAGMENT_NAME, addToBackStack:Boolean, isAnimate:Boolean, data:Bundle?){
 
