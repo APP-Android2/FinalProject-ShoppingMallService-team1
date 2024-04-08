@@ -56,8 +56,8 @@
 
                         <android.widget.SearchView
                             android:id="@+id/searchViewHomeBottom"
-                            android:layout_width="371dp"
-                            android:layout_height="48dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@color/InputCompartment_Color"
                             android:focusable="auto"
                             android:iconifiedByDefault="false"
