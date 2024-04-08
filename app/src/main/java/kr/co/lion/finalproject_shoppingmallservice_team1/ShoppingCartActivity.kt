@@ -31,7 +31,7 @@ class ShoppingCartActivity : AppCompatActivity() {
     fun settingToolbar() {
         activityShoppingcartBinding.apply {
             toolbarHomeShop.apply {
-                setNavigationIcon(R.drawable.arrow_back)
+                setNavigationIcon(R.drawable.close)
 
                 setNavigationOnClickListener {
                     // 바로 finish()해야 애니메이션이 제대로 구현됨(안하면 반대로 됨)

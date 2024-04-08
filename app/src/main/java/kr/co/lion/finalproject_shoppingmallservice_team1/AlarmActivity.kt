@@ -32,7 +32,7 @@ class AlarmActivity : AppCompatActivity() {
     fun settingToolbar() {
         activityAlarmBinding.apply {
             toolbarAlarm.apply {
-                setNavigationIcon(R.drawable.arrow_back)
+                setNavigationIcon(R.drawable.close)
 
                 setNavigationOnClickListener {
                     finish()
