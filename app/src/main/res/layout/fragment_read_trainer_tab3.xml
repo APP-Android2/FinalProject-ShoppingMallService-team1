@@ -33,18 +33,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_marginRight="5dp"
                     android:backgroundTint="@color/Pup_Color"
                     android:text="채팅 상담"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/BigButton_Text_Size"
+                    app:cornerRadius="10dp" />
 
                 <Button
                     android:id="@+id/buttonConsulting"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
                     android:backgroundTint="@color/Pup_Color"
                     android:text="방문 상담"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/BigButton_Text_Size"
+                    app:cornerRadius="10dp" />
             </LinearLayout>
 
         </LinearLayout>

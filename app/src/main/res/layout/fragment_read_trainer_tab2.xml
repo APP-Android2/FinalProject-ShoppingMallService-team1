@@ -52,8 +52,10 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/Pup_Color"
                         android:text="리뷰 작성"
-                        android:textSize="@dimen/SmallButton_Text_Size"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/BigButton_Text_Size"
+                        app:cornerRadius="10dp" />
+
                 </LinearLayout>
             </FrameLayout>
 
