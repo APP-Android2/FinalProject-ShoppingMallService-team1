@@ -69,6 +69,11 @@ class CommunityMyContentFragment : Fragment() {
 
             init {
                 this.rowMycontentBinding = rowMycontentBinding
+
+                rowMycontentBinding.root.layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
             }
         }
 
