@@ -120,7 +120,7 @@ enum class MY_FRAGMENT_NAME(var num:Int, var str:String){
     MY_MEMBERSHIP_FRAGMENT(3, "회원권"),
     MY_REVIEW_FRAGMENT(4, "리뷰 관리"),
     MY_PICK_FRAGMENT(5, "찜"),
-    // 방문상담 신청내역
+    MY_VISIT_CONSULTATION_FRAGMENT(6, "방문상담 신청 내역"),
     MY_PAYMENT_FRAGMENT(7, "결제 내역"),
     // 고객센터 프래그먼트
     MY_FAQ_FRAGMENT(9, "FAQ"),

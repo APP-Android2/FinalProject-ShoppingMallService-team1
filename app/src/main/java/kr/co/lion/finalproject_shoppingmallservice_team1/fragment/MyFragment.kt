@@ -115,7 +115,8 @@ class MyFragment : Fragment() {
             /*  하단 메뉴 탭 구성  */
             // 방문상담신청내역
             myVisitConsulting.setOnClickListener {
-
+                // MyVisitConsultationFragment 실행
+                replaceFragment(MY_FRAGMENT_NAME.MY_VISIT_CONSULTATION_FRAGMENT, true, true, null)
             }
             // 결제 내역
             myPayment.setOnClickListener {
@@ -183,6 +184,9 @@ class MyFragment : Fragment() {
             }
 
             // 방문상담 신청 내역
+            MY_FRAGMENT_NAME.MY_VISIT_CONSULTATION_FRAGMENT -> {
+                newFragment = MyVisitConsultationFragment()
+            }
 
             // 결제 내역
             MY_FRAGMENT_NAME.MY_PAYMENT_FRAGMENT -> {
