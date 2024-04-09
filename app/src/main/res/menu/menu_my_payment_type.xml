@@ -12,6 +12,6 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/menuMyPaymentTypeCenter"
-        android:title="운동시설"
+        android:title="운동센터"
         app:showAsAction="never" />
 </menu>
