@@ -1,5 +1,6 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import androidx.fragment.app.Fragment
@@ -8,8 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
+import kr.co.lion.finalproject_shoppingmallservice_team1.MY_FRAGMENT_NAME
+import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
+import kr.co.lion.finalproject_shoppingmallservice_team1.ShoppingCartActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentMyPointBinding
 
 class MyPointFragment : Fragment() {
@@ -24,6 +29,7 @@ class MyPointFragment : Fragment() {
 
         settingToolbar()
         handleBackPress()
+        settingClickEventTextView()
 
         return fragmentMyPointBinding.root
     }
@@ -56,5 +62,30 @@ class MyPointFragment : Fragment() {
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+    }
+
+    // TextView 항목 클릭 시 이벤트
+    fun settingClickEventTextView(){
+        fragmentMyPointBinding.apply {
+            // 리뷰 작성
+            myPointWriteReview.setOnClickListener {
+
+            }
+
+            // 회원권 구매
+            myPointBuyMembership.setOnClickListener {
+
+            }
+
+            // 커뮤니티 글 작성
+            myPointWriteCommunity.setOnClickListener {
+
+            }
+
+            // 댓글 작성
+            myPointWriteComment.setOnClickListener {
+
+            }
+        }
     }
 }
