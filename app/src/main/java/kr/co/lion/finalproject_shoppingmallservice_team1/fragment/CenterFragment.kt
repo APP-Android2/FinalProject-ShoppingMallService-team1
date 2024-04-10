@@ -48,47 +48,4 @@ class CenterFragment : Fragment() {
         return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        // RecyclerView 설정
-        val recyclerView: RecyclerView = view.findViewById(R.id.gym_list_recylcler)
-        recyclerView.layoutManager = LinearLayoutManager(activity)
-
-        // 비트맵 이미지 목록을 생성하거나 불러옵니다.
-        val images = mutableListOf<Bitmap>()
-        val resources = context?.resources
-        resources?.let {
-            val imageIds = arrayOf(R.drawable.fitmoa_logo_background, R.drawable.fitmoa_logo_background, R.drawable.fitmoa_logo_background) // drawable 폴더에 있는 이미지들의 ID
-            for (id in imageIds) {
-                val bitmap = BitmapFactory.decodeResource(resources, id)
-                images.add(bitmap)
-            }
-        }
-
-        recyclerView.adapter = ImageAdapter(images)
-    }
-
-    class ImageAdapter(private val images: List<Bitmap>) :
-        RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
-
-        // 뷰 홀더 정의
-        class ImageViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            val imageView: ImageView = view.findViewById(R.id.imageViewRow1)
-        }
-
-        // 새로운 뷰 홀더 생성
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_health_list, parent, false)
-            return ImageViewHolder(view)
-        }
-
-        // 뷰 홀더에 데이터 바인딩
-        override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-            holder.imageView.setImageBitmap(images[position])
-        }
-
-        // 데이터셋 크기 반환
-        override fun getItemCount() = images.size
-    }
 }
