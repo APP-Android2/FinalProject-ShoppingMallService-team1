@@ -2,9 +2,11 @@ package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,11 +27,19 @@ class ReadTrainerTab2Fragment : Fragment() {
         fragmentReadTrainerTab2Binding.lifecycleOwner = this
 
         createReviewTrainer()
+        settingChipType()
         settingRecyclerViewTrainerReview()
 
         return fragmentReadTrainerTab2Binding.root
     }
 
+    /**
+     * 함수 정리 (작성 순서)
+     * 1. 리뷰 작성 페이지 이동
+     * 2. chip 액션 설정
+     * 3. RecyclerView (트레이너 리뷰)
+     * 4. Adapter와 ViewHolder 설정
+     */
 
     fun createReviewTrainer(){
         fragmentReadTrainerTab2Binding.apply {
@@ -42,8 +52,33 @@ class ReadTrainerTab2Fragment : Fragment() {
         }
     }
 
+    private fun settingChipType(){
+        fragmentReadTrainerTab2Binding.apply {
+            chipReview1.apply {
+                setOnClickListener {
+                    val contextWrapper = ContextThemeWrapper(context, R.style.popupMenuStyle)
 
-    // 트레이너 리뷰_RecyclerView 설정
+                    val popup = PopupMenu(contextWrapper, this)
+                    popup.inflate(R.menu.menu_trainer_review_chip)
+
+                    popup.setOnMenuItemClickListener { item ->
+                        when (item.itemId) {
+                            R.id.chipTrainerReView1 -> {
+                                text = "최신순 ▼"
+
+                            }
+                            R.id.chipTrainerReView2 -> {
+                                text = "별점순 ▼"
+                            }
+                        }
+                        true
+                    }
+                    popup.show()
+                }
+            }
+        }
+    }
+
     fun settingRecyclerViewTrainerReview(){
         fragmentReadTrainerTab2Binding.apply {
             recyclerViewTrainerReview.apply {
@@ -53,7 +88,6 @@ class ReadTrainerTab2Fragment : Fragment() {
         }
     }
 
-    // 리사이클러 뷰 (리뷰)
     inner class TrainerReviewRecyclerViewAdapter: RecyclerView.Adapter<TrainerReviewRecyclerViewAdapter.TrainerReviewViewHolder>(){
         inner class TrainerReviewViewHolder(rowReadTrainerTab2Binding: RowReadTrainerTab2Binding): RecyclerView.ViewHolder(rowReadTrainerTab2Binding.root){
             val rowReadTrainerTab2Binding: RowReadTrainerTab2Binding
@@ -91,5 +125,4 @@ class ReadTrainerTab2Fragment : Fragment() {
 
         }
     }
-
 }
