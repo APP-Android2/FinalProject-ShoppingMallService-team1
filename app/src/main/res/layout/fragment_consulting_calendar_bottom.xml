@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
 
@@ -11,10 +12,18 @@
         android:layout_marginRight="20dp"
         tools:context=".fragment.ConsultingCalendarBottomFragment">
 
+        <ImageView
+            android:id="@+id/bottomDownImageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/bottom_down" />
+
         <TextView
             android:id="@+id/titleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
             android:text="시간대"
             android:textSize="@dimen/Big_Text_Size"
             android:textStyle="bold"
@@ -35,22 +44,25 @@
 
                 <com.google.android.material.checkbox.MaterialCheckBox
                     android:id="@+id/calendatCheckbox1"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="09시"
-                    android:textSize="@dimen/Medium_Text_Size" />
+                    android:textSize="@dimen/Medium_Text_Size"
+                    android:theme="@style/CustomCheckBox" />
 
                 <com.google.android.material.checkbox.MaterialCheckBox
                     android:id="@+id/calendatCheckbox2"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="10시"
-                    android:textSize="@dimen/Medium_Text_Size" />
+                    android:textSize="@dimen/Medium_Text_Size"
+                    android:theme="@style/CustomCheckBox" />
 
                 <com.google.android.material.checkbox.MaterialCheckBox
                     android:id="@+id/calendatCheckbox3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:theme="@style/CustomCheckBox"
                     android:text="11시"
                     android:textSize="@dimen/Medium_Text_Size" />
 
@@ -58,6 +70,7 @@
                     android:id="@+id/calendatCheckbox4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:theme="@style/CustomCheckBox"
                     android:text="12시"
                     android:textSize="@dimen/Medium_Text_Size" />
 
@@ -65,6 +78,7 @@
                     android:id="@+id/calendatCheckbox5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:theme="@style/CustomCheckBox"
                     android:text="13시"
                     android:textSize="@dimen/Medium_Text_Size" />
 
@@ -72,6 +86,7 @@
                     android:id="@+id/calendatCheckbox6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:theme="@style/CustomCheckBox"
                     android:text="14시"
                     android:textSize="@dimen/Medium_Text_Size" />
 
@@ -79,6 +94,7 @@
                     android:id="@+id/calendatCheckbox7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:theme="@style/CustomCheckBox"
                     android:text="15시"
                     android:textSize="@dimen/Medium_Text_Size" />
 
@@ -86,18 +102,21 @@
                     android:id="@+id/calendatCheckbox8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:theme="@style/CustomCheckBox"
                     android:text="16시"
                     android:textSize="@dimen/Medium_Text_Size" />
                 <com.google.android.material.checkbox.MaterialCheckBox
                     android:id="@+id/calendatCheckbox9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:theme="@style/CustomCheckBox"
                     android:text="17시"
                     android:textSize="@dimen/Medium_Text_Size" />
                 <com.google.android.material.checkbox.MaterialCheckBox
                     android:id="@+id/calendatCheckbox10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:theme="@style/CustomCheckBox"
                     android:text="18시"
                     android:textSize="@dimen/Medium_Text_Size" />
 
@@ -114,7 +133,11 @@
             android:layout_marginBottom="@dimen/Up_Down_Margin"
             android:backgroundTint="@color/Pup_Color"
             android:text="선택 완료"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textSize="@dimen/BigButton_Text_Size"
+            android:textStyle="bold"
+            app:cornerRadius="10dp"/>
+
     </LinearLayout>
 
 </layout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/Side_Padding"
+        android:paddingRight="@dimen/Side_Padding"
+        android:paddingBottom="@dimen/Up_Down_Margin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/Up_Down_Margin"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewComment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/textViewCommentDate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/Writing_Color"
+                android:textSize="@dimen/Small_Text_Size" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</layout>

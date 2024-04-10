@@ -1,5 +1,6 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
@@ -13,9 +14,6 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.CenterFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.CommunityFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.HomeFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyNotificationFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.MyProfileFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.ReadTrainerFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.TrainerFragment
 
 class NavigationActivity : AppCompatActivity() {
@@ -25,6 +23,8 @@ class NavigationActivity : AppCompatActivity() {
     // 프래그먼트의 주소값을 담을 프로퍼티
     var oldFragment: Fragment? = null
     var newFragment: Fragment? = null
+
+    var currentFragmentId: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,26 +41,28 @@ class NavigationActivity : AppCompatActivity() {
     }
     // 하단 네비게이션뷰 설정
     fun setBottomNavigationView() {
+
         activityNavigationBinding.bottomNavigationView.setOnItemSelectedListener { item ->
+
             when (item.itemId) {
                 R.id.fragment_home -> {
-                    replaceFragment(NAVIGATION_FRAGMENT_NAME.HOME_FRAGMENT, true, true, null)
+                    replaceFragment(NAVIGATION_FRAGMENT_NAME.HOME_FRAGMENT, false, true, null)
                     true
                 }
                 R.id.fragment_center -> {
-                    replaceFragment(NAVIGATION_FRAGMENT_NAME.CENTER_FRAGMENT, true, true, null)
+                    replaceFragment(NAVIGATION_FRAGMENT_NAME.CENTER_FRAGMENT, false, true, null)
                     true
                 }
                 R.id.fragment_trainer -> {
-                    replaceFragment(NAVIGATION_FRAGMENT_NAME.TRAINER_FRAGMENT, true, true, null)
+                    replaceFragment(NAVIGATION_FRAGMENT_NAME.TRAINER_FRAGMENT, false, true, null)
                     true
                 }
                 R.id.fragment_comunity-> {
-                    replaceFragment(NAVIGATION_FRAGMENT_NAME.COMMUNITY_FRAGMENT, true, true, null)
+                    replaceFragment(NAVIGATION_FRAGMENT_NAME.COMMUNITY_FRAGMENT, false, true, null)
                     true
                 }
                 R.id.fragment_my -> {
-                    replaceFragment(NAVIGATION_FRAGMENT_NAME.MY_FRAGMENT, true, true, null)
+                    replaceFragment(NAVIGATION_FRAGMENT_NAME.MY_FRAGMENT, false, true, null)
                     true
                 }
                 else -> false
@@ -68,13 +70,24 @@ class NavigationActivity : AppCompatActivity() {
         }
     }
 
+    // ReadTrainerActivity 실행
+    fun readTrainerRequest(){
+        val readTrainerIntent = Intent(this, ReadTrainerActivity::class.java)
+        startActivity(readTrainerIntent)
+    }
+
     fun replaceFragment(name:NAVIGATION_FRAGMENT_NAME, addToBackStack:Boolean, isAnimate:Boolean, data:Bundle?){
+
+        if(currentFragmentId == name.num){
+            return
+        }
 
         SystemClock.sleep(200)
 
         val fragmentTransaction = supportFragmentManager.beginTransaction()
 
         if(newFragment != null){
+
             oldFragment = newFragment
         }
 
@@ -82,36 +95,28 @@ class NavigationActivity : AppCompatActivity() {
 
             NAVIGATION_FRAGMENT_NAME.HOME_FRAGMENT -> {
                 newFragment = HomeFragment()
+                currentFragmentId = NAVIGATION_FRAGMENT_NAME.HOME_FRAGMENT.num
             }
 
             NAVIGATION_FRAGMENT_NAME.CENTER_FRAGMENT -> {
                 newFragment = CenterFragment()
+                currentFragmentId = NAVIGATION_FRAGMENT_NAME.CENTER_FRAGMENT.num
             }
 
             NAVIGATION_FRAGMENT_NAME.TRAINER_FRAGMENT -> {
                 newFragment = TrainerFragment()
+                currentFragmentId = NAVIGATION_FRAGMENT_NAME.TRAINER_FRAGMENT.num
             }
 
             NAVIGATION_FRAGMENT_NAME.COMMUNITY_FRAGMENT -> {
                 newFragment = CommunityFragment()
+                currentFragmentId = NAVIGATION_FRAGMENT_NAME.COMMUNITY_FRAGMENT.num
             }
 
             NAVIGATION_FRAGMENT_NAME.MY_FRAGMENT -> {
                 newFragment = MyFragment()
+                currentFragmentId = NAVIGATION_FRAGMENT_NAME.MY_FRAGMENT.num
             }
-
-            NAVIGATION_FRAGMENT_NAME.READ_TRAINER_FRAGMENT -> {
-                newFragment = ReadTrainerFragment()
-            }
-
-            NAVIGATION_FRAGMENT_NAME.MY_PROFILE_FRAGMENT -> {
-                newFragment = MyProfileFragment()
-            }
-
-            NAVIGATION_FRAGMENT_NAME.MY_NOTIFICATION_FRAGMENT -> {
-                newFragment = MyNotificationFragment()
-            }
-
         }
 
         if(data != null){

@@ -9,69 +9,88 @@
         android:orientation="vertical"
         tools:context=".fragment.ReadTrainerTab2Fragment">
 
-
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/Side_Padding"
-            android:layout_marginTop="@dimen/Up_Down_Margin"
-            android:layout_marginRight="@dimen/Side_Padding"
-            android:orientation="horizontal">
+            android:fillViewport="true">
 
-            <FrameLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/starReviewAllImageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginTop="12dp"
-                    android:src="@drawable/star" />
-
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center|left"
-                    android:layout_marginLeft="50dp"
-                    android:textColor="@color/Pup_Color"
-                    android:text="4.5 (24개)" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
+                    android:layout_marginLeft="@dimen/Side_Padding"
+                    android:layout_marginTop="@dimen/Up_Down_Margin"
+                    android:layout_marginRight="@dimen/Side_Padding"
                     android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/inputReviewButton"
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/Pup_Color"
-                        android:text="리뷰 작성"
-                        android:textSize="@dimen/SmallButton_Text_Size"
-                        android:textColor="@color/white" />
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/starReviewAllImageView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginTop="12dp"
+                            android:src="@drawable/star" />
+
+
+                        <TextView
+                            android:id="@+id/textView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|left"
+                            android:layout_marginLeft="50dp"
+                            android:textColor="@color/Pup_Color"
+                            android:text="4.5 (24개)" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/inputReviewButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="@color/Pup_Color"
+                                android:text="리뷰 작성"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/BigButton_Text_Size"
+                                app:cornerRadius="10dp" />
+                        </LinearLayout>
+                    </FrameLayout>
                 </LinearLayout>
-            </FrameLayout>
 
-        </LinearLayout>
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipReview1"
-            style="@style/Widget.Material3.Chip.Assist"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="최신순▼"
-            android:backgroundTint="@color/Pup_Color"
-            app:chipCornerRadius="20dp"
-            android:textSize="@dimen/SmallButton_Text_Size"
-            android:textColor="@color/white"
-            android:layout_marginLeft="@dimen/Side_Padding"
-            android:layout_marginRight="@dimen/Side_Padding"
-            android:layout_marginBottom="10dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipReview1"
+                        style="@style/Widget.Material3.Chip.Assist"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/Side_Padding"
+                        android:layout_marginRight="@dimen/Side_Padding"
+                        android:layout_marginBottom="10dp"
+                        android:backgroundTint="@color/Pup_Color"
+                        android:text="최신순▼"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/SmallButton_Text_Size"
+                        app:chipCornerRadius="20dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewTrainerReview"
@@ -79,5 +98,4 @@
             android:layout_height="match_parent" />
 
     </LinearLayout>
-
 </layout>

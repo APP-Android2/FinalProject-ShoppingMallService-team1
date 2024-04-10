@@ -30,7 +30,7 @@ class ChatActivity : AppCompatActivity() {
     fun settingToolbar() {
         activityChatBinding.apply {
             toolbarHomeChat.apply {
-                setNavigationIcon(R.drawable.arrow_back)
+                setNavigationIcon(R.drawable.close)
 
                 setNavigationOnClickListener {
                     finish()

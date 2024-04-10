@@ -18,7 +18,15 @@
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
+            android:theme="?attr/actionBarTheme" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="프로필"
+                android:textSize="@dimen/Toolbar_Title_Size" />
+        </com.google.android.material.appbar.MaterialToolbar>
 
         <ScrollView
             android:layout_width="match_parent"
@@ -39,11 +47,9 @@
 
                     <ImageView
                         android:id="@+id/imageView6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#FAF0FF"
-                        android:padding="25sp"
-                        android:src="@drawable/person" />
+                        android:layout_width="80sp"
+                        android:layout_height="80sp"
+                        app:srcCompat="@drawable/profile" />
 
                     <ImageView
                         android:id="@+id/imageView7"

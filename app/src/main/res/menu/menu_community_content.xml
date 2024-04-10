@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuItemContentEdit"
+        android:title="수정" />
+    <item
+        android:id="@+id/menuItemContentChat"
+        android:title="채팅 보내기" />
+    <item
+        android:id="@+id/menuItemContentDeclaration"
+        android:title="신고" />
+    <item
+        android:id="@+id/menuItemContentDel"
+        android:title="삭제" />
+</menu>

@@ -29,7 +29,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginRight="20dp"
                     android:text="10회"
-                    android:textSize="@dimen/Medium_Text_Size" />
+                    android:textSize="@dimen/Medium2_T_Text_Size" />
 
                 <TextView
                     android:id="@+id/textViewMembershipMoney"
@@ -40,7 +40,7 @@
                     android:layout_marginRight="20dp"
                     android:gravity="right"
                     android:text="60,000원"
-                    android:textSize="@dimen/Small_Text_Size" />
+                    android:textSize="@dimen/Small_T_Text_Size" />
 
                 <TextView
                     android:id="@+id/textViewMembershipTotalMoney"
@@ -51,7 +51,7 @@
                     android:layout_marginBottom="10dp"
                     android:gravity="right"
                     android:text="총 결제금액: 600,000원"
-                    android:textSize="@dimen/Small_Text_Size" />
+                    android:textSize="@dimen/Small_T_Text_Size" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

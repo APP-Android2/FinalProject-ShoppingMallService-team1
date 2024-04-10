@@ -3,11 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/menuMyNotification"
-        android:icon="@drawable/notifications"
-        android:title="알림"
-        app:showAsAction="ifRoom"/>
-    <item
         android:id="@+id/menuMyShopping"
         android:icon="@drawable/shopping_cart"
         android:title="장바구니"

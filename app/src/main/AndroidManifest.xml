@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:allowBackup="true"
@@ -11,10 +11,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProjectShoppingMallServiceteam1"
-        tools:targetApi="31" >
+        tools:targetApi="31">
         <activity
-            android:name=".LoginSignUpActivity"
+            android:name=".CommunityEditActivity"
             android:exported="false" />
+        <activity
+            android:name=".CommunityWriteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CommunitySearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ContentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReadTrainerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TransferMembershipActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ConsultingActivity"
             android:exported="false" />
@@ -28,7 +44,7 @@
             android:name=".SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".fragment.ShoppingCartActivity"
+            android:name=".ShoppingCartActivity"
             android:exported="false" />
         <activity
             android:name=".ChatActivity"
@@ -48,7 +64,7 @@
             android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Starting" >
+            android:theme="@style/AppTheme.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
