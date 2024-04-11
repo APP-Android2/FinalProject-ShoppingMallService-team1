@@ -79,20 +79,15 @@ class ReadTrainerFragment : Fragment() {
             appbarReadTrainer.apply {
                 val onOffsetChangedListener = OnOffsetChangedListener { appBarLayout, verticalOffset ->
                     // 스크롤 위치에 따른 작업 수행
-                    if (verticalOffset == 0) {
-                        // AppBarLayout이 완전히 확장된 상태
-                        fragmentReadTrainerBinding.apply {
-                            toolbarReadTrainerTitle.visibility = View.GONE
-                            toolbarReadTrainer.setBackgroundColor(Color.argb(0, 255, 255, 255))
-                        }
-                    } else if (Math.abs(verticalOffset) >= appBarLayout!!.totalScrollRange) {
+                    if (Math.abs(verticalOffset) >= appBarLayout!!.totalScrollRange) {
                         // AppBarLayout이 완전히 축소된 상태
-                        fragmentReadTrainerBinding.apply {
-                            toolbarReadTrainerTitle.visibility = View.VISIBLE
-                            toolbarReadTrainer.setBackgroundColor(Color.WHITE)
-                        }
+                        toolbarReadTrainerTitle.visibility = View.VISIBLE
+                        toolbarReadTrainer.setBackgroundColor(Color.WHITE)
+
                     } else {
-                        // 중간 상태(필요하다면 사용..)
+                        // AppBarLayout이 축소 되지 않은 상태
+                        toolbarReadTrainerTitle.visibility = View.GONE
+                        toolbarReadTrainer.setBackgroundColor(Color.TRANSPARENT)
                     }
                 }
                 appbarReadTrainer.addOnOffsetChangedListener(onOffsetChangedListener)

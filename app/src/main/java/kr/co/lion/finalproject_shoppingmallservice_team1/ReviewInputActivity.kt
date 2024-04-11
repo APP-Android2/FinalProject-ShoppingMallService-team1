@@ -63,6 +63,10 @@ class ReviewInputActivity : AppCompatActivity() {
             reviewImageView2.visibility = View.INVISIBLE
             reviewImageView3.visibility = View.INVISIBLE
             reviewImageView4.visibility = View.INVISIBLE
+
+            deleteImageButton2.visibility = View.GONE
+            deleteImageButton3.visibility = View.GONE
+            deleteImageButton4.visibility = View.GONE
         }
     }
 

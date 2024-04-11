@@ -10,9 +10,11 @@
         <!-- 구분선을 두기 위함 -->
         <View
             android:layout_width="match_parent"
-            android:layout_height="2.5dp"
-            android:layout_marginBottom="10dp"
-            android:background="#AAAAAA" />
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/Chip_List_Margin"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/line"
+            android:backgroundTint="#C6C6C6" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -81,10 +83,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:layout_marginLeft="@dimen/Side_Padding"
             android:layout_marginRight="@dimen/Side_Padding">
-
 
             <TextView
                 android:id="@+id/memberShipTypeTextView"
@@ -93,6 +94,33 @@
                 android:layout_marginBottom="5dp"
                 android:text="PT 10회"
                 android:textSize="@dimen/Medium2_T_Text_Size" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="@dimen/Side_Padding"
+            android:layout_marginRight="@dimen/Side_Padding">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@color/InputCompartment_Color">
+
+                <ImageButton
+                    android:id="@+id/userReViewImageButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_launcher_background" />
+
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:id="@+id/userReviewTextView"
@@ -148,6 +176,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="10dp"
                     android:text="안녕하세요! 라이언 트레이너 입니다.\n앞으로 남은 수업도 열심히 해보아요"
