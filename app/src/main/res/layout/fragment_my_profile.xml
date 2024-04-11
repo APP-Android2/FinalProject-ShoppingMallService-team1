@@ -140,22 +140,23 @@
                             android:textColor="@color/black" />
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <TextView
-                        android:id="@+id/myProfileLogout"
+                    <Button
+                        android:id="@+id/buttonmyProfileLogout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
                         android:layout_marginTop="@dimen/Up_Down_Margin"
                         android:text="로그아웃" />
 
-                    <TextView
-                        android:id="@+id/myProfileDeleteAccount"
+                    <Button
+                        android:id="@+id/buttonmyProfileDeleteAccount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
                         android:layout_marginTop="8sp"
                         android:text="회원탈퇴"
                         android:textColor="@color/red" />
+
                 </LinearLayout>
 
             </LinearLayout>

@@ -47,7 +47,8 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:paddingLeft="@dimen/Side_Padding"
-                    android:paddingRight="@dimen/Side_Padding">
+                    android:paddingRight="@dimen/Side_Padding"
+                    android:clipToPadding="false">
 
 
                     <LinearLayout
@@ -85,13 +86,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="100sp"
                         android:layout_marginTop="@dimen/Chip_List_Margin"
-                        app:cardBackgroundColor="@color/InputCompartment_Color"
+                        app:cardBackgroundColor="@color/white"
                         app:cardCornerRadius="15sp"
-                        app:cardElevation="2sp">
+                        app:cardElevation="3sp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:clipToPadding="false"
                             android:orientation="vertical">
 
                             <TextView
@@ -195,18 +197,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/Chip_List_Margin"
-                        android:orientation="horizontal">
+                        android:clipToPadding="false"
+                        android:orientation="horizontal"
+                        android:padding="2sp">
 
                         <androidx.cardview.widget.CardView
                             android:id="@+id/cardViewHomeAroundCenter"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="94dp"
                             android:layout_gravity="center|center_vertical"
-                            android:layout_marginRight="9sp"
+                            android:layout_margin="2dp"
+                            android:layout_marginLeft="9dp"
                             android:layout_weight="1"
-                            app:cardBackgroundColor="#E7CAFF"
+                            android:padding="4dp"
+                            app:cardBackgroundColor="@color/white"
                             app:cardCornerRadius="15sp"
-                            app:cardElevation="1sp">
+                            app:cardElevation="3sp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -216,25 +222,45 @@
                                 <TextView
                                     android:id="@+id/textViewHomeAroundCenter"
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="15dp"
+                                    android:layout_marginBottom="10dp"
                                     android:gravity="center|center_vertical"
                                     android:text="내 주변 운동 시설"
                                     android:textAlignment="center"
                                     android:textColor="@color/black"
-                                    android:textSize="@dimen/Big_Text_Size" />
+                                    android:textSize="13sp"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:id="@+id/imageView3"
+                                    android:layout_width="98dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:paddingBottom="4sp"
+                                    app:srcCompat="@drawable/locationcenter" />
+
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="209dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            tools:layout_weight="1"></LinearLayout>
 
                         <androidx.cardview.widget.CardView
                             android:id="@+id/cardViewHomeAssign"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="94dp"
                             android:layout_gravity="center|center_vertical"
-                            android:layout_marginLeft="9dp"
+                            android:layout_margin="2dp"
                             android:layout_weight="1"
-                            app:cardBackgroundColor="#B9C7FA"
+                            android:padding="4dp"
+                            app:cardBackgroundColor="@color/white"
                             app:cardCornerRadius="15sp"
-                            app:cardElevation="1sp">
+                            app:cardElevation="3sp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -244,11 +270,23 @@
                                 <TextView
                                     android:id="@+id/textViewHomeAssign"
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginTop="15dp"
+                                    android:layout_marginBottom="10dp"
                                     android:gravity="center|center_vertical"
                                     android:text="양도 회원권"
                                     android:textColor="@color/black"
-                                    android:textSize="@dimen/Big_Text_Size" />
+                                    android:textSize="13sp"
+                                    android:textStyle="bold" />
+
+                                <ImageView
+                                    android:id="@+id/imageView2"
+                                    android:layout_width="98dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center_horizontal"
+                                    app:srcCompat="@drawable/memershipimage" />
+
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
 
