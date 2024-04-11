@@ -81,11 +81,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            app:tabIndicatorHeight="1dp"
-            app:tabIndicatorColor="@color/black"
+            app:tabIndicatorColor="@color/ContentsOfTheEntryCompartment_Color"
             app:tabIndicatorFullWidth="true"
-            app:tabTextColor="@color/black"
-            app:tabMode="fixed">
+            app:tabIndicatorHeight="1dp"
+            app:tabMode="fixed"
+            app:tabTextColor="@color/black">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="match_parent"
@@ -96,13 +96,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="수영" />
+
             <com.google.android.material.tabs.TabItem
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="필라테스" />
         </com.google.android.material.tabs.TabLayout>
     </LinearLayout>
-
+m
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/gym_list_recylcler"
         android:layout_width="match_parent"

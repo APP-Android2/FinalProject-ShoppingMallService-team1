@@ -34,7 +34,7 @@ class NavigationActivity : AppCompatActivity() {
 
         // 앱 초기 실행 시 홈화면으로 설정
         if (savedInstanceState == null) {
-            replaceFragment(NAVIGATION_FRAGMENT_NAME.CENTER_FRAGMENT, false, true, null)
+            replaceFragment(NAVIGATION_FRAGMENT_NAME.HOME_FRAGMENT, false, true, null)
         }
 
         setBottomNavigationView()

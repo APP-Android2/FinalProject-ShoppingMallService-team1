@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
+import android.os.SystemClock
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,10 +14,18 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
+import com.google.android.material.transition.MaterialSharedAxis
+import kr.co.lion.finalproject_shoppingmallservice_team1.CENTER_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
+import kr.co.lion.finalproject_shoppingmallservice_team1.ReadTrainerActivity
+import kr.co.lion.finalproject_shoppingmallservice_team1.TRAINER_FRAGMENT_NAME
+import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentReadTrainerBinding
 
 class CenterFragment : Fragment() {
 
+    // 프래그먼트 객체를 담을 변수
+    var oldFragment: Fragment? = null
+    var newFragment: Fragment? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,7 +54,64 @@ class CenterFragment : Fragment() {
         chipDailyPass.setOnClickListener(chipClickListener)
         chipDiscount.setOnClickListener(chipClickListener)
 
-        return view
+        return inflater.inflate(R.layout.fragment_center, container, false)
     }
+    fun replaceFragment(name: CENTER_FRAGMENT_NAME, addToBackStack:Boolean, isAnimate:Boolean, data:Bundle?){
 
+        SystemClock.sleep(100)
+
+        val fragmentTransaction = childFragmentManager.beginTransaction()
+        fragmentTransaction.setReorderingAllowed(true)
+
+        if(newFragment != null){
+            oldFragment = newFragment
+        }
+
+        when(name){
+            CENTER_FRAGMENT_NAME.CENTER_FRAGMENT -> {
+                newFragment = CenterFragment()
+            }
+            CENTER_FRAGMENT_NAME.CENTER_PILATES_SELECT -> {
+
+            }
+            CENTER_FRAGMENT_NAME.CENTER_SWIMMING_SELECT -> {
+            }
+        }
+
+        if(data != null){
+            newFragment?.arguments = data
+        }
+
+        if(newFragment != null){
+
+            // 애니메이션 설정
+            if(isAnimate == true){
+
+                if(oldFragment != null){
+                    // old에서 new가 새롭게 보여질 때 old의 애니메이션
+                    oldFragment?.exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, true)
+                    // new에서 old로 되돌아갈때 old의 애니메이션
+                    oldFragment?.reenterTransition = MaterialSharedAxis(MaterialSharedAxis.X, false)
+
+                    oldFragment?.enterTransition = null
+                    oldFragment?.returnTransition = null
+                }
+
+                // old에서 new가 새롭게 보여질 때 new의 애니메이션
+                newFragment?.enterTransition = MaterialSharedAxis(MaterialSharedAxis.X, true)
+                // new에서 old로 되돌아갈때 new의 애니메이션
+                newFragment?.returnTransition = MaterialSharedAxis(MaterialSharedAxis.X, false)
+
+                newFragment?.exitTransition = null
+                newFragment?.reenterTransition = null
+            }
+
+            fragmentTransaction.replace(R.id.readTrainerTabView, newFragment!!)
+
+            if(addToBackStack == true){
+                fragmentTransaction.addToBackStack(name.str)
+            }
+            fragmentTransaction.commit()
+        }
+    }
 }
