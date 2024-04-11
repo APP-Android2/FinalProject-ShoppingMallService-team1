@@ -8,6 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
@@ -18,13 +22,18 @@ class MyProfileFragment : Fragment() {
     lateinit var fragmentMyProfileBinding: FragmentMyProfileBinding
     lateinit var navigationActivity: NavigationActivity
 
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         fragmentMyProfileBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_profile, container, false)
         navigationActivity = activity as NavigationActivity
 
+        auth = Firebase.auth
+
         settingToolbar()
         handleBackPress()
+        settingEvent()
 
         return fragmentMyProfileBinding.root
     }
@@ -59,5 +68,25 @@ class MyProfileFragment : Fragment() {
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+    }
+
+    private fun settingEvent(){
+        fragmentMyProfileBinding.apply {
+            buttonmyProfileLogout.setOnClickListener {
+                logout()
+                Snackbar.make(it, "로그아웃 완료했습니다.", Snackbar.LENGTH_SHORT).show()
+            }
+            buttonmyProfileDeleteAccount.setOnClickListener {
+                revokeAccess()
+                Snackbar.make(it, "회원 탈퇴했습니다.", Snackbar.LENGTH_SHORT).show()
+            }
+        }
+    }
+    private fun logout(){
+        FirebaseAuth.getInstance().signOut()
+    }
+
+    private fun revokeAccess(){
+        auth.currentUser?.delete()
     }
 }

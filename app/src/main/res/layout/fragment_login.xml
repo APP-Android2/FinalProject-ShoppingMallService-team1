@@ -67,6 +67,12 @@
             app:cornerRadius="10dp"
             app:strokeColor="@color/ContentsOfTheEntryCompartment_Color"
             app:strokeWidth="1dp" />
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/googlelogin_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </com.google.android.gms.common.SignInButton>
 
     </LinearLayout>
 
