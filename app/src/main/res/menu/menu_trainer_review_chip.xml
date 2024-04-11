@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/chipTrainerReView1"
+        android:title="최신순"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/chipTrainerReView2"
+        android:title="별점순"
+        app:showAsAction="never" />
+</menu>

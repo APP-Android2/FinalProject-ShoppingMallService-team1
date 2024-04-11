@@ -39,13 +39,12 @@
                             android:layout_marginTop="12dp"
                             android:src="@drawable/star" />
 
-
                         <TextView
                             android:id="@+id/textView3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center|left"
-                            android:layout_marginLeft="50dp"
+                            android:layout_marginLeft="35dp"
                             android:textColor="@color/Pup_Color"
                             android:text="4.5 (24개)" />
 
@@ -83,7 +82,7 @@
                         android:layout_marginRight="@dimen/Side_Padding"
                         android:layout_marginBottom="10dp"
                         android:backgroundTint="@color/Pup_Color"
-                        android:text="최신순▼"
+                        android:text="최신순 ▼"
                         android:textColor="@color/white"
                         android:textSize="@dimen/SmallButton_Text_Size"
                         app:chipCornerRadius="20dp" />

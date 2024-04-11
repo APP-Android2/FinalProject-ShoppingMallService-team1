@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- ViewModel 적용 -->
     <data>
         <variable
             name="trainerViewModel"
             type="kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.TrainerViewModel" />
     </data>
-
 
     <FrameLayout
         android:id="@+id/fragmentTrainer"
@@ -80,25 +80,34 @@
                     android:layout_weight="1">
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chip2"
-                        style="@style/Widget.Material3.Chip.Assist"
+                        android:id="@+id/trainerMainChip1"
+                        style="@style/Widget.Material3.Chip.Suggestion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="인기순" />
+                        android:backgroundTint="@color/Pup_Color"
+                        android:text="인기순 ▼"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/Pup_Color" />
+
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chip3"
-                        style="@style/Widget.Material3.Chip.Assist"
+                        android:id="@+id/chipTrainer2"
+                        style="@style/Widget.Material3.Chip.Suggestion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="일일 체험" />
+                        app:chipBackgroundColor="@{trainerViewModel.chipChecked ? @color/Pup_Color : @color/white}"
+                        android:checked="@={trainerViewModel.chipChecked}"
+                        android:text="일일 체험"
+                        android:textAlignment="center"
+                        android:textColor="@{trainerViewModel.chipChecked ? @color/white : @color/Pup_Color }"
+                        android:textStyle="bold"
+                        app:chipCornerRadius="20dp"
+                        app:chipStrokeColor="@color/Pup_Color"
+                        android:onClick="@{trainerViewModel::onChipClicked}" />
 
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip4"
-                        style="@style/Widget.Material3.Chip.Assist"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="거리순" />
                 </com.google.android.material.chip.ChipGroup>
             </LinearLayout>
 
