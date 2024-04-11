@@ -175,12 +175,28 @@
                     android:layout_weight="1"
                     app:cardBackgroundColor="@color/InputCompartment_Color">
 
-                    <ImageView
-                        android:id="@+id/reviewImageView1"
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/reviewImageView1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_launcher_background" />
+
+                        <ImageButton
+                            android:id="@+id/deleteImageButton1"
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginRight="2dp"
+                            android:layout_gravity="right|top"
+                            android:background="@android:color/transparent"
+                            android:src="@drawable/delete" />
+                    </FrameLayout>
+
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
@@ -190,12 +206,27 @@
                     android:layout_marginLeft="10dp"
                     app:cardBackgroundColor="@color/InputCompartment_Color">
 
-                    <ImageView
-                        android:id="@+id/reviewImageView2"
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/photo" />
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/reviewImageView2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/photo" />
+
+                        <ImageButton
+                            android:id="@+id/deleteImageButton2"
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginRight="2dp"
+                            android:layout_gravity="right|top"
+                            android:background="@android:color/transparent"
+                            android:src="@drawable/delete" />
+                    </FrameLayout>
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
@@ -205,12 +236,27 @@
                     android:layout_marginLeft="10dp"
                     app:cardBackgroundColor="@color/InputCompartment_Color">
 
-                    <ImageView
-                        android:id="@+id/reviewImageView3"
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/photo" />
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/reviewImageView3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/photo" />
+
+                        <ImageButton
+                            android:id="@+id/deleteImageButton3"
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginRight="2dp"
+                            android:layout_gravity="right|top"
+                            android:background="@android:color/transparent"
+                            android:src="@drawable/delete" />
+                    </FrameLayout>
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
@@ -220,19 +266,29 @@
                     android:layout_marginLeft="10dp"
                     app:cardBackgroundColor="@color/InputCompartment_Color">
 
-                    <ImageView
-                        android:id="@+id/reviewImageView4"
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/photo" />
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/reviewImageView4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/photo" />
+
+                        <ImageButton
+                            android:id="@+id/deleteImageButton4"
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginRight="2dp"
+                            android:layout_gravity="right|top"
+                            android:background="@android:color/transparent"
+                            android:src="@drawable/delete" />
+                    </FrameLayout>
                 </com.google.android.material.card.MaterialCardView>
-
-
-
-
             </LinearLayout>
-
 
         </LinearLayout>
 

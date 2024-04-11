@@ -122,10 +122,11 @@
                     <!-- 구분선을 두기 위함 -->
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2.5dp"
+                        android:layout_height="1dp"
                         android:layout_marginTop="@dimen/Chip_List_Margin"
                         android:layout_marginBottom="15dp"
-                        android:background="#AAAAAA" />
+                        android:background="@drawable/line"
+                        android:backgroundTint="#C6C6C6" />
 
                     <TextView
                         android:id="@+id/textView"
@@ -163,10 +164,11 @@
                     <!-- 구분선을 두기 위함 -->
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2.5dp"
+                        android:layout_height="1dp"
                         android:layout_marginTop="@dimen/Chip_List_Margin"
                         android:layout_marginBottom="15dp"
-                        android:background="#AAAAAA" />
+                        android:background="@drawable/line"
+                        android:backgroundTint="#C6C6C6" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -196,10 +198,11 @@
                     <!-- 구분선을 두기 위함 -->
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2.5dp"
+                        android:layout_height="1dp"
                         android:layout_marginTop="@dimen/Chip_List_Margin"
                         android:layout_marginBottom="15dp"
-                        android:background="#AAAAAA" />
+                        android:background="@drawable/line"
+                        android:backgroundTint="#C6C6C6" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -262,10 +265,11 @@
                     <!-- 구분선을 두기 위함 -->
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2.5dp"
+                        android:layout_height="1dp"
                         android:layout_marginTop="@dimen/Chip_List_Margin"
                         android:layout_marginBottom="15dp"
-                        android:background="#AAAAAA" />
+                        android:background="@drawable/line"
+                        android:backgroundTint="#C6C6C6" />
 
                     <TextView
                         android:layout_width="match_parent"
