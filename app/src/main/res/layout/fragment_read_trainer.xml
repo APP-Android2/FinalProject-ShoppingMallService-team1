@@ -23,7 +23,7 @@
                 android:layout_height="390dp"
                 android:fitsSystemWindows="true"
                 app:expandedTitleGravity="center|bottom"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
                 app:statusBarScrim="@android:color/black"
                 app:contentScrim="?attr/colorPrimary"
                 app:expandedTitleMarginBottom="50dp">
@@ -37,6 +37,7 @@
                     android:paddingEnd="0dp"
                     android:paddingBottom="0dp"
                     android:scaleType="fitXY"
+                    app:layout_collapseMode="parallax"
                     android:src="@drawable/ic_launcher_background" />
 
                 <LinearLayout
@@ -99,7 +100,7 @@
                     <!-- 구분선을 두기 위함 -->
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2.5dp"
+                        android:layout_height="2dp"
                         android:layout_marginTop="@dimen/Chip_List_Margin"
                         android:background="#AAAAAA" />
                 </LinearLayout>
@@ -110,8 +111,7 @@
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin"
                     android:background="?attr/colorPrimary"
-                    android:theme="?attr/actionBarTheme"
-                    android:minHeight="?attr/actionBarSize">
+                    android:theme="?attr/actionBarTheme">
 
                     <TextView
                         android:id="@+id/toolbarReadTrainerTitle"
