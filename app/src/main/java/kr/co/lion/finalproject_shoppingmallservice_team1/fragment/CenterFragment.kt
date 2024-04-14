@@ -14,14 +14,18 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.transition.MaterialSharedAxis
 import kr.co.lion.finalproject_shoppingmallservice_team1.CENTER_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.ReadTrainerActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.TRAINER_FRAGMENT_NAME
+import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentCenterBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentReadTrainerBinding
 
 class CenterFragment : Fragment() {
+
+    lateinit var fragmentCenterBinding:FragmentCenterBinding
 
     // 프래그먼트 객체를 담을 변수
     var oldFragment: Fragment? = null
@@ -54,8 +58,55 @@ class CenterFragment : Fragment() {
         chipDailyPass.setOnClickListener(chipClickListener)
         chipDiscount.setOnClickListener(chipClickListener)
 
+        settingToolbarCenterFragment()
+        onOffsetChanged()
+        settingTabLayout()
+
         return inflater.inflate(R.layout.fragment_center, container, false)
     }
+
+    fun settingTabLayout(){
+        fragmentCenterBinding.apply{
+            trainerInfoTab.apply {
+                addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+                    override fun onTabSelected(tab: TabLayout.Tab?) {
+                        // 탭이 선택되었을 때 호출되는 메서드
+                        val position = tab?.position
+
+                        when(position){
+                            0 -> {
+                                replaceFragment(CENTER_FRAGMENT_NAME.CENTER_FRAGMENT,false, false, null)
+                            }
+                            1 -> {
+                                replaceFragment(CENTER_FRAGMENT_NAME.CENTER_SWIMMING_SELECT, false, false, null)
+                            }
+                            2 -> {
+                                replaceFragment(CENTER_FRAGMENT_NAME.CENTER_PILATES_SELECT, false, false, null)
+                            }
+                        }
+                    }
+
+                    override fun onTabUnselected(tab: TabLayout.Tab?) {
+                        // 선택이 해제된 탭의 경우 처리할 내용
+
+                    }
+
+                    override fun onTabReselected(tab: TabLayout.Tab?) {
+                        // 이미 선택된 탭이 다시 선택된 경우 처리할 내용
+                    }
+                })
+            }
+        }
+    }
+
+    private fun onOffsetChanged() {
+        TODO("Not yet implemented")
+    }
+
+    private fun settingToolbarCenterFragment() {
+        TODO("Not yet implemented")
+    }
+
     fun replaceFragment(name: CENTER_FRAGMENT_NAME, addToBackStack:Boolean, isAnimate:Boolean, data:Bundle?){
 
         SystemClock.sleep(100)
@@ -115,3 +166,5 @@ class CenterFragment : Fragment() {
         }
     }
 }
+
+

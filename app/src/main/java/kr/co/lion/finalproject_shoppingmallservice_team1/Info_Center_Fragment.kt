@@ -13,10 +13,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [InfoCenter.newInstance] factory method to
+ * Use the [Info_Center_Fragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class InfoCenter : Fragment() {
+class Info_Center_Fragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -34,7 +34,7 @@ class InfoCenter : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_info_center_main, container, false)
+        return inflater.inflate(R.layout.fragment_info_center_detail, container, false)
     }
 
     companion object {
@@ -44,12 +44,12 @@ class InfoCenter : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment InfoCenter.
+         * @return A new instance of fragment Info_Center_Fragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            InfoCenter().apply {
+            Info_Center_Fragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
