@@ -53,24 +53,11 @@
             android:textStyle="bold"
             app:cornerRadius="10dp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/login_googlelogin_button"
-            style="@style/Widget.Material3.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/google_Login"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            app:backgroundTint="@color/white"
-            app:cornerRadius="10dp"
-            app:strokeColor="@color/ContentsOfTheEntryCompartment_Color"
-            app:strokeWidth="1dp" />
         <com.google.android.gms.common.SignInButton
             android:id="@+id/googlelogin_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
 
         </com.google.android.gms.common.SignInButton>
 
