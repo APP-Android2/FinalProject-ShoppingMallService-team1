@@ -2,6 +2,7 @@ package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.SystemClock
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -46,27 +47,28 @@ class LoginFragment : Fragment() {
 
         fragmentLoginBinding = FragmentLoginBinding.inflate(inflater)
         loginActivity = activity as LoginActivity
+
         // Firebase 앱 초기화
         FirebaseApp.initializeApp(loginActivity)
 
+        // 권한 선언
         auth = Firebase.auth
 
+        // 로그인 한 후에 app을 켰을때 바로 다음 화면으로 넘어가게 함
         if (auth.currentUser != null) {
             val intent = Intent(loginActivity, NavigationActivity::class.java)
             startActivity(intent)
             loginActivity.finish()
         }
 
+        // 사용자의 구글 계정으로 앱에 로그인할 때 필요한 옵션을 설정
+        // ID 토큰과 Email 요청
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken("524744687587-u0ln40022gc6pe0ijohht8jfau4prtj3.apps.googleusercontent.com")
             .requestEmail()
             .build()
 
         mGoogleSignInClient = GoogleSignIn.getClient(loginActivity, gso)
-
-        fragmentLoginBinding.googleloginButton.setOnClickListener {
-            signIn()
-        }
 
 
         kakaoLogin()
@@ -75,11 +77,15 @@ class LoginFragment : Fragment() {
 
         return fragmentLoginBinding.root
     }
+
+    //Intent를 이용해 구글로그인 페이지로 가서  Google Sign In flow 시작
     private fun signIn() {
         val signInIntent: Intent = mGoogleSignInClient.getSignInIntent()
         startActivityForResult(signInIntent, REQ_ONE_TAP)
         Log.d("test1234", "signIn")
     }
+
+    // 작업을 초기화할 때 사용자가 현재 로그인되어 있는지 확인
     override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
@@ -87,7 +93,65 @@ class LoginFragment : Fragment() {
         updateUI(currentUser)
     }
 
-    private fun updateUI(user: FirebaseUser?) { //update ui code here
+    // 로그인 성공 여부 확인 후 액티비티에 사용자 ID 토큰, 계정 객체 전달
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        // 구글 로그인 인텐트의 결과 값을 통해 로그인 성공 여부 확인
+        if (requestCode == REQ_ONE_TAP) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                val account = task.getResult(ApiException::class.java)
+                // GoogleSignInAccount 객체에서 ID 토큰을 가져와서 firebaseAuthWithGoogle함수로 전달
+                firebaseAuthWithGoogle(account.idToken!!, account)
+
+            } catch (e: ApiException) {
+                // 계정 전달하지 않고 종료
+                Log.d("test1234", "${e}")
+            }
+        }
+    }
+
+
+    // 사용자의 ID 토큰으로 Firebase 사용자 인증 정보로 변경하여 인증
+    private fun firebaseAuthWithGoogle(idToken:String, account: GoogleSignInAccount) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credential).addOnCompleteListener(loginActivity,
+                OnCompleteListener<AuthResult?> { task ->
+                    if (task.isSuccessful) {
+                        val isNewUser = task.result.additionalUserInfo?.isNewUser
+
+                        // 새로운 사용자인 경우, Firebase에 사용자 정보 추가
+                        if (isNewUser == true) {
+                            val currentUser = auth.currentUser
+
+                            // 사용자 정보를 데이터베이스에 추가하는 코드 작성
+                            currentUser?.let { user ->
+
+                                // 사용자 정보를 담을 HashMap
+                                val userInfo = hashMapOf(
+                                    "uid" to user.uid,
+                                    "displayName" to user.displayName,
+                                    "email" to user.email
+                                )
+                                userInfo.forEach {
+                                    Log.d("test1234", "${it}")
+                                }
+                            }
+                        }
+                        // 사용자 인증 정보를 UI에 업데이트
+                        val user: FirebaseUser? = auth.currentUser
+                        Log.d("test1234", "${account.email}님 GoogleLogin")
+                        updateUI(user)
+                    } else {
+                        // 인증 실패
+                        updateUI(null)
+                    }
+                })
+    }
+
+    // 로그인 성공 후 UI 업데이트
+    private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
             val intent = Intent(loginActivity, NavigationActivity::class.java)
             startActivity(intent)
@@ -95,38 +159,6 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
-        val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
-        auth.signInWithCredential(credential).addOnCompleteListener(loginActivity,
-                OnCompleteListener<AuthResult?> { task ->
-                    if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
-                        val user: FirebaseUser? = auth.currentUser
-                        Log.d("test1234", "GoogleLogin")
-                        updateUI(user)
-                    } else {
-                        // If sign in fails, display a message to the user.
-                        updateUI(null)
-                    }
-                })
-    }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == REQ_ONE_TAP) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            try {
-                // Google Sign In was successful, authenticate with Firebase
-                val account = task.getResult(ApiException::class.java)
-                firebaseAuthWithGoogle(account)
-                Log.d("test1234", "account")
-
-            } catch (e: ApiException) {
-                Log.d("test1234", "${e}")
-            }
-        }
-    }
     private fun kakaoLogin(){
 
         fragmentLoginBinding.loginKakaologinButton.setOnClickListener {
@@ -152,14 +184,8 @@ class LoginFragment : Fragment() {
     }
 
     private fun googleLogin(){
-
-        fragmentLoginBinding.loginGoogleloginButton.setOnClickListener {
-
-            val intent = Intent(loginActivity, NavigationActivity::class.java)
-            startActivity(intent)
-
-            loginActivity.finish()
+        fragmentLoginBinding.googleloginButton.setOnClickListener {
+            signIn()
         }
     }
-
 }
