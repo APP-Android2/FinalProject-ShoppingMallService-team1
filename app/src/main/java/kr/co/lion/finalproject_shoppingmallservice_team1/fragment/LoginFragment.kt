@@ -35,7 +35,6 @@ class LoginFragment : Fragment() {
 
     private lateinit var fragmentLoginBinding: FragmentLoginBinding
     private lateinit var loginActivity: LoginActivity
-    private lateinit var navigationActivity: NavigationActivity
 
     private val REQ_ONE_TAP = 2  // Can be any integer unique to the Activity
     private lateinit var auth: FirebaseAuth

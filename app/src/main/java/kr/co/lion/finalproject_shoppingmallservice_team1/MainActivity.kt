@@ -7,6 +7,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.google.firebase.auth.FirebaseAuth
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivityMainBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.OnBoarding1Fragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.OnBoarding2Fragment
@@ -15,6 +16,7 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.OnBoarding3Fra
 class MainActivity : AppCompatActivity() {
 
     private lateinit var activityMainBinding: ActivityMainBinding
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +26,13 @@ class MainActivity : AppCompatActivity() {
 
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
+
+        firebaseAuth = FirebaseAuth.getInstance()
+        val user = firebaseAuth.currentUser
+        if(user != null){
+            startActivity(Intent(this@MainActivity, NavigationActivity::class.java))
+            finish()
+        }
 
         settingOnBoarding()
         startLoginActivity()
