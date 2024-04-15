@@ -2,10 +2,12 @@ package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
 import android.os.Bundle
 import android.os.SystemClock
+import android.view.ContextThemeWrapper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,6 +29,7 @@ class MyCouponFragment : Fragment() {
 
         settingToolbar()
         handleBackPress()
+        settingChip()
         settingRecyclerViewMyCoupon()
 
         return fragmentMyCouponBinding.root
@@ -60,6 +63,32 @@ class MyCouponFragment : Fragment() {
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+    }
+
+    private fun settingChip(){
+        fragmentMyCouponBinding.chipCoupon.apply {
+            setOnClickListener {
+                val contextWrapper = ContextThemeWrapper(context, R.style.popupMenuStyle)
+
+                val  popup = PopupMenu(contextWrapper, this)
+                popup.inflate(R.menu.menu_coupon_chip)
+                popup.setOnMenuItemClickListener {
+                    when(it.itemId){
+                        R.id.menuItemCouponEntire -> {
+                            text = "전체"
+                        }
+                        R.id.menuItemCouponOwn -> {
+                            text = "보유한 쿠폰"
+                        }
+                        R.id.menuItemCouponDown -> {
+                            text = "다운로드 가능한 쿠폰"
+                        }
+                    }
+                    true
+                }
+                popup.show()
+            }
+        }
     }
 
     // RecyclerView 설정
