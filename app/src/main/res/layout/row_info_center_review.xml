@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:justifyContent="space-between"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/textViewReviewerName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:paddingEnd="8dp"
+            android:text="닉네임"
+            android:textAppearance="?attr/textAppearanceListItem" />
+
+        <TextView
+            android:id="@+id/textViewReviewDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="날짜"
+            android:textAppearance="?attr/textAppearanceListItemSmall" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="4"
+            android:isIndicator="true"
+            android:stepSize="0.5" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewProductName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="제품명"
+        android:paddingTop="8dp" />
+
+    <TextView
+        android:id="@+id/textViewReviewContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="리뷰 내용"
+        android:paddingTop="4dp" />
+
+    <TextView
+        android:id="@+id/textViewCenterComment"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="#E0E0E0"
+        android:padding="8dp"
+        android:text="운동센터 코멘트" />
+
+</LinearLayout>
+</layout>
