@@ -86,14 +86,11 @@
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/certificateTextView"
+                                android:id="@+id/findLocation"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="170dp"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginRight="20dp"
-                                android:layout_weight="1"
-                                android:gravity="right"
                                 android:onClick="clickTextViewCertificate"
                                 android:text="자격 증명 보기"
                                 android:textColor="@color/Pup_Color"
