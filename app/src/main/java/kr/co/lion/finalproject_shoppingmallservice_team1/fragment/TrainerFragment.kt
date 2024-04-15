@@ -2,9 +2,11 @@ package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -16,12 +18,14 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.ShoppingCartActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentTrainerBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowTrainerBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.TrainerViewModel
 
 
 class TrainerFragment : Fragment() {
 
     lateinit var fragmentTrainerBinding: FragmentTrainerBinding
     lateinit var navigationActivity: NavigationActivity
+    lateinit var trainerViewModel: TrainerViewModel
 
     var isImageClick = false
 
@@ -29,10 +33,14 @@ class TrainerFragment : Fragment() {
 
         fragmentTrainerBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_trainer, container, false)
         navigationActivity = activity as NavigationActivity
+        trainerViewModel = TrainerViewModel()
+        fragmentTrainerBinding.trainerViewModel = trainerViewModel
+        fragmentTrainerBinding.lifecycleOwner = this@TrainerFragment
 
         settingToolbarTrainer()
         settingTabLayout()
         settingRecyclerViewTrainerHealth()
+        settingChip1()
 
         return fragmentTrainerBinding.root
     }
@@ -41,10 +49,11 @@ class TrainerFragment : Fragment() {
      * 함수 정리 (작성 순서)
      * 1. 툴바 설정 (settingToolbarTrainer())
      * 2. Tab 레이아웃 설정 (settingTabLayout())
-     * 3. RecyclerView 설정(헬스) (settingRecyclerViewTrainerHealth())
-     * 4. 헬스 항목의 Adapter와 ViewHolder 설정
-     * 5. RecyclerView 설정(필라테스) (settingRecyclerViewTrainerPilatest())
-     * 6. 필라테스 항목의 Adapter와 ViewHolder 설정
+     * 3. chip 목록 설정 (settingChip1())
+     * 4. RecyclerView 설정(헬스) (settingRecyclerViewTrainerHealth())
+     * 5. 헬스 항목의 Adapter와 ViewHolder 설정 (찜 기능 추가)
+     * 6. RecyclerView 설정(필라테스) (settingRecyclerViewTrainerPilatest())
+     * 7. 필라테스 항목의 Adapter와 ViewHolder 설정 (찜 기능 추가)
      */
 
 
@@ -91,6 +100,32 @@ class TrainerFragment : Fragment() {
                         // 이미 선택된 탭이 다시 선택된 경우 처리할 내용
                     }
                 })
+            }
+        }
+    }
+
+    private fun settingChip1(){
+        fragmentTrainerBinding.apply {
+            trainerMainChip1.apply {
+                setOnClickListener {
+                    val contextWrapper = ContextThemeWrapper(context, R.style.popupMenuStyle)
+
+                    val popup = PopupMenu(contextWrapper, this)
+                    popup.inflate(R.menu.menu_trainer_main_chip)
+
+                    popup.setOnMenuItemClickListener { item ->
+                        when (item.itemId) {
+                            R.id.chipTrainer1 -> {
+                                text = "인기순"
+                            }
+                            R.id.chipTrainer2 -> {
+                                text = "거리순"
+                            }
+                        }
+                        true
+                    }
+                    popup.show()
+                }
             }
         }
     }

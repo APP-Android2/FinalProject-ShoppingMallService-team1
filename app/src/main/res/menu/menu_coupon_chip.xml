@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuItemCouponEntire"
+        android:title="전체" />
+    <item
+        android:id="@+id/menuItemCouponOwn"
+        android:title="보유한 쿠폰" />
+    <item
+        android:id="@+id/menuItemCouponDown"
+        android:title="다운로드 가능한 쿠폰" />
+</menu>

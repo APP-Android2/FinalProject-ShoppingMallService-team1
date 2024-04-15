@@ -1,5 +1,6 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import androidx.fragment.app.Fragment
@@ -8,47 +9,40 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
-import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.Firebase
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
+import androidx.fragment.app.FragmentManager
+import kr.co.lion.finalproject_shoppingmallservice_team1.MY_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
-import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentMyProfileBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.ShoppingCartActivity
+import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentMyPointBinding
 
-class MyProfileFragment : Fragment() {
+class MyPointFragment : Fragment() {
 
-    lateinit var fragmentMyProfileBinding: FragmentMyProfileBinding
+    lateinit var fragmentMyPointBinding: FragmentMyPointBinding
     lateinit var navigationActivity: NavigationActivity
-
-    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        fragmentMyProfileBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_profile, container, false)
+        fragmentMyPointBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_point, container, false)
         navigationActivity = activity as NavigationActivity
-
-        auth = Firebase.auth
 
         settingToolbar()
         handleBackPress()
-        settingEvent()
+        settingClickEventTextView()
 
-        return fragmentMyProfileBinding.root
+        return fragmentMyPointBinding.root
     }
 
     // Toolbar 설정
     fun settingToolbar(){
-        fragmentMyProfileBinding.apply {
-            toolbarMyProfile.apply {
+        fragmentMyPointBinding.apply {
+            toolbarMyPoint.apply {
                 // 뒤로가기
                 setNavigationIcon(R.drawable.arrow_back)
                 setNavigationOnClickListener {
                     backProcess()
                 }
-                // 메뉴
-                inflateMenu(R.menu.menu_my_profile)
             }
         }
     }
@@ -70,23 +64,28 @@ class MyProfileFragment : Fragment() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 
-    private fun settingEvent(){
-        fragmentMyProfileBinding.apply {
-            buttonmyProfileLogout.setOnClickListener {
-                logout()
-                Snackbar.make(it, "로그아웃 완료했습니다.", Snackbar.LENGTH_SHORT).show()
+    // TextView 항목 클릭 시 이벤트
+    fun settingClickEventTextView(){
+        fragmentMyPointBinding.apply {
+            // 리뷰 작성
+            myPointWriteReview.setOnClickListener {
+
             }
-            buttonmyProfileDeleteAccount.setOnClickListener {
-                revokeAccess()
-                Snackbar.make(it, "회원 탈퇴했습니다.", Snackbar.LENGTH_SHORT).show()
+
+            // 회원권 구매
+            myPointBuyMembership.setOnClickListener {
+
+            }
+
+            // 커뮤니티 글 작성
+            myPointWriteCommunity.setOnClickListener {
+
+            }
+
+            // 댓글 작성
+            myPointWriteComment.setOnClickListener {
+
             }
         }
-    }
-    private fun logout(){
-        FirebaseAuth.getInstance().signOut()
-    }
-
-    private fun revokeAccess(){
-        auth.currentUser?.delete()
     }
 }

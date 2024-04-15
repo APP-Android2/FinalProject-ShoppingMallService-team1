@@ -3,6 +3,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    
+    <data>
+        <variable
+            name="MyPaymentViewModel"
+            type="kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.MyPaymentViewModel" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,27 +45,32 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chipMyPaymentDate"
-                    style="@style/Widget.Material3.Chip.Assist.Elevated"
-                    android:layout_width="wrap_content"
+                    style="@style/Widget.Material3.Chip.Suggestion"
+                    android:layout_width="80sp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/Side_Padding"
-                    android:text="최신 3개월 ▼"
+                    android:backgroundTint="@color/Pup_Color"
+                    android:text="최신순"
+                    android:textAlignment="center"
                     android:textColor="@color/white"
+                    android:layout_marginLeft="@dimen/Side_Padding"
                     android:textSize="@dimen/Chip_Text_Size"
-                    app:chipBackgroundColor="@color/Pup_Color"
-                    app:chipCornerRadius="50sp" />
+                    app:chipCornerRadius="20dp"
+                    app:chipStrokeColor="@color/Pup_Color" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chipMyPaymentCategory"
-                    style="@style/Widget.Material3.Chip.Assist.Elevated"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/chipMyPaymentType"
+                    style="@style/Widget.Material3.Chip.Suggestion"
+                    android:layout_width="80sp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/Side_Padding"
-                    android:text="전체 ▼"
+                    android:layout_marginLeft="10sp"
+                    android:backgroundTint="@color/Pup_Color"
+                    android:text="전체"
+                    android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="@dimen/Chip_Text_Size"
-                    app:chipBackgroundColor="@color/Pup_Color"
-                    app:chipCornerRadius="50sp" />
+                    app:chipCornerRadius="20dp"
+                    app:chipStrokeColor="@color/Pup_Color" />
+
             </LinearLayout>
 
             <LinearLayout

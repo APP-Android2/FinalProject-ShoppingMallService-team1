@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuMyPaymentTermNewly"
+        android:title="최신순"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menuMyPaymentTermLastly"
+        android:title="오래된순"
+        app:showAsAction="never" />
+</menu>
