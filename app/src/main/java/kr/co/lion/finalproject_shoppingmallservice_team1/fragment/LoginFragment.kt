@@ -23,6 +23,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import kr.co.lion.finalproject_shoppingmallservice_team1.GoogleLoginUser
 import kr.co.lion.finalproject_shoppingmallservice_team1.LOGIN_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.LoginActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
@@ -38,6 +40,9 @@ class LoginFragment : Fragment() {
     private val REQ_ONE_TAP = 2  // Can be any integer unique to the Activity
     private lateinit var auth: FirebaseAuth
     private lateinit var mGoogleSignInClient: GoogleSignInClient
+
+    // 로그인한 유저 수
+    var userCount = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -121,26 +126,17 @@ class LoginFragment : Fragment() {
                     if (task.isSuccessful) {
                         val isNewUser = task.result.additionalUserInfo?.isNewUser
 
-                        // 새로운 사용자인 경우, Firebase에 사용자 정보 추가
-                        if (isNewUser == true) {
-                            val currentUser = auth.currentUser
-
-                            // 사용자 정보를 데이터베이스에 추가하는 코드 작성
-                            currentUser?.let { user ->
-
-                                // 사용자 정보를 담을 HashMap
-                                val userInfo = hashMapOf(
-                                    "uid" to user.uid,
-                                    "displayName" to user.displayName,
-                                    "email" to user.email
-                                )
-                                userInfo.forEach {
-                                    Log.d("test1234", "${it}")
-                                }
-                            }
-                        }
                         // 사용자 인증 정보를 UI에 업데이트
                         val user: FirebaseUser? = auth.currentUser
+
+                        googleDocument(
+                            GoogleLoginUser(
+                                uid = user?.uid,
+                                displayName = user?.displayName,
+                                email = user?.email
+                            )
+                        )
+
                         Log.d("test1234", "${account.email}님 GoogleLogin")
                         updateUI(user)
                     } else {
@@ -156,6 +152,26 @@ class LoginFragment : Fragment() {
             val intent = Intent(loginActivity, NavigationActivity::class.java)
             startActivity(intent)
             loginActivity.finish()
+        }
+    }
+
+    private fun googleDocument(data:GoogleLoginUser){
+        FirebaseFirestore.getInstance()
+            .collection("GoogleLoginUser")
+            .document(data.uid!!)
+            .set(data)
+            .addOnSuccessListener {
+                Log.d("test1234", "Google DB Success")
+            }
+            .addOnFailureListener {
+                Log.d("test1234", "Google DB Fail")
+            }
+        userCount++
+    }
+
+    private fun googleLogin(){
+        fragmentLoginBinding.googleloginButton.setOnClickListener {
+            signIn()
         }
     }
 
@@ -180,12 +196,6 @@ class LoginFragment : Fragment() {
             startActivity(intent)
 
             loginActivity.finish()
-        }
-    }
-
-    private fun googleLogin(){
-        fragmentLoginBinding.googleloginButton.setOnClickListener {
-            signIn()
         }
     }
 }
