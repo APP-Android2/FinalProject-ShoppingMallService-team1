@@ -1,4 +1,4 @@
-package kr.co.lion.finalproject_shoppingmallservice_team1.Model
+package kr.co.lion.finalproject_shoppingmallservice_team1.model
 
 // 방문 상담 신청
 class VisitConsulting {

@@ -1,4 +1,4 @@
-package kr.co.lion.finalproject_shoppingmallservice_team1.Model
+package kr.co.lion.finalproject_shoppingmallservice_team1.model
 
 
 // 트레이너 화면 게시글

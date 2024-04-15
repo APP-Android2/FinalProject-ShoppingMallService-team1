@@ -1,4 +1,4 @@
-package kr.co.lion.finalproject_shoppingmallservice_team1.Model
+package kr.co.lion.finalproject_shoppingmallservice_team1.model
 
 // 쿠폰
 class Coupon {
