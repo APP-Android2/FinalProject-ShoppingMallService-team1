@@ -1,5 +1,6 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import kr.co.lion.finalproject_shoppingmallservice_team1.LoginActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
@@ -84,9 +86,19 @@ class MyProfileFragment : Fragment() {
     }
     private fun logout(){
         FirebaseAuth.getInstance().signOut()
+
+        startActivity(Intent(navigationActivity, LoginActivity::class.java))
+        navigationActivity.finish()
     }
 
     private fun revokeAccess(){
-        auth.currentUser?.delete()
+
+        auth.currentUser?.delete()?.addOnCompleteListener { task ->
+
+            if(task.isSuccessful){
+                startActivity(Intent(navigationActivity, LoginActivity::class.java))
+                navigationActivity.finish()
+            }
+        }
     }
 }
