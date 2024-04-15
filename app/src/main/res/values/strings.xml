@@ -3,7 +3,7 @@
 
     <string name="primary_color">Primary color</string>
     <string name="button">Button</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="fitmoa">피트모아</string>
@@ -32,6 +32,5 @@
 
     <!-- ReadTrainer fragment -->
     <string name="appbar_scrolling_view_behavior">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
-    >>>>>>> main
 
 </resources>
