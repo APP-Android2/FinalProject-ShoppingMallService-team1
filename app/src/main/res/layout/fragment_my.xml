@@ -55,7 +55,7 @@
                             app:srcCompat="@drawable/profile" />
 
                         <LinearLayout
-                            android:id="@+id/myProfileLocation"
+                            android:id="@+id/myProfile"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="@dimen/Side_Padding"
@@ -120,7 +120,6 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    android:id="@+id/textView5"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="포인트"
@@ -154,7 +153,6 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    android:id="@+id/textView7"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="쿠폰"
