@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.android.material.chip.Chip
 
-class TrainerViewModel : ViewModel() {
+class CommunityViewModel:ViewModel() {
     val chipChecked = MutableLiveData<Boolean>()
 
     init {
@@ -16,5 +16,4 @@ class TrainerViewModel : ViewModel() {
         val chip = view as Chip
         chipChecked.value = chip.isChecked
     }
-
 }

@@ -40,7 +40,7 @@
                             android:layout_marginTop="8dp"
                             android:layout_marginRight="20dp"
                             android:text="공지사항"
-                            android:textSize="@dimen/Medium_Text_Size"
+                            android:textSize="@dimen/Medium2_T_Text_Size"
                             android:textStyle="bold" />
 
                         <TextView
@@ -50,8 +50,8 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginRight="20dp"
                             android:layout_marginBottom="10dp"
-                            android:text="안녕하세요! PT 수업 진행 방식은 확일화 된 수업 방식이 아닌\n개개인의 맞게 여러가지 전문적인 운동 프로그램을 사용하고 있습니다.\n첫번째로 체육 지도 관리사 자격증과 물리치료사 자격증이 있어 근력과\n공지사항 안내 드립니다."
-                            android:textSize="@dimen/Small_Text_Size" />
+                            android:text="안녕하세요! PT 수업 진행 방식은 확일화 된 수업 방식이 아닌\n개개인의 맞게 여러가지 전문적인 운동 프로그램을 사용하고 있습니다.\n첫번째로 체육 지도 관리사 자격증과 물리치료사 자격증이 있어 근력과 공지사항 안내 드립니다."
+                            android:textSize="@dimen/Small_T_Text_Size" />
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
@@ -80,22 +80,24 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
                                 android:layout_marginTop="8dp"
-                                android:layout_marginRight="20dp"
+                                android:layout_weight="1"
                                 android:text="트레이너 소개"
-                                android:textSize="@dimen/Medium_Text_Size"
+                                android:textSize="@dimen/Medium2_T_Text_Size"
                                 android:textStyle="bold" />
 
                             <TextView
                                 android:id="@+id/certificateTextView"
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
+                                android:layout_marginLeft="170dp"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginRight="20dp"
+                                android:layout_weight="1"
                                 android:gravity="right"
                                 android:onClick="clickTextViewCertificate"
                                 android:text="자격 증명 보기"
-                                android:textSize="@dimen/Small_Text_Size" />
+                                android:textColor="@color/Pup_Color"
+                                android:textSize="@dimen/Small_T_Text_Size" />
                         </LinearLayout>
 
                         <TextView
@@ -106,7 +108,7 @@
                             android:layout_marginRight="20dp"
                             android:layout_marginBottom="10dp"
                             android:text="안녕하세요! PT 수업 진행 방식은 확일화 된 수업 방식이 아닌\n개개인의 맞게 여러가지 전문적인 운동 프로그램을 사용하고 있습니다.\n\n🪪『자격사항』\n생활 체육지도자 1급 보디빌딩\n재활트레이닝전문가LV1\nNSCA 스포츠영양코치"
-                            android:textSize="@dimen/Small_Text_Size" />
+                            android:textSize="@dimen/Small_T_Text_Size" />
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
@@ -120,10 +122,11 @@
                     <!-- 구분선을 두기 위함 -->
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2.5dp"
+                        android:layout_height="1dp"
                         android:layout_marginTop="@dimen/Chip_List_Margin"
-                        android:layout_marginBottom="10dp"
-                        android:background="#AAAAAA" />
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/line"
+                        android:backgroundTint="#C6C6C6" />
 
                     <TextView
                         android:id="@+id/textView"
@@ -132,7 +135,7 @@
                         android:layout_marginLeft="@dimen/Side_Padding"
                         android:layout_marginRight="@dimen/Side_Padding"
                         android:text="맞춤 PT"
-                        android:textSize="@dimen/Big_Text_Size"
+                        android:textSize="@dimen/Medium_T_Text_Size"
                         android:textStyle="bold" />
 
                     <TextView
@@ -143,7 +146,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="@dimen/Side_Padding"
                         android:text="안녕하세요. 피트모아 휘트니스 라이언 트레이너 입니다.\n체계적인 식단과 운동을 꼼꼼한 티칭 해드립니다."
-                        android:textSize="@dimen/Small_Text_Size" />
+                        android:textSize="@dimen/Small_T_Text_Size" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerViewTrainerPt"
@@ -161,10 +164,11 @@
                     <!-- 구분선을 두기 위함 -->
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2.5dp"
+                        android:layout_height="1dp"
                         android:layout_marginTop="@dimen/Chip_List_Margin"
-                        android:layout_marginBottom="10dp"
-                        android:background="#AAAAAA" />
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/line"
+                        android:backgroundTint="#C6C6C6" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -172,7 +176,7 @@
                         android:layout_marginLeft="@dimen/Side_Padding"
                         android:layout_marginRight="@dimen/Side_Padding"
                         android:text="경력사항"
-                        android:textSize="@dimen/Big_Text_Size"
+                        android:textSize="@dimen/Medium_T_Text_Size"
                         android:textStyle="bold" />
 
                     <TextView
@@ -182,8 +186,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="@dimen/Side_Padding"
                         android:text="현) 피트모아 휘트니스 트레이너\n전) 테킷짐 트레이너\n전) Google짐 트레이너\n"
-                        android:textSize="@dimen/Small_Text_Size" />
-
+                        android:textSize="@dimen/Small_T_Text_Size" />
                 </LinearLayout>
 
                 <!-- 소속 -->
@@ -195,10 +198,11 @@
                     <!-- 구분선을 두기 위함 -->
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2.5dp"
+                        android:layout_height="1dp"
                         android:layout_marginTop="@dimen/Chip_List_Margin"
-                        android:layout_marginBottom="10dp"
-                        android:background="#AAAAAA" />
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/line"
+                        android:backgroundTint="#C6C6C6" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -206,7 +210,7 @@
                         android:layout_marginLeft="@dimen/Side_Padding"
                         android:layout_marginRight="@dimen/Side_Padding"
                         android:text="소속"
-                        android:textSize="@dimen/Big_Text_Size"
+                        android:textSize="@dimen/Medium_T_Text_Size"
                         android:textStyle="bold" />
 
                     <FrameLayout
@@ -236,7 +240,7 @@
                                 android:layout_marginBottom="3dp"
                                 android:text="피트모아 휘트니스"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/Small_Text_Size"
+                                android:textSize="@dimen/Small_T_Text_Size"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -246,10 +250,10 @@
                                 android:layout_marginBottom="10dp"
                                 android:text="테킷시 테킷동"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/Small_Text_Size" />
+                                android:textSize="@dimen/Small_T_Text_Size" />
                         </LinearLayout>
-                    </FrameLayout>
 
+                    </FrameLayout>
                 </LinearLayout>
 
                 <!-- 사진 -->
@@ -261,10 +265,11 @@
                     <!-- 구분선을 두기 위함 -->
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2.5dp"
+                        android:layout_height="1dp"
                         android:layout_marginTop="@dimen/Chip_List_Margin"
-                        android:layout_marginBottom="10dp"
-                        android:background="#AAAAAA" />
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/line"
+                        android:backgroundTint="#C6C6C6" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -272,7 +277,7 @@
                         android:layout_marginLeft="@dimen/Side_Padding"
                         android:layout_marginRight="@dimen/Side_Padding"
                         android:text="사진"
-                        android:textSize="@dimen/Big_Text_Size"
+                        android:textSize="@dimen/Medium_T_Text_Size"
                         android:textStyle="bold" />
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -282,10 +287,9 @@
                         android:layout_marginLeft="@dimen/Side_Padding"
                         android:layout_marginTop="8dp"
                         android:layout_marginRight="@dimen/Side_Padding"/>
-
                 </LinearLayout>
-
             </LinearLayout>
+
         </androidx.core.widget.NestedScrollView>
 
     </LinearLayout>

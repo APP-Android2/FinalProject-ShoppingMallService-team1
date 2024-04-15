@@ -12,7 +12,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@drawable/large_top_rounding">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,7 +23,7 @@
                 android:id="@+id/toolbarAddressMap"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?attr/colorPrimary"
+                android:background="@android:color/transparent"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme">
 
@@ -37,40 +37,36 @@
 
             </com.google.android.material.appbar.MaterialToolbar>
 
-            <ScrollView
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1">
 
-                <LinearLayout
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/mapView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/floatingActionButtonMapMyLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <com.google.android.gms.maps.MapView
-                        android:id="@+id/mapView"
-                        android:layout_width="match_parent"
-                        android:layout_height="483dp" />
-
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/floatingActionButtonMapMyLocation"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom|right"
-                        android:layout_marginLeft="@dimen/Up_Down_Margin"
-                        android:layout_marginRight="@dimen/Up_Down_Margin"
-                        android:clickable="true"
-                        android:foregroundTint="@color/white"
-                        app:backgroundTint="@color/Pup_Color"
-                        app:srcCompat="@drawable/my_location" />
-                </LinearLayout>
-            </ScrollView>
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginLeft="@dimen/Up_Down_Margin"
+                    android:layout_marginRight="@dimen/Up_Down_Margin"
+                    android:layout_marginBottom="@dimen/Up_Down_Margin"
+                    android:clickable="true"
+                    android:foregroundTint="@color/white"
+                    android:src="@drawable/my_location"
+                    app:backgroundTint="@color/Pup_Color" />
+            </FrameLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent">
 
                 <TextView
                     android:id="@+id/textViewMapMyLocation"
