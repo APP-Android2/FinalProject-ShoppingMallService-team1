@@ -1,5 +1,6 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
@@ -7,18 +8,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.transition.MaterialSharedAxis
 import kr.co.lion.finalproject_shoppingmallservice_team1.AlarmActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.MY_FRAGMENT_NAME
+import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
+import kr.co.lion.finalproject_shoppingmallservice_team1.ShoppingCartActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentMyBinding
 
 class MyFragment : Fragment() {
 
     lateinit var fragmentMyBinding: FragmentMyBinding
     lateinit var navigationActivity: NavigationActivity
+    lateinit var shoppingCartActivityLauncher: ActivityResultLauncher<Intent>
 
     // 프래그먼트의 주소값을 담을 프로퍼티
     var oldFragment: Fragment? = null
@@ -38,6 +44,32 @@ class MyFragment : Fragment() {
         return fragmentMyBinding.root
     }
 
+    // 다른 액티비티 다녀온 후 변화를 반영하려면 onViewCreated()에서 작성해야 함
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        // 장바구니에서 다양한 운동 시설 보러가기 버튼 클릭 후 NavigationActivty(에서 MyFragment)로 돌아왔을 때 실행
+        val contract1 = ActivityResultContracts.StartActivityForResult()
+        shoppingCartActivityLauncher = registerForActivityResult(contract1){
+            if(it != null){
+                when(it.resultCode){
+                    Activity.RESULT_OK -> {
+                        if (it.data!= null){
+                            // 데이터 얻음
+                            val value = it?.data!!.getIntExtra("buttonHomeShopSwap", 0)
+
+                            // 네비게이션 아이템의 선택 상태 변경
+                            navigationActivity.activityNavigationBinding.bottomNavigationView.menu.findItem(R.id.fragment_center).isChecked = true
+                            // 아이템의 색상 변경
+                            navigationActivity.updateIconColors(R.id.fragment_center)
+                            // 운동 센터로 화면 전환
+                            navigationActivity.replaceFragment(NAVIGATION_FRAGMENT_NAME.CENTER_FRAGMENT, false, true, null)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     // Toolbar 설정
     fun settingToolbar(){
         fragmentMyBinding.apply {
@@ -54,7 +86,8 @@ class MyFragment : Fragment() {
                     when(it.itemId){
                         // 장바구니
                         R.id.menuMyShopping -> {
-
+                            val myShoppingCartIntent = Intent(navigationActivity, ShoppingCartActivity::class.java)
+                            shoppingCartActivityLauncher.launch(myShoppingCartIntent)
                         }
                     }
 
