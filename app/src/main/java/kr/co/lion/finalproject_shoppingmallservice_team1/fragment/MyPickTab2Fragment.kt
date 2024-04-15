@@ -18,6 +18,8 @@ class MyPickTab2Fragment : Fragment() {
     lateinit var fragmentMyPickTab2Binding: FragmentMyPickTab2Binding
     lateinit var navigationActivity: NavigationActivity
 
+    var isImageClick = true
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         fragmentMyPickTab2Binding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_pick_tab2, container, false)
@@ -53,6 +55,22 @@ class MyPickTab2Fragment : Fragment() {
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                 )
+
+                this.rowMyPickTab2Binding.buttonMyPickTab2.setOnClickListener {
+                    isImageClick = !isImageClick
+                    updateImageButton()
+                }
+            }
+
+            // 찜 버튼 클릭에 따른 이미지 변경
+            fun updateImageButton(){
+                rowMyPickTab2Binding.apply {
+                    if (isImageClick){
+                        buttonMyPickTab2.setImageResource(R.drawable.favorite_fill)
+                    } else {
+                        buttonMyPickTab2.setImageResource(R.drawable.favorite)
+                    }
+                }
             }
         }
 

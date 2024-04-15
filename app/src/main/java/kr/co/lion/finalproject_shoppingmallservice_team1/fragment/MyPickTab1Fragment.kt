@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +19,8 @@ class MyPickTab1Fragment : Fragment() {
 
     lateinit var fragmentMyPickTab1Binding: FragmentMyPickTab1Binding
     lateinit var navigationActivity: NavigationActivity
+
+    var isImageClick = true
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -54,6 +57,24 @@ class MyPickTab1Fragment : Fragment() {
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                 )
+
+                // 찜 버튼 설정
+                this.rowMyPickTab1Binding.buttonMyPickTab1.setOnClickListener {
+                        isImageClick = !isImageClick
+                        updateImageButton()
+                    }
+
+            }
+
+            // 찜 버튼 클릭에 따른 이미지 변경
+            fun updateImageButton(){
+                rowMyPickTab1Binding.apply {
+                    if(isImageClick){
+                        buttonMyPickTab1.setImageResource(R.drawable.favorite_fill)
+                    } else{
+                        buttonMyPickTab1.setImageResource(R.drawable.favorite)
+                    }
+                }
             }
         }
 
