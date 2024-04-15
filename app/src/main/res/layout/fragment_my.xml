@@ -55,7 +55,7 @@
                             app:srcCompat="@drawable/profile" />
 
                         <LinearLayout
-                            android:id="@+id/myProfile"
+                            android:id="@+id/myProfileLocation"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="@dimen/Side_Padding"
