@@ -5,15 +5,11 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.ContextThemeWrapper
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -21,7 +17,6 @@ import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.google.android.material.snackbar.Snackbar
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivityContentBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowCommentBinding
-import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowCommentReplyBinding
 
 class ContentActivity : AppCompatActivity() {
     lateinit var activityContentBinding: ActivityContentBinding
@@ -59,19 +54,33 @@ class ContentActivity : AppCompatActivity() {
                         }
 
                         R.id.menuItemContentDeclaration -> {
-                            AppAlertDialog(this@ContentActivity, "신고", "이 게시글을 신고하시겠습니까?", "신고", "취소", 1).show(
-                                onClickPositive = {
-                                    Snackbar.make(this, "신고를 완료했습니다.", Snackbar.LENGTH_SHORT).show()
+                            MaterialAlertDialogBuilder(this@ContentActivity, R.style.MyDialogTheme).apply {
+                                setTitle("게시글 신고")
+                                setMessage("이 게시글을 신고하시겠습니까?")
+                                setNegativeButton("취소", null)
+                                setPositiveButton("신고"){ dialogInterface: DialogInterface, i: Int ->
+                                    Snackbar.make(activityContentBinding.root, "신고를 완료했습니다.", Snackbar.LENGTH_SHORT).show()
                                 }
-                            )
+                                show().apply {
+                                    getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK)
+                                    getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.RED)
+                                }
+                            }
                         }
 
                         R.id.menuItemContentDel -> {
-                            AppAlertDialog(this@ContentActivity, "삭제", "이 게시글을 삭제하시겠습니까?", "삭제", "취소", 1).show(
-                                onClickPositive = {
+                            MaterialAlertDialogBuilder(this@ContentActivity, R.style.MyDialogTheme).apply {
+                                setTitle("게시글 삭제")
+                                setMessage("이 게시글을 삭제하시겠습니까?")
+                                setNegativeButton("취소", null)
+                                setPositiveButton("삭제"){ dialogInterface: DialogInterface, i: Int ->
                                     finish()
                                 }
-                            )
+                                show().apply {
+                                    getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK)
+                                    getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.RED)
+                                }
+                            }
                         }
                     }
                     true
@@ -134,12 +143,19 @@ class ContentActivity : AppCompatActivity() {
             }
 
             holder.rowCommentBinding.buttonCommentComment.setOnClickListener {
-                AppAlertDialog(this@ContentActivity, "대댓글", "대댓글을 작성하시겠습니까?", "작성", "취소").show(
-                    onClickPositive = {
+                MaterialAlertDialogBuilder(this@ContentActivity, R.style.MyDialogTheme).apply {
+                    setTitle("대댓글")
+                    setMessage("대댓글을 작성하시겠습니까?")
+                    setNegativeButton("취소", null)
+                    setPositiveButton("작성"){ dialogInterface: DialogInterface, i: Int ->
                         Tools.showSoftInput(this@ContentActivity, activityContentBinding.editTextComment)
                         // https://lakue.tistory.com/15 참고해서 대댓글 구현
                     }
-                )
+                    show().apply {
+                        getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK)
+                        getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(context, R.color.Pup_Color))
+                    }
+                }
             }
             holder.rowCommentBinding.buttonCommentMenu.setOnClickListener {
                 val menuResId = R.menu.menu_comment
@@ -158,11 +174,18 @@ class ContentActivity : AppCompatActivity() {
                         }
 
                         R.id.menuItemCommentDeclaration -> {
-                            AppAlertDialog(this@ContentActivity, "신고", "이 게시글을 신고하시겠습니까?", "신고", "취소", 1).show(
-                                onClickPositive = {
+                            MaterialAlertDialogBuilder(this@ContentActivity, R.style.MyDialogTheme).apply {
+                                setTitle("게시물 신고")
+                                setMessage("이 게시물을 신고하시겠습니까?")
+                                setNegativeButton("취소", null)
+                                setPositiveButton("신고"){ dialogInterface: DialogInterface, i: Int ->
                                     Snackbar.make(it, "신고를 완료했습니다.", Snackbar.LENGTH_SHORT).show()
                                 }
-                            )
+                                show().apply {
+                                    getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK)
+                                    getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.RED)
+                                }
+                            }
                         }
                         else -> return@setOnMenuItemClickListener false
                     }
