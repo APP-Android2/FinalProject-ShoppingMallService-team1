@@ -32,6 +32,6 @@
 
     <!-- ReadTrainer fragment -->
     <string name="appbar_scrolling_view_behavior">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
->>>>>>> main
+    >>>>>>> main
 
 </resources>

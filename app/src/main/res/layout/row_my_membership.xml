@@ -64,6 +64,8 @@
                         android:layout_gravity="bottom|end"
                         android:layout_marginTop="5sp"
                         android:backgroundTint="@color/Pup_Color"
+                        android:insetTop="10sp"
+                        android:insetBottom="8sp"
                         android:text="연장하기"
                         android:textColor="@color/white"
                         android:textSize="@dimen/SmallButton_Text_Size" />
