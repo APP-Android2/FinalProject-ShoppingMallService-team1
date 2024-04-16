@@ -25,7 +25,7 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentRea
 
 class CenterFragment : Fragment() {
 
-    lateinit var fragmentCenterBinding:FragmentCenterBinding
+    lateinit var fragmentCenterBinding: FragmentCenterBinding
 
     // 프래그먼트 객체를 담을 변수
     var oldFragment: Fragment? = null
@@ -58,113 +58,9 @@ class CenterFragment : Fragment() {
         chipDailyPass.setOnClickListener(chipClickListener)
         chipDiscount.setOnClickListener(chipClickListener)
 
-        settingToolbarCenterFragment()
-        onOffsetChanged()
-        settingTabLayout()
 
         return inflater.inflate(R.layout.fragment_center, container, false)
     }
 
-    fun settingTabLayout(){
-        fragmentCenterBinding.apply{
-            trainerInfoTab.apply {
-                addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
-                    override fun onTabSelected(tab: TabLayout.Tab?) {
-                        // 탭이 선택되었을 때 호출되는 메서드
-                        val position = tab?.position
-
-                        when(position){
-                            0 -> {
-                                replaceFragment(CENTER_FRAGMENT_NAME.CENTER_FRAGMENT,false, false, null)
-                            }
-                            1 -> {
-                                replaceFragment(CENTER_FRAGMENT_NAME.CENTER_SWIMMING_SELECT, false, false, null)
-                            }
-                            2 -> {
-                                replaceFragment(CENTER_FRAGMENT_NAME.CENTER_PILATES_SELECT, false, false, null)
-                            }
-                        }
-                    }
-
-                    override fun onTabUnselected(tab: TabLayout.Tab?) {
-                        // 선택이 해제된 탭의 경우 처리할 내용
-
-                    }
-
-                    override fun onTabReselected(tab: TabLayout.Tab?) {
-                        // 이미 선택된 탭이 다시 선택된 경우 처리할 내용
-                    }
-                })
-            }
-        }
-    }
-
-    private fun onOffsetChanged() {
-        TODO("Not yet implemented")
-    }
-
-    private fun settingToolbarCenterFragment() {
-        TODO("Not yet implemented")
-    }
-
-    fun replaceFragment(name: CENTER_FRAGMENT_NAME, addToBackStack:Boolean, isAnimate:Boolean, data:Bundle?){
-
-        SystemClock.sleep(100)
-
-        val fragmentTransaction = childFragmentManager.beginTransaction()
-        fragmentTransaction.setReorderingAllowed(true)
-
-        if(newFragment != null){
-            oldFragment = newFragment
-        }
-
-        when(name){
-            CENTER_FRAGMENT_NAME.CENTER_FRAGMENT -> {
-                newFragment = CenterFragment()
-            }
-            CENTER_FRAGMENT_NAME.CENTER_PILATES_SELECT -> {
-
-            }
-            CENTER_FRAGMENT_NAME.CENTER_SWIMMING_SELECT -> {
-            }
-        }
-
-        if(data != null){
-            newFragment?.arguments = data
-        }
-
-        if(newFragment != null){
-
-            // 애니메이션 설정
-            if(isAnimate == true){
-
-                if(oldFragment != null){
-                    // old에서 new가 새롭게 보여질 때 old의 애니메이션
-                    oldFragment?.exitTransition = MaterialSharedAxis(MaterialSharedAxis.X, true)
-                    // new에서 old로 되돌아갈때 old의 애니메이션
-                    oldFragment?.reenterTransition = MaterialSharedAxis(MaterialSharedAxis.X, false)
-
-                    oldFragment?.enterTransition = null
-                    oldFragment?.returnTransition = null
-                }
-
-                // old에서 new가 새롭게 보여질 때 new의 애니메이션
-                newFragment?.enterTransition = MaterialSharedAxis(MaterialSharedAxis.X, true)
-                // new에서 old로 되돌아갈때 new의 애니메이션
-                newFragment?.returnTransition = MaterialSharedAxis(MaterialSharedAxis.X, false)
-
-                newFragment?.exitTransition = null
-                newFragment?.reenterTransition = null
-            }
-
-            fragmentTransaction.replace(R.id.readTrainerTabView, newFragment!!)
-
-            if(addToBackStack == true){
-                fragmentTransaction.addToBackStack(name.str)
-            }
-            fragmentTransaction.commit()
-        }
-    }
 }
-
 

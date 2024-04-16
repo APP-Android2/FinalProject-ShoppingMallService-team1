@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingRight="@dimen/Detail_Padding">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="10dp">
+
+            <ImageView
+                android:id="@+id/imageViewPopularTrainer"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ic_launcher_background" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="52dp"
+                android:layout_height="33dp"
+                android:text="Button" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textViewPopularTrainerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@color/black"
+            android:textSize="@dimen/Medium_Text_Size" />
+
+        <TextView
+            android:id="@+id/textViewPopularTrainerAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@color/Writing_Color"
+            android:textSize="@dimen/Medium_Text_Size" />
+
+    </LinearLayout>
+
+</layout>
