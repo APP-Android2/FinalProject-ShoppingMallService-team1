@@ -2,20 +2,17 @@ package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.SystemClock
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.Firebase
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.AuthResult
@@ -28,7 +25,6 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.GoogleLoginUser
 import kr.co.lion.finalproject_shoppingmallservice_team1.LOGIN_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.LoginActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
-import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
