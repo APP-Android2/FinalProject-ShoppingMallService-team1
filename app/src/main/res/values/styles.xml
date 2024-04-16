@@ -10,9 +10,9 @@
     </style>
 
     <!-- MaterialAlertDialog -->
-    <style name="MyDialogTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+    <style name="MyDialogTheme" parent="MaterialAlertDialog.Material3">
         <!-- 대화 상자 배경 색상 -->
-        <item name="background">@color/white</item>
+        <item name="android:backgroundTint">@color/white</item>
     </style>
 
     <!-- popUpMenu-->
