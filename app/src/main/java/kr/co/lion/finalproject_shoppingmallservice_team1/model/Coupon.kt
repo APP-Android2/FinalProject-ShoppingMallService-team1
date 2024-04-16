@@ -13,4 +13,6 @@ class Coupon {
     var remainPeriod:Int = 0 // 쿠폰의 남은 기간
 
     var stateCheck:Boolean = true // 쿠폰 사용 가능 여부(true: 사용 가능 / false: 사용 불가)
+
+    var status:String = "" // 쿠폰의 상태
 }
