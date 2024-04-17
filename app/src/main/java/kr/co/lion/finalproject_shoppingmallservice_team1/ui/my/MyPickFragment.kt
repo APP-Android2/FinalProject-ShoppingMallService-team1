@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.transition.MaterialSharedAxis
@@ -34,6 +35,20 @@ class MyPickFragment : Fragment() {
         settingTabLayout()
 
         return fragmentMyPickBinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // MyPickFragment 가 실행될 때 하단바가 보이지 않도록
+        navigationActivity.activityNavigationBinding.bottomNavigationView.isVisible = false
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        // MyPickFragment 가 제거될 때 하단바가 보이도록
+        navigationActivity.activityNavigationBinding.bottomNavigationView.isVisible = true
     }
 
     // Toolbar 구성
