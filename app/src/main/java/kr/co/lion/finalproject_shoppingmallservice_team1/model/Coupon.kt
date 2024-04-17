@@ -18,4 +18,3 @@ data class Coupon (
 
     var status:String = "" // 보유한 또는 다운로드 가능한 쿠폰을 User에서 구분
 )
-

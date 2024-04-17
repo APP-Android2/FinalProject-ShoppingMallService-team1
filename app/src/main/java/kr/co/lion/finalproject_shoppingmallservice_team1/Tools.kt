@@ -87,8 +87,11 @@ enum class HOME_SHOP_FRAGMENT_NAME(var num:Int, var str:String){
 
 enum class CENTER_FRAGMENT_NAME(var num:Int, var str:String){
 
-    CENTER_A_FRAGMENT(0, "A"),
-    CENTER_B_FRAGMENT(1, "B"),
+
+    CENTER_FRAGMENT(0,"CenterFragment"),
+    CENTER_PILATES_SELECT(1,"PilatesSelectFragment"),
+    CENTER_SWIMMING_SELECT(2,"SwimmingSelectFragment"),
+
 }
 
 enum class TRAINER_FRAGMENT_NAME(var num:Int, var str:String){
