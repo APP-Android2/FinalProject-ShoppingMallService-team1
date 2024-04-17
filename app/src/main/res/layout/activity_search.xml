@@ -70,7 +70,7 @@
                         android:id="@+id/recyclerVIewSearch"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_margin="@dimen/Side_Padding" />
+                        android:layout_marginTop="@dimen/Up_Down_Margin" />
 
                 </LinearLayout>
             </ScrollView>
