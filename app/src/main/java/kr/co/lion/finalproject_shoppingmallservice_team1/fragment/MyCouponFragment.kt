@@ -16,11 +16,14 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentMyCouponBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowMyCouponBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.model.Coupon
+import kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.MyCouponViewModel
 
 class MyCouponFragment : Fragment() {
 
     lateinit var fragmentMyCouponBinding: FragmentMyCouponBinding
     lateinit var navigationActivity: NavigationActivity
+    lateinit var myCouponViewModel: MyCouponViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -108,9 +111,11 @@ class MyCouponFragment : Fragment() {
         // ViewHolder
         inner class MyCouponViewHolder(rowMyCouponBinding: RowMyCouponBinding) : RecyclerView.ViewHolder(rowMyCouponBinding.root){
             val rowMyCouponBinding: RowMyCouponBinding
+            val myCouponViewModel = MyCouponViewModel()
 
             init {
                 this.rowMyCouponBinding = rowMyCouponBinding
+                this.rowMyCouponBinding.myCouponViewModel = myCouponViewModel
 
                 this.rowMyCouponBinding.root.layoutParams = ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
@@ -131,9 +136,11 @@ class MyCouponFragment : Fragment() {
         }
 
         override fun onBindViewHolder(holder: MyCouponViewHolder, position: Int) {
-            holder.rowMyCouponBinding.tvRowMyCouponTitle.text = "쿠폰 제목 ${position}% 쿠폰"
-            holder.rowMyCouponBinding.tvRowMyCouponUntilDays.text = "남은 기간 ${position}일 남음"
-            holder.rowMyCouponBinding.tvRowMyCouponSale.text = "15%"
+            val coupon = Coupon("", "", "재결제 쿠폰", "", 20, true, "",
+                "", 7, "")
+            holder.myCouponViewModel.tvRowMyCouponTitle.value = coupon.name
+            holder.myCouponViewModel.tvRowMyCouponUntilDays.value = "남은 기간 ${coupon.remainingPeriod}일 남음"
+            holder.myCouponViewModel.tvRowMyCouponSale.value = "${coupon.discountRate}%"
         }
     }
 }
