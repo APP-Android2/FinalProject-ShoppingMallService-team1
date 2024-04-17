@@ -58,9 +58,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom|end"
-                            android:paddingLeft="15sp"
-                            android:paddingTop="15sp"
-                            android:paddingRight="5sp"
+                            android:paddingLeft="10sp"
+                            android:paddingTop="10sp"
+                            android:paddingRight="3sp"
+                            android:scaleType="fitXY"
                             app:srcCompat="@drawable/favorite_fill" />
 
                     </FrameLayout>
