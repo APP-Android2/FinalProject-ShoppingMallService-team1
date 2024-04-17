@@ -1,18 +1,19 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
+import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.snackbar.Snackbar
-import kr.co.lion.finalproject_shoppingmallservice_team1.AppAlertDialog
 import kr.co.lion.finalproject_shoppingmallservice_team1.HOME_SHOP_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
@@ -62,13 +63,20 @@ class HomeShopContainFragment : Fragment() {
             // 결제하기 버튼 클릭
             buttonHomeShopPayment.apply {
                 setOnClickListener {
-                    AppAlertDialog(shoppingCartActivity, "결제", "결제 완료했습니다.", "확인", "취소").show(
-                        onClickPositive = {
+                    MaterialAlertDialogBuilder(shoppingCartActivity, R.style.MyDialogTheme).apply {
+                        setTitle("결제")
+                        setMessage("결제 완료했습니다.")
+                        setNegativeButton("취소", null)
+                        setPositiveButton("확인"){ dialogInterface: DialogInterface, i: Int ->
                             val intent = Intent(shoppingCartActivity,  NavigationActivity::class.java)
                             startActivity(intent)
                             shoppingCartActivity.finish()
                         }
-                    )
+                        show().apply {
+                            getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK)
+                            getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(context, R.color.Pup_Color))
+                        }
+                    }
                 }
             }
         }
