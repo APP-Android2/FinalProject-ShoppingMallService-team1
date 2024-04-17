@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".fragment.ReadTrainerTab2Fragment">
+        tools:context=".ui.trainer.ReadTrainerTab2Fragment">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"

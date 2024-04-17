@@ -10,7 +10,7 @@
         android:background="@color/white"
         android:orientation="vertical"
         android:transitionGroup="true"
-        tools:context=".fragment.TransferMembershipCreateContentFragment">
+        tools:context=".ui.transfermembership.TransferMembershipCreateContentFragment">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/transfermembership_edit_toolbar"

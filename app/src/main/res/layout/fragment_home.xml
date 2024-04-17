@@ -6,7 +6,7 @@
     <data>
         <variable
             name="homeViewModel"
-            type="kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.HomeViewModel" />
+            type="kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.viewmodel.HomeViewModel" />
     </data>
 
     <FrameLayout
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FFFFFF"
-        tools:context=".fragment.HomeFragment">
+        tools:context=".ui.home.HomeFragment">
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -10,7 +10,7 @@
         android:orientation="vertical"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        tools:context=".fragment.ConsultingCalendarBottomFragment">
+        tools:context=".ui.visitconsulting.ConsultingCalendarBottomFragment">
 
         <ImageView
             android:id="@+id/bottomDownImageView"

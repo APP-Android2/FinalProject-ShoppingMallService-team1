@@ -6,7 +6,7 @@
     <data>
         <variable
             name="homeShopContainViewModel"
-            type="kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.HomeShopContainViewModel" />
+            type="kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.viewmodel.HomeShopContainViewModel" />
     </data>
 <FrameLayout
     android:layout_width="match_parent"

@@ -1,27 +1,15 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 
 import android.content.res.ColorStateList
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
-import android.os.SystemClock
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.transition.MaterialSharedAxis
-import kr.co.lion.finalproject_shoppingmallservice_team1.CENTER_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
-import kr.co.lion.finalproject_shoppingmallservice_team1.ReadTrainerActivity
-import kr.co.lion.finalproject_shoppingmallservice_team1.TRAINER_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentCenterBinding
-import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentReadTrainerBinding
 
 class CenterFragment : Fragment() {
 

@@ -10,7 +10,7 @@
         android:background="@color/white"
         android:orientation="vertical"
         android:transitionGroup="true"
-        tools:context=".fragment.MyProfileFragment">
+        tools:context=".ui.my.MyProfileFragment">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbarMyProfile"

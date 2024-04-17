@@ -15,7 +15,7 @@
             android:background="#FFFFFF"
             android:orientation="vertical"
             android:transitionGroup="true"
-            tools:context=".fragment.MyFragment">
+            tools:context=".ui.my.MyFragment">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbarMy"

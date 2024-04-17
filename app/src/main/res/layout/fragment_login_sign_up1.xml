@@ -6,7 +6,7 @@
     <data>
         <variable
             name="LoginSignUp1ViewModel"
-            type="kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.LoginSignUp1ViewModel" />
+            type="kr.co.lion.finalproject_shoppingmallservice_team1.ui.login.viewmodel.LoginSignUp1ViewModel" />
     </data>
 
     <LinearLayout
@@ -15,7 +15,7 @@
         android:background="@color/white"
         android:orientation="vertical"
         android:transitionGroup="true"
-        tools:context=".fragment.LoginSignUp1Fragment">
+        tools:context=".ui.login.LoginSignUp1Fragment">
 
         <ScrollView
             android:layout_width="match_parent"

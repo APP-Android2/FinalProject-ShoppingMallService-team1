@@ -10,7 +10,7 @@
         android:background="@drawable/large_top_rounding"
         android:orientation="vertical"
         android:padding="30dp"
-        tools:context=".fragment.PermissionBottomFragment">
+        tools:context=".ui.splash.PermissionBottomFragment">
 
         <TextView
             android:layout_width="match_parent"
