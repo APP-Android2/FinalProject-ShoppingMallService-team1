@@ -160,18 +160,16 @@
 
                         <com.google.android.material.divider.MaterialDivider
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/Side_Padding"
-                            android:layout_marginEnd="@dimen/Side_Padding" />
+                            android:layout_height="wrap_content" />
 
                         <TextView
                             android:id="@+id/textViewFAQ1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="28dp"
-                            android:layout_marginTop="10sp"
+                            android:layout_marginTop="15sp"
                             android:layout_marginEnd="@dimen/Side_Padding"
-                            android:layout_marginBottom="10sp"
+                            android:layout_marginBottom="15sp"
                             android:text="피트모아는 어떤 서비스인가요?" />
                     </LinearLayout>
 
@@ -186,18 +184,16 @@
 
                         <com.google.android.material.divider.MaterialDivider
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/Side_Padding"
-                            android:layout_marginEnd="@dimen/Side_Padding" />
+                            android:layout_height="wrap_content" />
 
                         <TextView
                             android:id="@+id/textViewFAQ2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="28dp"
-                            android:layout_marginTop="10sp"
+                            android:layout_marginTop="15sp"
                             android:layout_marginEnd="@dimen/Side_Padding"
-                            android:layout_marginBottom="10sp"
+                            android:layout_marginBottom="15sp"
                             android:text="일일권은 무엇인가요?" />
                     </LinearLayout>
 
@@ -212,18 +208,16 @@
 
                         <com.google.android.material.divider.MaterialDivider
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/Side_Padding"
-                            android:layout_marginEnd="@dimen/Side_Padding" />
+                            android:layout_height="wrap_content" />
 
                         <TextView
                             android:id="@+id/textViewFAQ3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="28dp"
-                            android:layout_marginTop="10sp"
+                            android:layout_marginTop="15sp"
                             android:layout_marginEnd="@dimen/Side_Padding"
-                            android:layout_marginBottom="10sp"
+                            android:layout_marginBottom="15sp"
                             android:text="양도 게시판은 무엇인가요?" />
 
                     </LinearLayout>
