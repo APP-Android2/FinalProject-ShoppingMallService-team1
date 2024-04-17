@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical"
-        tools:context=".fragment.MySettingFragment">
+        tools:context=".ui.my.MySettingFragment">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbarMySetting"
@@ -77,9 +77,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/Side_Padding"
-                        android:layout_marginTop="12sp"
+                        android:layout_marginTop="15sp"
                         android:layout_marginEnd="@dimen/Side_Padding"
-                        android:layout_marginBottom="12sp"
+                        android:layout_marginBottom="15sp"
                         android:gravity="center_vertical"
                         android:text="서비스 이용약관"
                         android:textSize="@dimen/Big_Text_Size" />
@@ -102,9 +102,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/Side_Padding"
-                        android:layout_marginTop="12sp"
+                        android:layout_marginTop="15sp"
                         android:layout_marginEnd="@dimen/Side_Padding"
-                        android:layout_marginBottom="12sp"
+                        android:layout_marginBottom="15sp"
                         android:gravity="center_vertical"
                         android:text="위치기반 서비스 약관"
                         android:textSize="@dimen/Big_Text_Size" />
@@ -127,9 +127,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/Side_Padding"
-                        android:layout_marginTop="12sp"
+                        android:layout_marginTop="15sp"
                         android:layout_marginEnd="@dimen/Side_Padding"
-                        android:layout_marginBottom="12sp"
+                        android:layout_marginBottom="15sp"
                         android:gravity="center_vertical"
                         android:text="개인정보 처리방침"
                         android:textSize="@dimen/Big_Text_Size" />
@@ -152,9 +152,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/Side_Padding"
-                        android:layout_marginTop="12sp"
+                        android:layout_marginTop="15sp"
                         android:layout_marginEnd="@dimen/Side_Padding"
-                        android:layout_marginBottom="12sp"
+                        android:layout_marginBottom="15sp"
                         android:gravity="center_vertical"
                         android:text="현재 버전 V1.0.0"
                         android:textSize="@dimen/Big_Text_Size" />

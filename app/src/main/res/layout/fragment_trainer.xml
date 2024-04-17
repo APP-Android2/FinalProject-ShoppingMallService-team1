@@ -7,7 +7,7 @@
     <data>
         <variable
             name="trainerViewModel"
-            type="kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.TrainerViewModel" />
+            type="kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.viewmodel.TrainerViewModel" />
     </data>
 
     <FrameLayout
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        tools:context=".fragment.TrainerFragment">
+        tools:context=".ui.trainer.TrainerFragment">
 
         <LinearLayout
             android:layout_width="match_parent"

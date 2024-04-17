@@ -11,7 +11,7 @@
         android:layout_marginLeft="@dimen/Side_Padding"
         android:layout_marginRight="@dimen/Side_Padding"
         android:background="@color/white"
-        tools:context=".fragment.ReadTrainerPurchasingBottomFragment">
+        tools:context=".ui.trainer.ReadTrainerPurchasingBottomFragment">
 
         <ImageView
             android:id="@+id/bottomDownImageView"
@@ -28,7 +28,7 @@
             android:textStyle="bold"
             android:padding="16dp" />
 
-        <kr.co.lion.finalproject_shoppingmallservice_team1.fragment.CustomScrollView
+        <kr.co.lion.finalproject_shoppingmallservice_team1.util.CustomScrollView
             android:id="@+id/optionListCustomScrollView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -144,7 +144,7 @@
 
             </LinearLayout>
 
-        </kr.co.lion.finalproject_shoppingmallservice_team1.fragment.CustomScrollView>
+        </kr.co.lion.finalproject_shoppingmallservice_team1.util.CustomScrollView>
 
         <LinearLayout
             android:id="@+id/optionList2"

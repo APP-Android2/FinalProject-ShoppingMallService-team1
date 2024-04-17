@@ -7,7 +7,7 @@
     <data>
         <variable
             name="TransferMembershipContentListViewModel"
-            type="kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.TransferMembershipContentListViewModel" />
+            type="kr.co.lion.finalproject_shoppingmallservice_team1.ui.transfermembership.viewmodel.TransferMembershipContentListViewModel" />
     </data>
 
     <LinearLayout
@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:transitionGroup="true"
-        tools:context=".fragment.TransferMembershipContentListFragment">
+        tools:context=".ui.transfermembership.TransferMembershipContentListFragment">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/transfermembership_toolbar"

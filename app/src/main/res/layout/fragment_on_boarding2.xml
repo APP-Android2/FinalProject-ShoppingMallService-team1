@@ -10,7 +10,7 @@
         android:background="@color/white"
         android:orientation="vertical"
         android:padding="@dimen/Side_Padding"
-        tools:context=".fragment.OnBoarding2Fragment">
+        tools:context=".ui.splash.OnBoarding2Fragment">
 
         <ImageView
             android:id="@+id/main_imageView"

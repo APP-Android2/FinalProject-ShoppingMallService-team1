@@ -10,7 +10,7 @@
         android:background="@color/white"
         android:orientation="vertical"
         android:transitionGroup="true"
-        tools:context=".fragment.MyCouponFragment">
+        tools:context=".ui.my.MyCouponFragment">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbarMyCoupon"

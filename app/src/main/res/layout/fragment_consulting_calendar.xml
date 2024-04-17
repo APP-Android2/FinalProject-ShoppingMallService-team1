@@ -5,7 +5,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragment.ConsultingCalendarFragment">
+        tools:context=".ui.visitconsulting.ConsultingCalendarFragment">
 
         <LinearLayout
             android:layout_width="match_parent"

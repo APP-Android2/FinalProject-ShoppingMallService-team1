@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".fragment.MyReviewTab1Fragment" >
+        tools:context=".ui.my.MyReviewTab1Fragment" >
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewMyReviewTab1"

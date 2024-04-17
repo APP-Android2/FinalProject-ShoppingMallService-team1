@@ -7,7 +7,7 @@
     <data>
         <variable
             name="MyPaymentViewModel"
-            type="kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.MyPaymentViewModel" />
+            type="kr.co.lion.finalproject_shoppingmallservice_team1.ui.my.viewmodel.MyPaymentViewModel" />
     </data>
 
     <LinearLayout
@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical"
-        tools:context=".fragment.MyPaymentFragment">
+        tools:context=".ui.my.MyPaymentFragment">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbarMyPayment"
