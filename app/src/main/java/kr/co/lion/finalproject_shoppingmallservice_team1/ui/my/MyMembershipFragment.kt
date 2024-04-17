@@ -1,5 +1,7 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.ui.my
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import androidx.fragment.app.Fragment
@@ -7,19 +9,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentMyMembershipBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowMyMembershipBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.shoppingcart.ShoppingCartActivity
 
 class MyMembershipFragment : Fragment() {
 
     lateinit var fragmentMyMembershipBinding: FragmentMyMembershipBinding
     lateinit var navigationActivity: NavigationActivity
+    lateinit var shoppingCartActivityLauncher: ActivityResultLauncher<Intent>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -35,14 +42,34 @@ class MyMembershipFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         // MyMembershipFragment 가 실행될 때 하단바가 보이지 않도록
         navigationActivity.activityNavigationBinding.bottomNavigationView.isVisible = false
+
+        // 장바구니에서 다양한 운동 시설 보러가기 버튼 클릭 후 NavigationActivty(에서 MyMembershipFragment)로 돌아왔을 때 실행
+        val contract1 = ActivityResultContracts.StartActivityForResult()
+        shoppingCartActivityLauncher = registerForActivityResult(contract1){
+            if(it != null){
+                when(it.resultCode){
+                    Activity.RESULT_OK -> {
+                        if (it.data != null){
+                            // 데이터 얻음
+                            val value = it?.data!!.getIntExtra("buttonHomeShopSwap", 0)
+
+                            // 네비게이션 아이템의 선택 상태 변경
+                            navigationActivity.activityNavigationBinding.bottomNavigationView.menu.findItem(R.id.fragment_center).isChecked = true
+                            // 아이템의 색상 변경
+                            navigationActivity.updateIconColors(R.id.fragment_center)
+                            // 운동 센터로 화면 전환
+                            navigationActivity.replaceFragment(NAVIGATION_FRAGMENT_NAME.CENTER_FRAGMENT, false, true, null)
+                        }
+                    }
+                }
+            }
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-
         // MyMembershipFragment 가 제거될 때 하단바가 보이도록
         navigationActivity.activityNavigationBinding.bottomNavigationView.isVisible = true
     }
@@ -59,6 +86,16 @@ class MyMembershipFragment : Fragment() {
                 }
                 // 메뉴
                 inflateMenu(R.menu.menu_my_membership)
+                setOnMenuItemClickListener {
+                    when(it.itemId){
+                        R.id.menuMyMembershipShopping -> {
+                            val myMembershipIntent = Intent(navigationActivity, ShoppingCartActivity::class.java)
+                            shoppingCartActivityLauncher.launch(myMembershipIntent)
+                        }
+                    }
+
+                    true
+                }
             }
         }
     }
