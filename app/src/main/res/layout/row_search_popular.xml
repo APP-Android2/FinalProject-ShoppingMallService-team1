@@ -11,7 +11,9 @@
             android:id="@+id/textViewRowPopularSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/Side_Padding"
             android:paddingTop="@dimen/Detail_Padding"
+            android:paddingRight="@dimen/Side_Padding"
             android:paddingBottom="@dimen/Detail_Padding"
             android:text="TextView" />
 
