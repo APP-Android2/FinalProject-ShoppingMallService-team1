@@ -88,6 +88,20 @@ class MyProfileFragment : Fragment() {
         }
     }
 
+    // 입력 요소 설정
+    fun settingInputMyProfile(){
+
+        // 프로필 사진 값 설정
+
+        myProfileViewModel.myProfileName.value = ""
+        myProfileViewModel.myProfileNickName.value = ""
+        myProfileViewModel.myProfilePhoneNumber.value = ""
+        myProfileViewModel.myProfileLocation.value = ""
+
+        // 키보드를 올려준다.
+        Tools.showSoftInput(navigationActivity, fragmentMyProfileBinding.myProfileName)
+    }
+
     // 뒤로가기 처리
     private fun backProcess(){
         SystemClock.sleep(200)
@@ -106,21 +120,6 @@ class MyProfileFragment : Fragment() {
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
-
-    // 입력 요소 설정
-    fun settingInputMyProfile(){
-
-        // 프로필 사진 값 설정
-
-        myProfileViewModel.myProfileName.value = ""
-        myProfileViewModel.myProfileNickName.value = ""
-        myProfileViewModel.myProfilePhoneNumber.value = ""
-        myProfileViewModel.myProfileLocation.value = ""
-
-        // 키보드를 올려준다.
-        Tools.showSoftInput(navigationActivity, fragmentMyProfileBinding.myProfileName)
-    }
-
 
     private fun settingEvent(){
         fragmentMyProfileBinding.apply {

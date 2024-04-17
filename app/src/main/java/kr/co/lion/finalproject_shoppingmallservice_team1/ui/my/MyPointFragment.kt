@@ -57,23 +57,6 @@ class MyPointFragment : Fragment() {
         }
     }
 
-    // 뒤로가기 처리
-    private fun backProcess(){
-        SystemClock.sleep(200)
-        parentFragmentManager.popBackStack()
-    }
-
-    // 뒤로가기 처리(단말기)
-    private fun handleBackPress() {
-        val callback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                // 뒤로가기
-                backProcess()
-            }
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
-    }
-
     // TextView 항목 클릭 시 이벤트
     fun settingClickEventTextView(){
         fragmentMyPointBinding.apply {
@@ -97,5 +80,22 @@ class MyPointFragment : Fragment() {
 
             }
         }
+    }
+
+    // 뒤로가기 처리
+    private fun backProcess(){
+        SystemClock.sleep(200)
+        parentFragmentManager.popBackStack()
+    }
+
+    // 뒤로가기 처리(단말기)
+    private fun handleBackPress() {
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // 뒤로가기
+                backProcess()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 }

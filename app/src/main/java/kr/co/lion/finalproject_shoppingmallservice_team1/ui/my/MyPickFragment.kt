@@ -66,23 +66,6 @@ class MyPickFragment : Fragment() {
         }
     }
 
-    // 뒤로가기 버튼
-    private fun backProcess(){
-        SystemClock.sleep(200)
-        parentFragmentManager.popBackStack()
-    }
-
-    // 뒤로가기 처리(단말기)
-    private fun handleBackPress() {
-        val callback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                // 뒤로가기
-                backProcess()
-            }
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
-    }
-
     // Tab 레이아웃 설정
     fun settingTabLayout(){
         fragmentMyPickBinding.apply {
@@ -117,6 +100,23 @@ class MyPickFragment : Fragment() {
                 })
             }
         }
+    }
+
+    // 뒤로가기 버튼
+    private fun backProcess(){
+        SystemClock.sleep(200)
+        parentFragmentManager.popBackStack()
+    }
+
+    // 뒤로가기 처리(단말기)
+    private fun handleBackPress() {
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // 뒤로가기
+                backProcess()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 
     fun replaceFragment(name: MY_PICK_TAB_NAME, addToBackStack:Boolean, isAnimate:Boolean, data:Bundle?){

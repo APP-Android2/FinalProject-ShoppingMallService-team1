@@ -69,23 +69,6 @@ class MyPaymentFragment : Fragment() {
         }
     }
 
-    // 뒤로가기 처리
-    private fun backProcess(){
-        SystemClock.sleep(200)
-        parentFragmentManager.popBackStack()
-    }
-
-    // 뒤로가기 처리(단말기)
-    private fun handleBackPress() {
-        val callback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                // 뒤로가기
-                backProcess()
-            }
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
-    }
-
     private fun settingChipMyPayment(){
         fragmentMyPaymentBinding.apply {
             // 날짜 칩메뉴
@@ -139,6 +122,23 @@ class MyPaymentFragment : Fragment() {
                 }
             }
         }
+    }
+
+    // 뒤로가기 처리
+    private fun backProcess(){
+        SystemClock.sleep(200)
+        parentFragmentManager.popBackStack()
+    }
+
+    // 뒤로가기 처리(단말기)
+    private fun handleBackPress() {
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // 뒤로가기
+                backProcess()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 
     // RecyclerView 설정
