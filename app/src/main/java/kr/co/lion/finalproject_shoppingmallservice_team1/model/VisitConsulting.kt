@@ -3,7 +3,7 @@ package kr.co.lion.finalproject_shoppingmallservice_team1.model
 // 방문 상담 신청
 data class VisitConsulting (
 
-    var visitConsultingId:String = "", // 상담 신청 내역 아이디
+    var visitConsultingId:Int = 0, // 상담 신청 내역 아이디
 
     var centerId:String = "", // 운동센터 아이디
     var trainerId:String? = "", // 트레이너 아이디
