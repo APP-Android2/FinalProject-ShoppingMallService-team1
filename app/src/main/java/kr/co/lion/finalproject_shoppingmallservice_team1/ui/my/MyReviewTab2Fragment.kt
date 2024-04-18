@@ -1,10 +1,13 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.ui.my
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,20 +15,39 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActiv
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentMyReviewTab2Binding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowMyReviewTab2Binding
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.ReviewInputActivity
 
 class MyReviewTab2Fragment : Fragment() {
 
     lateinit var fragmentMyReviewTab2Binding: FragmentMyReviewTab2Binding
     lateinit var navigationActivity: NavigationActivity
+    lateinit var reviewInputActivityLauncher: ActivityResultLauncher<Intent>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         fragmentMyReviewTab2Binding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_review_tab2, container, false)
         navigationActivity = activity as NavigationActivity
 
+        initData()
         settingRecyclerViewMyReviewTab2()
 
         return fragmentMyReviewTab2Binding.root
+    }
+
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        val contract1 = ActivityResultContracts.StartActivityForResult()
+//        reviewInputActivityLauncher = registerForActivityResult(contract1){
+//
+//        }
+//    }
+
+    fun initData(){
+        // ReviewInputActivity
+        val contract1 = ActivityResultContracts.StartActivityForResult()
+        reviewInputActivityLauncher = registerForActivityResult(contract1){
+
+        }
     }
 
     // RecyclerView 구성
@@ -72,6 +94,13 @@ class MyReviewTab2Fragment : Fragment() {
             holder.rowMyReviewTab2Binding.tvRowMyReviewTab2Date.text = "2000-04-04"
             holder.rowMyReviewTab2Binding.tvRowMyReviewTrainerName.text = "트레이너명 $position"
             holder.rowMyReviewTab2Binding.tvRowMyReviewTab2Contents.text = "우리쌤 체고 $position"
+
+            // 리뷰 수정 버튼
+            holder.rowMyReviewTab2Binding.buttonEditTab2MyReview.setOnClickListener {
+                val myReviewTab2Intent = Intent(navigationActivity, ReviewInputActivity::class.java)
+
+                reviewInputActivityLauncher.launch(myReviewTab2Intent)
+            }
         }
     }
 }
