@@ -18,6 +18,8 @@ class CenterTab2Fragment : Fragment() {
     lateinit var fragmentCenterTab2Binding: FragmentCenterTab2Binding
     lateinit var navigationActivity: NavigationActivity
 
+    var isImageClick = true
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         fragmentCenterTab2Binding = DataBindingUtil.inflate(inflater, R.layout.fragment_center_tab2, container, false)
@@ -54,6 +56,23 @@ class CenterTab2Fragment : Fragment() {
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT,
                 )
+
+                // 찜 버튼 설정
+                this.rowCenterTab2Binding.buttonCenterPickTab2.setOnClickListener {
+                    isImageClick = !isImageClick
+                    updateImageButton()
+                }
+            }
+
+            // 찜 버튼 클릭에 따른 이미지 변경
+            fun updateImageButton(){
+                rowCenterTab2Binding.apply {
+                    if(isImageClick){
+                        buttonCenterPickTab2.setImageResource(R.drawable.favorite)
+                    } else {
+                        buttonCenterPickTab2.setImageResource(R.drawable.favorite_fill)
+                    }
+                }
             }
         }
 
