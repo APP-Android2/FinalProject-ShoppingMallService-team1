@@ -1,6 +1,7 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.ui.visitconsulting
 
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.toObject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -11,6 +12,7 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.model.VisitConsulting
 class VisitConsultingDao {
     companion object {
 
+        // 순서 값 가져오기
         suspend fun getSequence(): Int {
             var sequenceVisitConsulting = -1
 
@@ -25,6 +27,8 @@ class VisitConsultingDao {
             return sequenceVisitConsulting
 
         }
+
+        // 순서 값 업데이트
         suspend fun updateSequence(sequenceVisitConsulting:Int) {
             CoroutineScope(Dispatchers.IO).launch {
                 val documentReference =
@@ -38,6 +42,7 @@ class VisitConsultingDao {
             }.join()
         }
 
+        // Firebase Database에 모델 값 추가
         suspend fun insertApplication(visitConsulting: VisitConsulting) {
             CoroutineScope(Dispatchers.IO).launch {
                 FirebaseFirestore.getInstance().collection("VisitConsulting")
@@ -45,12 +50,23 @@ class VisitConsultingDao {
             }.join()
         }
 
-        suspend fun getVisitData(){
+        // VisitConsulting컬렉션의 data를 리스트로 정렬 후 반환
+        suspend fun getVisitList():MutableList<VisitConsulting>{
+            val dataList = mutableListOf<VisitConsulting>()
 
-        }
+            CoroutineScope(Dispatchers.IO).launch {
+                val query = FirebaseFirestore.getInstance().collection("VisitConsulting")
+                    .orderBy("visitConsultingId")
 
-        suspend fun getVisitList(){
+                val querySnapshot = query.get().await()
 
+                querySnapshot.forEach {
+                    val visitConsulting = it.toObject(VisitConsulting::class.java)
+                    dataList.add(visitConsulting)
+                }
+            }.join()
+
+            return dataList
         }
     }
 }
