@@ -10,12 +10,9 @@ import androidx.databinding.DataBindingUtil
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.transition.MaterialSharedAxis
 import kr.co.lion.finalproject_shoppingmallservice_team1.CENTER_TAB_NAME
-import kr.co.lion.finalproject_shoppingmallservice_team1.MY_REVIEW_TAB_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentCenterBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActivity
-import kr.co.lion.finalproject_shoppingmallservice_team1.ui.my.MyReviewTab1Fragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.ui.my.MyReviewTab2Fragment
 
 class CenterFragment : Fragment() {
 
@@ -117,7 +114,7 @@ class CenterFragment : Fragment() {
             }
             // Tab3
             CENTER_TAB_NAME.CENTER_TAB3_FRAGMENT -> {
-
+                newFragment = CenterTab3Fragment()
             }
         }
 
