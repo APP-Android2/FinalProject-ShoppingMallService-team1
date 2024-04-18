@@ -1,6 +1,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="centerViewModel"
+            type="kr.co.lion.finalproject_shoppingmallservice_team1.ui.center.viewmodel.CenterViewModel" />
+    </data>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -51,43 +56,69 @@
                 android:text="수영" />
         </com.google.android.material.tabs.TabLayout>
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chipGroup"
-            android:layout_width="wrap_content"
+        <!-- chip을 묶기 위한 LinearLayout -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:singleLine="true">
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20sp"
+            android:orientation="horizontal">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_distance"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checkable="true"
-                android:onClick="onSortByDistanceClicked"
-                android:text="거리순"
-                app:chipBackgroundColor="@color/InputCompartmentOutline_Color" />
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                >
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_distance"
+                    style="@style/Widget.Material3.Chip.Suggestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:onClick="onSortByDistanceClicked"
+                    android:text="최신순"
+                    android:backgroundTint="@color/Pup_Color"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:chipCornerRadius="20dp"
+                    app:chipStrokeColor="@color/Pup_Color" />
 
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_daily_pass"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checkable="true"
-                android:text="일일권"
-                app:chipBackgroundColor="@color/InputCompartmentOutline_Color" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_daily_pass"
+                    style="@style/Widget.Material3.Chip.Suggestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="일일권"
+                    app:chipBackgroundColor="@{centerViewModel.chipChecked ? @color/Pup_Color : @color/white}"
+                    android:checked="@{centerViewModel.chipChecked}"
+                    android:textColor="@{centerViewModel.chipChecked ? @color/white : @color/Pup_Color }"
+                    android:textStyle="bold"
+                    app:chipCornerRadius="20dp"
+                    app:chipStrokeColor="@color/Pup_Color"
+                    android:onClick="@{centerViewModel::onChipClick}"/>
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_discount"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checkable="true"
-                android:text="할인시설"
-                app:chipBackgroundColor="@color/InputCompartmentOutline_Color" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_discount"
+                    style="@style/Widget.Material3.Chip.Suggestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="true"
+                    android:text="할인시설"
+                    app:chipBackgroundColor="@{centerViewModel.chipChecked2 ? @color/Pup_Color : @color/white}"
+                    android:checked="@{centerViewModel.chipChecked2}"
+                    android:textColor="@{centerViewModel.chipChecked2 ? @color/white : @color/Pup_Color }"
+                    android:textStyle="bold"
+                    app:chipCornerRadius="20dp"
+                    app:chipStrokeColor="@color/Pup_Color"
+                    android:onClick="@{centerViewModel::onChipClick2}" />
 
-        </com.google.android.material.chip.ChipGroup>
+            </com.google.android.material.chip.ChipGroup>
+        </LinearLayout>
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/centerTabView"

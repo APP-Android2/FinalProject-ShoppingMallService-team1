@@ -2,22 +2,27 @@ package kr.co.lion.finalproject_shoppingmallservice_team1.ui.center
 
 import android.os.Bundle
 import android.os.SystemClock
+import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.transition.MaterialSharedAxis
 import kr.co.lion.finalproject_shoppingmallservice_team1.CENTER_TAB_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentCenterBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.center.viewmodel.CenterViewModel
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActivity
 
 class CenterFragment : Fragment() {
 
     lateinit var fragmentCenterBinding: FragmentCenterBinding
     lateinit var navigationActivity: NavigationActivity
+    lateinit var centerViewModel: CenterViewModel
 
     // 프래그먼트 객체를 담을 변수
     var oldFragment:Fragment? = null
@@ -27,9 +32,13 @@ class CenterFragment : Fragment() {
         // Inflate the layout for this fragment
         fragmentCenterBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_center, container, false)
         navigationActivity = activity as NavigationActivity
+        centerViewModel = ViewModelProvider(this).get(CenterViewModel::class.java)
+        fragmentCenterBinding.centerViewModel = centerViewModel
+        fragmentCenterBinding.lifecycleOwner = this
 
         settingToolbar()
         settingTabLayout()
+        settingChip()
 
         return fragmentCenterBinding.root
     }
@@ -87,6 +96,33 @@ class CenterFragment : Fragment() {
                         // 이미 선택된 탭이 다시 선택된 경우 처리할 내용
                     }
                 })
+            }
+        }
+    }
+
+    // chip 설정
+    fun settingChip(){
+        fragmentCenterBinding.apply {
+            chipDistance.apply {
+                setOnClickListener {
+                    val contextWrapper = ContextThemeWrapper(context, R.style.popupMenuStyle)
+
+                    val popup = PopupMenu(contextWrapper, this)
+                    popup.inflate(R.menu.menu_center_chip)
+
+                    popup.setOnMenuItemClickListener {
+                        when(it.itemId){
+                            R.id.menuItemCenterDistance -> {
+                                text = "거리순"
+                            }
+                            R.id.menuItemCenterRecent -> {
+                                text = "최신순"
+                            }
+                        }
+                        true
+                    }
+                    popup.show()
+                }
             }
         }
     }
