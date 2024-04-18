@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
@@ -26,6 +27,20 @@ class MySettingFragment : Fragment() {
         handleBackPress()
 
         return fragmentMySettingBinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // MySettingFragment 가 실행될 때 하단바가 보이지 않도록
+        navigationActivity.activityNavigationBinding.bottomNavigationView.isVisible = false
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        // MySettingFragment 가 제거될 때 하단바가 보이도록
+        navigationActivity.activityNavigationBinding.bottomNavigationView.isVisible = true
     }
 
     // Toolbar 설정

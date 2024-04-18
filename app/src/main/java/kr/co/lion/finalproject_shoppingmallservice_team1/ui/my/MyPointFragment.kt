@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
@@ -29,6 +30,20 @@ class MyPointFragment : Fragment() {
         return fragmentMyPointBinding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // MyPointFragment 가 실행될 때 하단바가 보이지 않도록
+        navigationActivity.activityNavigationBinding.bottomNavigationView.isVisible = false
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        // MyPointFragment 가 제거될 때 하단바가 보이도록
+        navigationActivity.activityNavigationBinding.bottomNavigationView.isVisible = true
+    }
+
     // Toolbar 설정
     fun settingToolbar(){
         fragmentMyPointBinding.apply {
@@ -40,23 +55,6 @@ class MyPointFragment : Fragment() {
                 }
             }
         }
-    }
-
-    // 뒤로가기 처리
-    private fun backProcess(){
-        SystemClock.sleep(200)
-        parentFragmentManager.popBackStack()
-    }
-
-    // 뒤로가기 처리(단말기)
-    private fun handleBackPress() {
-        val callback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                // 뒤로가기
-                backProcess()
-            }
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 
     // TextView 항목 클릭 시 이벤트
@@ -82,5 +80,22 @@ class MyPointFragment : Fragment() {
 
             }
         }
+    }
+
+    // 뒤로가기 처리
+    private fun backProcess(){
+        SystemClock.sleep(200)
+        parentFragmentManager.popBackStack()
+    }
+
+    // 뒤로가기 처리(단말기)
+    private fun handleBackPress() {
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // 뒤로가기
+                backProcess()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 }
