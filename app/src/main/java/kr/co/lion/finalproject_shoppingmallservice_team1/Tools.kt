@@ -93,6 +93,12 @@ enum class CENTER_FRAGMENT_NAME(var num:Int, var str:String){
     READ_CENTER_TAB3_FRAGMENT(3, "ReadCenterTab3Fragment"),
 }
 
+enum class CENTER_TAB_NAME(var num: Int, var str: String){
+
+    CENTER_TAB1_FRAGMENT(0, "헬스"),
+    CENTER_TAB2_FRAGMENT(1, "필라테스"),
+    CENTER_TAB3_FRAGMENT(2, "수영"),
+}
 
 enum class TRAINER_FRAGMENT_NAME(var num:Int, var str:String){
 
