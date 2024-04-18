@@ -113,7 +113,7 @@ class CenterFragment : Fragment() {
             }
             // Tab2
             CENTER_TAB_NAME.CENTER_TAB2_FRAGMENT -> {
-
+                newFragment = CenterTab2Fragment()
             }
             // Tab3
             CENTER_TAB_NAME.CENTER_TAB3_FRAGMENT -> {
