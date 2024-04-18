@@ -98,8 +98,10 @@ class MyProfileFragment : Fragment() {
         myProfileViewModel.myProfilePhoneNumber.value = ""
         myProfileViewModel.myProfileLocation.value = ""
 
-        // 키보드를 올려준다.
-        Tools.showSoftInput(navigationActivity, fragmentMyProfileBinding.myProfileName)
+        if (myProfileViewModel.myProfileName.value.toString().trim().isEmpty()){
+            // 키보드를 올려준다.
+            Tools.showSoftInput(navigationActivity, fragmentMyProfileBinding.myProfileName)
+        }
     }
 
     // 뒤로가기 처리
