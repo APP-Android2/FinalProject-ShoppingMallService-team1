@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/Side_Padding"
+            android:layout_marginRight="@dimen/Side_Padding"
+            android:layout_marginTop="@dimen/Up_Down_Margin"
+            android:orientation="vertical"
+            tools:context=".ui.center.ReadCenterTab3Fragment">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="트레이너님과 상담하실 방법을 선택해 주세요." />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonChatting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="5dp"
+                    android:backgroundTint="@color/Pup_Color"
+                    android:text="채팅 상담"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/BigButton_Text_Size"
+                    app:cornerRadius="10dp" />
+
+                <Button
+                    android:id="@+id/buttonConsulting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:backgroundTint="@color/Pup_Color"
+                    android:text="방문 상담"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/BigButton_Text_Size"
+                    app:cornerRadius="10dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>
