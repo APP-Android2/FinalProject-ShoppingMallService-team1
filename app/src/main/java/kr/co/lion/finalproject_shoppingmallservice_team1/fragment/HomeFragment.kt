@@ -3,7 +3,6 @@ package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -192,7 +191,7 @@ class HomeFragment : Fragment() {
         inner class ViewHolder(itemView: View) :
             RecyclerView.ViewHolder(itemView) {
             fun bindItems(items: RecyclerPopulatTrainerModel) {
-                val imageViewPopularTrainer = itemView.findViewById<ImageView>(R.id.imageViewPopularTrainer)
+                val imageViewPopularTrainer = itemView.findViewById<ImageView>(R.id.imageViewCenterPicture)
                 val textViewPopularTrainerName = itemView.findViewById<TextView>(R.id.textViewPopularTrainerName)
                 val textViewPopularTrainerAddress = itemView.findViewById<TextView>(R.id.textViewPopularTrainerAddress)
 
