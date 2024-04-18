@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.transition.MaterialSharedAxis
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -24,7 +25,7 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.ui.visitconsulting.view
 class ConsultingActivity : AppCompatActivity() {
 
     lateinit var activityConsultingBinding: ActivityConsultingBinding
-    val activityConsultingViewModel: ActivityConsultingViewModel by viewModels<ActivityConsultingViewModel>()
+    lateinit var activityConsultingViewModel: ActivityConsultingViewModel
 
     // 프래그먼트의 주소값을 담을 프로퍼티
     var oldFragment: Fragment? = null
@@ -34,6 +35,7 @@ class ConsultingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         activityConsultingBinding = DataBindingUtil.setContentView(this, R.layout.activity_consulting)
+        activityConsultingViewModel = ViewModelProvider(this).get(ActivityConsultingViewModel::class.java)
         activityConsultingBinding.activityConsultingViewModel = activityConsultingViewModel
         activityConsultingBinding.lifecycleOwner = this
 
