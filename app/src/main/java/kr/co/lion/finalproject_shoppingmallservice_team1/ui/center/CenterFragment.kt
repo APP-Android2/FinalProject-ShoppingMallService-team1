@@ -1,4 +1,4 @@
-package kr.co.lion.finalproject_shoppingmallservice_team1.fragment
+package kr.co.lion.finalproject_shoppingmallservice_team1.ui.center
 
 import android.os.Bundle
 import android.os.SystemClock

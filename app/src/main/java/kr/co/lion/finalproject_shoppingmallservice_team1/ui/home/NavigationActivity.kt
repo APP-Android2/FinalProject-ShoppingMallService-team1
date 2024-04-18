@@ -11,7 +11,7 @@ import com.google.android.material.transition.MaterialSharedAxis
 import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivityNavigationBinding
-import kr.co.lion.finalproject_shoppingmallservice_team1.fragment.CenterFragment
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.center.CenterFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.community.CommunityFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.my.MyFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.ReadTrainerActivity
