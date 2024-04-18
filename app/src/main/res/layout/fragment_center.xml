@@ -1,125 +1,99 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-
-    </data>
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbarCenter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                android:elevation="4dp"
-                android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="운동 센터"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title" />
-
-                <ImageButton
-                    android:id="@+id/cartButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:src="@drawable/shopping_cart" />
-
-            </androidx.appcompat.widget.Toolbar>
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/trainerInfoTab"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                app:tabIndicatorColor="@color/black"
-                app:tabIndicatorFullWidth="true"
-                app:tabIndicatorHeight="1dp"
-                app:tabMode="fixed"
-                app:tabTextColor="@color/black">
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="헬스" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="필라테스" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="수영" />
-            </com.google.android.material.tabs.TabLayout>
-
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/chipGroup"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:singleLine="true">
+                android:layout_gravity="center"
+                android:text="운동 센터"
+                android:textSize="@dimen/Toolbar_Title_Size" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_distance"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checkable="true"
-                    android:onClick="onSortByDistanceClicked"
-                    android:text="거리순"
-                    app:chipBackgroundColor="@color/InputCompartmentOutline_Color" />
+        </com.google.android.material.appbar.MaterialToolbar>
 
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/centerTab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:tabIndicatorColor="@color/black"
+            app:tabIndicatorFullWidth="true"
+            app:tabIndicatorHeight="1dp"
+            app:tabMode="fixed"
+            app:tabTextColor="@color/black">
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_daily_pass"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checkable="true"
-                    android:text="일일권"
-                    app:chipBackgroundColor="@color/InputCompartmentOutline_Color" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_discount"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checkable="true"
-                    android:text="할인시설"
-                    app:chipBackgroundColor="@color/InputCompartmentOutline_Color" />
-
-            </com.google.android.material.chip.ChipGroup>
-
-            <LinearLayout
+            <com.google.android.material.tabs.TabItem
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="헬스" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="필라테스" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="수영" />
+        </com.google.android.material.tabs.TabLayout>
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:singleLine="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_distance"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/Detail_Padding"
-                android:orientation="vertical">
+                android:checkable="true"
+                android:onClick="onSortByDistanceClicked"
+                android:text="거리순"
+                app:chipBackgroundColor="@color/InputCompartmentOutline_Color" />
 
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/gym_list_recylcler"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_daily_pass"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="일일권"
+                app:chipBackgroundColor="@color/InputCompartmentOutline_Color" />
 
-                </androidx.recyclerview.widget.RecyclerView>
-            </LinearLayout>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_discount"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkable="true"
+                android:text="할인시설"
+                app:chipBackgroundColor="@color/InputCompartmentOutline_Color" />
 
-        </LinearLayout>
-    </ScrollView>
+        </com.google.android.material.chip.ChipGroup>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/centerTabView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 
 </layout>
