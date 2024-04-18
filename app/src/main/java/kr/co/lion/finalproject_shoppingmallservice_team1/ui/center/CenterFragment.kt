@@ -2,11 +2,11 @@ package kr.co.lion.finalproject_shoppingmallservice_team1.ui.center
 
 import android.os.Bundle
 import android.os.SystemClock
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.transition.MaterialSharedAxis
 import kr.co.lion.finalproject_shoppingmallservice_team1.CENTER_TAB_NAME

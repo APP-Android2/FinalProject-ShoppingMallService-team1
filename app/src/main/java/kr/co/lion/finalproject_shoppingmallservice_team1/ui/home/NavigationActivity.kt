@@ -12,6 +12,7 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAM
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivityNavigationBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.center.CenterFragment
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.center.ReadCenterActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.community.CommunityFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.my.MyFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.ReadTrainerActivity
@@ -75,6 +76,12 @@ class NavigationActivity : AppCompatActivity() {
     fun readTrainerRequest(){
         val readTrainerIntent = Intent(this, ReadTrainerActivity::class.java)
         startActivity(readTrainerIntent)
+    }
+
+    // ReadCenterActivity 실행
+    fun readCenterRequest(){
+        val readCenterIntent = Intent(this, ReadCenterActivity::class.java)
+        startActivity(readCenterIntent)
     }
 
     fun replaceFragment(name: NAVIGATION_FRAGMENT_NAME, addToBackStack:Boolean, isAnimate:Boolean, data:Bundle?){

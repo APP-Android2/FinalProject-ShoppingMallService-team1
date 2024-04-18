@@ -1,11 +1,11 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.ui.center
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
@@ -60,6 +60,12 @@ class CenterTab1Fragment : Fragment() {
                 this.rowCenterTab1Binding.buttonCenterPickTab1.setOnClickListener {
                     isImageClick = !isImageClick
                     updateImageButton()
+                }
+                // 게시글 클릭 설정
+                this.rowCenterTab1Binding.apply {
+                    itemCenterPost.setOnClickListener {
+                        navigationActivity.readCenterRequest()
+                    }
                 }
             }
 
