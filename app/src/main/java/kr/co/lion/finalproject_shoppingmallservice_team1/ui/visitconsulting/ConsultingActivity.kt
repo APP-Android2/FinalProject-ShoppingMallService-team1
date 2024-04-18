@@ -1,19 +1,31 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.ui.visitconsulting
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
+import android.util.Log
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.transition.MaterialSharedAxis
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kr.co.lion.finalproject_shoppingmallservice_team1.CONSULTING_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivityConsultingBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.model.VisitConsulting
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.visitconsulting.viewmodel.ActivityConsultingViewModel
 
 class ConsultingActivity : AppCompatActivity() {
 
     lateinit var activityConsultingBinding: ActivityConsultingBinding
+    lateinit var activityConsultingViewModel: ActivityConsultingViewModel
 
     // 프래그먼트의 주소값을 담을 프로퍼티
     var oldFragment: Fragment? = null
@@ -22,7 +34,11 @@ class ConsultingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        activityConsultingBinding = ActivityConsultingBinding.inflate(layoutInflater)
+        activityConsultingBinding = DataBindingUtil.setContentView(this, R.layout.activity_consulting)
+        activityConsultingViewModel = ViewModelProvider(this).get(ActivityConsultingViewModel::class.java)
+        activityConsultingBinding.activityConsultingViewModel = activityConsultingViewModel
+        activityConsultingBinding.lifecycleOwner = this
+
         setContentView(activityConsultingBinding.root)
 
         settingConsultingToolbar()
@@ -54,6 +70,8 @@ class ConsultingActivity : AppCompatActivity() {
         activityConsultingBinding.apply {
             consultingAddButton.apply {
                 setOnClickListener {
+                    Log.d("test1234", "finish")
+                    activityConsultingViewModel?.updateData()
                     finish()
                 }
             }

@@ -29,7 +29,7 @@
             android:textStyle="bold"
             android:padding="16dp" />
 
-        <kr.co.lion.finalproject_shoppingmallservice_team1.fragment.CustomScrollView
+        <kr.co.lion.finalproject_shoppingmallservice_team1.util.CustomScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -121,7 +121,7 @@
                     android:textSize="@dimen/Medium_Text_Size" />
 
             </LinearLayout>
-        </kr.co.lion.finalproject_shoppingmallservice_team1.fragment.CustomScrollView>
+        </kr.co.lion.finalproject_shoppingmallservice_team1.util.CustomScrollView>
 
         <Button
             android:id="@+id/consultingCalendarAddButton"

@@ -7,18 +7,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentMyVisitConsultationBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowMyVisitConsultationBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.model.VisitConsulting
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.visitconsulting.VisitConsultingDao
 
 class MyVisitConsultationFragment : Fragment() {
 
     lateinit var fragmentMyVisitConsultationBinding: FragmentMyVisitConsultationBinding
     lateinit var navigationActivity: NavigationActivity
+    var visitConsultingList = mutableListOf<VisitConsulting>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -27,9 +34,24 @@ class MyVisitConsultationFragment : Fragment() {
 
         settingToolbar()
         handleBackPress()
+        gettingListData()
         settingRecyclerViewMyVisitConsultation()
 
         return fragmentMyVisitConsultationBinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // MyVisitConsultationFragment 가 실행될 때 하단바가 보이지 않도록
+        navigationActivity.activityNavigationBinding.bottomNavigationView.isVisible = false
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        // MyVisitConsultationFragment 가 제거될 때 하단바가 보이도록
+        navigationActivity.activityNavigationBinding.bottomNavigationView.isVisible = true
     }
 
     // Toolbar 설정
@@ -85,7 +107,7 @@ class MyVisitConsultationFragment : Fragment() {
 
                 this.rowMyVisitConsultationBinding.root.layoutParams = ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
                 )
             }
         }
@@ -98,12 +120,20 @@ class MyVisitConsultationFragment : Fragment() {
         }
 
         override fun getItemCount(): Int {
-            return 10
+            return visitConsultingList.size
         }
 
         override fun onBindViewHolder(holder: MyVisitConsultationViewHolder, position: Int) {
-            holder.rowMyVisitConsultationBinding.tvRowMyVisitConsultationCenterName.text = "운동 센터 $position"
-            holder.rowMyVisitConsultationBinding.tvRowMyVisitConsultationTime.text = "예약 시간 $position"
+            holder.rowMyVisitConsultationBinding.tvRowMyVisitConsultationCenterName.text = visitConsultingList[position].name
+            holder.rowMyVisitConsultationBinding.tvRowMyVisitConsultationTime.text = "예약 시간 ${visitConsultingList[position].applicationTime}"
+        }
+    }
+
+    fun gettingListData(){
+        CoroutineScope(Dispatchers.Main).launch {
+            visitConsultingList = VisitConsultingDao.getVisitList()
+
+            fragmentMyVisitConsultationBinding.recyclerViewMyVisitConsultation.adapter?.notifyDataSetChanged()
         }
     }
 }

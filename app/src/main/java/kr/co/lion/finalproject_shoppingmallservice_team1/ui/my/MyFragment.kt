@@ -53,7 +53,7 @@ class MyFragment : Fragment() {
             if(it != null){
                 when(it.resultCode){
                     Activity.RESULT_OK -> {
-                        if (it.data!= null){
+                        if (it.data != null){
                             // 데이터 얻음
                             val value = it?.data!!.getIntExtra("buttonHomeShopSwap", 0)
 
@@ -86,8 +86,8 @@ class MyFragment : Fragment() {
                     when(it.itemId){
                         // 장바구니
                         R.id.menuMyShopping -> {
-                            val myShoppingCartIntent = Intent(navigationActivity, ShoppingCartActivity::class.java)
-                            shoppingCartActivityLauncher.launch(myShoppingCartIntent)
+                            val myIntent = Intent(navigationActivity, ShoppingCartActivity::class.java)
+                            shoppingCartActivityLauncher.launch(myIntent)
                         }
                     }
 
