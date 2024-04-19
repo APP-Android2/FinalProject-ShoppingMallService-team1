@@ -31,8 +31,6 @@ class LoginFragment : Fragment() {
         fragmentLoginBinding = FragmentLoginBinding.inflate(inflater)
         loginActivity = activity as LoginActivity
 
-        FirebaseAuthHelper.initializeFirebaseAuth()  // Firebase 인증 초기화
-
         initializeSignInResultLauncher() // ActivityResultLauncher 초기화
         checkLoggedInUser() // 로그인된 사용자 확인
 
