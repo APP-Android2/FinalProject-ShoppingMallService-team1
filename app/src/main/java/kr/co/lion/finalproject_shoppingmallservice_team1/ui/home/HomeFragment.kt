@@ -43,10 +43,13 @@ class HomeFragment : Fragment() {
         settingToolbar()
         settingAddress()
         settingSearch()
+        settingCategory()
+        startAroundCenter()
+        startTransferMembershipActivity()
+
         initRecyclerPopularTrainer()
         initRecyclerRecentCenter()
 
-        startTransferMembershipActivity()
 
         return fragmentHomeBinding.root
     }
@@ -65,10 +68,6 @@ class HomeFragment : Fragment() {
                             // 데이터 얻음
                             val value = it?.data!!.getIntExtra("buttonHomeShopSwap", 0)
 
-                            // 네비게이션 아이템의 선택 상태 변경
-                            navigationActivity.activityNavigationBinding.bottomNavigationView.menu.findItem(R.id.fragment_center).isChecked = true
-                            // 아이템의 색상 변경
-                            navigationActivity.updateIconColors(R.id.fragment_center)
                             // 운동 센터로 화면 전환
                             navigationActivity.replaceFragment(NAVIGATION_FRAGMENT_NAME.CENTER_FRAGMENT, false, true, null)
                         }
@@ -139,6 +138,46 @@ class HomeFragment : Fragment() {
         }
     }
 
+    fun settingCategory(){
+        fragmentHomeBinding.cardViewHomeCategoryHealth.setOnClickListener {
+            navigateToCenterFragment("health")
+        }
+        fragmentHomeBinding.cardViewHomeCategoryPilates.setOnClickListener {
+            navigateToCenterFragment("pilates")
+        }
+        fragmentHomeBinding.cardViewHomeCategorySwim.setOnClickListener {
+            navigateToCenterFragment("swim")
+        }
+        fragmentHomeBinding.cardViewHomeCategoryDailyTicket.setOnClickListener {
+            navigateToCenterFragment("dailyTicket")
+        }
+        fragmentHomeBinding.cardViewHomeCategorySale.setOnClickListener {
+            navigateToCenterFragment("sale")
+        }
+    }
+    // CenterFragment로 이동하며 카테고리 데이터를 전달하는 함수
+    private fun navigateToCenterFragment(category: String) {
+        val bundle = Bundle().apply {
+            putString("category", category)
+        }
+        // CenterFragment로 이동
+        navigationActivity.replaceFragment(NAVIGATION_FRAGMENT_NAME.CENTER_FRAGMENT, true, true, bundle)
+    }
+
+    fun startAroundCenter(){
+        fragmentHomeBinding.cardViewHomeAroundCenter.setOnClickListener {
+            navigateToCenterFragment("aroundCenter")
+        }
+    }
+
+    fun startTransferMembershipActivity(){
+        fragmentHomeBinding.cardViewHomeAssign.setOnClickListener {
+            val intent = Intent(navigationActivity, TransferMembershipActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    //인기있는 트레이너
     fun initRecyclerPopularTrainer() {
         val itemList = mutableListOf<RecyclerPopulatTrainerModel>()
         itemList.add(RecyclerPopulatTrainerModel(R.drawable.populartrainer1, "원 트레이너", "서울 중랑구 신내동"))
@@ -201,6 +240,7 @@ class HomeFragment : Fragment() {
     }
 
 
+    // 최근 본 시설
     fun initRecyclerRecentCenter() {
         val itemList = mutableListOf<RecyclerRecentCenterModel>()
         itemList.add(RecyclerRecentCenterModel(R.drawable.recentcenter1, "원 운동센터", "서울 중랑구 신내동"))
@@ -259,13 +299,6 @@ class HomeFragment : Fragment() {
                 textViewRecentCenterName.text = items.centerName
                 textViewRecentCenterAddress.text = items.address
             }
-        }
-    }
-
-    fun startTransferMembershipActivity(){
-        fragmentHomeBinding.cardViewHomeAssign.setOnClickListener {
-            val intent = Intent(navigationActivity, TransferMembershipActivity::class.java)
-            startActivity(intent)
         }
     }
 }

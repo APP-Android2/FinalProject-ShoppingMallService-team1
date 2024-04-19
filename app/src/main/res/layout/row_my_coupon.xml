@@ -3,6 +3,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="myCouponViewModel"
+            type="kr.co.lion.finalproject_shoppingmallservice_team1.viewmodel.MyCouponViewModel" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,7 +41,7 @@
                         android:id="@+id/tvRowMyCouponTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="쿠폰명"
+                        android:text="@{myCouponViewModel.tvRowMyCouponTitle}"
                         android:textSize="@dimen/Big_Text_Size"
                         android:textStyle="bold" />
 
@@ -45,7 +50,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5sp"
-                        android:text="남은 기간"
+                        android:text="@{myCouponViewModel.tvRowMyCouponUntilDays}"
                         android:textColor="@color/ContentsOfTheEntryCompartment_Color"
                         android:textSize="@dimen/Medium_Text_Size" />
 
@@ -61,7 +66,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="0.9"
-                            android:text="쿠폰 할인률"
+                            android:text="@{myCouponViewModel.tvRowMyCouponSale}"
                             android:textColor="@color/Pup_Color"
                             android:textSize="@dimen/Toolbar_Title_Size"
                             android:textStyle="bold" />
