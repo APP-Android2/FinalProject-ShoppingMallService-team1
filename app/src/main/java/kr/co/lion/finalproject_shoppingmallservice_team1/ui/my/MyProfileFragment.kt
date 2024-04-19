@@ -11,10 +11,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.Firebase
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
-import kr.co.lion.finalproject_shoppingmallservice_team1.ui.login.LoginActivity
+import kr.co.lion.finalproject_shoppingmallservice_team1.FirebaseAuthHelper
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.Tools
@@ -27,8 +24,6 @@ class MyProfileFragment : Fragment() {
     lateinit var navigationActivity: NavigationActivity
     lateinit var myProfileViewModel: MyProfileViewModel
 
-    private lateinit var auth: FirebaseAuth
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         fragmentMyProfileBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_profile, container, false)
@@ -37,8 +32,6 @@ class MyProfileFragment : Fragment() {
         fragmentMyProfileBinding.lifecycleOwner = this
 
         navigationActivity = activity as NavigationActivity
-
-        auth = Firebase.auth
 
         settingToolbar()
         handleBackPress()
@@ -92,7 +85,6 @@ class MyProfileFragment : Fragment() {
     fun settingInputMyProfile(){
 
         // 프로필 사진 값 설정
-
         myProfileViewModel.myProfileName.value = ""
         myProfileViewModel.myProfileNickName.value = ""
         myProfileViewModel.myProfilePhoneNumber.value = ""
@@ -136,20 +128,10 @@ class MyProfileFragment : Fragment() {
         }
     }
     private fun logout(){
-        FirebaseAuth.getInstance().signOut()
-
-        startActivity(Intent(navigationActivity, LoginActivity::class.java))
-        navigationActivity.finish()
+        FirebaseAuthHelper.signOut(navigationActivity)
     }
 
     private fun revokeAccess(){
-
-        auth.currentUser?.delete()?.addOnCompleteListener { task ->
-
-            if(task.isSuccessful){
-                startActivity(Intent(navigationActivity, LoginActivity::class.java))
-                navigationActivity.finish()
-            }
-        }
+        FirebaseAuthHelper.deleteUserAccount(navigationActivity)
     }
 }
