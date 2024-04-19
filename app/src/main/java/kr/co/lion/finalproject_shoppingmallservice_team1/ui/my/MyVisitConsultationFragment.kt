@@ -34,6 +34,7 @@ class MyVisitConsultationFragment : Fragment() {
 
         settingToolbar()
         handleBackPress()
+        settingButtonToday()
         gettingListData()
         settingRecyclerViewMyVisitConsultation()
 
@@ -63,6 +64,18 @@ class MyVisitConsultationFragment : Fragment() {
                 setNavigationOnClickListener {
                     backProcess()
                 }
+            }
+        }
+    }
+
+    // 오늘 버튼 설정
+    fun settingButtonToday(){
+        fragmentMyVisitConsultationBinding.apply {
+            buttonToday.setOnClickListener {
+                // 현재 시간을 Long 값으로 구해 CalendarView에 설정해준다.
+                calendarMyVisitConsultation.date = System.currentTimeMillis()
+
+                // 리사이클러뷰 갱신 코드 추가하기
             }
         }
     }
