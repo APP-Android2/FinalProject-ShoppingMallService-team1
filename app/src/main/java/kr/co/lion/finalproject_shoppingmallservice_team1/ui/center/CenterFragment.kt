@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.SystemClock
 import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
@@ -35,6 +36,36 @@ class CenterFragment : Fragment() {
         centerViewModel = ViewModelProvider(this).get(CenterViewModel::class.java)
         fragmentCenterBinding.centerViewModel = centerViewModel
         fragmentCenterBinding.lifecycleOwner = this
+
+        // 네비게이션 아이템의 선택 상태 변경
+        navigationActivity.activityNavigationBinding.bottomNavigationView.menu.findItem(R.id.fragment_center).isChecked = true
+        // 아이템의 색상 변경
+        navigationActivity.updateIconColors(R.id.fragment_center)
+
+        val category = arguments?.getString("category")
+        when(category){
+            "health" -> {
+                replaceFragment(CENTER_TAB_NAME.CENTER_TAB1_FRAGMENT, false, false, null)
+                fragmentCenterBinding.centerTab.getTabAt(0)?.select()
+            }
+            "pilates" -> {
+                replaceFragment(CENTER_TAB_NAME.CENTER_TAB2_FRAGMENT, false, false, null)
+                fragmentCenterBinding.centerTab.getTabAt(1)?.select()
+            }
+            "swim" -> {
+                replaceFragment(CENTER_TAB_NAME.CENTER_TAB3_FRAGMENT, false, false, null)
+                fragmentCenterBinding.centerTab.getTabAt(2)?.select()
+            }
+            "dailyTicket" -> {
+                centerViewModel.chipChecked.value = true
+            }
+            "sale" -> {
+                centerViewModel.chipChecked2.value = true
+            }
+            "aroundCenter" -> {
+                fragmentCenterBinding.chipDistance.text = "거리순"
+            }
+        }
 
         settingToolbar()
         settingTabLayout()
@@ -114,6 +145,7 @@ class CenterFragment : Fragment() {
                         when(it.itemId){
                             R.id.menuItemCenterDistance -> {
                                 text = "거리순"
+
                             }
                             R.id.menuItemCenterRecent -> {
                                 text = "최신순"
