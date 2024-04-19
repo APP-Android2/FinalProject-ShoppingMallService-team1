@@ -58,10 +58,9 @@ class MyPickTab1Fragment : Fragment() {
 
                 // 찜 버튼 설정
                 this.rowMyPickTab1Binding.buttonMyPickTab1.setOnClickListener {
-                        isImageClick = !isImageClick
-                        updateImageButton()
-                    }
-
+                    isImageClick = !isImageClick
+                    updateImageButton()
+                }
             }
 
             // 찜 버튼 클릭에 따른 이미지 변경
@@ -69,7 +68,7 @@ class MyPickTab1Fragment : Fragment() {
                 rowMyPickTab1Binding.apply {
                     if(isImageClick){
                         buttonMyPickTab1.setImageResource(R.drawable.favorite_fill)
-                    } else{
+                    } else {
                         buttonMyPickTab1.setImageResource(R.drawable.favorite)
                     }
                 }
