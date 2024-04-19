@@ -1,3 +1,5 @@
+package kr.co.lion.finalproject_shoppingmallservice_team1.model
+
 // 사용자
 data class User(
 
