@@ -75,7 +75,7 @@ class MyVisitConsultationFragment : Fragment() {
                 // 현재 시간을 Long 값으로 구해 CalendarView에 설정해준다.
                 calendarMyVisitConsultation.date = System.currentTimeMillis()
 
-                // 리사이클러뷰 갱신하기
+                // 리사이클러뷰 갱신 코드 추가하기
             }
         }
     }
