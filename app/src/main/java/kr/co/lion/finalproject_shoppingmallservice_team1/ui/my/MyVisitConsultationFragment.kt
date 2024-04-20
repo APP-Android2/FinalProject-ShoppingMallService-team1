@@ -148,7 +148,8 @@ class MyVisitConsultationFragment : Fragment() {
 
         override fun onBindViewHolder(holder: MyVisitConsultationViewHolder, position: Int) {
             holder.rowMyVisitConsultationBinding.tvRowMyVisitConsultationCenterName.text = visitConsultingList[position].name
-            holder.rowMyVisitConsultationBinding.tvRowMyVisitConsultationTime.text = "예약 시간 ${visitConsultingList[position].applicationTime}"
+            holder.rowMyVisitConsultationBinding.tvRowMyVisitConsultationDate.text = "예약 날짜: ${visitConsultingList[position].applicationDate}"
+            holder.rowMyVisitConsultationBinding.tvRowMyVisitConsultationTime.text = "예약 시간: ${visitConsultingList[position].applicationTime}"
         }
     }
 

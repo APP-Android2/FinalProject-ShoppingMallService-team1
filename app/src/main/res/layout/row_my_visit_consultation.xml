@@ -29,11 +29,20 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tvRowMyVisitConsultationDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:text="방문상담 예약 날짜" />
+
+            <TextView
                 android:id="@+id/tvRowMyVisitConsultationTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10sp"
                 android:text="방문상담 예약 시간" />
+
+
         </LinearLayout>
     </LinearLayout>
 

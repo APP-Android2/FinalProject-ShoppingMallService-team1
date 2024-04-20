@@ -36,14 +36,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="315sp" />
 
-            <TextView
-                android:id="@+id/textViewMyVisitConsultationDay"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/Side_Padding"
-                android:text="날짜"
-                android:textSize="@dimen/Big_Text_Size" />
-
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
