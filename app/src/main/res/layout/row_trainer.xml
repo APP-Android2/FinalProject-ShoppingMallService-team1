@@ -82,21 +82,21 @@
 
 
                     <TextView
-                        android:id="@+id/healthTrainerNameTextView"
+                        android:id="@+id/trainerNameTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="트레이너 이름"
                         android:textSize="@dimen/Medium_Text_Size" />
 
                     <TextView
-                        android:id="@+id/healthTrainerOrgNameTextView"
+                        android:id="@+id/trainerOrgNameTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="트레이너 소속 센터"
                         android:textSize="@dimen/Big_Text_Size" />
 
                     <TextView
-                        android:id="@+id/healthTrainerAddressTextView"
+                        android:id="@+id/trainerLocationTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="센터 주소"

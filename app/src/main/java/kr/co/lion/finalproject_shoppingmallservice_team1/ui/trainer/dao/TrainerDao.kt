@@ -107,7 +107,6 @@ class TrainerDao {
             val job1 = CoroutineScope(Dispatchers.IO).launch {
                 val collectionReference = Firebase.firestore.collection("TrainerPostMaster")
                 var query = collectionReference.whereEqualTo("postStatus", POST_STATUS.POST_STATUS_NORMAL.number)
-                query = query.orderBy("trainerPostId", Query.Direction.DESCENDING)
 
                 if(trainerType == TRAINER_POST_TYPE.TRAINER_TYPE_FITNESS.str){
                     query = query.whereEqualTo("trainerType", trainerType)
@@ -115,6 +114,8 @@ class TrainerDao {
                 if(trainerType == TRAINER_POST_TYPE.TRAINER_TYPE_PILATES.str){
                     query = query.whereEqualTo("trainerType", trainerType)
                 }
+
+                query = query.orderBy("trainerPostId", Query.Direction.DESCENDING)
 
                 val queryShapshot = query.get().await()
 
