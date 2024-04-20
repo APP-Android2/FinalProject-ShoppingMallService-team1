@@ -14,7 +14,7 @@
             android:layout_height="wrap_content" />
 
         <LinearLayout
-            android:id="@+id/itemCenterPost"
+            android:id="@+id/itemCenterTab1Post"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/Side_Padding"
