@@ -19,7 +19,7 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentMyVisitConsultationBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowMyVisitConsultationBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.model.VisitConsulting
-import kr.co.lion.finalproject_shoppingmallservice_team1.ui.visitconsulting.VisitConsultingDao
+import kr.co.lion.finalproject_shoppingmallservice_team1.dao.VisitConsultingDao
 
 class MyVisitConsultationFragment : Fragment() {
 

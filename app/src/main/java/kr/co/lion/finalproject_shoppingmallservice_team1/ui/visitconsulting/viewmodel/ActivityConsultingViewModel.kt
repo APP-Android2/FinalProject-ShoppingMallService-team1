@@ -3,12 +3,11 @@ package kr.co.lion.finalproject_shoppingmallservice_team1.ui.visitconsulting.vie
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kr.co.lion.finalproject_shoppingmallservice_team1.model.VisitConsulting
-import kr.co.lion.finalproject_shoppingmallservice_team1.ui.visitconsulting.VisitConsultingDao
+import kr.co.lion.finalproject_shoppingmallservice_team1.dao.VisitConsultingDao
 
 class ActivityConsultingViewModel:ViewModel() {
     val editTextNameConsulting = MutableLiveData<String>()
