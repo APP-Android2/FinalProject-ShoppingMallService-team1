@@ -67,4 +67,6 @@ dependencies {
     implementation("com.google.android.gms:play-services-maps:18.2.0") // 구글 맵 지도
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0") // viewModel lifecycle
+
+    implementation("com.github.bumptech.glide:glide:4.16.0") //이미지 Load
 }

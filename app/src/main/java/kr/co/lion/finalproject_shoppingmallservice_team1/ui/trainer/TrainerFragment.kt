@@ -13,11 +13,18 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
-import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
-import kr.co.lion.finalproject_shoppingmallservice_team1.ui.shoppingcart.ShoppingCartActivity
+import kr.co.lion.finalproject_shoppingmallservice_team1.TRAINER_POST_TYPE
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentTrainerBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowTrainerBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.model.TrainerPost
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActivity
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.shoppingcart.ShoppingCartActivity
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.dao.TrainerDao
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.viewmodel.TrainerViewModel
 
 
@@ -29,6 +36,9 @@ class TrainerFragment : Fragment() {
 
     var isImageClick = false
 
+    // 트레이너 화면의 RecyclerView 구성을 위한 리스트
+    var trainerPostList = mutableListOf<TrainerPost>()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         fragmentTrainerBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_trainer, container, false)
@@ -39,6 +49,7 @@ class TrainerFragment : Fragment() {
 
         settingToolbarTrainer()
         settingTabLayout()
+        gettingFitNessData()
         settingRecyclerViewTrainerHealth()
         settingChip1()
 
@@ -84,9 +95,11 @@ class TrainerFragment : Fragment() {
 
                         when(position){
                             0 -> {
+                                gettingFitNessData()
                                 settingRecyclerViewTrainerHealth()
                             }
                             1 -> {
+                                gettingPilatestData()
                                 settingRecyclerViewTrainerPilatest()
                             }
                         }
@@ -139,6 +152,15 @@ class TrainerFragment : Fragment() {
         }
     }
 
+    fun gettingFitNessData(){
+        CoroutineScope(Dispatchers.Main).launch {
+            if(trainerPostList != null) {
+                trainerPostList = TrainerDao.gettingTrainerPostList(TRAINER_POST_TYPE.TRAINER_TYPE_FITNESS.str)
+                fragmentTrainerBinding.recyclerViewTrainer.adapter?.notifyDataSetChanged()
+            }
+        }
+    }
+
     inner class TrainerHealthRecyclerViewAdapter: RecyclerView.Adapter<TrainerHealthRecyclerViewAdapter.TrainerHealthViewHolder>(){
         inner class TrainerHealthViewHolder(rowTrainerBinding: RowTrainerBinding): RecyclerView.ViewHolder(rowTrainerBinding.root){
             val rowTrainerBinding:RowTrainerBinding
@@ -187,14 +209,21 @@ class TrainerFragment : Fragment() {
         }
 
         override fun getItemCount(): Int {
-            return 9
+            return trainerPostList.size
         }
 
         override fun onBindViewHolder(holder: TrainerHealthViewHolder, position: Int) {
-            holder.rowTrainerBinding.healthTrainerNameTextView.text = "이름${position}"
-            holder.rowTrainerBinding.healthTrainerOrgNameTextView.text = "헬스 센터${position}"
-            holder.rowTrainerBinding.healthTrainerAddressTextView.text = "주소${position}"
-            holder.rowTrainerBinding.textViewType.text = "헬스타입"
+            holder.rowTrainerBinding.healthTrainerNameTextView.text = trainerPostList[position].trainerName
+            holder.rowTrainerBinding.healthTrainerOrgNameTextView.text = trainerPostList[position].centerName
+            holder.rowTrainerBinding.healthTrainerAddressTextView.text = trainerPostList[position].centerLocation
+            holder.rowTrainerBinding.textViewType.text = trainerPostList[position].trainerType
+
+            CoroutineScope(Dispatchers.Main).launch {
+                if(trainerPostList[position].trainerProfileImageUrl != null){
+                    delay(1000)
+                    TrainerDao.gettingTrainerPostProfileImage(navigationActivity, trainerPostList[position].trainerProfileImageUrl, holder.rowTrainerBinding.trainerProfileImageView)
+                }
+            }
         }
     }
 
@@ -205,6 +234,15 @@ class TrainerFragment : Fragment() {
             recyclerViewTrainer.apply {
                 adapter = TrainerPilatestRecyclerViewAdapter()
                 layoutManager = GridLayoutManager(navigationActivity,2)
+            }
+        }
+    }
+
+    fun gettingPilatestData(){
+        CoroutineScope(Dispatchers.Main).launch {
+            if(trainerPostList != null){
+                trainerPostList = TrainerDao.gettingTrainerPostList(TRAINER_POST_TYPE.TRAINER_TYPE_PILATES.str)
+                fragmentTrainerBinding.recyclerViewTrainer.adapter?.notifyDataSetChanged()
             }
         }
     }
@@ -257,14 +295,22 @@ class TrainerFragment : Fragment() {
         }
 
         override fun getItemCount(): Int {
-            return 9
+            return trainerPostList.size
         }
 
         override fun onBindViewHolder(holder: TrainerPilatestViewHolder, position: Int) {
-            holder.rowTrainerBinding.healthTrainerNameTextView.text = "이름${position}"
-            holder.rowTrainerBinding.healthTrainerOrgNameTextView.text = "필라테스 센터${position}"
-            holder.rowTrainerBinding.healthTrainerAddressTextView.text = "주소${position}"
-            holder.rowTrainerBinding.textViewType.text = "필라타입"
+
+            holder.rowTrainerBinding.healthTrainerNameTextView.text = trainerPostList[position].trainerName
+            holder.rowTrainerBinding.healthTrainerOrgNameTextView.text = trainerPostList[position].centerName
+            holder.rowTrainerBinding.healthTrainerAddressTextView.text = trainerPostList[position].centerLocation
+            holder.rowTrainerBinding.textViewType.text = trainerPostList[position].trainerType
+
+            CoroutineScope(Dispatchers.Main).launch {
+                if(trainerPostList[position].trainerProfileImageUrl != null){
+                    delay(1000)
+                    TrainerDao.gettingTrainerPostProfileImage(navigationActivity, trainerPostList[position].trainerProfileImageUrl, holder.rowTrainerBinding.trainerProfileImageView)
+                }
+            }
         }
     }
 }
