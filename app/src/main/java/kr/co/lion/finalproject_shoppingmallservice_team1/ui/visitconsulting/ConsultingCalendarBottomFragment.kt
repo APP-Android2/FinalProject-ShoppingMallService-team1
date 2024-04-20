@@ -27,7 +27,7 @@ class ConsultingCalendarBottomFragment : BottomSheetDialogFragment() {
 
         fragmentConsultingCalendarBottomBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_consulting_calendar_bottom, container, false)
         consultingActivity = activity as ConsultingActivity
-
+        settingTime()
         settingButtonClick()
 
         return fragmentConsultingCalendarBottomBinding.root
@@ -38,6 +38,31 @@ class ConsultingCalendarBottomFragment : BottomSheetDialogFragment() {
      *
      *
      */
+
+    fun settingTime(){
+        fragmentConsultingCalendarBottomBinding.apply {
+            // 각 체크박스 ID를 리스트로 정의합니다.
+            val checkboxIds = listOf(
+                calendatCheckbox1, calendatCheckbox2, calendatCheckbox3,
+                calendatCheckbox4, calendatCheckbox5, calendatCheckbox6,
+                calendatCheckbox7, calendatCheckbox8, calendatCheckbox9,
+                calendatCheckbox10
+            )
+            // 각 체크박스에 대해 처리합니다.
+            // 각 체크박스에 대해 처리합니다.
+            checkboxIds.forEach { checkboxId ->
+                // apply 블록 내부에서 처리
+                val checkbox = checkboxId
+                checkbox.setOnCheckedChangeListener { _, isChecked ->
+                    if (isChecked) {
+                        val selectedText = checkbox.text.toString()
+                        (requireActivity() as? ConsultingActivity)?.setSelectedTime(selectedText)
+                    }
+                }
+            }
+        }
+        settingButtonClick()
+    }
 
     // 다이얼로그가 만들어질 때 자동으로 호출되는 메서드
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -88,13 +113,8 @@ class ConsultingCalendarBottomFragment : BottomSheetDialogFragment() {
                 setOnClickListener {
                     // BottomSheet를 닫기
                     dismiss()
-                    backProcess()
                 }
             }
         }
-    }
-
-    fun backProcess(){
-        consultingActivity.removeFragment(CONSULTING_FRAGMENT_NAME.CONSULTING_CALENDAR_FRAGMENT)
     }
 }

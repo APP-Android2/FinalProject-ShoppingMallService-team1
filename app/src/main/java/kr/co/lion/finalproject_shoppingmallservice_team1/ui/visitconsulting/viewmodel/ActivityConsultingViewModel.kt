@@ -13,6 +13,7 @@ class ActivityConsultingViewModel:ViewModel() {
     val editTextNameConsulting = MutableLiveData<String>()
     val editTextPurposeConsulting = MutableLiveData<String>()
     val editTextDateConsulting = MutableLiveData<String>()
+    val editTextTimeConsulting = MutableLiveData<String>()
     val editTextEtcConsulting = MutableLiveData<String>()
 
 
@@ -27,15 +28,14 @@ class ActivityConsultingViewModel:ViewModel() {
             var trainerId = ""
             val name = editTextNameConsulting.value!!
             val exercisePurpose = editTextPurposeConsulting.value!!
-            val applicationTime = editTextDateConsulting.value!!
+            val applicationDate = editTextDateConsulting.value!!
+            val applicationTime = editTextTimeConsulting.value!!
             val etcContent = editTextEtcConsulting.value
 
             val stateCheck = true
 
             val visitConsulting = VisitConsulting(visitConsultingId, centerId, trainerId, name, exercisePurpose,
-                applicationTime, etcContent, stateCheck)
-            Log.d("test1234", "${visitConsulting.visitConsultingId}")
-            Log.d("test1234", "${visitConsulting.name}")
+                applicationDate, applicationTime, etcContent, stateCheck)
 
             VisitConsultingDao.insertApplication(visitConsulting)
         }
