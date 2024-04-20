@@ -6,14 +6,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.divider.MaterialDividerItemDecoration
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivityAlarmBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowHomeAlarmBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.model.Alarm
 
 class AlarmActivity : AppCompatActivity() {
     lateinit var activityAlarmBinding:ActivityAlarmBinding
     lateinit var navigationActivity: NavigationActivity
+    var alarmList = mutableListOf<Alarm>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +28,7 @@ class AlarmActivity : AppCompatActivity() {
 
 
         settingToolbar()
+        getDataList()
         settingRecyclerViewAlarm()
     }
 
@@ -74,12 +80,20 @@ class AlarmActivity : AppCompatActivity() {
         }
 
         override fun getItemCount(): Int {
-            return 10
+            return alarmList.size
         }
 
         override fun onBindViewHolder(holder: AlarmViewHolder, position: Int) {
-            holder.rowHomeAlarmBinding.textViewHomeAlarmContent.text = "더 좋은 서비스 제공을 위해 업데이트 예정이에요."
-            holder.rowHomeAlarmBinding.textViewHomeAlarmDate.text = "2024-3-29"
+            holder.rowHomeAlarmBinding.textViewHomeAlarmContent.text = alarmList[position].title
+            holder.rowHomeAlarmBinding.textViewHomeAlarmDate.text = alarmList[position].date
+        }
+    }
+
+    fun getDataList(){
+        CoroutineScope(Dispatchers.Main).launch {
+            alarmList = AlarmDao.getAlarmList()
+
+            activityAlarmBinding.recyclerViewHomeAlarm.adapter?.notifyDataSetChanged()
         }
     }
 }
