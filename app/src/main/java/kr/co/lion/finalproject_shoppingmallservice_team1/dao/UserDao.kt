@@ -23,34 +23,31 @@ class UserDao {
         }
 
         // 유저 정보 가져오기
-        suspend fun getUser(uid: String): User? = withContext(Dispatchers.IO) {
+        suspend fun getUser(uid:String): User? = withContext(Dispatchers.IO){
             val db = FirebaseFirestore.getInstance()
             try {
-                val documentSnapshot = db.collection("users").document(uid).get().await()
-                documentSnapshot.toObject<User>()
-            } catch (e: Exception) {
-                Log.d("test1234", "사용자 데이터 가져오기 실패 ${e.message}")
+                val snapshot = db.collection("users").document(uid).get().await()
+                snapshot.toObject<User>()
+            } catch (e: Exception){
+                Log.d("test1234", "유저 데이터 가져오기 실패, 에러: ${e.message}")
                 null
             }
         }
 
-        // 유저 정보 update
-        suspend fun updateUser(uid: String, user: User): Boolean = withContext(Dispatchers.IO) {
+        // 유저 정보 업데이트
+        suspend fun updateUser(uid:String, user: User){
             val db = FirebaseFirestore.getInstance()
 
             val userHashMap = hashMapOf<String, Any>()
-            userHashMap["name"] = user.name
-            userHashMap["gender"] = user.gender
-            userHashMap["email"] = user.email
-            userHashMap["phoneNumber"] = user.phoneNumber
+            userHashMap["name"] = user.name.orEmpty()
+            userHashMap["nickName"] = user.nickName.orEmpty()
+            userHashMap["phoneNumber"] = user.phoneNumber.orEmpty()
+            userHashMap["location"] = user.location.orEmpty()
 
             try {
                 db.collection("users").document(uid).update(userHashMap).await()
-                Log.d("test1234", "사용자 데이터 업데이트 완료")
-                true // 업데이트 완료
-            } catch (e: Exception) {
-                Log.d("test1234", "사용자 데이터 업데이트 실패", e)
-                false // 업데이트 실패
+            } catch (e: Exception){
+                Log.d("test1234", "유저 데이터 업데이트 실패, 에러: ${e.message}")
             }
         }
     }

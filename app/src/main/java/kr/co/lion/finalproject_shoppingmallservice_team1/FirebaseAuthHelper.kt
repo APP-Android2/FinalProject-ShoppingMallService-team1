@@ -13,9 +13,11 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import kr.co.lion.finalproject_shoppingmallservice_team1.dao.UserDao
 import kr.co.lion.finalproject_shoppingmallservice_team1.model.User
@@ -66,10 +68,15 @@ class FirebaseAuthHelper {
 
                     CoroutineScope(Dispatchers.IO).launch {
                         if (isNewUser == true){
-                            val currentUser = auth.currentUser!!
-                            val user = User(userId = currentUser.uid, name = currentUser.displayName!!, email = currentUser.email!!)
+                            val currentUser = auth.currentUser
+                            currentUser?.let {
+                                val user = User(
+                                    userId = it.uid,
+                                    name = it.displayName.orEmpty(),
+                                    email = it.email.orEmpty())
 
-                            UserDao.addUser(user)
+                                UserDao.addUser(user)
+                            }
                         }
 
                         withContext(Dispatchers.Main){

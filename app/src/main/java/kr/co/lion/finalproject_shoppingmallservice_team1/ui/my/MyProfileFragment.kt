@@ -10,7 +10,12 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kr.co.lion.finalproject_shoppingmallservice_team1.FirebaseAuthHelper
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
@@ -22,21 +27,25 @@ class MyProfileFragment : Fragment() {
 
     lateinit var fragmentMyProfileBinding: FragmentMyProfileBinding
     lateinit var navigationActivity: NavigationActivity
-    lateinit var myProfileViewModel: MyProfileViewModel
+
+    private val myProfileViewModel: MyProfileViewModel by viewModels()
+
+    val userUid = FirebaseAuthHelper.getCurrentUser()?.uid
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         fragmentMyProfileBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_my_profile, container, false)
-        myProfileViewModel = MyProfileViewModel()
         fragmentMyProfileBinding.myProfileViewModel = myProfileViewModel
-        fragmentMyProfileBinding.lifecycleOwner = this
+        fragmentMyProfileBinding.lifecycleOwner = this@MyProfileFragment
 
         navigationActivity = activity as NavigationActivity
 
         settingToolbar()
         handleBackPress()
-        settingInputMyProfile()
+        //settingInputMyProfile()
         settingEvent()
+
+        myProfileViewModel.getUserData(userUid!!)
 
         return fragmentMyProfileBinding.root
     }
@@ -70,8 +79,14 @@ class MyProfileFragment : Fragment() {
                     when(it.itemId){
                         R.id.menuMyProfileDone -> {
 
-                            // 저장처리
-                            backProcess()
+                            CoroutineScope(Dispatchers.IO).launch {
+                                myProfileViewModel?.updateUserData(userUid!!)
+
+                                withContext(Dispatchers.Main){
+                                    // 저장처리
+                                    backProcess()
+                                }
+                            }
                         }
                     }
 

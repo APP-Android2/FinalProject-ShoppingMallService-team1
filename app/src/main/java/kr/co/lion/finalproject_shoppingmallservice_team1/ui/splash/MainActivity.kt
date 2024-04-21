@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
 
-
         FirebaseAuthHelper.initializeFirebaseAuth()  // Firebase 인증 초기화
         checkLoggedInUser() // 로그인된 사용자 확인
 
