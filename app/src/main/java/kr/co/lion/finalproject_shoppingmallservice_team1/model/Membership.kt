@@ -1,3 +1,5 @@
+package kr.co.lion.finalproject_shoppingmallservice_team1.model
+
 // 회원권
 interface Membership {
     val membershipId: String  // 회원권 고유 식별자 ID

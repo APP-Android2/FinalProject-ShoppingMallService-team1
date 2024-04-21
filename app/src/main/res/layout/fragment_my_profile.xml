@@ -56,14 +56,14 @@
                         android:id="@+id/myProfilePicture"
                         android:layout_width="80sp"
                         android:layout_height="80sp"
-                        app:srcCompat="@drawable/profile" />
+                        android:src="@drawable/profile"/>
 
                     <ImageView
                         android:id="@+id/myProfileSetPicture"
                         android:layout_width="30sp"
                         android:layout_height="30sp"
                         android:layout_gravity="bottom|end"
-                        app:srcCompat="@drawable/photo_camera"
+                        android:src="@drawable/photo_camera"
                         app:tint="@color/Pup_Color" />
                 </FrameLayout>
 

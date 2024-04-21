@@ -1,3 +1,5 @@
+package kr.co.lion.finalproject_shoppingmallservice_team1.model
+
 data class Payment(
     val paymentId: String,  // 결제 고유 식별자 ID
     val userId: String,  // 사용자 고유 식별자 ID

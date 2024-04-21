@@ -4,6 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="MyViewModel"
+            type="kr.co.lion.finalproject_shoppingmallservice_team1.ui.my.viewmodel.MyViewModel" />
+    </data>
+
     <FrameLayout
         android:id="@+id/fragmentMy"
         android:layout_width="match_parent"
@@ -70,11 +76,10 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    android:id="@+id/textViewMyName"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
-                                    android:text="닉네임"
+                                    android:text="@{MyViewModel.profileData.name}"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                                     android:textSize="@dimen/Big_Text_Size"
                                     android:textStyle="bold" />
@@ -84,15 +89,14 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
                                     android:layout_marginLeft="@dimen/Side_Padding"
-                                    app:srcCompat="@drawable/arrow_right" />
+                                    android:src="@drawable/arrow_right"/>
                             </LinearLayout>
 
                             <TextView
-                                android:id="@+id/textViewMyEmail"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5sp"
-                                android:text="abc@naver.com"
+                                android:text="@{MyViewModel.profileData.email}"
                                 android:textSize="@dimen/Medium_Text_Size" />
 
                         </LinearLayout>

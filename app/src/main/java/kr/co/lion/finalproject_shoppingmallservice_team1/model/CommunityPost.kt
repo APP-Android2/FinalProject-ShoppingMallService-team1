@@ -1,3 +1,5 @@
+package kr.co.lion.finalproject_shoppingmallservice_team1.model
+
 // 커뮤니티 게시글
 class CommunityPost {
 
