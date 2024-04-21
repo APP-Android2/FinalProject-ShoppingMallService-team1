@@ -1,10 +1,16 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.dao
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.firestore
@@ -92,8 +98,32 @@ class TrainerDao {
                 val storageRef = Firebase.storage.reference.child("trainerPostImage/$imageFileName")
                 val imageUri = storageRef.downloadUrl.await()
                 val job2 = CoroutineScope(Dispatchers.Main).launch {
-                    Glide.with(context).load(imageUri).into(imageView)
-                    imageView.visibility = View.VISIBLE
+                    Glide.with(context).load(imageUri).diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .listener(object : RequestListener<Drawable> {
+                            override fun onResourceReady(
+                                resource: Drawable,
+                                model: Any,
+                                target: Target<Drawable>?,
+                                dataSource: DataSource,
+                                isFirstResource: Boolean
+                            ): Boolean {
+                                // 이미지 로딩 성공 시 처리할 작업
+                                imageView.visibility = View.VISIBLE
+                                return false
+                            }
+
+                            override fun onLoadFailed(
+                                e: GlideException?,
+                                model: Any?,
+                                target: Target<Drawable>,
+                                isFirstResource: Boolean
+                            ): Boolean {
+                                // 이미지 로딩 실패 시 처리할 작업
+                                // false를 반환하여 이미지 로딩을 계속 처리하도록 한다.
+                                return false
+                            }
+                        })
+                        .into(imageView)
                 }
                 job2.join()
             }

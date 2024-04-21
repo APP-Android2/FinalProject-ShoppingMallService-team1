@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.TRAINER_POST_TYPE
@@ -233,7 +232,6 @@ class TrainerFragment : Fragment() {
 
             CoroutineScope(Dispatchers.Main).launch {
                 if(fitnessPostList[position].trainerProfileImageUrl != null){
-                    delay(1000)
                     TrainerDao.gettingTrainerPostProfileImage(navigationActivity, fitnessPostList[position].trainerProfileImageUrl, holder.rowTrainerBinding.trainerProfileImageView)
                 }
             }
@@ -318,7 +316,6 @@ class TrainerFragment : Fragment() {
 
             CoroutineScope(Dispatchers.Main).launch {
                 if(pilatesPostList[position].trainerProfileImageUrl != null){
-                    delay(1000)
                     TrainerDao.gettingTrainerPostProfileImage(navigationActivity, pilatesPostList[position].trainerProfileImageUrl, holder.rowTrainerBinding.trainerProfileImageView)
                 }
             }
@@ -401,7 +398,6 @@ class TrainerFragment : Fragment() {
 
             CoroutineScope(Dispatchers.Main).launch {
                 if(swimmingPostList[position].trainerProfileImageUrl != null){
-                    delay(1000)
                     TrainerDao.gettingTrainerPostProfileImage(navigationActivity, swimmingPostList[position].trainerProfileImageUrl, holder.rowTrainerBinding.trainerProfileImageView)
                 }
             }
