@@ -50,5 +50,16 @@ class UserDao {
                 Log.d("test1234", "유저 데이터 업데이트 실패, 에러: ${e.message}")
             }
         }
+
+        // 유저 정보 삭제
+        suspend fun deleteUser(uid:String){
+            val db = FirebaseFirestore.getInstance()
+            try {
+                db.collection("users").document(uid).delete().await()
+                Log.d("test1234", "유저 데이터 삭제 성공")
+            } catch (e: Exception){
+                Log.d("test1234", "유저 데이터 삭제 실패, 에러: ${e.message}")
+            }
+        }
     }
 }

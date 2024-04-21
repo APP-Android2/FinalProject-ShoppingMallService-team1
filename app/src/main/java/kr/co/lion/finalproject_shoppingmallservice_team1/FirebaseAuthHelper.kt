@@ -47,7 +47,11 @@ class FirebaseAuthHelper {
         }
 
         // Google 로그인 결과 처리
-        fun handleSignInResult(completedTask: Task<GoogleSignInAccount>, activity: Activity, resultLauncher: ActivityResultLauncher<Intent>) {
+        fun handleSignInResult(
+            completedTask: Task<GoogleSignInAccount>,
+            activity: Activity,
+            resultLauncher: ActivityResultLauncher<Intent>
+        ) {
             try {
                 val account = completedTask.getResult(ApiException::class.java)
                 firebaseAuthWithGoogle(account.idToken!!, activity, resultLauncher)
@@ -57,7 +61,11 @@ class FirebaseAuthHelper {
         }
 
         // Google 계정으로 Firebase 인증
-        private fun firebaseAuthWithGoogle(idToken: String, activity: Activity, resultLauncher: ActivityResultLauncher<Intent>) {
+        private fun firebaseAuthWithGoogle(
+            idToken: String,
+            activity: Activity,
+            resultLauncher: ActivityResultLauncher<Intent>
+        ) {
             val credential = GoogleAuthProvider.getCredential(idToken, null)
             auth.signInWithCredential(credential).addOnCompleteListener(activity) { task ->
 
@@ -67,19 +75,20 @@ class FirebaseAuthHelper {
                     val isNewUser = task.result.additionalUserInfo?.isNewUser
 
                     CoroutineScope(Dispatchers.IO).launch {
-                        if (isNewUser == true){
+                        if (isNewUser == true) {
                             val currentUser = auth.currentUser
                             currentUser?.let {
                                 val user = User(
                                     userId = it.uid,
                                     name = it.displayName.orEmpty(),
-                                    email = it.email.orEmpty())
+                                    email = it.email.orEmpty()
+                                )
 
                                 UserDao.addUser(user)
                             }
                         }
 
-                        withContext(Dispatchers.Main){
+                        withContext(Dispatchers.Main) {
                             resultLauncher.launch(Intent(activity, NavigationActivity::class.java))
                             activity.finish()
                             Log.d("test1234", "로그인 성공")
@@ -111,24 +120,31 @@ class FirebaseAuthHelper {
         }
 
         // 회원탈퇴
-        fun deleteUserAccount(activity: Activity){
+        fun deleteUserAccount(activity: Activity) {
+            val user = auth.currentUser
+            user?.let { currentUser ->
 
-            val user = FirebaseAuth.getInstance().currentUser
+                // Firestore 사용자 데이터 삭제
+                CoroutineScope(Dispatchers.IO).launch {
+                    UserDao.deleteUser(currentUser.uid)
 
-            user?.delete()?.addOnCompleteListener { task ->
+                    withContext(Dispatchers.Main){
+                        currentUser.delete().addOnCompleteListener { task -> // authentication 계정 삭제
+                            if (task.isSuccessful) {
+                                Log.d("test1234", "사용자 계정이 정상적으로 삭제 완료")
 
-                if(task.isSuccessful){
-                    Log.d("test1234", "사용자 계정이 정상적으로 삭제 완료")
-                    // 회원탈퇴 후 처리할 로직
+                                // 이전 Activity 스택을 정리 후 LoginActivity로 이동
+                                val intent = Intent(activity, LoginActivity::class.java).apply {
+                                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                }
+                                activity.startActivity(intent)
 
-                    // 이전 Activity 스택을 정리 후 LoginActivity로 이동
-                    val intent = Intent(activity, LoginActivity::class.java).apply {
-                        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            } else {
+                                Log.d("test1234", "사용자 계정 삭제 실패", task.exception)
+                            }
+                        }
+
                     }
-                    activity.startActivity(intent)
-
-                } else {
-                    Log.d("test1234", "사용자 계정 삭제 실패", task.exception)
                 }
             }
         }
