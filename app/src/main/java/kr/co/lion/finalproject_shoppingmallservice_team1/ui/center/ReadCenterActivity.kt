@@ -9,7 +9,6 @@ import com.google.android.material.transition.MaterialSharedAxis
 import kr.co.lion.finalproject_shoppingmallservice_team1.CENTER_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivityReadCenterBinding
-import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.ReadTrainerPurchasingBottomFragment
 
 class ReadCenterActivity : AppCompatActivity() {
 
@@ -75,8 +74,8 @@ class ReadCenterActivity : AppCompatActivity() {
     }
 
     fun showReadTrainerPurchasingBottomSheet(){
-        val readTrainerPurchasingBottomSheet = ReadTrainerPurchasingBottomFragment()
-        readTrainerPurchasingBottomSheet.show(supportFragmentManager, "ReadTrainerPurchasingBottomSheet")
+        val readCenterBuyBottomSheet = ReadCenterBuyBottomFragment()
+        readCenterBuyBottomSheet.show(supportFragmentManager, "ReadCenterBuyBottomFragment")
     }
 
 

@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/Side_Padding"
+        android:layout_marginRight="@dimen/Side_Padding"
+        android:background="@color/white"
+        tools:context=".ui.center.ReadCenterBuyBottomFragment">
+
+        <ImageButton
+            android:id="@+id/bottomDownImageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/bottom_down" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="옵션 선택하기"
+            android:textSize="@dimen/Big_Text_Size"
+            android:textStyle="bold"
+            android:padding="16dp" />
+
+        <kr.co.lion.finalproject_shoppingmallservice_team1.util.CustomScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="7dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardViewCenterBuyOption1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/InputCompartment_Color">
+
+                    <FrameLayout
+                        android:id="@+id/centerOptionClickLayout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="17dp"
+                            android:layout_marginRight="20dp"
+                            android:text="옵션 선택"
+                            android:textSize="@dimen/Medium_Text_Size" />
+
+                        <ImageButton
+                            android:id="@+id/centerOptionDownImageButton1"
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_gravity="right"
+                            android:background="@android:color/transparent"
+                            android:src="@drawable/bottom_down" />
+                    </FrameLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardViewCenterBuyOption2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/InputCompartment_Color">
+
+                    <FrameLayout
+                        android:id="@+id/centerOptionClickLayout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="17dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:text="옵션 선택"
+                            android:textSize="@dimen/Medium_Text_Size" />
+
+                        <ImageButton
+                            android:id="@+id/centerOptionDownImageButton2"
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_gravity="right"
+                            android:background="@android:color/transparent"
+                            android:src="@drawable/bottom_up" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="50dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textViewOptionItem1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="PT 10회" />
+
+                            <TextView
+                                android:id="@+id/textViewOptionItem2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="PT 20회" />
+
+                            <TextView
+                                android:id="@+id/textViewOptionItem3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="PT 30회" />
+                        </LinearLayout>
+                    </FrameLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+        </kr.co.lion.finalproject_shoppingmallservice_team1.util.CustomScrollView>
+
+        <LinearLayout
+            android:id="@+id/optionList2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/InputCompartment_Color"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="0dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="17dp"
+                        android:layout_marginBottom="17dp"
+                        android:text="PT 10회"
+                        android:textSize="@dimen/Medium_Text_Size" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="17dp"
+                        android:layout_marginRight="35dp"
+                        android:layout_marginBottom="17dp"
+                        android:text="70,000원"
+                        android:textSize="@dimen/Medium_Text_Size" />
+
+                    <ImageButton
+                        android:id="@+id/centerOptionItemCloseImageButton"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_gravity="right"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/close" />
+
+                </FrameLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/optionList3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="@color/InputCompartment_Color">
+
+            <TextView
+                android:id="@+id/itemTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="상품 1개"
+                android:textSize="@dimen/Big_Text_Size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/itemPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="16dp"
+                android:text="70,000원"
+                android:textSize="@dimen/Big_Text_Size"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginBottom="@dimen/Up_Down_Margin"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/shopping_cart_border_background"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/centerShoppingCartButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:text="장바구니 담기"
+                    android:textAlignment="center"
+                    android:textColor="@color/Pup_Color"
+                    android:textSize="@dimen/BigButton_Text_Size"
+                    android:textStyle="bold"
+                    app:cornerRadius="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/purchasing_border_background"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/centerBuyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:backgroundTint="@color/Pup_Color"
+                    android:text="구매하기"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/BigButton_Text_Size"
+                    android:textStyle="bold"
+                    app:cornerRadius="10dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>
