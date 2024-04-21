@@ -1,19 +1,31 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.ui.visitconsulting
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
+import android.util.Log
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.transition.MaterialSharedAxis
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kr.co.lion.finalproject_shoppingmallservice_team1.CONSULTING_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivityConsultingBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.model.VisitConsulting
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.visitconsulting.viewmodel.ActivityConsultingViewModel
 
 class ConsultingActivity : AppCompatActivity() {
 
     lateinit var activityConsultingBinding: ActivityConsultingBinding
+    lateinit var activityConsultingViewModel: ActivityConsultingViewModel
 
     // 프래그먼트의 주소값을 담을 프로퍼티
     var oldFragment: Fragment? = null
@@ -22,12 +34,24 @@ class ConsultingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        activityConsultingBinding = ActivityConsultingBinding.inflate(layoutInflater)
+        activityConsultingBinding = DataBindingUtil.setContentView(this, R.layout.activity_consulting)
+        activityConsultingViewModel = ViewModelProvider(this).get(ActivityConsultingViewModel::class.java)
+        activityConsultingBinding.activityConsultingViewModel = activityConsultingViewModel
+        activityConsultingBinding.lifecycleOwner = this
+
         setContentView(activityConsultingBinding.root)
 
+        // ConsultingCalendarFragment에서 전달한 데이터를 받기 위해 FragmentManager 사용
+        supportFragmentManager.setFragmentResultListener("consultingDate", this) { _, bundle ->
+            val currentDate = bundle.getString("currentDate")
+
+            activityConsultingBinding.editTextDateConsulting.text = currentDate
+            activityConsultingBinding.editTextTimeConsulting
+        }
         settingConsultingToolbar()
         settingConsultingButtonClick()
         settingCalendarImageClick()
+        settingTime()
 
     }
 
@@ -36,7 +60,10 @@ class ConsultingActivity : AppCompatActivity() {
      * 1. 툴바 설정 함수
      * 2. 버튼 설정 함수
      * 3. 달력 화면을 띄우는 함수
-     * 4. Fragment 교체 함수
+     * 4. 시간 설정 함수
+     * 5. 바텀 시트 올리는 함수
+     * 6. 날짜 설정 함수
+     * 7. Fragment 교체 함수
      */
 
     fun settingConsultingToolbar(){
@@ -54,6 +81,8 @@ class ConsultingActivity : AppCompatActivity() {
         activityConsultingBinding.apply {
             consultingAddButton.apply {
                 setOnClickListener {
+                    Log.d("test1234", "finish")
+                    activityConsultingViewModel?.updateData()
                     finish()
                 }
             }
@@ -78,7 +107,23 @@ class ConsultingActivity : AppCompatActivity() {
         }
     }
 
+    fun settingTime(){
+        activityConsultingBinding.editTextTimeConsulting.setOnClickListener {
+            showConsultingCalendarBottomSheet()
+        }
+    }
 
+    // 시간대를 보여불 BottomSheet를 띄워준다.
+    fun showConsultingCalendarBottomSheet(){
+        val consultingCalendarBottomFragment = ConsultingCalendarBottomFragment()
+        consultingCalendarBottomFragment.show(supportFragmentManager, "ConsultingCalendarBottomSheet")
+    }
+
+    // 선택된 텍스트를 받아 editTextTimeConsulting에 설정
+    fun setSelectedTime(selectedTime: String) {
+        activityConsultingBinding.editTextTimeConsulting.append("${selectedTime} ")
+
+    }
     fun replaceFragment(name: CONSULTING_FRAGMENT_NAME, addToBackStack:Boolean, isAnimate:Boolean, data:Bundle?){
 
         SystemClock.sleep(200)

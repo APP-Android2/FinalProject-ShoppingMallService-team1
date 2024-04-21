@@ -69,6 +69,7 @@ dependencies {
 
     implementation("com.google.android.gms:play-services-maps:18.2.0") // 구글 맵 지도
 
+
     implementation("androidx.fragment:fragment-ktx:1.6.2") // by viewModel()
     implementation("androidx.activity:activity-ktx:1.9.0")
 

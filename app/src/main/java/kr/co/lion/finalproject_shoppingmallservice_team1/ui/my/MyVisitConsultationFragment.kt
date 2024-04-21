@@ -2,6 +2,7 @@ package kr.co.lion.finalproject_shoppingmallservice_team1.ui.my
 
 import android.os.Bundle
 import android.os.SystemClock
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,15 +12,24 @@ import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentMyVisitConsultationBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowMyVisitConsultationBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.model.VisitConsulting
+import kr.co.lion.finalproject_shoppingmallservice_team1.dao.VisitConsultingDao
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class MyVisitConsultationFragment : Fragment() {
 
     lateinit var fragmentMyVisitConsultationBinding: FragmentMyVisitConsultationBinding
     lateinit var navigationActivity: NavigationActivity
+    var visitConsultingList = mutableListOf<VisitConsulting>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -28,6 +38,7 @@ class MyVisitConsultationFragment : Fragment() {
 
         settingToolbar()
         handleBackPress()
+        gettingListData()
         settingRecyclerViewMyVisitConsultation()
 
         return fragmentMyVisitConsultationBinding.root
@@ -100,7 +111,7 @@ class MyVisitConsultationFragment : Fragment() {
 
                 this.rowMyVisitConsultationBinding.root.layoutParams = ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
                 )
             }
         }
@@ -113,12 +124,21 @@ class MyVisitConsultationFragment : Fragment() {
         }
 
         override fun getItemCount(): Int {
-            return 10
+            return visitConsultingList.size
         }
 
         override fun onBindViewHolder(holder: MyVisitConsultationViewHolder, position: Int) {
-            holder.rowMyVisitConsultationBinding.tvRowMyVisitConsultationCenterName.text = "운동 센터 $position"
-            holder.rowMyVisitConsultationBinding.tvRowMyVisitConsultationTime.text = "예약 시간 $position"
+            holder.rowMyVisitConsultationBinding.tvRowMyVisitConsultationCenterName.text = visitConsultingList[position].name
+            holder.rowMyVisitConsultationBinding.tvRowMyVisitConsultationDate.text = "예약 날짜: ${visitConsultingList[position].applicationDate}"
+            holder.rowMyVisitConsultationBinding.tvRowMyVisitConsultationTime.text = "예약 시간: ${visitConsultingList[position].applicationTime}"
+        }
+    }
+
+    fun gettingListData(){
+        CoroutineScope(Dispatchers.Main).launch {
+            visitConsultingList = VisitConsultingDao.getVisitList()
+
+            fragmentMyVisitConsultationBinding.recyclerViewMyVisitConsultation.adapter?.notifyDataSetChanged()
         }
     }
 }

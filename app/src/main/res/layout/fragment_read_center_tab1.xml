@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        tools:context=".ui.center.ReadCenterTab1Fragment">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/Side_Padding"
+                    android:layout_marginTop="@dimen/Up_Down_Margin"
+                    android:layout_marginRight="@dimen/Side_Padding"
+                    app:cardBackgroundColor="@color/InputCompartment_Color">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="20dp"
+                            android:text="공지사항"
+                            android:textSize="@dimen/Medium2_T_Text_Size"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="안녕하세요! PT 수업 진행 방식은 확일화 된 수업 방식이 아닌\n개개인의 맞게 여러가지 전문적인 운동 프로그램을 사용하고 있습니다.\n첫번째로 체육 지도 관리사 자격증과 물리치료사 자격증이 있어 근력과 공지사항 안내 드립니다."
+                            android:textSize="@dimen/Small_T_Text_Size" />
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/Side_Padding"
+                    android:layout_marginTop="@dimen/Up_Down_Margin"
+                    android:layout_marginRight="@dimen/Side_Padding"
+                    app:cardBackgroundColor="@color/InputCompartment_Color">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_weight="1"
+                                android:text="운동센터 소개"
+                                android:textSize="@dimen/Medium2_T_Text_Size"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="안녕하세요! PT 수업 진행 방식은 확일화 된 수업 방식이 아닌\n개개인의 맞게 여러가지 전문적인 운동 프로그램을 사용하고 있습니다."
+                            android:textSize="@dimen/Small_T_Text_Size" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_weight="1"
+                            android:text="무료 서비스"
+                            android:textSize="@dimen/Medium2_T_Text_Size"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="와이파이, 정수기, 주차"
+                            android:textSize="@dimen/Small_T_Text_Size" />
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- 트레이너 리스트 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- 구분선을 두기 위함 -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/Chip_List_Margin"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/line"
+                        android:backgroundTint="#C6C6C6" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/Side_Padding"
+                        android:layout_marginRight="@dimen/Side_Padding"
+                        android:text="트레이너"
+                        android:textSize="@dimen/Medium_T_Text_Size"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/Side_Padding"
+                        android:layout_marginRight="@dimen/Side_Padding"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_weight="1"
+                            app:cardBackgroundColor="@color/InputCompartment_Color">
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="10dp"
+                            app:cardBackgroundColor="@color/InputCompartment_Color">
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="10dp"
+                            app:cardBackgroundColor="@color/InputCompartment_Color">
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="10dp"
+                            app:cardBackgroundColor="@color/InputCompartment_Color">
+
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- 회원권 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- 구분선을 두기 위함 -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/Chip_List_Margin"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/line"
+                        android:backgroundTint="#C6C6C6" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/Side_Padding"
+                        android:layout_marginRight="@dimen/Side_Padding"
+                        android:text="회원권"
+                        android:textSize="@dimen/Medium_T_Text_Size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/Side_Padding"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="@dimen/Side_Padding"
+                        android:text="안녕하세요. 라이언 운동센터 입니다."
+                        android:textSize="@dimen/Small_T_Text_Size" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewCenterPt"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+
+
+                <!-- 운영시간 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- 구분선을 두기 위함 -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/Chip_List_Margin"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/line"
+                        android:backgroundTint="#C6C6C6" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/Side_Padding"
+                        android:layout_marginRight="@dimen/Side_Padding"
+                        android:text="운영 시간"
+                        android:textSize="@dimen/Medium_T_Text_Size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/Side_Padding"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="@dimen/Side_Padding"
+                        android:text="오픈시간: 06:00\n마감시간: 23:00"
+                        android:textSize="@dimen/Small_T_Text_Size" />
+
+                </LinearLayout>
+
+                <!-- 부가서비스 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- 구분선을 두기 위함 -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/Chip_List_Margin"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/line"
+                        android:backgroundTint="#C6C6C6" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/Side_Padding"
+                        android:layout_marginRight="@dimen/Side_Padding"
+                        android:text="부가 서비스"
+                        android:textSize="@dimen/Medium_T_Text_Size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/Side_Padding"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="@dimen/Side_Padding"
+                        android:text="일일 회원권, 무료PT 1회, 인바디"
+                        android:textSize="@dimen/Small_T_Text_Size" />
+
+                </LinearLayout>
+
+                <!-- 편의 시설 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- 구분선을 두기 위함 -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/Chip_List_Margin"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/line"
+                        android:backgroundTint="#C6C6C6" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/Side_Padding"
+                        android:layout_marginRight="@dimen/Side_Padding"
+                        android:text="편의 시설"
+                        android:textSize="@dimen/Medium_T_Text_Size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/Side_Padding"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="@dimen/Side_Padding"
+                        android:text="샤워장"
+                        android:textSize="@dimen/Small_T_Text_Size" />
+
+                </LinearLayout>
+
+                <!-- SNS 바로가기 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- 구분선을 두기 위함 -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/Chip_List_Margin"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/line"
+                        android:backgroundTint="#C6C6C6" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/Side_Padding"
+                        android:layout_marginRight="@dimen/Side_Padding"
+                        android:text="SNS 바로가기"
+                        android:textSize="@dimen/Medium_T_Text_Size"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/Side_Padding"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="@dimen/Side_Padding"
+                        android:text="별스타그램 URL"
+                        android:textSize="@dimen/Small_T_Text_Size" />
+
+                </LinearLayout>
+
+                <!-- 사진 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- 구분선을 두기 위함 -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/Chip_List_Margin"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/line"
+                        android:backgroundTint="#C6C6C6" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/Side_Padding"
+                        android:layout_marginRight="@dimen/Side_Padding"
+                        android:text="사진"
+                        android:textSize="@dimen/Medium_T_Text_Size"
+                        android:textStyle="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewCenterImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/Side_Padding"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="@dimen/Side_Padding"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>

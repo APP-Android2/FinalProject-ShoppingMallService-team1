@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="activityConsultingViewModel"
+            type="kr.co.lion.finalproject_shoppingmallservice_team1.ui.visitconsulting.viewmodel.ActivityConsultingViewModel" />
+    </data>
+
     <FrameLayout
         android:id="@+id/consultingActivityReplace"
         android:layout_width="match_parent"
@@ -29,7 +35,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="방문 상담 신청"
-                    android:textSize="@dimen/Toolbar_Title_Size" />
+                    android:textSize="@dimen/Toolbar_Title_Size"
+                    />
             </com.google.android.material.appbar.MaterialToolbar>
 
 
@@ -66,7 +73,8 @@
                         android:background="@color/InputCompartment_Color"
                         android:hint="이름을 입력해주세요."
                         android:inputType="text"
-                        android:textSize="@dimen/Small_T_Text_Size" />
+                        android:textSize="@dimen/Small_T_Text_Size"
+                        android:text="@={activityConsultingViewModel.editTextNameConsulting}"/>
                 </com.google.android.material.card.MaterialCardView>
 
                 <TextView
@@ -87,14 +95,15 @@
                     app:cardBackgroundColor="@color/InputCompartment_Color">
 
                     <EditText
-                        android:id="@+id/editTextDateConsulting"
+                        android:id="@+id/editTextPurposeConsulting"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
                         android:background="@color/InputCompartment_Color"
                         android:hint="운동 목적을 적어주세요."
                         android:inputType="text"
-                        android:textSize="@dimen/Small_T_Text_Size" />
+                        android:textSize="@dimen/Small_T_Text_Size"
+                        android:text="@={activityConsultingViewModel.editTextPurposeConsulting}"/>
                 </com.google.android.material.card.MaterialCardView>
 
                 <TextView
@@ -102,7 +111,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/Side_Padding"
-                    android:text="희망 신청시간"
+                    android:text="희망 신청 날짜"
                     android:textSize="@dimen/Medium2_T_Text_Size"/>
 
                 <com.google.android.material.card.MaterialCardView
@@ -114,16 +123,18 @@
                     android:layout_marginBottom="20dp"
                     app:cardBackgroundColor="@color/InputCompartment_Color">
 
-                    <EditText
-                        android:id="@+id/editTextPurposeConsulting"
+                    <TextView
+                        android:id="@+id/editTextDateConsulting"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="@color/InputCompartment_Color"
                         android:hint="희망 날짜 선택해주세요."
+                        android:gravity="center_vertical"
                         android:inputType="text"
-                        android:textSize="@dimen/Small_T_Text_Size" /> />
+                        android:textSize="@dimen/Small_T_Text_Size"
+                        android:text="@={activityConsultingViewModel.editTextDateConsulting}" />
 
                     <ImageView
                         android:id="@+id/imageViewConsultingDate"
@@ -136,9 +147,43 @@
                         android:clickable="true"
                         android:onClick="onImageClick" />
                 </com.google.android.material.card.MaterialCardView>
-
                 <TextView
                     android:id="@+id/textView16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/Side_Padding"
+                    android:text="희망 신청 시간"
+                    android:textSize="@dimen/Medium2_T_Text_Size"/>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardViewTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="@dimen/Side_Padding"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/Side_Padding"
+                    android:layout_marginBottom="20dp"
+                    app:cardBackgroundColor="@color/InputCompartment_Color">
+
+
+                    <TextView
+                        android:id="@+id/editTextTimeConsulting"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@color/InputCompartment_Color"
+                        android:gravity="center_vertical"
+                        android:hint="희망 시간을 선택해주세요."
+                        android:inputType="text"
+                        android:text="@={activityConsultingViewModel.editTextTimeConsulting}"
+                        android:textSize="@dimen/Small_T_Text_Size" />
+
+
+
+                </com.google.android.material.card.MaterialCardView>
+                <TextView
+                    android:id="@+id/textView17"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/Side_Padding"
@@ -166,7 +211,8 @@
                         android:gravity="top"
                         android:hint="궁금한 점 적어주세요."
                         android:inputType="text"
-                        android:textSize="@dimen/Small_T_Text_Size" /> />
+                        android:textSize="@dimen/Small_T_Text_Size"
+                        android:text="@={activityConsultingViewModel.editTextEtcConsulting}"/>
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 
