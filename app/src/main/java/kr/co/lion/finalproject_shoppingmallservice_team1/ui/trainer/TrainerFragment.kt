@@ -42,6 +42,9 @@ class TrainerFragment : Fragment() {
     // 필라테스 RecyclerView 구성을 위한 리스트
     var pilatesPostList = mutableListOf<TrainerPost>()
 
+    // 수영 RecyclerView 구성을 위한 리스트
+    var swimmingPostList = mutableListOf<TrainerPost>()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         fragmentTrainerBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_trainer, container, false)
@@ -70,6 +73,9 @@ class TrainerFragment : Fragment() {
      * 7. RecyclerView 설정(필라테스) (settingRecyclerViewTrainerPilatest())
      * 8. 필라테스 타입 게시글만 가져와서 갱신 (gettingPilatestData())
      * 9. 필라테스 항목의 Adapter와 ViewHolder 설정 (찜 기능 추가)
+     * 10. RecyclerView 설정(수영) (settingRecyclerViewTrainerSwimming())
+     * 11. 수영 타입 게시글만 가져와서 갱신 (gettingSwimmingData())
+     * 12. 수영 항목의 Adapter와 ViewHolder 설정 (찜 기능 추가)
      */
 
 
@@ -106,6 +112,10 @@ class TrainerFragment : Fragment() {
                             1 -> {
                                 gettingPilatestData()
                                 settingRecyclerViewTrainerPilatest()
+                            }
+                            2 -> {
+                                gettingSwimmingData()
+                                settingRecyclerViewTrainerSwimming()
                             }
                         }
                     }
@@ -310,6 +320,89 @@ class TrainerFragment : Fragment() {
                 if(pilatesPostList[position].trainerProfileImageUrl != null){
                     delay(1000)
                     TrainerDao.gettingTrainerPostProfileImage(navigationActivity, pilatesPostList[position].trainerProfileImageUrl, holder.rowTrainerBinding.trainerProfileImageView)
+                }
+            }
+        }
+    }
+
+    fun settingRecyclerViewTrainerSwimming(){
+        fragmentTrainerBinding.apply {
+            recyclerViewTrainer.apply {
+                adapter = TrainerSwimmingRecyclerViewAdapter()
+                layoutManager = GridLayoutManager(navigationActivity,2)
+            }
+        }
+    }
+
+    fun gettingSwimmingData(){
+        CoroutineScope(Dispatchers.Main).launch {
+            swimmingPostList = TrainerDao.gettingTrainerPostList(TRAINER_POST_TYPE.TRAINER_TYPE_SWIMMING.str)
+            fragmentTrainerBinding.recyclerViewTrainer.adapter?.notifyDataSetChanged()
+        }
+    }
+
+    inner class TrainerSwimmingRecyclerViewAdapter: RecyclerView.Adapter<TrainerSwimmingRecyclerViewAdapter.TrainerSwimmingViewHolder>(){
+        inner class TrainerSwimmingViewHolder(rowTrainerBinding: RowTrainerBinding): RecyclerView.ViewHolder(rowTrainerBinding.root){
+            val rowTrainerBinding:RowTrainerBinding
+
+            init {
+                this.rowTrainerBinding = rowTrainerBinding
+
+                this.rowTrainerBinding.root.layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
+
+                // 이미지 클릭 시 상세페이지 이동 설정
+                // 찜 버튼 클릭 설정
+                this.rowTrainerBinding.apply {
+                    cardViewTrainer.setOnClickListener {
+                        navigationActivity.readTrainerRequest()
+                    }
+                    trainerMyPickImageButton.setOnClickListener {
+                        // 추후 DB 컬럼 값으로 변경 되도록 하기. (현재 단일 체크 가능)
+                        isImageClick = !isImageClick
+                        updateImageButton()
+                    }
+                }
+            }
+
+            // 찜 버튼 클릭에 따른 이미지 변경
+            fun  updateImageButton(){
+                rowTrainerBinding.apply {
+                    if(isImageClick){
+                        trainerMyPickImageButton.setImageResource(R.drawable.favorite_fill)
+                        Toast.makeText(navigationActivity, "'찜' 선택 되었습니다.", Toast.LENGTH_SHORT).show()
+                    } else{
+                        trainerMyPickImageButton.setImageResource(R.drawable.favorite)
+                        Toast.makeText(navigationActivity, "'찜' 해지 되었습니다.", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrainerSwimmingViewHolder {
+            val rowTrainerBinding = RowTrainerBinding.inflate(layoutInflater)
+            val trainerSwimmingViewHolder = TrainerSwimmingViewHolder(rowTrainerBinding)
+
+            return trainerSwimmingViewHolder
+        }
+
+        override fun getItemCount(): Int {
+            return swimmingPostList.size
+        }
+
+        override fun onBindViewHolder(holder: TrainerSwimmingViewHolder, position: Int) {
+
+            holder.rowTrainerBinding.trainerNameTextView.text = swimmingPostList[position].trainerName
+            holder.rowTrainerBinding.trainerOrgNameTextView.text = swimmingPostList[position].centerName
+            holder.rowTrainerBinding.trainerLocationTextView.text = swimmingPostList[position].centerLocation
+            holder.rowTrainerBinding.textViewType.text = swimmingPostList[position].trainerType
+
+            CoroutineScope(Dispatchers.Main).launch {
+                if(swimmingPostList[position].trainerProfileImageUrl != null){
+                    delay(1000)
+                    TrainerDao.gettingTrainerPostProfileImage(navigationActivity, swimmingPostList[position].trainerProfileImageUrl, holder.rowTrainerBinding.trainerProfileImageView)
                 }
             }
         }

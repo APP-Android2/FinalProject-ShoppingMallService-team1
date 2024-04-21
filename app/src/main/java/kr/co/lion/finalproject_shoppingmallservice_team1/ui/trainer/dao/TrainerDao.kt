@@ -114,6 +114,9 @@ class TrainerDao {
                 if(trainerType == TRAINER_POST_TYPE.TRAINER_TYPE_PILATES.str){
                     query = query.whereEqualTo("trainerType", trainerType)
                 }
+                if(trainerType == TRAINER_POST_TYPE.TRAINER_TYPE_SWIMMING.str){
+                    query = query.whereEqualTo("trainerType", trainerType)
+                }
 
                 query = query.orderBy("trainerPostId", Query.Direction.DESCENDING)
 
