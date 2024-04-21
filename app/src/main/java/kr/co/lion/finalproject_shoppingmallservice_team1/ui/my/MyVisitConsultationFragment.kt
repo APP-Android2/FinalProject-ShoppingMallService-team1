@@ -2,6 +2,7 @@ package kr.co.lion.finalproject_shoppingmallservice_team1.ui.my
 
 import android.os.Bundle
 import android.os.SystemClock
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,9 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentMyV
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowMyVisitConsultationBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.model.VisitConsulting
 import kr.co.lion.finalproject_shoppingmallservice_team1.dao.VisitConsultingDao
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class MyVisitConsultationFragment : Fragment() {
 
@@ -34,7 +38,6 @@ class MyVisitConsultationFragment : Fragment() {
 
         settingToolbar()
         handleBackPress()
-        settingButtonToday()
         gettingListData()
         settingRecyclerViewMyVisitConsultation()
 
@@ -64,18 +67,6 @@ class MyVisitConsultationFragment : Fragment() {
                 setNavigationOnClickListener {
                     backProcess()
                 }
-            }
-        }
-    }
-
-    // 오늘 버튼 설정
-    fun settingButtonToday(){
-        fragmentMyVisitConsultationBinding.apply {
-            buttonToday.setOnClickListener {
-                // 현재 시간을 Long 값으로 구해 CalendarView에 설정해준다.
-                calendarMyVisitConsultation.date = System.currentTimeMillis()
-
-                // 리사이클러뷰 갱신 코드 추가하기
             }
         }
     }
@@ -138,7 +129,8 @@ class MyVisitConsultationFragment : Fragment() {
 
         override fun onBindViewHolder(holder: MyVisitConsultationViewHolder, position: Int) {
             holder.rowMyVisitConsultationBinding.tvRowMyVisitConsultationCenterName.text = visitConsultingList[position].name
-            holder.rowMyVisitConsultationBinding.tvRowMyVisitConsultationTime.text = "예약 시간 ${visitConsultingList[position].applicationTime}"
+            holder.rowMyVisitConsultationBinding.tvRowMyVisitConsultationDate.text = "예약 날짜: ${visitConsultingList[position].applicationDate}"
+            holder.rowMyVisitConsultationBinding.tvRowMyVisitConsultationTime.text = "예약 시간: ${visitConsultingList[position].applicationTime}"
         }
     }
 
