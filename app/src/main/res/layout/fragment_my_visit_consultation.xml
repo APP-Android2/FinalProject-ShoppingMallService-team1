@@ -31,11 +31,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <CalendarView
-                android:id="@+id/calendarMyVisitConsultation"
-                android:layout_width="match_parent"
-                android:layout_height="315sp" />
-
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -46,16 +41,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
-                <Button
-                    android:id="@+id/buttonToday"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center"
-                    android:layout_marginBottom="23dp"
-                    android:backgroundTint="@color/Pup_Color"
-                    android:text="오늘"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/BigButton_Text_Size" />
             </FrameLayout>
         </LinearLayout>
     </LinearLayout>

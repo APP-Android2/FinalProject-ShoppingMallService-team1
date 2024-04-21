@@ -1,8 +1,7 @@
-package kr.co.lion.finalproject_shoppingmallservice_team1.ui.alarm
+package kr.co.lion.finalproject_shoppingmallservice_team1.dao
 
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.toObject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

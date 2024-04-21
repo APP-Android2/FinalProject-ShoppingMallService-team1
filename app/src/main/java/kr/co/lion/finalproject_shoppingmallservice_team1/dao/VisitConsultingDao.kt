@@ -1,6 +1,7 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.dao
 
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -54,7 +55,7 @@ class VisitConsultingDao {
 
             CoroutineScope(Dispatchers.IO).launch {
                 val query = FirebaseFirestore.getInstance().collection("VisitConsulting")
-                    .orderBy("visitConsultingId")
+                    .orderBy("visitConsultingId", Query.Direction.DESCENDING)
 
                 val querySnapshot = query.get().await()
 
