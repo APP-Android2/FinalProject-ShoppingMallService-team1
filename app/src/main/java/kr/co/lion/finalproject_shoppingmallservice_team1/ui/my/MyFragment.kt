@@ -11,7 +11,10 @@ import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import com.google.android.material.transition.MaterialSharedAxis
+import com.google.firebase.auth.FirebaseAuth
+import kr.co.lion.finalproject_shoppingmallservice_team1.FirebaseAuthHelper
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.alarm.AlarmActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.MY_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
@@ -19,12 +22,15 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActiv
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.shoppingcart.ShoppingCartActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentMyBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.my.viewmodel.MyViewModel
 
 class MyFragment : Fragment() {
 
     lateinit var fragmentMyBinding: FragmentMyBinding
     lateinit var navigationActivity: NavigationActivity
     lateinit var shoppingCartActivityLauncher: ActivityResultLauncher<Intent>
+
+    private val myViewModel: MyViewModel by viewModels()
 
     // 프래그먼트의 주소값을 담을 프로퍼티
     var oldFragment: Fragment? = null
@@ -33,6 +39,8 @@ class MyFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         fragmentMyBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_my, container, false)
+        fragmentMyBinding.myViewModel = myViewModel
+        fragmentMyBinding.lifecycleOwner = this@MyFragment
 
         navigationActivity = activity as NavigationActivity
 
