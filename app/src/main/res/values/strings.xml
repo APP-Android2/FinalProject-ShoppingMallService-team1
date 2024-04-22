@@ -33,4 +33,7 @@
     <!-- ReadTrainer fragment -->
     <string name="appbar_scrolling_view_behavior">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
 
+    <!-- web_client_id -->
+    <string name="default_web_client_id">524744687587-u0ln40022gc6pe0ijohht8jfau4prtj3.apps.googleusercontent.com</string>
+
 </resources>

@@ -41,9 +41,17 @@ class ConsultingActivity : AppCompatActivity() {
 
         setContentView(activityConsultingBinding.root)
 
+        // ConsultingCalendarFragment에서 전달한 데이터를 받기 위해 FragmentManager 사용
+        supportFragmentManager.setFragmentResultListener("consultingDate", this) { _, bundle ->
+            val currentDate = bundle.getString("currentDate")
+
+            activityConsultingBinding.editTextDateConsulting.text = currentDate
+            activityConsultingBinding.editTextTimeConsulting
+        }
         settingConsultingToolbar()
         settingConsultingButtonClick()
         settingCalendarImageClick()
+        settingTime()
 
     }
 
@@ -52,7 +60,10 @@ class ConsultingActivity : AppCompatActivity() {
      * 1. 툴바 설정 함수
      * 2. 버튼 설정 함수
      * 3. 달력 화면을 띄우는 함수
-     * 4. Fragment 교체 함수
+     * 4. 시간 설정 함수
+     * 5. 바텀 시트 올리는 함수
+     * 6. 날짜 설정 함수
+     * 7. Fragment 교체 함수
      */
 
     fun settingConsultingToolbar(){
@@ -96,7 +107,23 @@ class ConsultingActivity : AppCompatActivity() {
         }
     }
 
+    fun settingTime(){
+        activityConsultingBinding.editTextTimeConsulting.setOnClickListener {
+            showConsultingCalendarBottomSheet()
+        }
+    }
 
+    // 시간대를 보여불 BottomSheet를 띄워준다.
+    fun showConsultingCalendarBottomSheet(){
+        val consultingCalendarBottomFragment = ConsultingCalendarBottomFragment()
+        consultingCalendarBottomFragment.show(supportFragmentManager, "ConsultingCalendarBottomSheet")
+    }
+
+    // 선택된 텍스트를 받아 editTextTimeConsulting에 설정
+    fun setSelectedTime(selectedTime: String) {
+        activityConsultingBinding.editTextTimeConsulting.append("${selectedTime} ")
+
+    }
     fun replaceFragment(name: CONSULTING_FRAGMENT_NAME, addToBackStack:Boolean, isAnimate:Boolean, data:Bundle?){
 
         SystemClock.sleep(200)

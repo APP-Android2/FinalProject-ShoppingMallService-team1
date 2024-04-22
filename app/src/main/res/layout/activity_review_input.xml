@@ -118,8 +118,8 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="374dp"
                     android:layout_height="193dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="@dimen/Side_Padding"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="@dimen/Side_Padding"
                     app:cardBackgroundColor="@color/InputCompartment_Color">
 
@@ -127,12 +127,12 @@
                         android:id="@+id/editTextText2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:inputType="text|textMultiLine"
+                        android:background="@color/InputCompartment_Color"
                         android:gravity="top"
-                        android:padding="@dimen/Side_Padding"
                         android:hint="리뷰를 작성 해주세요"
-                        android:textSize="@dimen/Small_T_Text_Size"
-                        android:background="@color/InputCompartment_Color" />
+                        android:inputType="text|textMultiLine"
+                        android:padding="@dimen/Side_Padding"
+                        android:textSize="@dimen/Small_T_Text_Size" />
 
                 </com.google.android.material.card.MaterialCardView>
 

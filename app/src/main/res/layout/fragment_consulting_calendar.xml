@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <FrameLayout
@@ -39,7 +40,23 @@
                 android:layout_marginRight="@dimen/Side_Padding"
                 android:layout_marginTop="@dimen/Up_Down_Margin"/>
 
+
         </LinearLayout>
+
+        <Button
+            android:id="@+id/consultingDateAddButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginBottom="@dimen/Up_Down_Margin"
+            android:backgroundTint="@color/Pup_Color"
+            android:text="선택 완료"
+            android:textColor="@color/white"
+            android:textSize="@dimen/BigButton_Text_Size"
+            android:textStyle="bold"
+            app:cornerRadius="10dp" />
     </FrameLayout>
 
 </layout>

@@ -1,3 +1,5 @@
+package kr.co.lion.finalproject_shoppingmallservice_team1.model
+
 // 양도회원권 게시글
 class TransferMembershipPost {
 

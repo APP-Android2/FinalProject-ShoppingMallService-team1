@@ -1,3 +1,5 @@
+package kr.co.lion.finalproject_shoppingmallservice_team1.model
+
 // 채팅 메시지
 data class Message(
 

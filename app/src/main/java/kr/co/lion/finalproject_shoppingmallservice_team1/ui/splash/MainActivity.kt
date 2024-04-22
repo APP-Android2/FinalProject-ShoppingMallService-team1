@@ -1,13 +1,14 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.ui.splash
 
+import android.Manifest
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.google.firebase.auth.FirebaseAuth
+import kr.co.lion.finalproject_shoppingmallservice_team1.FirebaseAuthHelper
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.login.LoginActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivityMainBinding
@@ -15,7 +16,6 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivityMai
 class MainActivity : AppCompatActivity() {
 
     private lateinit var activityMainBinding: ActivityMainBinding
-    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,15 +26,22 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
 
-        firebaseAuth = FirebaseAuth.getInstance()
-        val user = firebaseAuth.currentUser
-        if(user != null){
-            startActivity(Intent(this@MainActivity, NavigationActivity::class.java))
-            finish()
-        }
+        FirebaseAuthHelper.initializeFirebaseAuth()  // Firebase 인증 초기화
+        checkLoggedInUser() // 로그인된 사용자 확인
 
         settingOnBoarding()
         startLoginActivity()
+    }
+
+    fun permissionCheck(){
+        // 확인할 권한 목록
+        val permissionList = arrayOf(
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.ACCESS_MEDIA_LOCATION
+        )
+
+        // 권한 설정
+        requestPermissions(permissionList, 0)
     }
 
     private fun settingOnBoarding(){
@@ -50,6 +57,18 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
 
             this@MainActivity.finish()
+        }
+    }
+
+    // 로그인된 사용자 확인
+    private fun checkLoggedInUser(){
+
+        val currentUser = FirebaseAuthHelper.getCurrentUser()
+        if (currentUser != null) {
+
+            // 사용자가 이미 로그인되어 있으면 NavigationActivity로 이동
+            startActivity(Intent(this@MainActivity, NavigationActivity::class.java))
+            finish()
         }
     }
 

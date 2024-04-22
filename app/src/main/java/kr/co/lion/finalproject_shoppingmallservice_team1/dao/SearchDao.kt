@@ -1,71 +1,72 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.dao
 
+import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import kr.co.lion.finalproject_shoppingmallservice_team1.model.Search
 import kr.co.lion.finalproject_shoppingmallservice_team1.model.VisitConsulting
 
-class VisitConsultingDao {
-    companion object {
-
+class SearchDao {
+    companion object{
         // 순서 값 가져오기
         suspend fun getSequence(): Int {
-            var sequenceVisitConsulting = -1
+            var sequenceSearch = -1
 
             CoroutineScope(Dispatchers.IO).launch{
-                sequenceVisitConsulting =
+                sequenceSearch =
                     FirebaseFirestore.getInstance().collection("Sequence")
-                        .document("SequenceVisitConsulting")
+                        .document("SequenceSearch")
                         .get().await()
                         .getLong("value")?.toInt()!!
 
             }.join()
-            return sequenceVisitConsulting
+            return sequenceSearch
 
         }
 
         // 순서 값 업데이트
-        suspend fun updateSequence(sequenceVisitConsulting:Int) {
+        suspend fun updateSequence(sequenceSearch:Int) {
             CoroutineScope(Dispatchers.IO).launch {
                 val documentReference =
                     FirebaseFirestore.getInstance().collection("Sequence")
-                        .document("SequenceVisitConsulting")
+                        .document("SequenceSearch")
 
                 val map = mutableMapOf<String, Long>()
-                map["value"] = sequenceVisitConsulting.toLong()
+                map["value"] = sequenceSearch.toLong()
 
                 documentReference.set(map)
             }.join()
         }
 
         // Firebase Database에 모델 값 추가
-        suspend fun insertApplication(visitConsulting: VisitConsulting) {
+        suspend fun insertRecentSearch(search:Search) {
             CoroutineScope(Dispatchers.IO).launch {
-                FirebaseFirestore.getInstance().collection("VisitConsulting")
-                    .add(visitConsulting)
+                FirebaseFirestore.getInstance().collection("Search")
+                    .add(search)
             }.join()
         }
-
-        // VisitConsulting컬렉션의 data를 리스트로 정렬 후 반환
-        suspend fun getVisitList():MutableList<VisitConsulting>{
-            val dataList = mutableListOf<VisitConsulting>()
+        suspend fun getSearchList():MutableList<Search>{
+            val dataList = mutableListOf<Search>()
 
             CoroutineScope(Dispatchers.IO).launch {
-                val query = FirebaseFirestore.getInstance().collection("VisitConsulting")
-                    .orderBy("visitConsultingId", Query.Direction.DESCENDING)
+                val query = FirebaseFirestore.getInstance().collection("Search")
+                    .orderBy("searchIdx", Query.Direction.DESCENDING)
 
                 val querySnapshot = query.get().await()
 
                 querySnapshot.forEach {
-                    val visitConsulting = it.toObject(VisitConsulting::class.java)
-                    dataList.add(visitConsulting)
+                    val search = it.toObject(Search::class.java)
+                    dataList.add(search)
                 }
+
             }.join()
 
             return dataList
         }
+
     }
 }

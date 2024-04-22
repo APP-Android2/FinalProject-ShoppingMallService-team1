@@ -1,3 +1,5 @@
+package kr.co.lion.finalproject_shoppingmallservice_team1.model
+
 // 채팅방
 data class ChatRoom(
 

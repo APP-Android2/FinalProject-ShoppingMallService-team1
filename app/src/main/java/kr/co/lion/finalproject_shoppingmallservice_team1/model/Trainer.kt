@@ -2,10 +2,10 @@ package kr.co.lion.finalproject_shoppingmallservice_team1.model
 
 // 트레이너
 interface Trainer{
-    val trainerId: String                            // 트레이너 ID
+    val trainerId: Int                               // 트레이너 ID
     var trainerName: String                          // 트레이너 이름
-    var trainerProfileImageUrl: MutableList<String>  // 트레이너 프로필 사진
-    var aboutMePhotosUrls: MutableList<String>       // 트레이너 자격증 사진
+    var trainerProfileImageUrl: String               // 트레이너 프로필 사진
+    var aboutMePhotosUrls: MutableList<String>?      // 트레이너 자격증 사진
 }
 
 // 트레이너 화면 게시글
@@ -18,12 +18,12 @@ data class TrainerPost(
     override var centerImageUrls: MutableList<String> = mutableListOf(), // 운동 센터 사진 목록
 
     // 트레이너
-    override val trainerId: String = "",                                        // 트레이너 고유 식별자 ID
+    override val trainerId: Int = 0,                                            // 트레이너 고유 식별자 ID
     override var trainerName: String = "",                                      // 트레이너 이름
-    override var trainerProfileImageUrl: MutableList<String> = mutableListOf(), // 트레이너 프로필 사진 목록
-    override var aboutMePhotosUrls: MutableList<String> = mutableListOf(),      // 트레이너 자격증 사진 목록
+    override var trainerProfileImageUrl: String = "",                           // 트레이너 프로필 사진 목록
+    override var aboutMePhotosUrls: MutableList<String>? = mutableListOf(),     // 트레이너 자격증 사진 목록
 
-    val trainerPostId: String = "",                                      // 트레이너 게시글의 ID
+    val trainerPostId: Int = 0,                                          // 트레이너 게시글의 ID
     var trainerPostTopImage:  MutableList<String> = mutableListOf(),     // 트레이너 게시글의 상단 사진
     var trainerType: String = "",                                        // 운동 타입(헬스, 필라테스)
     var postStatus: Int = 0,                                             // 게시글 상태 (0: 활성, 1: 삭제)

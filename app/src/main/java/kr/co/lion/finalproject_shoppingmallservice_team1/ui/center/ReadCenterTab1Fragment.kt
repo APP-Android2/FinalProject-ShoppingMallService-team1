@@ -18,6 +18,13 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowReadTrai
 class ReadCenterTab1Fragment : Fragment() {
 
     lateinit var fragmentReadCenterTab1Binding: FragmentReadCenterTab1Binding
+
+    // 회원권 샘플 데이터
+    val membershipData = listOf("1개월", "2개월", "3개월", "4개월")
+
+    // 사진 샘플 데이터
+    val imageList = listOf(R.drawable.fitmoa_logo_background, R.drawable.fitmoa_logo_background, R.drawable.fitmoa_logo_background, R.drawable.fitmoa_logo_background, R.drawable.fitmoa_logo_background)
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         fragmentReadCenterTab1Binding = DataBindingUtil.inflate(inflater, R.layout.fragment_read_center_tab1, container, false)
@@ -31,63 +38,27 @@ class ReadCenterTab1Fragment : Fragment() {
     // RecyclerView 설정
     fun settingRecyclerView(){
         fragmentReadCenterTab1Binding.apply {
-            recyclerViewCenterPt.apply {
-                val membershipData = listOf("1개월", "2개월", "3개월", "4개월") // 예시 데이터
-
+            recyclerViewCenterMemberShip.apply {
                 adapter = CenterMembershipAdapter(membershipData)
                 layoutManager = LinearLayoutManager(context)
-                setHasFixedSize(true)
-                addOnLayoutChangeListener { v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
-                    adjustRecyclerViewHeight()
-                }
 
-                // 모든 Item의 높이를 측정하여 RecyclerView의 높이를 계산.
-                post {
-                    adjustRecyclerViewHeight()
-                }
             }
             recyclerViewCenterImage.apply {
-                val imageList = listOf(R.drawable.fitmoa_logo_background, R.drawable.fitmoa_logo_background, R.drawable.fitmoa_logo_background, R.drawable.fitmoa_logo_background, R.drawable.fitmoa_logo_background)
-
-                adapter = TrainerImageAdapter(imageList)
+                adapter = CenterImageAdapter(imageList)
                 layoutManager = GridLayoutManager(context,3)
             }
         }
     }
-
-
-    // RecyclerView의 각 Item 크기를 측정.
-    fun adjustRecyclerViewHeight() {
-        val adapter = fragmentReadCenterTab1Binding.recyclerViewCenterPt.adapter
-        if (adapter != null && adapter.itemCount > 0) {
-            var totalHeight = 0
-            for (i in 0 until adapter.itemCount) {
-                val view = adapter.createViewHolder(fragmentReadCenterTab1Binding.recyclerViewCenterPt, 0).itemView
-                adapter.bindViewHolder(adapter.createViewHolder(fragmentReadCenterTab1Binding.recyclerViewCenterPt, 0), i)
-                view.measure(
-                    View.MeasureSpec.makeMeasureSpec(fragmentReadCenterTab1Binding.recyclerViewCenterPt.width, View.MeasureSpec.EXACTLY),
-                    View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
-                )
-                totalHeight += view.measuredHeight
-            }
-            val layoutParams = fragmentReadCenterTab1Binding.recyclerViewCenterPt.layoutParams
-            layoutParams.height = totalHeight
-            fragmentReadCenterTab1Binding.recyclerViewCenterPt.layoutParams = layoutParams
-        }
-    }
-
 }
 
 
 // 회원권 RecyclerView
 class CenterMembershipAdapter(val dataList: List<String>) : RecyclerView.Adapter<CenterMembershipViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CenterMembershipViewHolder {
-        // 뷰 홀더를 만들어준다.
         val inflater = LayoutInflater.from(parent.context)
         val rowReadTrainerMembershipBinding = RowReadTrainerMembershipBinding.inflate(inflater, parent, false)
 
         return CenterMembershipViewHolder(rowReadTrainerMembershipBinding)
-
     }
 
     override fun getItemCount(): Int {
@@ -109,28 +80,26 @@ class CenterMembershipViewHolder(private val rowReadTrainerMembershipBinding: Ro
 }
 
 
-
 // 운동센터 사진 RecyclerView 설정
-class TrainerImageAdapter(val imageList: List<Int>): RecyclerView.Adapter<TrainerImageViewHolder>(){
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrainerImageViewHolder {
-        // 뷰 홀더를 만들어준다.
+class CenterImageAdapter(val imageList: List<Int>): RecyclerView.Adapter<CenterImageViewHolder>(){
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CenterImageViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val rowReadTrainerImageBinding = RowReadTrainerImageBinding.inflate(inflater, parent, false)
 
-        return TrainerImageViewHolder(rowReadTrainerImageBinding)
+        return CenterImageViewHolder(rowReadTrainerImageBinding)
     }
 
     override fun getItemCount(): Int {
         return imageList.size
     }
 
-    override fun onBindViewHolder(holder: TrainerImageViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CenterImageViewHolder, position: Int) {
         holder.holderBind(imageList[position])
     }
 }
 
 // 운동센터 사진 ViewHolder
-class TrainerImageViewHolder(private val rowReadTrainerImageBinding: RowReadTrainerImageBinding): RecyclerView.ViewHolder(rowReadTrainerImageBinding.root){
+class CenterImageViewHolder(private val rowReadTrainerImageBinding: RowReadTrainerImageBinding): RecyclerView.ViewHolder(rowReadTrainerImageBinding.root){
 
     fun holderBind(imageTest: Int){
         rowReadTrainerImageBinding.trainerDailyImageView.setImageResource(imageTest)

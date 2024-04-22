@@ -105,7 +105,7 @@
                             android:layout_marginTop="8dp"
                             android:layout_weight="1"
                             android:text="무료 서비스"
-                            android:textSize="@dimen/Medium2_T_Text_Size"
+                            android:textSize="@dimen/Small_T_Text_Size"
                             android:textStyle="bold" />
 
                         <TextView
@@ -227,7 +227,7 @@
                         android:textSize="@dimen/Small_T_Text_Size" />
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerViewCenterPt"
+                        android:id="@+id/recyclerViewCenterMemberShip"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
                 </LinearLayout>
@@ -339,6 +339,8 @@
                 </LinearLayout>
 
                 <!-- SNS 바로가기 -->
+
+                <!-- 사진 -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -362,18 +364,46 @@
                         android:textSize="@dimen/Medium_T_Text_Size"
                         android:textStyle="bold" />
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/Side_Padding"
-                        android:layout_marginTop="5dp"
                         android:layout_marginRight="@dimen/Side_Padding"
-                        android:text="별스타그램 URL"
-                        android:textSize="@dimen/Small_T_Text_Size" />
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/inStarUrlClick"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@android:color/transparent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/exercise" />
+
+                        <ImageButton
+                            android:id="@+id/youtuUrlClick"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="20dp"
+                            android:background="@android:color/transparent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/person" />
+
+                        <ImageButton
+                            android:id="@+id/naverUrlClick"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="20dp"
+                            android:background="@android:color/transparent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/photo" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-                <!-- 사진 -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

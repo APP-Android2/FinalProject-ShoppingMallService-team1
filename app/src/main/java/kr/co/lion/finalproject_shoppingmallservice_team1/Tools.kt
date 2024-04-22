@@ -108,6 +108,18 @@ enum class TRAINER_FRAGMENT_NAME(var num:Int, var str:String){
     READ_TRAINER_TAB3_FRAGMENT(3, "ReadTrainerTab3Fragment"),
 }
 
+// 트레이너 게시글 타입을 나타내는 값을 정의한다.
+enum class TRAINER_POST_TYPE(var number: Int, var str:String){
+    TRAINER_TYPE_FITNESS(0, "헬스"),
+    TRAINER_TYPE_PILATES(1, "필라테스"),
+    TRAINER_TYPE_SWIMMING(2, "수영"),
+}
+
+enum class POST_STATUS(var number: Int, var str:String){
+    POST_STATUS_NORMAL(0, "활성"),
+    POST_STATUS_DELETE(1, "삭제"),
+}
+
 enum class CONSULTING_FRAGMENT_NAME(var num: Int, var str:String){
 
     CONSULTING_CALENDAR_FRAGMENT(0, "ConsultingCalendarFragment"),
