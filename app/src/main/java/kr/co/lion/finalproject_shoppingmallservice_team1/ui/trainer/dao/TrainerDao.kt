@@ -148,7 +148,7 @@ class TrainerDao {
                     query = query.whereEqualTo("trainerType", trainerType)
                 }
 
-                query = query.orderBy("trainerPostId", Query.Direction.DESCENDING)
+                query = query.orderBy("reviewAvg", Query.Direction.DESCENDING)
 
                 val queryShapshot = query.get().await()
 
