@@ -24,6 +24,7 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActiv
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.Tools
 import kr.co.lion.finalproject_shoppingmallservice_team1.dao.CommunityDao
+import kr.co.lion.finalproject_shoppingmallservice_team1.dao.UserDao
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivityContentBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowCommentBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.chat.ChattingActivity
@@ -57,6 +58,10 @@ class ContentActivity : AppCompatActivity() {
             activityContentBinding.apply {
                 textViewContentTitle.text = communityPost.title
                 textViewContentWrite.text = communityPost.content
+
+                val user = UserDao.getUser(communityPost.userId)
+                textViewContentNickname.text = user?.nickName
+                textViewContentDate.text = communityPost.postTime
             }
         }
     }

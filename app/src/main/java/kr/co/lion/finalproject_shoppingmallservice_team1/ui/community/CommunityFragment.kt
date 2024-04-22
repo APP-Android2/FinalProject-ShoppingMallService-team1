@@ -3,6 +3,7 @@ package kr.co.lion.finalproject_shoppingmallservice_team1.ui.community
 import CommunityPost
 import android.app.Activity
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
@@ -16,6 +17,7 @@ import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
@@ -30,10 +32,11 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.COMMUNITY_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.dao.CommunityDao
+import kr.co.lion.finalproject_shoppingmallservice_team1.dao.UserDao
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentCommunityBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowCommunityContentBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.community.viewmodel.CommunityViewModel
-
+@RequiresApi(Build.VERSION_CODES.O)
 class CommunityFragment : Fragment() {
     lateinit var fragmentCommunityBinding: FragmentCommunityBinding
     lateinit var navigationActivity: NavigationActivity
@@ -48,6 +51,7 @@ class CommunityFragment : Fragment() {
     var oldFragment: Fragment? = null
     var newFragment: Fragment? = null
 
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         fragmentCommunityBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_community, container, false)
@@ -56,6 +60,7 @@ class CommunityFragment : Fragment() {
         fragmentCommunityBinding.lifecycleOwner = this
 
         navigationActivity = activity as NavigationActivity
+
 
         settingToolbarCommunity()
         gettingListData()
@@ -217,21 +222,25 @@ class CommunityFragment : Fragment() {
         }
 
         override fun onBindViewHolder(holder: CommunityContentViewHolder, position: Int) {
-            holder.rowCommunityBinding.textViewCommmunityTitle.text = communityPostList[position].title
-            holder.rowCommunityBinding.textViewCommunityTag.text = "해시태그"
-            holder.rowCommunityBinding.textViewCommnunityContent.text = communityPostList[position].content
-            holder.rowCommunityBinding.textViewCommunityNickname.text = "닉네임"
-            holder.rowCommunityBinding.textViewCommunityAddress.text = "서울 서초구"
-            holder.rowCommunityBinding.textViewCommunityTime.text = "3시간 전"
+            CoroutineScope(Dispatchers.Main).launch{
+                val user = UserDao.getUser(communityPostList[position].userId)
 
-            holder.rowCommunityBinding.textViewCommunityLike.text = "1"
-            holder.rowCommunityBinding.textViewCommunityComment.text = "2"
-            holder.rowCommunityBinding.textViewCommunityView.text = "3"
+                holder.rowCommunityBinding.textViewCommmunityTitle.text = communityPostList[position].title
+                holder.rowCommunityBinding.textViewCommunityTag.text = "해시태그"
+                holder.rowCommunityBinding.textViewCommnunityContent.text = communityPostList[position].content
+                holder.rowCommunityBinding.textViewCommunityNickname.text = user?.nickName
+                holder.rowCommunityBinding.textViewCommunityAddress.text = "서울 서초구"
+                holder.rowCommunityBinding.textViewCommunityTime.text = communityPostList[position].postTime
 
-            holder.rowCommunityBinding.root.setOnClickListener {
-                val intent = Intent(navigationActivity, ContentActivity::class.java)
-                intent.putExtra("communityContent", "${communityPostList[position].communityPostId}")
-                startActivity(intent)
+                holder.rowCommunityBinding.textViewCommunityLike.text = "1"
+                holder.rowCommunityBinding.textViewCommunityComment.text = "2"
+                holder.rowCommunityBinding.textViewCommunityView.text = "3"
+
+                holder.rowCommunityBinding.root.setOnClickListener {
+                    val intent = Intent(navigationActivity, ContentActivity::class.java)
+                    intent.putExtra("communityContent", "${communityPostList[position].communityPostId}")
+                    startActivity(intent)
+                }
             }
         }
     }
@@ -239,7 +248,7 @@ class CommunityFragment : Fragment() {
     fun gettingListData(){
         CoroutineScope(Dispatchers.Main).launch {
             communityPostList = CommunityDao.getCommunityList()
-            Log.d("test1234", "List: ${communityPostList}")
+
             fragmentCommunityBinding.recyclerViewContent.adapter?.notifyDataSetChanged()
         }
     }
