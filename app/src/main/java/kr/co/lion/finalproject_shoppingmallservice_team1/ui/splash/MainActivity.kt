@@ -1,8 +1,9 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.ui.splash
 
+import android.Manifest
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -30,6 +31,17 @@ class MainActivity : AppCompatActivity() {
 
         settingOnBoarding()
         startLoginActivity()
+    }
+
+    fun permissionCheck(){
+        // 확인할 권한 목록
+        val permissionList = arrayOf(
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.ACCESS_MEDIA_LOCATION
+        )
+
+        // 권한 설정
+        requestPermissions(permissionList, 0)
     }
 
     private fun settingOnBoarding(){

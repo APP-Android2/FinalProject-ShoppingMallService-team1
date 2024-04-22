@@ -62,6 +62,11 @@
                     android:layout_height="match_parent"
                     android:text="필라테스" />
 
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="수영" />
+
             </com.google.android.material.tabs.TabLayout>
 
 

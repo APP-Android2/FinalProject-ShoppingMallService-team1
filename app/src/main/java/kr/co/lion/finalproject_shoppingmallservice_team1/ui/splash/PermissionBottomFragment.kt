@@ -9,13 +9,13 @@ import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.ui.splash.MainActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentPermissionBottomBinding
 
 class PermissionBottomFragment : BottomSheetDialogFragment() {
 
     private lateinit var fragmentPermissionBottomBinding: FragmentPermissionBottomBinding
     private lateinit var mainActivity: MainActivity
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,7 +34,8 @@ class PermissionBottomFragment : BottomSheetDialogFragment() {
 
         fragmentPermissionBottomBinding.PermissionButton.setOnClickListener {
 
-            // 권한 설정
+            // 권한 확인
+            mainActivity.permissionCheck()
 
             // 닫기
             dismiss()

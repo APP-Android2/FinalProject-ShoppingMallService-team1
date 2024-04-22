@@ -97,13 +97,34 @@
                         android:textSize="@dimen/Medium_T_Text_Size"
                         android:text="★★★★★" />
 
-                    <TextView
-                        android:id="@+id/ReadCenterReviewCount"
+
+
+                    <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:textSize="@dimen/Medium_T_Text_Size"
-                        android:text="후기 평점 / 후기 개수" />
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp">
+
+                        <TextView
+                            android:id="@+id/ReadCenterReviewCount"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textSize="@dimen/Medium_T_Text_Size"
+                            android:text="후기 평점 / 후기 개수" />
+
+                        <TextView
+                            android:id="@+id/infoDifferent"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="right|center"
+                            android:text="현장 정보와 다르다면?"
+                            android:textColor="@color/Pup_Color"
+                            android:textSize="@dimen/Small_Text_Size" />
+
+                    </FrameLayout>
+
+
 
                     <!-- 구분선을 두기 위함 -->
                     <View
