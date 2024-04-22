@@ -18,8 +18,8 @@ class SearchDao {
 
             CoroutineScope(Dispatchers.IO).launch{
                 sequenceSearch =
-                    FirebaseFirestore.getInstance().collection("SequenceSearch")
-                        .document("Data")
+                    FirebaseFirestore.getInstance().collection("Sequence")
+                        .document("SequenceSearch")
                         .get().await()
                         .getLong("value")?.toInt()!!
 
@@ -32,8 +32,8 @@ class SearchDao {
         suspend fun updateSequence(sequenceSearch:Int) {
             CoroutineScope(Dispatchers.IO).launch {
                 val documentReference =
-                    FirebaseFirestore.getInstance().collection("SequenceSearch")
-                        .document("Data")
+                    FirebaseFirestore.getInstance().collection("Sequence")
+                        .document("SequenceSearch")
 
                 val map = mutableMapOf<String, Long>()
                 map["value"] = sequenceSearch.toLong()

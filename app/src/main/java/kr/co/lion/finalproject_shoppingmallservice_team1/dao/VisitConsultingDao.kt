@@ -17,8 +17,8 @@ class VisitConsultingDao {
 
             CoroutineScope(Dispatchers.IO).launch{
                 sequenceVisitConsulting =
-                    FirebaseFirestore.getInstance().collection("SequenceVisitConsulting")
-                        .document("Data")
+                    FirebaseFirestore.getInstance().collection("Sequence")
+                        .document("SequenceVisitConsulting")
                         .get().await()
                         .getLong("value")?.toInt()!!
 
@@ -31,8 +31,8 @@ class VisitConsultingDao {
         suspend fun updateSequence(sequenceVisitConsulting:Int) {
             CoroutineScope(Dispatchers.IO).launch {
                 val documentReference =
-                    FirebaseFirestore.getInstance().collection("SequenceVisitConsulting")
-                        .document("Data")
+                    FirebaseFirestore.getInstance().collection("Sequence")
+                        .document("SequenceVisitConsulting")
 
                 val map = mutableMapOf<String, Long>()
                 map["value"] = sequenceVisitConsulting.toLong()
