@@ -2,6 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="communityViewModel"
+            type="kr.co.lion.finalproject_shoppingmallservice_team1.ui.community.viewmodel.CommunityViewModel" />
+    </data>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -42,17 +47,21 @@
 
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextCommunityTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/InputCompartmentOutline_Color"
-                        android:hint="제목" />
+                        android:hint="제목"
+                        android:text="@={communityViewModel.editTextCommunityTitle}"/>
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextCommunityContent"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="@dimen/Up_Down_Margin"
                         android:background="@null"
-                        android:hint="내용을 입력하세요." />
+                        android:hint="내용을 입력하세요."
+                        android:text="@={communityViewModel.editTextCommunityContent}"/>
 
                 </LinearLayout>
             </ScrollView>

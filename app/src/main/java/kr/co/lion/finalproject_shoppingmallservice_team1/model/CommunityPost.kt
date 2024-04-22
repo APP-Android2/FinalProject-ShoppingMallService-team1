@@ -1,9 +1,17 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.model
 
 // 커뮤니티 게시글
-class CommunityPost {
+class CommunityPost(
+    communityPostId: Int,
+    userId: String,
+    title: String,
+    content: String,
+    imageUrls: String,
+    location: String,
+    postTime: String
+) {
 
-    var communityPostId: String = "" // 게시글의 고유 ID
+    var communityPostId: Int = 0 // 게시글의 고유 ID
 
     var userId: String = "" // 작성자 고유 ID - 닉네임, 프로필 사진
 
