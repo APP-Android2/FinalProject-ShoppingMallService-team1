@@ -13,8 +13,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.google.android.material.transition.MaterialSharedAxis
-import com.google.firebase.auth.FirebaseAuth
-import kr.co.lion.finalproject_shoppingmallservice_team1.FirebaseAuthHelper
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.alarm.AlarmActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.MY_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
