@@ -62,6 +62,13 @@ class CenterTab2Fragment : Fragment() {
                     isImageClick = !isImageClick
                     updateImageButton()
                 }
+
+                // 게시글 클릭 설정
+                this.rowCenterTab2Binding.apply {
+                    itemCenterTab2Post.setOnClickListener {
+                        navigationActivity.readCenterRequest()
+                    }
+                }
             }
 
             // 찜 버튼 클릭에 따른 이미지 변경

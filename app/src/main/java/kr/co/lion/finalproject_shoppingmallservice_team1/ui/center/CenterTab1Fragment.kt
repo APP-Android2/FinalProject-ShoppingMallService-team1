@@ -63,7 +63,7 @@ class CenterTab1Fragment : Fragment() {
                 }
                 // 게시글 클릭 설정
                 this.rowCenterTab1Binding.apply {
-                    itemCenterPost.setOnClickListener {
+                    itemCenterTab1Post.setOnClickListener {
                         navigationActivity.readCenterRequest()
                     }
                 }
