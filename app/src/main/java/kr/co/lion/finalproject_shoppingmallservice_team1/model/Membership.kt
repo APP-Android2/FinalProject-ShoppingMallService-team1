@@ -5,8 +5,8 @@ interface Membership {
     val membershipId: String  // 회원권 고유 식별자 ID
     var name: String  // 회원권 이름
     var centerId: String // 운동 센터 Id - 운동 센터 이름, 운동 센터 위치
-    var membershipType: MembershipType
-    var exerciseType: ExerciseType
+    var membershipType: MembershipType // 회원권 타입
+    var exerciseType: ExerciseType // 운동 타입
     var price: Int  // 회원권 가격
     var status: MembershipStatus // 회원권 상태
 }
