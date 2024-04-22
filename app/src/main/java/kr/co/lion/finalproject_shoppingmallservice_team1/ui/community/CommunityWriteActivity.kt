@@ -1,5 +1,6 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.ui.community
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -36,6 +37,10 @@ class CommunityWriteActivity : AppCompatActivity() {
                     when(it.itemId){
                         R.id.menuItemDone -> {
                             Log.d("test1234", "CommunityWrite")
+
+                            val resultIntent = Intent()
+                            resultIntent.putExtra("CommunityWrite", 1)
+                            setResult(RESULT_OK, resultIntent)
                             communityViewModel?.updateData()
                             finish()
                         }

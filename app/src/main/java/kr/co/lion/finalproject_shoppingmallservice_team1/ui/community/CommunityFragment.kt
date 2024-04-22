@@ -1,8 +1,11 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.ui.community
 
+import CommunityPost
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
+import android.util.Log
 import android.view.ContextThemeWrapper
 import android.view.Gravity
 import androidx.fragment.app.Fragment
@@ -11,6 +14,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import android.widget.TextView
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
@@ -18,9 +23,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.google.android.material.transition.MaterialSharedAxis
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kr.co.lion.finalproject_shoppingmallservice_team1.COMMUNITY_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
+import kr.co.lion.finalproject_shoppingmallservice_team1.dao.CommunityDao
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentCommunityBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowCommunityContentBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.community.viewmodel.CommunityViewModel
@@ -32,6 +41,9 @@ class CommunityFragment : Fragment() {
     val toolbarCommunityTitle = view?.findViewById<TextView>(R.id.toolbarCommunity_title)
     var isDrawerOpen = false
     private lateinit var communtyViewModel: CommunityViewModel
+    lateinit var communiWriteActivityLauncher: ActivityResultLauncher<Intent>
+
+    var communityPostList = mutableListOf<CommunityPost>()
 
     var oldFragment: Fragment? = null
     var newFragment: Fragment? = null
@@ -46,12 +58,31 @@ class CommunityFragment : Fragment() {
         navigationActivity = activity as NavigationActivity
 
         settingToolbarCommunity()
+        gettingListData()
         settingRecyclerCommnunityContent()
         settingDrawer()
         settingEvent()
         settingChip()
 
         return fragmentCommunityBinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val contract = ActivityResultContracts.StartActivityForResult()
+        communiWriteActivityLauncher = registerForActivityResult(contract){
+            if (it != null){
+                when(it.resultCode){
+                    Activity.RESULT_OK -> {
+                        if (it.data != null){
+                            val value = it?.data!!.getIntExtra("CommunityWrite", 0)
+                            Log.d("test1234", "gettingListData")
+                            gettingListData()
+                        }
+                    }
+                }
+            }
+        }
     }
 
     // 툴바 설정
@@ -114,7 +145,7 @@ class CommunityFragment : Fragment() {
             buttonWrite.apply {
                 setOnClickListener {
                     val intent = Intent(navigationActivity, CommunityWriteActivity::class.java)
-                    startActivity(intent)
+                    communiWriteActivityLauncher.launch(intent)
                 }
             }
         }
@@ -182,13 +213,13 @@ class CommunityFragment : Fragment() {
         }
 
         override fun getItemCount(): Int {
-            return 5
+            return communityPostList.size
         }
 
         override fun onBindViewHolder(holder: CommunityContentViewHolder, position: Int) {
-            holder.rowCommunityBinding.textViewCommmunityTitle.text = "글 제목"
+            holder.rowCommunityBinding.textViewCommmunityTitle.text = communityPostList[position].title
             holder.rowCommunityBinding.textViewCommunityTag.text = "해시태그"
-            holder.rowCommunityBinding.textViewCommnunityContent.text = "글 내용--------------------"
+            holder.rowCommunityBinding.textViewCommnunityContent.text = communityPostList[position].content
             holder.rowCommunityBinding.textViewCommunityNickname.text = "닉네임"
             holder.rowCommunityBinding.textViewCommunityAddress.text = "서울 서초구"
             holder.rowCommunityBinding.textViewCommunityTime.text = "3시간 전"
@@ -199,8 +230,17 @@ class CommunityFragment : Fragment() {
 
             holder.rowCommunityBinding.root.setOnClickListener {
                 val intent = Intent(navigationActivity, ContentActivity::class.java)
+                intent.putExtra("communityContent", "${communityPostList[position].communityPostId}")
                 startActivity(intent)
             }
+        }
+    }
+
+    fun gettingListData(){
+        CoroutineScope(Dispatchers.Main).launch {
+            communityPostList = CommunityDao.getCommunityList()
+            Log.d("test1234", "List: ${communityPostList}")
+            fragmentCommunityBinding.recyclerViewContent.adapter?.notifyDataSetChanged()
         }
     }
 

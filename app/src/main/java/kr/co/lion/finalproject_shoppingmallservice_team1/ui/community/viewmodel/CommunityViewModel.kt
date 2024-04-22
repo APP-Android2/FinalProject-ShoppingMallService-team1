@@ -1,5 +1,6 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.ui.community.viewmodel
 
+import CommunityPost
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.MutableLiveData
@@ -9,7 +10,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kr.co.lion.finalproject_shoppingmallservice_team1.dao.CommunityDao
-import kr.co.lion.finalproject_shoppingmallservice_team1.model.CommunityPost
 
 class CommunityViewModel:ViewModel() {
     val chipChecked = MutableLiveData<Boolean>()
@@ -35,12 +35,12 @@ class CommunityViewModel:ViewModel() {
             val userId = ""
             val title = editTextCommunityTitle.value!!
             val content = editTextCommunityContent.value!!
-            val imageUrls = ""
-            val location = ""
             val postTime = ""
+            val location = ""
+            val imageUrls = mutableListOf<String>()
 
             val communityPost = CommunityPost(communityPostId, userId, title, content,
-                imageUrls, location, postTime)
+                postTime, location, imageUrls)
 
             CommunityDao.insertPost(communityPost)
             Log.d("test1234", "CommunityWrite Data")
