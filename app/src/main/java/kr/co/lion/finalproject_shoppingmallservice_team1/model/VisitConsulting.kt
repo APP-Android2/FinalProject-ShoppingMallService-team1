@@ -10,7 +10,9 @@ data class VisitConsulting (
 
     var name:String = "", // 이름
     var exercisePurpose:String = "", // 운동 목적
-    var applicationTime:String = "", // 희망 신청 시간
+    var applicationDate:String = "", // 희망 신청 날짜
+    var applicationTime: String = "",
+
     var etcContent:String? = "", // 기타
 
     var stateCheck:Boolean = true // 신청 상태(true-상담 예정 / false-상담 종료)

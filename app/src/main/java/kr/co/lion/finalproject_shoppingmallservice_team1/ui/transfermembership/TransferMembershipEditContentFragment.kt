@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.TRANSFER_MEMBERSHIP_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentTransferMembershipEditContentBinding
@@ -52,7 +53,7 @@ class TransferMembershipEditContentFragment : Fragment() {
     fun settingProgressbar(){
         fragmentTransferMembershipEditContentBinding.transfermembershipEditProgressBar.apply {
             isIndeterminate = true
-
+            isVisible = true
         }
     }
 

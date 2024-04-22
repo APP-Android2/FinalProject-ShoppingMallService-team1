@@ -1,19 +1,27 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.Tools
+import kr.co.lion.finalproject_shoppingmallservice_team1.dao.SearchDao
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivitySearchBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowSearchPopularBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowSearchRecentBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.model.Search
 
 class SearchActivity : AppCompatActivity() {
     lateinit var activitySearchBinding: ActivitySearchBinding
+    var recentSearchList = mutableListOf<Search>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +32,8 @@ class SearchActivity : AppCompatActivity() {
 
         settingToolbar()
         settingTabLayout()
+        gettingListData()
+        settingRecentSearch()
         // 리사이클뷰 초기 설정을 해놔야 탭 누르기 전부터 보임
         settingRecyclerViewRecentSearch()
     }
@@ -77,6 +87,40 @@ class SearchActivity : AppCompatActivity() {
         }
     }
 
+    fun settingRecentSearch(){
+        activitySearchBinding.apply {
+            searchViewSearch.setOnQueryTextListener(object :SearchView.OnQueryTextListener{
+                // 검색 버튼 눌렀을 때
+                override fun onQueryTextSubmit(queary: String?): Boolean {
+                    CoroutineScope(Dispatchers.Main).launch {
+                        Log.d("test1234", "Search: ${queary}")
+                        if (queary != null) {
+                            val sequence = SearchDao.getSequence()
+                            SearchDao.updateSequence(sequence + 1)
+
+                            val idx = sequence + 1
+                            val searchData = queary
+
+                            val search = Search(idx, searchData)
+                            Log.d("test1234", "Search: ${search}")
+                            SearchDao.insertRecentSearch(search)
+                            Log.d("test1234", "Search: ${SearchDao.getSearchList()}")
+
+                            gettingListData()
+
+                        }
+                    }
+                    return true
+                }
+
+                // 검색창에서 글자 변경이 일어날 때
+                override fun onQueryTextChange(p0: String?): Boolean {
+                    return true
+                }
+            })
+        }
+    }
+
     // 최근 검색어 목록
     fun settingRecyclerViewRecentSearch(){
         activitySearchBinding.apply {
@@ -109,11 +153,19 @@ class SearchActivity : AppCompatActivity() {
         }
 
         override fun getItemCount(): Int {
-            return 10
+            return recentSearchList.size
         }
 
         override fun onBindViewHolder(holder: RecentSearchViewHolder, position: Int) {
-            holder.rowSearchRecentBinding.textViewRowRecentSearch.text = "서울 헬스장"
+            holder.rowSearchRecentBinding.textViewRowRecentSearch.text = recentSearchList[position].searchData
+        }
+    }
+
+    fun gettingListData(){
+        CoroutineScope(Dispatchers.Main).launch {
+            recentSearchList = SearchDao.getSearchList()
+
+            activitySearchBinding.recyclerVIewSearch.adapter?.notifyDataSetChanged()
         }
     }
 
