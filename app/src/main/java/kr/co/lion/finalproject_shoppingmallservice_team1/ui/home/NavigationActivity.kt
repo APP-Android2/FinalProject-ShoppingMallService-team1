@@ -17,6 +17,7 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.ui.community.CommunityF
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.my.MyFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.ReadTrainerActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.TrainerFragment
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.TrainerPostAddFragment
 
 class NavigationActivity : AppCompatActivity() {
 
@@ -124,6 +125,11 @@ class NavigationActivity : AppCompatActivity() {
             NAVIGATION_FRAGMENT_NAME.MY_FRAGMENT -> {
                 newFragment = MyFragment()
                 currentFragmentId = NAVIGATION_FRAGMENT_NAME.MY_FRAGMENT.num
+            }
+
+            NAVIGATION_FRAGMENT_NAME.TRAINER_POST_FRAGMENT -> {
+                newFragment = TrainerPostAddFragment()
+                currentFragmentId = NAVIGATION_FRAGMENT_NAME.TRAINER_POST_FRAGMENT.num
             }
         }
 
