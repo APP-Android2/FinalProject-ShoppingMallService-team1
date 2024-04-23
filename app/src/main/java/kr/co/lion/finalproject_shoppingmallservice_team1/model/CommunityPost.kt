@@ -1,3 +1,5 @@
+import android.graphics.Bitmap
+
 // 커뮤니티 게시글
 data class CommunityPost (
 

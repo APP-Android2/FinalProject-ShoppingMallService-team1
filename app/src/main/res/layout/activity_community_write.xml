@@ -63,6 +63,11 @@
                         android:hint="내용을 입력하세요."
                         android:text="@={communityViewModel.editTextCommunityContent}"/>
 
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewPhoto"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/Up_Down_Margin" />
                 </LinearLayout>
             </ScrollView>
 
@@ -84,7 +89,18 @@
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <Button
-                    android:id="@+id/btnSend"
+                    android:id="@+id/btnAlbum"
+                    style="@style/Widget.Material3.Button.IconButton.Filled"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@color/InputCompartment_Color"
+                    android:backgroundTint="@color/InputCompartment_Color"
+                    app:icon="@drawable/photo_permission"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btnCamera" />
+
+                <Button
+                    android:id="@+id/btnLocation"
                     style="@style/Widget.Material3.Button.IconButton.Filled"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
@@ -92,7 +108,7 @@
                     android:backgroundTint="@color/InputCompartment_Color"
                     app:icon="@drawable/my_location"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/btnCamera" />
+                    app:layout_constraintStart_toEndOf="@id/btnAlbum" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
