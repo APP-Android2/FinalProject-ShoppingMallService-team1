@@ -1,5 +1,6 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.dao
 
+import CommunityPost
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -8,7 +9,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
-import kr.co.lion.finalproject_shoppingmallservice_team1.model.CommunityPost
 import kr.co.lion.finalproject_shoppingmallservice_team1.model.TrainerPost
 import kr.co.lion.finalproject_shoppingmallservice_team1.model.VisitConsulting
 
@@ -66,6 +66,20 @@ class CommunityDao {
             }.join()
 
             return dataList
+        }
+        suspend fun getCommnunityPost(communityPostId:Int):CommunityPost{
+            val querySnapshot = FirebaseFirestore.getInstance().collection("CommunityPost")
+                .whereEqualTo("communityPostId", communityPostId)
+                .get()
+                .await()
+
+            if (!querySnapshot.isEmpty) {
+                val documentSnapshot = querySnapshot.documents[0]
+                val communityPost = documentSnapshot.toObject(CommunityPost::class.java)
+                return communityPost ?: throw IllegalStateException("Failed to parse CommunityPost")
+            } else {
+                throw NoSuchElementException("CommunityPost with ID $communityPostId not found")
+            }
         }
     }
 }
