@@ -197,12 +197,8 @@ class TrainerFragment : Fragment() {
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
 
-                // 이미지 클릭 시 상세페이지 이동 설정
                 // 찜 버튼 클릭 설정
                 this.rowTrainerBinding.apply {
-                    cardViewTrainer.setOnClickListener {
-                        navigationActivity.readTrainerRequest()
-                    }
                     trainerMyPickImageButton.setOnClickListener {
                         // 추후 DB 컬럼 값으로 변경 되도록 하기. (현재 단일 체크 가능)
                         isImageClick = !isImageClick
@@ -247,6 +243,14 @@ class TrainerFragment : Fragment() {
                     TrainerDao.gettingTrainerPostProfileImage(navigationActivity, fitnessPostList[position].trainerProfileImageUrl, holder.rowTrainerBinding.trainerProfileImageView)
                 }
             }
+
+            // 항목 클릭 시 상세화면
+            holder.rowTrainerBinding.root.setOnClickListener {
+                val readTrainerIntent = Intent(context, ReadTrainerActivity::class.java)
+                readTrainerIntent.putExtra("trainerPostId", fitnessPostList[position].trainerPostId)
+
+                startActivity(readTrainerIntent)
+            }
         }
     }
 
@@ -280,12 +284,8 @@ class TrainerFragment : Fragment() {
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
 
-                // 이미지 클릭 시 상세페이지 이동 설정
                 // 찜 버튼 클릭 설정
                 this.rowTrainerBinding.apply {
-                    cardViewTrainer.setOnClickListener {
-                        navigationActivity.readTrainerRequest()
-                    }
                     trainerMyPickImageButton.setOnClickListener {
                         // 추후 DB 컬럼 값으로 변경 되도록 하기. (현재 단일 체크 가능)
                         isImageClick = !isImageClick
@@ -331,6 +331,13 @@ class TrainerFragment : Fragment() {
                     TrainerDao.gettingTrainerPostProfileImage(navigationActivity, pilatesPostList[position].trainerProfileImageUrl, holder.rowTrainerBinding.trainerProfileImageView)
                 }
             }
+            // 항목 클릭 시 상세화면
+            holder.rowTrainerBinding.root.setOnClickListener {
+                val readTrainerIntent = Intent(context, ReadTrainerActivity::class.java)
+                readTrainerIntent.putExtra("trainerPostId", pilatesPostList[position].trainerPostId)
+
+                startActivity(readTrainerIntent)
+            }
         }
     }
 
@@ -362,12 +369,8 @@ class TrainerFragment : Fragment() {
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
 
-                // 이미지 클릭 시 상세페이지 이동 설정
                 // 찜 버튼 클릭 설정
                 this.rowTrainerBinding.apply {
-                    cardViewTrainer.setOnClickListener {
-                        navigationActivity.readTrainerRequest()
-                    }
                     trainerMyPickImageButton.setOnClickListener {
                         // 추후 DB 컬럼 값으로 변경 되도록 하기. (현재 단일 체크 가능)
                         isImageClick = !isImageClick
@@ -412,6 +415,13 @@ class TrainerFragment : Fragment() {
                 if(swimmingPostList[position].trainerProfileImageUrl != null){
                     TrainerDao.gettingTrainerPostProfileImage(navigationActivity, swimmingPostList[position].trainerProfileImageUrl, holder.rowTrainerBinding.trainerProfileImageView)
                 }
+            }
+            // 항목 클릭 시 상세화면
+            holder.rowTrainerBinding.root.setOnClickListener {
+                val readTrainerIntent = Intent(context, ReadTrainerActivity::class.java)
+                readTrainerIntent.putExtra("trainerPostId", swimmingPostList[position].trainerPostId)
+
+                startActivity(readTrainerIntent)
             }
         }
     }

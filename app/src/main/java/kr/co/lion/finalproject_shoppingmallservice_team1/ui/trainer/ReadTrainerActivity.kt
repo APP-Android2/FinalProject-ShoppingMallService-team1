@@ -26,10 +26,16 @@ class ReadTrainerActivity : AppCompatActivity() {
         activityReadTrainerBinding = ActivityReadTrainerBinding.inflate(layoutInflater)
         setContentView(activityReadTrainerBinding.root)
 
+        // 항목 Item 클릭할 때, 넘어온 게시판ID 데이터
+        val trainerPostIdIntent = intent.getIntExtra("trainerPostId", 0)
+
+        val trainerBundle = Bundle()
+        trainerBundle.putInt("trainerPostId", trainerPostIdIntent)
+
         myPickButtonClick()
         purchasingButtonClick()
 
-        replaceFragment(TRAINER_FRAGMENT_NAME.READ_TRAINER_FRAGMENT, false, false, null)
+        replaceFragment(TRAINER_FRAGMENT_NAME.READ_TRAINER_FRAGMENT, false, false, trainerBundle)
     }
 
 
@@ -41,7 +47,6 @@ class ReadTrainerActivity : AppCompatActivity() {
      * 4. 구매하기의 옵션을 보여 주기 위한 BottomSheet를 띄워준다.
      * 5. ReadTrainerFragment 실행을 위함
      */
-
 
     fun myPickButtonClick(){
         activityReadTrainerBinding.apply {
