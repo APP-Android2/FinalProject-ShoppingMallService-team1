@@ -1,6 +1,7 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.ui.community.viewmodel
 
 import CommunityPost
+import android.graphics.Bitmap
 import android.os.Build
 import android.util.Log
 import android.view.View
@@ -36,7 +37,7 @@ class CommunityViewModel:ViewModel() {
         chipChecked.value = chip.isChecked
     }
 
-    fun updateData(){
+    fun updateData(imageList:MutableList<String>){
         CoroutineScope(Dispatchers.Main).launch {
 
             val postDate = LocalDateTime.now(zoneId)
@@ -51,7 +52,7 @@ class CommunityViewModel:ViewModel() {
             val content = editTextCommunityContent.value!!
             val postTime = getPostTime(postDate.format(formatter))
             val location = ""
-            val imageUrls = mutableListOf<String>()
+            val imageUrls = imageList
 
             val communityPost = CommunityPost(communityPostId, userId!!, title, content,
                 postTime, location, imageUrls)

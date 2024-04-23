@@ -5,11 +5,12 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.ContextThemeWrapper
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,12 +28,14 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.dao.CommunityDao
 import kr.co.lion.finalproject_shoppingmallservice_team1.dao.UserDao
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivityContentBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowCommentBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowCommunityContentphotoBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.chat.ChattingActivity
 
 class ContentActivity : AppCompatActivity() {
     lateinit var activityContentBinding: ActivityContentBinding
     lateinit var navigationActivity: NavigationActivity
     lateinit var communityPost: CommunityPost
+    lateinit var imageList: List<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityContentBinding = ActivityContentBinding.inflate(layoutInflater)
@@ -47,14 +50,15 @@ class ContentActivity : AppCompatActivity() {
 
 
         settingToolbar()
+        setContentView(activityContentBinding.root)
+
         settingRecyclerComment()
 
-        setContentView(activityContentBinding.root)
     }
 
     fun settingContent(communityContentIdx:Int){
         CoroutineScope(Dispatchers.Main).launch {
-            val communityPost = CommunityDao.getCommnunityPost(communityContentIdx)
+            communityPost = CommunityDao.getCommnunityPost(communityContentIdx)
             activityContentBinding.apply {
                 textViewContentTitle.text = communityPost.title
                 textViewContentWrite.text = communityPost.content
@@ -62,6 +66,14 @@ class ContentActivity : AppCompatActivity() {
                 val user = UserDao.getUser(communityPost.userId)
                 textViewContentNickname.text = user?.nickName
                 textViewContentDate.text = communityPost.postTime
+                imageList = communityPost.imageUrls
+
+                recyclerViewContentPhoto.apply {
+                    adapter = ContentPhotoRecyclerviewAdapter(imageList)
+                    layoutManager = LinearLayoutManager(this@ContentActivity,
+                        LinearLayoutManager.HORIZONTAL, false)
+
+                }
             }
         }
     }
@@ -121,6 +133,38 @@ class ContentActivity : AppCompatActivity() {
                     true
                 }
             }
+        }
+    }
+    inner class ContentPhotoRecyclerviewAdapter(val imageList: List<String>):RecyclerView.Adapter<ContentPhotoRecyclerviewAdapter.ContentPhotoViewHolder>(){
+        inner class ContentPhotoViewHolder(rowCommunityContentphotoBinding: RowCommunityContentphotoBinding):RecyclerView.ViewHolder(rowCommunityContentphotoBinding.root){
+            val rowCommunityContentphotoBinding: RowCommunityContentphotoBinding
+
+
+            init {
+                this.rowCommunityContentphotoBinding = rowCommunityContentphotoBinding
+
+                this.rowCommunityContentphotoBinding.root.layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
+            }
+        }
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContentPhotoViewHolder {
+            val rowCommunityContentphotoBinding = RowCommunityContentphotoBinding.inflate(layoutInflater)
+            val contentphotoViewHolder = ContentPhotoViewHolder(rowCommunityContentphotoBinding)
+
+            return contentphotoViewHolder
+        }
+
+        override fun getItemCount(): Int {
+            return imageList.size
+        }
+
+        @RequiresApi(Build.VERSION_CODES.O)
+        override fun onBindViewHolder(holder: ContentPhotoViewHolder, position: Int) {
+            // 이미지를 String에서 Bitmap으로 변환하여 ImageView에 설정
+            val image = Tools.stringToBitmap(imageList[position])
+            holder.rowCommunityContentphotoBinding.imageViewCommunityContent2.setImageBitmap(image)
         }
     }
 
