@@ -163,5 +163,21 @@ class TrainerDao {
             return trainerPostList
         }
 
+        // 글 번호로 데이터를 가져와 반환한다.
+        suspend fun selectTrainerPostData(trainerPostId: Int): TrainerPost? {
+            var trainerPost: TrainerPost? = null
+
+            val job1 = CoroutineScope(Dispatchers.IO).launch {
+                val collectionReference = Firebase.firestore.collection("TrainerPostMaster")
+                val queryShapshot =
+                    collectionReference.whereEqualTo("trainerPostId", trainerPostId).get().await()
+                // toObject : 지정한 클래스를 가지고 객체를 만든 다음
+                // 가져온 데이터의 필드의 이름과 동일한 이름의 프로퍼티에 필드의 값을 담아준다.
+                trainerPost = queryShapshot.documents[0].toObject(TrainerPost::class.java)
+            }
+            job1.join()
+
+            return trainerPost
+        }
     }
 }
