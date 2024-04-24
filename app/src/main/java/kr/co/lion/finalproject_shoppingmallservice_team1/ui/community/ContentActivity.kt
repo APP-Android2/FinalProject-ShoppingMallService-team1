@@ -1,13 +1,16 @@
 package kr.co.lion.finalproject_shoppingmallservice_team1.ui.community
 
+import CommunityPost
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.ContextThemeWrapper
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,24 +18,64 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.Tools
+import kr.co.lion.finalproject_shoppingmallservice_team1.dao.CommunityDao
+import kr.co.lion.finalproject_shoppingmallservice_team1.dao.UserDao
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivityContentBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowCommentBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowCommunityContentphotoBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.chat.ChattingActivity
 
 class ContentActivity : AppCompatActivity() {
     lateinit var activityContentBinding: ActivityContentBinding
     lateinit var navigationActivity: NavigationActivity
+    lateinit var communityPost: CommunityPost
+    lateinit var imageList: List<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityContentBinding = ActivityContentBinding.inflate(layoutInflater)
 
+        val communityContentIdx = intent.getStringExtra("communityContent")
+        if (communityContentIdx != null) {
+            // 여기서 communityContent를 사용하여 원하는 작업을 수행합니다.
+            settingContent(communityContentIdx.toInt())
+        } else {
+            // "communityContent" 키로 전달된 데이터가 없을 때 처리할 작업을 수행합니다.
+        }
+
+
         settingToolbar()
+        setContentView(activityContentBinding.root)
+
         settingRecyclerComment()
 
-        setContentView(activityContentBinding.root)
+    }
+
+    fun settingContent(communityContentIdx:Int){
+        CoroutineScope(Dispatchers.Main).launch {
+            communityPost = CommunityDao.getCommnunityPost(communityContentIdx)
+            activityContentBinding.apply {
+                textViewContentTitle.text = communityPost.title
+                textViewContentWrite.text = communityPost.content
+
+                val user = UserDao.getUser(communityPost.userId)
+                textViewContentNickname.text = user?.nickName
+                textViewContentDate.text = communityPost.postTime
+                imageList = communityPost.imageUrls
+
+                recyclerViewContentPhoto.apply {
+                    adapter = ContentPhotoRecyclerviewAdapter(imageList)
+                    layoutManager = LinearLayoutManager(this@ContentActivity,
+                        LinearLayoutManager.HORIZONTAL, false)
+
+                }
+            }
+        }
     }
     fun settingToolbar() {
         activityContentBinding.apply {
@@ -92,6 +135,38 @@ class ContentActivity : AppCompatActivity() {
             }
         }
     }
+    inner class ContentPhotoRecyclerviewAdapter(val imageList: List<String>):RecyclerView.Adapter<ContentPhotoRecyclerviewAdapter.ContentPhotoViewHolder>(){
+        inner class ContentPhotoViewHolder(rowCommunityContentphotoBinding: RowCommunityContentphotoBinding):RecyclerView.ViewHolder(rowCommunityContentphotoBinding.root){
+            val rowCommunityContentphotoBinding: RowCommunityContentphotoBinding
+
+
+            init {
+                this.rowCommunityContentphotoBinding = rowCommunityContentphotoBinding
+
+                this.rowCommunityContentphotoBinding.root.layoutParams = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
+            }
+        }
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContentPhotoViewHolder {
+            val rowCommunityContentphotoBinding = RowCommunityContentphotoBinding.inflate(layoutInflater)
+            val contentphotoViewHolder = ContentPhotoViewHolder(rowCommunityContentphotoBinding)
+
+            return contentphotoViewHolder
+        }
+
+        override fun getItemCount(): Int {
+            return imageList.size
+        }
+
+        @RequiresApi(Build.VERSION_CODES.O)
+        override fun onBindViewHolder(holder: ContentPhotoViewHolder, position: Int) {
+            // 이미지를 String에서 Bitmap으로 변환하여 ImageView에 설정
+            val image = Tools.stringToBitmap(imageList[position])
+            holder.rowCommunityContentphotoBinding.imageViewCommunityContent2.setImageBitmap(image)
+        }
+    }
 
     fun settingRecyclerComment(){
         activityContentBinding.apply {
@@ -106,9 +181,10 @@ class ContentActivity : AppCompatActivity() {
         }
     }
 
-    inner class CommentRecyclerViewAdapter:RecyclerView.Adapter<CommentRecyclerViewAdapter.CommentViewHolder>(){
-        inner class CommentViewHolder(rowCommentBinding: RowCommentBinding):RecyclerView.ViewHolder(rowCommentBinding.root){
-            val rowCommentBinding:RowCommentBinding
+    inner class CommentRecyclerViewAdapter:RecyclerView.Adapter<CommentRecyclerViewAdapter.CommentViewHolder>() {
+        inner class CommentViewHolder(rowCommentBinding: RowCommentBinding) :
+            RecyclerView.ViewHolder(rowCommentBinding.root) {
+            val rowCommentBinding: RowCommentBinding
 
             init {
                 this.rowCommentBinding = rowCommentBinding
@@ -151,7 +227,7 @@ class ContentActivity : AppCompatActivity() {
                     setTitle("대댓글")
                     setMessage("대댓글을 작성하시겠습니까?")
                     setNegativeButton("취소", null)
-                    setPositiveButton("작성"){ dialogInterface: DialogInterface, i: Int ->
+                    setPositiveButton("작성") { dialogInterface: DialogInterface, i: Int ->
                         Tools.showSoftInput(
                             this@ContentActivity,
                             activityContentBinding.editTextComment
@@ -160,16 +236,20 @@ class ContentActivity : AppCompatActivity() {
                     }
                     show().apply {
                         getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK)
-                        getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(context,
-                            R.color.Pup_Color
-                        ))
+                        getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(
+                            ContextCompat.getColor(
+                                context,
+                                R.color.Pup_Color
+                            )
+                        )
                     }
                 }
             }
             holder.rowCommentBinding.buttonCommentMenu.setOnClickListener {
                 val menuResId = R.menu.menu_comment
 
-                val contextWrapper = ContextThemeWrapper(this@ContentActivity,
+                val contextWrapper = ContextThemeWrapper(
+                    this@ContentActivity,
                     R.style.popupMenuStyle
                 )
 
@@ -185,11 +265,14 @@ class ContentActivity : AppCompatActivity() {
                         }
 
                         R.id.menuItemCommentDeclaration -> {
-                            MaterialAlertDialogBuilder(this@ContentActivity, R.style.MyDialogTheme).apply {
+                            MaterialAlertDialogBuilder(
+                                this@ContentActivity,
+                                R.style.MyDialogTheme
+                            ).apply {
                                 setTitle("게시물 신고")
                                 setMessage("이 게시물을 신고하시겠습니까?")
                                 setNegativeButton("취소", null)
-                                setPositiveButton("신고"){ dialogInterface: DialogInterface, i: Int ->
+                                setPositiveButton("신고") { dialogInterface: DialogInterface, i: Int ->
                                     Snackbar.make(it, "신고를 완료했습니다.", Snackbar.LENGTH_SHORT).show()
                                 }
                                 show().apply {
@@ -198,6 +281,7 @@ class ContentActivity : AppCompatActivity() {
                                 }
                             }
                         }
+
                         else -> return@setOnMenuItemClickListener false
                     }
                     true
