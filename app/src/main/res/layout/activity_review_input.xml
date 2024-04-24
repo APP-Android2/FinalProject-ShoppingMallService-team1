@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="reviewInputViewModel"
+            type="kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.viewmodel.ReviewInputViewModel" />
+    </data>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -132,7 +138,8 @@
                         android:hint="리뷰를 작성 해주세요"
                         android:inputType="text|textMultiLine"
                         android:padding="@dimen/Side_Padding"
-                        android:textSize="@dimen/Small_T_Text_Size" />
+                        android:textSize="@dimen/Small_T_Text_Size"
+                        android:text="@={reviewInputViewModel.reviewText}"/>
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -148,12 +155,14 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/reviewAlbum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="앨범보기"
                     app:drawableStartCompat="@drawable/photo" />
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/reviewCamera"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/Chip_List_Margin"
@@ -184,7 +193,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/ic_launcher_background" />
+                            android:src="@drawable/photo" />
 
                         <ImageButton
                             android:id="@+id/deleteImageButton1"

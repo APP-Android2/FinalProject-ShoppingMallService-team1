@@ -112,8 +112,8 @@
                 android:layout_marginBottom="10dp"
                 app:cardBackgroundColor="@color/InputCompartment_Color">
 
-                <ImageButton
-                    android:id="@+id/userReViewImageButton"
+                <ImageView
+                    android:id="@+id/userReviewImage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"

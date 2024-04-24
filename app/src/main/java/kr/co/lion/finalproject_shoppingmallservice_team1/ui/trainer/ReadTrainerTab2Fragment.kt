@@ -18,14 +18,20 @@ import kotlinx.coroutines.launch
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentReadTrainerTab2Binding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowReadTrainerTab2Binding
+import kr.co.lion.finalproject_shoppingmallservice_team1.model.TrainerReview
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.dao.TrainerDao
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.dao.TrainerReviewDao
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.viewmodel.ReadTrainerViewModel
 
 
 class ReadTrainerTab2Fragment : Fragment() {
 
     lateinit var fragmentReadTrainerTab2Binding: FragmentReadTrainerTab2Binding
+    lateinit var readTrainerActivity: ReadTrainerActivity
     lateinit var readTrainerViewModel: ReadTrainerViewModel
+
+    // 트레이너 리뷰 RecyclerView 구성을 위한 리스트
+    var trainerReviewList = mutableListOf<TrainerReview>()
 
     // 전달 받을 게시글 Id
     var trainerPostId = 0
@@ -37,12 +43,15 @@ class ReadTrainerTab2Fragment : Fragment() {
         fragmentReadTrainerTab2Binding.readTrainerViewModel = readTrainerViewModel
         fragmentReadTrainerTab2Binding.lifecycleOwner = this
 
+        readTrainerActivity = activity as ReadTrainerActivity
+
         // 전달 받은 arguments가 null 일경우, 0번 ID 반환 (0번은 오류 게시판)
         trainerPostId = arguments?.getInt("trainerPostId")?:0
 
         createReviewTrainer()
         settingChipType()
         settingTrainerPostData()
+        gettingReviewData()
         settingRecyclerViewTrainerReview()
 
         return fragmentReadTrainerTab2Binding.root
@@ -116,6 +125,13 @@ class ReadTrainerTab2Fragment : Fragment() {
         }
     }
 
+    fun gettingReviewData(){
+        CoroutineScope(Dispatchers.Main).launch {
+            trainerReviewList = TrainerReviewDao.gettingTrainerReviewList(trainerPostId)
+            fragmentReadTrainerTab2Binding.recyclerViewTrainerReview.adapter?.notifyDataSetChanged()
+        }
+    }
+
     inner class TrainerReviewRecyclerViewAdapter: RecyclerView.Adapter<TrainerReviewRecyclerViewAdapter.TrainerReviewViewHolder>(){
         inner class TrainerReviewViewHolder(rowReadTrainerTab2Binding: RowReadTrainerTab2Binding): RecyclerView.ViewHolder(rowReadTrainerTab2Binding.root){
             val rowReadTrainerTab2Binding: RowReadTrainerTab2Binding
@@ -138,14 +154,20 @@ class ReadTrainerTab2Fragment : Fragment() {
         }
 
         override fun getItemCount(): Int {
-            return 5
+            return trainerReviewList.size
         }
 
         override fun onBindViewHolder(holder: TrainerReviewViewHolder, position: Int) {
-            holder.rowReadTrainerTab2Binding.userNickNameTextView.text = "닉네임${position}"
-            holder.rowReadTrainerTab2Binding.userReviewCreateDateTextView.text = "${position}달전"
-            holder.rowReadTrainerTab2Binding.userReviewTextView.text = "구체적인 수업 굿${position}"
-            holder.rowReadTrainerTab2Binding.memberShipTypeTextView.text = "PT ${position}0회"
+            holder.rowReadTrainerTab2Binding.userNickNameTextView.text = trainerReviewList[position].userId
+            holder.rowReadTrainerTab2Binding.userReviewCreateDateTextView.text = trainerReviewList[position].createDate
+            holder.rowReadTrainerTab2Binding.userReviewTextView.text = trainerReviewList[position].reviewText
+            holder.rowReadTrainerTab2Binding.memberShipTypeTextView.text = trainerReviewList[position].membershipId
+
+            CoroutineScope(Dispatchers.Main).launch {
+                if(trainerReviewList[position].reviewImageUrls != null){
+                    TrainerReviewDao.gettingTrainerReviewImage(readTrainerActivity, trainerReviewList[position].reviewImageUrls, holder.rowReadTrainerTab2Binding.userReviewImage)
+                }
+            }
 
             holder.rowReadTrainerTab2Binding.trainerNameTextView.text ="트레이너${position}"
             holder.rowReadTrainerTab2Binding.trainerReviewTextView.text = "안녕하세요. 트레이너${position} 코멘트"
