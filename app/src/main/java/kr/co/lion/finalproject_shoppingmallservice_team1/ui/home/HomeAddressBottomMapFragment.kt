@@ -69,13 +69,12 @@ class HomeAddressBottomMapFragment : BottomSheetDialogFragment() {
         navigationActivity.requestPermissions(permissionList, 0)
 
         settingToolbar()
+        settingGoogleMaps()
 
         return fragmentHomeAddressBottomMapBinding.root
     }
 
     fun settingToolbar(){
-
-        Log.d("test1234", "t1")
 
         fragmentHomeAddressBottomMapBinding.apply {
             toolbarAddressMap.apply {
@@ -103,8 +102,6 @@ class HomeAddressBottomMapFragment : BottomSheetDialogFragment() {
             val bottomSheetDialog = it as BottomSheetDialog
             // 높이를 설정한다.
             setBottomSheetHeight(bottomSheetDialog)
-
-            settingGoogleMaps()
         }
 
         return dialog
@@ -141,17 +138,12 @@ class HomeAddressBottomMapFragment : BottomSheetDialogFragment() {
     // 구글 지도 세팅
     fun settingGoogleMaps(){
 
-        Log.d("test1234", "구글맵 호출")
-
         // MapFragment 객체를 가져온다.
-        val supportMapFragment = navigationActivity.supportFragmentManager
-            .findFragmentById(R.id.mapView) as SupportMapFragment
+        val supportMapFragment = childFragmentManager.findFragmentById(R.id.mapView) as SupportMapFragment
 
         // 리스너를 설정한다.
         // 구글 지도 사용이 완료되면 동작한다.
         supportMapFragment.getMapAsync {
-
-            Log.d("test1234", "구글맵 사용 완료 시")
 
             // 구글 지도 객체를 담아준다.
             homeAddressBottomGoogleMap = it
