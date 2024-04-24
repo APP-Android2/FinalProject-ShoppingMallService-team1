@@ -123,22 +123,17 @@ class TransferMembershipContentListFragment : Fragment() {
                     when (item.itemId) {
                         R.id.transfermembership_menuItem_total -> {
                             text = "모든 운동"
-                            transferMembershipContentListViewModel.filter.value = "모든 운동"
                         }
                         R.id.transfermembership_menuItem_health -> {
                             text = "헬스"
-                            transferMembershipContentListViewModel.filter.value = "헬스"
                         }
                         R.id.transfermembership_menuItem_pilates -> {
                             text = "필라테스"
-                            transferMembershipContentListViewModel.filter.value = "필라테스"
                         }
                         R.id.transfermembership_menuItem_swimming -> {
                             text = "수영"
-                            transferMembershipContentListViewModel.filter.value = "수영"
                         }
                     }
-                    transferMembershipContentListViewModel.loadPosts()
                     true
                 }
             }
