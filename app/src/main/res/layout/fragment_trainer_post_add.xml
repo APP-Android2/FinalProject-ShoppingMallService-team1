@@ -15,6 +15,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="20dp"
+        android:background="@color/white"
         tools:context=".ui.trainer.TrainerPostAddFragment">
 
         <EditText
@@ -46,16 +47,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:hint="운동 타입 (DB에서 확인 필요)"
-            android:text="@{trainerPostAddViewModel.textEditTrainerType}"/>
-
-        <EditText
-            android:id="@+id/textEditPostStatus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:hint="게시판 상태"
-            android:text="@{trainerPostAddViewModel.textEditPostStatus.toString()}"/>
+            android:hint="운동 타입 (헬스, 필라테스, 수영)"
+            android:text="@={trainerPostAddViewModel.textEditTrainerType}"/>
 
         <ImageView
             android:id="@+id/trainerProfileImageView"

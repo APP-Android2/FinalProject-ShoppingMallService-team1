@@ -11,6 +11,9 @@ class ReadTrainerViewModel: ViewModel() {
     val readTrainerOrgNameTextView = MutableLiveData<String>()
     // 트레이너 소속 센터 주소
     val readTrainerLocationTextView = MutableLiveData<String>()
+    // 트레이너 프로필 사진
+    val trainerProfileImageUrl = MutableLiveData<String>()
+
 
     // 공지사항
     val readTrainerNotificationText = MutableLiveData<String>()
