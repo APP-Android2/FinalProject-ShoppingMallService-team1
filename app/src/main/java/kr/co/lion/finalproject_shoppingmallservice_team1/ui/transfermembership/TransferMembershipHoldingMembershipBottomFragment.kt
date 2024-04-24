@@ -6,23 +6,32 @@ import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentTransferMembershipHoldingMembershipBottomBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowHoldingmembershipItemBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.transfermembership.viewmodel.TransferMembershipHoldingMembershipViewModel
 
 class TransferMembershipHoldingMembershipBottomFragment : BottomSheetDialogFragment() {
 
     private lateinit var fragmentTransferMembershipHoldingBottomBinding: FragmentTransferMembershipHoldingMembershipBottomBinding
     private lateinit var transferMembershipActivity: TransferMembershipActivity
 
+    private val transferMembershipHoldingMembershipViewModel: TransferMembershipHoldingMembershipViewModel by viewModels()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
 
-        fragmentTransferMembershipHoldingBottomBinding = FragmentTransferMembershipHoldingMembershipBottomBinding.inflate(inflater)
+        fragmentTransferMembershipHoldingBottomBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_transfer_membership_holding_membership_bottom, container, false)
+        fragmentTransferMembershipHoldingBottomBinding.transferMembershipHoldingMembershipViewModel = transferMembershipHoldingMembershipViewModel
+        fragmentTransferMembershipHoldingBottomBinding.lifecycleOwner = this@TransferMembershipHoldingMembershipBottomFragment
+
         transferMembershipActivity = activity as TransferMembershipActivity
 
         settingRecyclerView()

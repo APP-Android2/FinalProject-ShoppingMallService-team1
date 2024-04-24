@@ -7,25 +7,33 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kr.co.lion.finalproject_shoppingmallservice_team1.NAVIGATION_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.Tools
-import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.ActivityReviewInputBinding
-import kr.co.lion.finalproject_shoppingmallservice_team1.model.TrainerReview
-import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.dao.TrainerReviewDao
-import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.viewmodel.ReviewInputViewModel
+import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentTrainerPostAddBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.model.TrainerPost
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActivity
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.dao.TrainerDao
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.viewmodel.TrainerPostAddViewModel
 import java.io.File
 
-class ReviewInputActivity : AppCompatActivity() {
+class TrainerPostAddFragment : Fragment() {
 
-    lateinit var activityReviewInputBinding: ActivityReviewInputBinding
-    lateinit var reviewInputViewModel: ReviewInputViewModel
+    lateinit var fragmentTrainerPostAddBinding: FragmentTrainerPostAddBinding
+    lateinit var navigationActivity: NavigationActivity
+    lateinit var trainerPostAddViewModel: TrainerPostAddViewModel
 
     // Activity 실행을 위한 런처
     lateinit var cameraLauncher: ActivityResultLauncher<Intent>
@@ -37,82 +45,64 @@ class ReviewInputActivity : AppCompatActivity() {
     // 이미지 첨부 여부
     var isAddPicture = false
 
-    // 트레이너 리뷰 모델 객체
-    val tReviewModel = TrainerReview()
+    // 트레이너 게시판 모델 객체
+    val tPost = TrainerPost()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        activityReviewInputBinding = ActivityReviewInputBinding.inflate(layoutInflater)
-        setContentView(activityReviewInputBinding.root)
+        fragmentTrainerPostAddBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_trainer_post_add, container, false)
+        trainerPostAddViewModel = TrainerPostAddViewModel()
+        fragmentTrainerPostAddBinding.trainerPostAddViewModel = trainerPostAddViewModel
+        fragmentTrainerPostAddBinding.lifecycleOwner = this
 
-        reviewInputViewModel = ViewModelProvider(this).get(ReviewInputViewModel::class.java)
-        activityReviewInputBinding.reviewInputViewModel = reviewInputViewModel
-        activityReviewInputBinding.lifecycleOwner = this
+        navigationActivity = activity as NavigationActivity
 
-        settingToolbar()
-        settingButton()
-        settingImage()
+        settingButtonClick()
         settingCameraLauncher()
         settingAlbumLauncher()
+
+
+        return fragmentTrainerPostAddBinding.root
     }
 
-    fun settingToolbar() {
-        activityReviewInputBinding.apply {
-            toolbarReviewInput.apply {
-                setNavigationIcon(R.drawable.close)
-                setNavigationOnClickListener {
-                    finish()
-                }
-            }
-        }
-    }
-
-    fun settingButton(){
-        activityReviewInputBinding.apply {
-            // 리뷰 등록 버튼
-            reviewAddButton.setOnClickListener {
-                saveTrainerReview()
-                finish()
+    fun settingButtonClick(){
+        fragmentTrainerPostAddBinding.apply {
+            // 완료 버튼
+            buttonDone1.setOnClickListener {
+                saveTrainerPostAdd()
+                navigationActivity.replaceFragment(NAVIGATION_FRAGMENT_NAME.TRAINER_FRAGMENT, false, false, null)
             }
             // 카메라 실행 버튼
-            reviewCamera.setOnClickListener {
+            buttonCamera.setOnClickListener {
                 startCameraLauncher()
             }
             // 갤러리 실행 버튼
-            reviewAlbum.setOnClickListener {
+            buttonAlbum.setOnClickListener {
                 startAlbumLauncher()
             }
-            // 휴지통 버튼
-            deleteImageButton1.setOnClickListener {
-                reviewImageView1.setImageDrawable(null)
+            // 초기화 실행 버튼
+            buttonClear.setOnClickListener {
+                settingInputForm()
             }
-            deleteImageButton2.setOnClickListener {
-                reviewImageView2.setImageDrawable(null)
-            }
-            deleteImageButton3.setOnClickListener {
-                reviewImageView3.setImageDrawable(null)
-            }
-            deleteImageButton4.setOnClickListener {
-                reviewImageView4.setImageDrawable(null)
-            }
-
-
         }
     }
 
+    // 입력 요소 초기화 설정
+    fun settingInputForm(){
+        trainerPostAddViewModel.textEditTrainerName.value = ""
+        trainerPostAddViewModel.textEditCenterName.value = ""
+        trainerPostAddViewModel.textEditCenterLocation.value = ""
+        trainerPostAddViewModel.textEditTrainerType.value = ""
 
-    fun settingImage(){
-        activityReviewInputBinding.apply {
-            //reviewImageView1.setImageDrawable(null)
-            reviewImageView2.setImageDrawable(null)
-            reviewImageView3.setImageDrawable(null)
-            reviewImageView4.setImageDrawable(null)
-        }
+        fragmentTrainerPostAddBinding.trainerProfileImageView.setImageResource(R.drawable.person_add)
+        isAddPicture = false
+
+        Tools.showSoftInput(navigationActivity, fragmentTrainerPostAddBinding.textEditTrainerName)
     }
 
-    // 트레이너 리뷰 작성하기 (저장)
-    fun saveTrainerReview(){
+
+    // 트레이너 게시판 생성하기 (저장)
+    fun saveTrainerPostAdd(){
         CoroutineScope(Dispatchers.Main).launch {
 
             // 서버에서의 첨부 이미지 파일 이름
@@ -121,54 +111,61 @@ class ReviewInputActivity : AppCompatActivity() {
             // 첨부된 이미지가 있다면..
             if(isAddPicture == true){
                 // 이미지의 뷰의 이미지 데이터를 파일로 저장한다. (로컬)
-                Tools.saveImageViewData(this@ReviewInputActivity, activityReviewInputBinding.reviewImageView1, "uploadTemp.jpg")
+                Tools.saveImageViewData(navigationActivity, fragmentTrainerPostAddBinding.trainerProfileImageView, "uploadTemp.jpg")
                 // 서버에서의 파일이름 (현재시간을 사용)
                 serverFileName = "image_${System.currentTimeMillis()}.jpg"
                 // 서버로 업로드 한다.
-                TrainerReviewDao.uploadImage(this@ReviewInputActivity, "uploadTemp.jpg", serverFileName)
+                TrainerDao.uploadImage(navigationActivity, "uploadTemp.jpg", serverFileName)
             }
 
-            // 트레이너 리뷰 시퀀스 값을 가져온다.
-            val trainerReviewSequence = TrainerReviewDao.gettingTrainerReviewSequence()
+            // 트레이너 게시판 시퀀스 값을 가져온다.
+            val trainerPostSequence = TrainerDao.gettingTrainerPostSequence()
             // 시퀀스값을 1 증가시켜 덮어쓰기.
-            TrainerReviewDao.updateTrainerReviewSequence(trainerReviewSequence + 1)
+            TrainerDao.updateTrainerPostSequence(trainerPostSequence + 1)
 
             // 저장할 데이터를 가져온다.
-            val reviewId = trainerReviewSequence + 1
-            val reviewStatus = 0
-            val createDate = "1달전"
+            val trainerPostId = trainerPostSequence + 1
+            val centerId = "Gym"
+            val centerName = trainerPostAddViewModel.textEditCenterName.value!!
+            val centerLocation = trainerPostAddViewModel.textEditCenterLocation.value!!
+            val centerImageUrls = tPost.centerImageUrls
+            val trainerId = 1
+            val trainerName = trainerPostAddViewModel.textEditTrainerName.value!!
+            val aboutMePhotosUrls = tPost.aboutMePhotosUrls
+            val trainerPostTopImage = tPost.trainerPostTopImage
+            val trainerType = trainerPostAddViewModel.textEditTrainerType.value!!
+            val postStatus = 0
+            val createDate = "20240419"
             val modifyDate = ""
-            val starsNumber = 0
-            val reviewText = reviewInputViewModel.reviewText.value!!
-            var reviewImageUrls = serverFileName
-            val userId = "닉네임1"
-
-            //val trainerId = 6
-            val trainerId = 14
-            //val trainerName = "필라테스 트레이너11"
-            val trainerName = "임시 트레이너"
-            val trainerProfileImageUrl = ""
-            val aboutMePhotosUrls = tReviewModel.aboutMePhotosUrls
-
-            //val trainerPostId = 6
-            val trainerPostId = 14
-            val membershipId = "PT 10회"
-            val reviewCommentId = ""
-
+            val notificationText = "공지사항 내용입니다."
+            val aboutMeText = "트레이너 소개입니다"
+            val memberShipText = "회원권 소개입니다"
+            val memberShipIdList = tPost.memberShipIdList
+            val careerText = "경력사항 내용 입니다"
+            val orgData = "소속 운동센터는 URL클릭(바로가기)"
+            val photosUrls = tPost.photosUrls
+            val reviewIdList = tPost.reviewIdList
+            val reviewCount = 15
+            val reviewAvg = 4.3
 
             // 저장할 데이터를 객체에 담는다.
-            val trainerReview = TrainerReview(reviewId, reviewStatus, createDate, modifyDate, starsNumber, reviewText, reviewImageUrls!!, userId,
-                trainerId, trainerName, trainerProfileImageUrl, aboutMePhotosUrls, trainerPostId, membershipId, reviewCommentId)
+            val trainerPost = TrainerPost(centerId, centerName, centerLocation, centerImageUrls,
+                trainerId, trainerName, serverFileName!!, aboutMePhotosUrls,
+                trainerPostId, trainerPostTopImage, trainerType, postStatus, createDate, modifyDate,
+                notificationText, aboutMeText, memberShipText, memberShipIdList,
+                careerText, orgData, photosUrls, reviewIdList, reviewCount, reviewAvg)
 
-            // 트레이너 리뷰 데이터를 저장한다.
-            TrainerReviewDao.insertTrainerReviewData(trainerReview)
+            // 트레이너 게시판 데이터를 저장한다.
+            Log.d("test1234", "${trainerPost}")
+            TrainerDao.insertTrainerPostData(trainerPost)
         }
     }
+
 
     // 카메라 런처를 실행하는 메서드(카메라 액티비티 실행)
     fun startCameraLauncher(){
         // 촬영한 사진이 저장될 경로를 가져온다.
-        contentUri = Tools.getPictureUri(this, "kr.co.lion.finalproject_shoppingmallservice_team1.file_provider")
+        contentUri = Tools.getPictureUri(navigationActivity, "kr.co.lion.finalproject_shoppingmallservice_team1.file_provider")
 
         if(contentUri != null){
             // 실행할 액티비티를 카메라 액티비티로 지정한다.
@@ -192,13 +189,13 @@ class ReviewInputActivity : AppCompatActivity() {
                 val bitmap = BitmapFactory.decodeFile(contentUri.path)
 
                 // 회전 각도값을 구한다.
-                val degree = Tools.getDegree(this, contentUri)
+                val degree = Tools.getDegree(navigationActivity, contentUri)
                 // 회전된 이미지를 구한다.
                 val bitmap2 = Tools.rotateBitmap(bitmap, degree.toFloat())
                 // 크기를 조정한 이미지를 구한다.
                 val bitmap3 = Tools.resizeBitmap(bitmap2, 1024)
 
-                activityReviewInputBinding.reviewImageView1.setImageBitmap(bitmap3)
+                fragmentTrainerPostAddBinding.trainerProfileImageView.setImageBitmap(bitmap3)
                 isAddPicture = true
 
                 // 사진 파일을 삭제한다.
@@ -221,12 +218,12 @@ class ReviewInputActivity : AppCompatActivity() {
                     // 안드로이드 Q(10) 이상이라면
                     val bitmap = if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
                         // 이미지를 생성할 수 있는 객체를 생성한다.
-                        val source = ImageDecoder.createSource(this.contentResolver, uri)
+                        val source = ImageDecoder.createSource(navigationActivity.contentResolver, uri)
                         // Bitmap을 생성한다.
                         ImageDecoder.decodeBitmap(source)
                     } else {
                         // 컨텐츠 프로바이더를 통해 이미지 데이터에 접근한다.
-                        val cursor = this.contentResolver.query(uri, null, null, null, null)
+                        val cursor = navigationActivity.contentResolver.query(uri, null, null, null, null)
                         if(cursor != null){
                             cursor.moveToNext()
 
@@ -242,13 +239,13 @@ class ReviewInputActivity : AppCompatActivity() {
                     }
 
                     // 회전 각도값을 가져온다.
-                    val degree = Tools.getDegree(this, uri)
+                    val degree = Tools.getDegree(navigationActivity, uri)
                     // 회전 이미지를 가져온다
                     val bitmap2 = Tools.rotateBitmap(bitmap!!, degree.toFloat())
                     // 크기를 줄인 이미지를 가져온다.
                     val bitmap3 = Tools.resizeBitmap(bitmap2, 1024)
 
-                    activityReviewInputBinding.reviewImageView1.setImageBitmap(bitmap3)
+                    fragmentTrainerPostAddBinding.trainerProfileImageView.setImageBitmap(bitmap3)
                     isAddPicture = true
                 }
             }
@@ -268,4 +265,5 @@ class ReviewInputActivity : AppCompatActivity() {
         // 액티비티를 실행한다.
         albumLauncher.launch(albumIntent)
     }
+
 }

@@ -15,8 +15,8 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.ui.center.CenterFragmen
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.center.ReadCenterActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.community.CommunityFragment
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.my.MyFragment
-import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.ReadTrainerActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.TrainerFragment
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.TrainerPostAddFragment
 
 class NavigationActivity : AppCompatActivity() {
 
@@ -72,12 +72,6 @@ class NavigationActivity : AppCompatActivity() {
         }
     }
 
-    // ReadTrainerActivity 실행
-    fun readTrainerRequest(){
-        val readTrainerIntent = Intent(this, ReadTrainerActivity::class.java)
-        startActivity(readTrainerIntent)
-    }
-
     // ReadCenterActivity 실행
     fun readCenterRequest(){
         val readCenterIntent = Intent(this, ReadCenterActivity::class.java)
@@ -124,6 +118,11 @@ class NavigationActivity : AppCompatActivity() {
             NAVIGATION_FRAGMENT_NAME.MY_FRAGMENT -> {
                 newFragment = MyFragment()
                 currentFragmentId = NAVIGATION_FRAGMENT_NAME.MY_FRAGMENT.num
+            }
+
+            NAVIGATION_FRAGMENT_NAME.TRAINER_POST_FRAGMENT -> {
+                newFragment = TrainerPostAddFragment()
+                currentFragmentId = NAVIGATION_FRAGMENT_NAME.TRAINER_POST_FRAGMENT.num
             }
         }
 

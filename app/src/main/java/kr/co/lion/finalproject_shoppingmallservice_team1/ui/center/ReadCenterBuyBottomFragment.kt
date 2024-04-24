@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -84,16 +86,21 @@ class ReadCenterBuyBottomFragment : BottomSheetDialogFragment() {
         fragmentReadCenterBuyBottomBinding.apply {
             centerBuyButton.apply {
                 setOnClickListener {
-                    val materialAlertDialogBuilder = MaterialAlertDialogBuilder(context)
+                    val materialAlertDialogBuilder = MaterialAlertDialogBuilder(context, R.style.MyDialogTheme)
                     materialAlertDialogBuilder.setTitle("결제")
-                    materialAlertDialogBuilder.setMessage("결제 완료했습니다!")
+                    materialAlertDialogBuilder.setMessage("결제 완료했습니다.")
                     // 확인 버튼 누르면  다시 NavigationActivity로 돌아감
                     materialAlertDialogBuilder.setPositiveButton("확인"){ dialogInterface: DialogInterface, i: Int ->
                         val intent = Intent(readCenterActivity,  NavigationActivity::class.java)
                         startActivity(intent)
                         readCenterActivity.finish()
                     }
-                    materialAlertDialogBuilder.show()
+                    val alertDialog = materialAlertDialogBuilder.create()
+                    alertDialog.setOnShowListener {
+                        val positiveButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                        positiveButton.setTextColor(ContextCompat.getColor(context, R.color.black))
+                    }
+                    alertDialog.show()
                 }
             }
         }
