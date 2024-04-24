@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.android.material.chip.Chip
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.toObject
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
@@ -25,12 +26,9 @@ class TransferMembershipContentListViewModel : ViewModel() {
         try {
             val postList = mutableListOf<TransferMembershipPost>()
             val db = FirebaseFirestore.getInstance()
-            var query = db.collection("TransferMembershipPost")
+            var query: Query = db.collection("TransferMembershipPost")
             if (chipChecked.value == true) {
-                query = query.whereEqualTo("userId", FirebaseAuthHelper.getCurrentUser()?.uid) as CollectionReference
-            }
-            if (filter.value != "모든 운동") {
-                query = query.whereEqualTo("exercise", filter.value) as CollectionReference
+                query = query.whereEqualTo("userId", FirebaseAuthHelper.getCurrentUser()?.uid)
             }
             val documents = query.get().await()
             Log.d("test1234", "post 목록 가져오기 성공")
@@ -47,11 +45,8 @@ class TransferMembershipContentListViewModel : ViewModel() {
 
     val chipChecked = MutableLiveData<Boolean>()
 
-    val filter = MutableLiveData<String>()
-
     init {
         chipChecked.value = false
-        filter.value = "모든 운동" // 초기 필터 설정
     }
 
     fun onChipClicked(view: View) {
