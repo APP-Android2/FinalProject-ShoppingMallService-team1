@@ -9,36 +9,56 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.transition.MaterialSharedAxis
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
-import kr.co.lion.finalproject_shoppingmallservice_team1.ui.shoppingcart.ShoppingCartActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.TRAINER_FRAGMENT_NAME
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentReadTrainerBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.shoppingcart.ShoppingCartActivity
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.dao.TrainerDao
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.viewmodel.ReadTrainerViewModel
 
 
 class ReadTrainerFragment : Fragment() {
 
     lateinit var fragmentReadTrainerBinding: FragmentReadTrainerBinding
     lateinit var readTrainerActivity: ReadTrainerActivity
+    lateinit var readTrainerViewModel: ReadTrainerViewModel
 
     // 프래그먼트 객체를 담을 변수
     var oldFragment:Fragment? = null
     var newFragment:Fragment? = null
 
+    // 전달 받을 게시글 Id
+    var trainerPostId = 0
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         fragmentReadTrainerBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_read_trainer, container, false)
+        readTrainerViewModel = ViewModelProvider(this).get(ReadTrainerViewModel::class.java)
+        fragmentReadTrainerBinding.readTrainerViewModel = readTrainerViewModel
         fragmentReadTrainerBinding.lifecycleOwner = this
 
         readTrainerActivity = activity as ReadTrainerActivity
 
+        // 전달 받은 arguments가 null 일경우, 0번 ID 반환 (0번은 오류 게시판)
+        trainerPostId = arguments?.getInt("trainerPostId")?:0
+
+        // TabFragment에 전달 할 데이터
+        val trainerTabData = Bundle()
+        trainerTabData.putInt("trainerPostId", trainerPostId)
+
         settingToolbarReadTrainer()
         onOffsetChanged()
         settingTabLayout()
+        settingTrainerPostData()
 
-        replaceFragment(TRAINER_FRAGMENT_NAME.READ_TRAINER_TAB1_FRAGMENT, false, false, null)
+        replaceFragment(TRAINER_FRAGMENT_NAME.READ_TRAINER_TAB1_FRAGMENT, false, false, trainerTabData)
         return fragmentReadTrainerBinding.root
     }
 
@@ -47,9 +67,9 @@ class ReadTrainerFragment : Fragment() {
      * 1. 툴바 설정 (settingToolbarReadTrainer())
      * 2. AppBarLayout 상태 설정 (onOffsetChanged())
      * 3. Tab 레이아웃 설정 (settingTabLayout())
-     * 4. Fragment 교체 설정 (정보, 리뷰, 상담 탭 위치) (replaceFragment())
+     * 4. 서버의 데이터 보여주기 (settingTrainerPostData())
+     * 5. Fragment 교체 설정 (정보, 리뷰, 상담 탭 위치) (replaceFragment())
      */
-
 
     fun settingToolbarReadTrainer(){
         fragmentReadTrainerBinding.apply {
@@ -98,6 +118,9 @@ class ReadTrainerFragment : Fragment() {
     fun settingTabLayout(){
         fragmentReadTrainerBinding.apply {
             trainerInfoTab.apply {
+                val trainerTabData = Bundle()
+                trainerTabData.putInt("trainerPostId", trainerPostId)
+
                 addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
                     override fun onTabSelected(tab: TabLayout.Tab?) {
                         // 탭이 선택되었을 때 호출되는 메서드
@@ -105,13 +128,13 @@ class ReadTrainerFragment : Fragment() {
 
                         when(position){
                             0 -> {
-                                replaceFragment(TRAINER_FRAGMENT_NAME.READ_TRAINER_TAB1_FRAGMENT, false, false, null)
+                                replaceFragment(TRAINER_FRAGMENT_NAME.READ_TRAINER_TAB1_FRAGMENT, false, false, trainerTabData)
                             }
                             1 -> {
-                                replaceFragment(TRAINER_FRAGMENT_NAME.READ_TRAINER_TAB2_FRAGMENT, false, false, null)
+                                replaceFragment(TRAINER_FRAGMENT_NAME.READ_TRAINER_TAB2_FRAGMENT, false, false, trainerTabData)
                             }
                             2 -> {
-                                replaceFragment(TRAINER_FRAGMENT_NAME.READ_TRAINER_TAB3_FRAGMENT, false, false, null)
+                                replaceFragment(TRAINER_FRAGMENT_NAME.READ_TRAINER_TAB3_FRAGMENT, false, false, trainerTabData)
                             }
                         }
                     }
@@ -125,6 +148,20 @@ class ReadTrainerFragment : Fragment() {
                         // 이미 선택된 탭이 다시 선택된 경우 처리할 내용
                     }
                 })
+            }
+        }
+    }
+
+    fun settingTrainerPostData(){
+        CoroutineScope(Dispatchers.Main).launch {
+            fragmentReadTrainerBinding.apply {
+                val trainerPost = TrainerDao.selectTrainerPostData(trainerPostId)
+
+                readTrainerViewModel?.apply {
+                    readTrainerNameTextView.value = trainerPost?.trainerName
+                    readTrainerOrgNameTextView.value = trainerPost?.centerName
+                    readTrainerLocationTextView.value = trainerPost?.centerLocation
+                }
             }
         }
     }

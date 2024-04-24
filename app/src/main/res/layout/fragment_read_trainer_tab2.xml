@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="readTrainerViewModel"
+            type="kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.viewmodel.ReadTrainerViewModel" />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -38,16 +44,15 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="2dp"
                             android:layout_marginTop="12dp"
-                            android:src="@drawable/star" />
+                            android:src="@drawable/star_fill" />
 
                         <TextView
-                            android:id="@+id/textView3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center|left"
                             android:layout_marginLeft="35dp"
                             android:textColor="@color/Pup_Color"
-                            android:text="4.5 (24개)" />
+                            android:text="@{readTrainerViewModel.readTrainerReviewAvg.toString() + ' ' + '(' + readTrainerViewModel.readTrainerReviewCount.toString() + '개' + ')'}" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
