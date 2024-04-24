@@ -230,6 +230,11 @@ class HomeAddressBottomMapFragment : BottomSheetDialogFragment() {
                 }
             }
 
+            // Floating 버튼 내위치로
+            fragmentHomeAddressBottomMapBinding.floatingActionButtonMapMyLocation.setOnClickListener {
+                settingMyLocation(location)
+            }
+
             // 측정된 위치로 지도를 움직인다.
             settingMyLocation(location)
         }
