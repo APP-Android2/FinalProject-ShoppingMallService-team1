@@ -240,6 +240,7 @@ class HomeAddressBottomMapFragment : BottomSheetDialogFragment() {
                 settingMyLocation(location)
             }
 
+            // 주소 버튼 설정
             settingAddressLocation(location)
 
             // 측정된 위치로 지도를 움직인다.
@@ -289,11 +290,11 @@ class HomeAddressBottomMapFragment : BottomSheetDialogFragment() {
                     // 위도와 경도를 관리하는 객체를 생성한다.
                     val userLocation = LatLng(location.latitude, location.longitude)
 
+                    // 위도와 경도의 값
                     val d1: Double = userLocation.latitude.toString().toDouble()
                     val d2: Double = userLocation.longitude.toString().toDouble()
 
                     list = geocoder.getFromLocation(d1, d2, 10)
-
 
                 } catch (e: Exception){
                     e.printStackTrace()
@@ -305,6 +306,7 @@ class HomeAddressBottomMapFragment : BottomSheetDialogFragment() {
                         textViewMapMyLocation.text = "해당 주소는 비어있습니다"
                     } else {
                         textViewMapMyLocation.apply {
+                            // list의 인덱스 번째의 주소값
                             text = "${list[0].getAddressLine(0)}"
                         }
                     }
