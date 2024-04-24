@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="readTrainerViewModel"
+            type="kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.viewmodel.ReadTrainerViewModel" />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -51,7 +57,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginRight="20dp"
                             android:layout_marginBottom="10dp"
-                            android:text="안녕하세요! PT 수업 진행 방식은 확일화 된 수업 방식이 아닌\n개개인의 맞게 여러가지 전문적인 운동 프로그램을 사용하고 있습니다.\n첫번째로 체육 지도 관리사 자격증과 물리치료사 자격증이 있어 근력과 공지사항 안내 드립니다."
+                            android:text="@{readTrainerViewModel.readTrainerNotificationText}"
                             android:textSize="@dimen/Small_T_Text_Size" />
                     </LinearLayout>
 
@@ -92,7 +98,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginRight="20dp"
-                                android:onClick="clickTextViewCertificate"
                                 android:text="자격 증명 보기"
                                 android:textColor="@color/Pup_Color"
                                 android:textSize="@dimen/Small_T_Text_Size" />
@@ -105,7 +110,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginRight="20dp"
                             android:layout_marginBottom="10dp"
-                            android:text="안녕하세요! PT 수업 진행 방식은 확일화 된 수업 방식이 아닌\n개개인의 맞게 여러가지 전문적인 운동 프로그램을 사용하고 있습니다.\n\n🪪『자격사항』\n생활 체육지도자 1급 보디빌딩\n재활트레이닝전문가LV1\nNSCA 스포츠영양코치"
+                            android:text="@{readTrainerViewModel.readTrainerAboutMeText}"
                             android:textSize="@dimen/Small_T_Text_Size" />
                     </LinearLayout>
 
@@ -127,7 +132,6 @@
                         android:backgroundTint="#C6C6C6" />
 
                     <TextView
-                        android:id="@+id/textView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/Side_Padding"
@@ -137,13 +141,12 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/Side_Padding"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="@dimen/Side_Padding"
-                        android:text="안녕하세요. 피트모아 휘트니스 라이언 트레이너 입니다.\n체계적인 식단과 운동을 꼼꼼한 티칭 해드립니다."
+                        android:text="@{readTrainerViewModel.readTrainerMemberShipText}"
                         android:textSize="@dimen/Small_T_Text_Size" />
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -183,7 +186,7 @@
                         android:layout_marginLeft="@dimen/Side_Padding"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="@dimen/Side_Padding"
-                        android:text="현) 피트모아 휘트니스 트레이너\n전) 테킷짐 트레이너\n전) Google짐 트레이너\n"
+                        android:text="@{readTrainerViewModel.readTrainerCareerText}"
                         android:textSize="@dimen/Small_T_Text_Size" />
                 </LinearLayout>
 
@@ -236,7 +239,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginBottom="3dp"
-                                android:text="피트모아 휘트니스"
+                                android:text="@{readTrainerViewModel.readTrainerOrgNameTextView}"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/Small_T_Text_Size"
                                 android:textStyle="bold" />
@@ -246,7 +249,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:text="테킷시 테킷동"
+                                android:text="@{readTrainerViewModel.readTrainerLocationTextView}"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/Small_T_Text_Size" />
                         </LinearLayout>

@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="readTrainerViewModel"
+            type="kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.viewmodel.ReadTrainerViewModel" />
+    </data>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -73,29 +79,29 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/ReadTrainerNameTextView"
+                        android:id="@+id/readTrainerNameTextView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:textSize="@dimen/Big_T_Text_Size"
                         android:textStyle="bold"
-                        android:text="트레이너 이름" />
+                        android:text="@{readTrainerViewModel.readTrainerNameTextView}" />
 
                     <TextView
-                        android:id="@+id/ReadTrainerOrgNameTextView"
+                        android:id="@+id/readTrainerOrgNameTextView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:textSize="@dimen/Medium_T_Text_Size"
-                        android:text="투 운동센터" />
+                        android:text="@{readTrainerViewModel.readTrainerOrgNameTextView}" />
 
                     <TextView
-                        android:id="@+id/ReadTrainerAddressTextView"
+                        android:id="@+id/readTrainerLocationTextView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:textSize="@dimen/Medium_T_Text_Size"
-                        android:text="서울 강남구 서초대로 5층" />
+                        android:text="@{readTrainerViewModel.readTrainerLocationTextView}" />
 
                     <!-- 구분선을 두기 위함 -->
                     <View
@@ -119,7 +125,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:gravity="center"
-                        android:text="트레이너"
+                        android:text="@{readTrainerViewModel.readTrainerNameTextView}"
                         android:textSize="@dimen/Toolbar_Title_Size" />
                 </com.google.android.material.appbar.MaterialToolbar>
 

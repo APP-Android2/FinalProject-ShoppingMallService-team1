@@ -9,14 +9,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActivity
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentReadTrainerPurchasingBottomBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActivity
 
 class ReadTrainerPurchasingBottomFragment : BottomSheetDialogFragment() {
 
@@ -27,7 +29,7 @@ class ReadTrainerPurchasingBottomFragment : BottomSheetDialogFragment() {
         fragmentReadTrainerPurchasingBottomBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_read_trainer_purchasing_bottom, container, false)
         readTrainerActivity = activity as ReadTrainerActivity
 
-        settingTrainerPurchasingButton2Click()
+        settingTrainerBuyButtonClick()
         bottomDownButtonClick()
         settingShoppingCartButtonClick()
 
@@ -77,20 +79,26 @@ class ReadTrainerPurchasingBottomFragment : BottomSheetDialogFragment() {
     }
 
     // 구매하기 버튼 이벤트
-    fun settingTrainerPurchasingButton2Click(){
+    fun settingTrainerBuyButtonClick(){
         fragmentReadTrainerPurchasingBottomBinding.apply {
-            trainerPurchasingButton2.apply {
+            trainerBuyButton.apply {
                 setOnClickListener {
-                    val materialAlertDialogBuilder = MaterialAlertDialogBuilder(context)
+                    val materialAlertDialogBuilder = MaterialAlertDialogBuilder(context, R.style.MyDialogTheme)
                     materialAlertDialogBuilder.setTitle("결제")
-                    materialAlertDialogBuilder.setMessage("결제 완료했습니다!")
+                    materialAlertDialogBuilder.setMessage("결제 완료했습니다.")
                     // 확인 버튼 누르면  다시 NavigationActivity로 돌아감
                     materialAlertDialogBuilder.setPositiveButton("확인"){ dialogInterface: DialogInterface, i: Int ->
                         val intent = Intent(readTrainerActivity,  NavigationActivity::class.java)
                         startActivity(intent)
                         readTrainerActivity.finish()
                     }
-                    materialAlertDialogBuilder.show()
+
+                    val alertDialog = materialAlertDialogBuilder.create()
+                    alertDialog.setOnShowListener {
+                        val positiveButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                        positiveButton.setTextColor(ContextCompat.getColor(context, R.color.black))
+                    }
+                    alertDialog.show()
                 }
             }
         }
@@ -103,16 +111,37 @@ class ReadTrainerPurchasingBottomFragment : BottomSheetDialogFragment() {
             optionList2.visibility = View.GONE
             optionList3.visibility = View.GONE
 
+            trainerOptionClickLayout1.setOnClickListener {
+                materialCardViewOption1.visibility = View.GONE
+                materialCardViewOption2.visibility = View.VISIBLE
+            }
             readTrainerOptionDownImageButton1.setOnClickListener {
                 materialCardViewOption1.visibility = View.GONE
                 materialCardViewOption2.visibility = View.VISIBLE
+            }
 
+            trainerOptionClickLayout2.setOnClickListener {
+                materialCardViewOption1.visibility = View.VISIBLE
+                materialCardViewOption2.visibility = View.GONE
             }
             readTrainerOptionDownImageButton2.setOnClickListener {
                 materialCardViewOption1.visibility = View.VISIBLE
                 materialCardViewOption2.visibility = View.GONE
             }
+
             textViewOptionItem1.setOnClickListener {
+                optionList2.visibility = View.VISIBLE
+                optionList3.visibility = View.VISIBLE
+                materialCardViewOption1.visibility = View.VISIBLE
+                materialCardViewOption2.visibility = View.GONE
+            }
+            textViewOptionItem2.setOnClickListener {
+                optionList2.visibility = View.VISIBLE
+                optionList3.visibility = View.VISIBLE
+                materialCardViewOption1.visibility = View.VISIBLE
+                materialCardViewOption2.visibility = View.GONE
+            }
+            textViewOptionItem3.setOnClickListener {
                 optionList2.visibility = View.VISIBLE
                 optionList3.visibility = View.VISIBLE
                 materialCardViewOption1.visibility = View.VISIBLE

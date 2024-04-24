@@ -133,7 +133,7 @@ class TrainerPostAddFragment : Fragment() {
             val trainerName = trainerPostAddViewModel.textEditTrainerName.value!!
             val aboutMePhotosUrls = tPost.aboutMePhotosUrls
             val trainerPostTopImage = tPost.trainerPostTopImage
-            val trainerType = "헬스"
+            val trainerType = trainerPostAddViewModel.textEditTrainerType.value!!
             val postStatus = 0
             val createDate = "20240419"
             val modifyDate = ""
