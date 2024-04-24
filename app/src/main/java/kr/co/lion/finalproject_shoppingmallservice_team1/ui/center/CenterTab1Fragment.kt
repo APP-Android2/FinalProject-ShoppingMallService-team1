@@ -8,15 +8,24 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
+import kr.co.lion.finalproject_shoppingmallservice_team1.dao.AlarmDao
+import kr.co.lion.finalproject_shoppingmallservice_team1.dao.CenterDao
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentCenterTab1Binding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowCenterTab1Binding
+import kr.co.lion.finalproject_shoppingmallservice_team1.model.Alarm
+import kr.co.lion.finalproject_shoppingmallservice_team1.model.Center
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActivity
 
 class CenterTab1Fragment : Fragment() {
 
     lateinit var fragmentCenterTab1Binding: FragmentCenterTab1Binding
     lateinit var navigationActivity: NavigationActivity
+
+    var centerList = mutableListOf<Center>()
 
     var isImageClick = true
 
@@ -25,6 +34,7 @@ class CenterTab1Fragment : Fragment() {
         fragmentCenterTab1Binding = DataBindingUtil.inflate(inflater, R.layout.fragment_center_tab1, container, false)
         navigationActivity = activity as NavigationActivity
 
+        getDataList()
         settingRecyclerViewCenterTab1()
 
 
@@ -89,7 +99,7 @@ class CenterTab1Fragment : Fragment() {
         }
 
         override fun getItemCount(): Int {
-            return 10
+            return centerList.size
         }
 
         override fun onBindViewHolder(holder: CenterTab1ViewHolder, position: Int) {
@@ -99,6 +109,14 @@ class CenterTab1Fragment : Fragment() {
             holder.rowCenterTab1Binding.tvRowCenterPriceTab1.text = "가격 ${position * 10000}원"
 
             holder.rowCenterTab1Binding.tvRowCenterMoreInfoTab1.text = "공지사항 / 후기 점수 / 부가 서비스 등 $position"
+        }
+    }
+
+    fun getDataList(){
+        CoroutineScope(Dispatchers.Main).launch {
+            centerList = CenterDao.getCenterList()
+
+            fragmentCenterTab1Binding.recyclerViewCenterTab1.adapter?.notifyDataSetChanged()
         }
     }
 }
