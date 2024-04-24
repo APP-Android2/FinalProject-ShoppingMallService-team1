@@ -39,10 +39,10 @@ class UserDao {
             val db = FirebaseFirestore.getInstance()
 
             val userHashMap = hashMapOf<String, Any>()
-            userHashMap["name"] = user.name.orEmpty()
-            userHashMap["nickName"] = user.nickName.orEmpty()
-            userHashMap["phoneNumber"] = user.phoneNumber.orEmpty()
-            userHashMap["location"] = user.location.orEmpty()
+            userHashMap["name"] = user.name
+            userHashMap["nickName"] = user.nickName
+            userHashMap["phoneNumber"] = user.phoneNumber
+            userHashMap["location"] = user.location
 
             try {
                 db.collection("users").document(uid).update(userHashMap).await()

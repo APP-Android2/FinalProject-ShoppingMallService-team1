@@ -4,6 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="TransferMembershipCreateContentViewModel"
+            type="kr.co.lion.finalproject_shoppingmallservice_team1.ui.transfermembership.viewmodel.TransferMembershipCreateContentViewModel" />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -57,15 +63,23 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:boxStrokeColor="@color/InputCompartmentOutline_Color"
-                    app:hintEnabled="false"
-                    android:layout_marginTop="5dp">
+                    android:layout_marginTop="5dp"
+                    app:boxBackgroundColor="@color/InputCompartment_Color"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/Pup_Color"
+                    app:boxStrokeWidth="1dp"
+                    app:cursorColor="@color/Writing_Color">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/InputCompartment_Color"
-                        android:enabled="true" />
+                        android:enabled="false"
+                        android:inputType="text"
+                        android:text="양도할 회원권을 선택해주세요"
+                        android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -79,14 +93,23 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:boxStrokeColor="@color/InputCompartmentOutline_Color"
-                    app:hintEnabled="false">
+                    android:layout_marginTop="5dp"
+                    app:boxBackgroundColor="@color/InputCompartment_Color"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/Pup_Color"
+                    app:boxStrokeWidth="1dp"
+                    app:cursorColor="@color/Writing_Color">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/InputCompartment_Color"
-                        android:enabled="true" />
+                        android:enabled="false"
+                        android:inputType="text"
+                        android:text="양도할 회원권을 선택해주세요"
+                        android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -100,14 +123,23 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:boxStrokeColor="@color/InputCompartmentOutline_Color"
-                    app:hintEnabled="false">
+                    android:layout_marginTop="5dp"
+                    app:boxBackgroundColor="@color/InputCompartment_Color"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/Pup_Color"
+                    app:boxStrokeWidth="1dp"
+                    app:cursorColor="@color/Writing_Color">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/InputCompartment_Color"
-                        android:enabled="true" />
+                        android:enabled="false"
+                        android:inputType="text"
+                        android:text="양도할 회원권을 선택해주세요"
+                        android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -121,14 +153,23 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:boxStrokeColor="@color/InputCompartmentOutline_Color"
-                    app:hintEnabled="false">
+                    android:layout_marginTop="5dp"
+                    app:boxBackgroundColor="@color/InputCompartment_Color"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/Pup_Color"
+                    app:boxStrokeWidth="1dp"
+                    app:cursorColor="@color/Writing_Color">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/InputCompartment_Color"
-                        android:enabled="true" />
+                        android:enabled="false"
+                        android:inputType="text"
+                        android:text="양도할 회원권을 선택해주세요"
+                        android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -136,20 +177,28 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/Up_Down_Margin"
                     android:text="가격"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textStyle="bold" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:boxStrokeColor="@color/InputCompartmentOutline_Color"
-                    app:hintEnabled="false">
+                    android:layout_marginTop="5dp"
+                    app:boxBackgroundColor="@color/InputCompartment_Color"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/Pup_Color"
+                    app:boxStrokeWidth="1dp"
+                    app:cursorColor="@color/Writing_Color">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/InputCompartment_Color"
                         android:enabled="true"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
