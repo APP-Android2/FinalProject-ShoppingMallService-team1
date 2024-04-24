@@ -95,8 +95,6 @@ class HomeAddressBottomMapFragment : BottomSheetDialogFragment() {
     // 다이얼로그가 만들어질 때 자동으로 호출되는 메서드
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
-        Log.d("test1234", "t2")
-
         // 다이얼로그를 받는다.
         val dialog = super.onCreateDialog(savedInstanceState)
         // 다이얼로그가 보일때 동작하는 리스너
@@ -106,9 +104,7 @@ class HomeAddressBottomMapFragment : BottomSheetDialogFragment() {
             // 높이를 설정한다.
             setBottomSheetHeight(bottomSheetDialog)
 
-            Log.d("test1234", "test1234")
             settingGoogleMaps()
-
         }
 
         return dialog
@@ -141,7 +137,6 @@ class HomeAddressBottomMapFragment : BottomSheetDialogFragment() {
         // 세로길이를 반환해준다.
         return displayMetrics.heightPixels
     }
-
 
     // 구글 지도 세팅
     fun settingGoogleMaps(){
