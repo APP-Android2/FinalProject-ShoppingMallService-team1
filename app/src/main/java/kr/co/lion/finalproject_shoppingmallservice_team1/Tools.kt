@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.DialogInterface
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.graphics.drawable.BitmapDrawable
 import android.media.ExifInterface
@@ -13,11 +14,15 @@ import android.os.SystemClock
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import java.io.ByteArrayInputStream
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
+import java.util.Base64
 import kotlin.concurrent.thread
 
 class Tools {
@@ -166,6 +171,29 @@ class Tools {
             bitmapDrawable.bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream)
             fileOutputStream.flush()
             fileOutputStream.close()
+        }
+
+        // Bitmap -> String
+        @RequiresApi(Build.VERSION_CODES.O)
+        fun bitmapToString(bitmap: Bitmap): String {
+            val stream = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
+
+            val bytes = stream.toByteArray()
+
+            return Base64.getEncoder().encodeToString(bytes)
+        }
+
+        // String -> Bitmap
+        @RequiresApi(Build.VERSION_CODES.O)
+        fun stringToBitmap(string: String): Bitmap? {
+            try {
+                val decodedBytes: ByteArray = Base64.getDecoder().decode(string)
+                return BitmapFactory.decodeStream(ByteArrayInputStream(decodedBytes))
+            } catch (e: Exception) {
+                e.printStackTrace()
+                return null
+            }
         }
     }
 }
