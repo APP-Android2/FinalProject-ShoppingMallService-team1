@@ -6,7 +6,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
-import kr.co.lion.finalproject_shoppingmallservice_team1.model.Alarm
 import kr.co.lion.finalproject_shoppingmallservice_team1.model.Center
 
 class CenterDao {
@@ -16,7 +15,7 @@ class CenterDao {
 
             CoroutineScope(Dispatchers.IO).launch {
                 val query = FirebaseFirestore.getInstance().collection("Center")
-                    .orderBy("CenterId", Query.Direction.DESCENDING)
+                    .orderBy("centerId", Query.Direction.DESCENDING)
 
                 val querySnapshot = query.get().await()
                 querySnapshot.forEach {

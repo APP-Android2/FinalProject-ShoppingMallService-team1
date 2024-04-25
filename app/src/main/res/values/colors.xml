@@ -11,6 +11,9 @@
 
     <color name="Light_Purple_color">#FAF0FF</color>
 
+    <!-- 투명도 70% 검정색-->
+    <color name="trantBlack">#B3000000</color>
+
     <!-- 앱 주요 컬러-->
     <color name="Pup_Color">#9B44DF</color>
 

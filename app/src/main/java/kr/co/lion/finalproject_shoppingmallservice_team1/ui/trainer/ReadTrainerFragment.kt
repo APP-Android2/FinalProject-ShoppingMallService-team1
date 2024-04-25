@@ -162,6 +162,7 @@ class ReadTrainerFragment : Fragment() {
                     readTrainerOrgNameTextView.value = trainerPost?.centerName
                     readTrainerLocationTextView.value = trainerPost?.centerLocation
                 }
+                TrainerDao.gettingTrainerPostProfileImage(readTrainerActivity, trainerPost?.trainerProfileImageUrl!!, trainerProfileImageView)
             }
         }
     }

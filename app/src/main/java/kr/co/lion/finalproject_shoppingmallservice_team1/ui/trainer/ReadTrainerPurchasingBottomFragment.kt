@@ -3,12 +3,12 @@ package kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer
 import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -16,6 +16,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentReadTrainerPurchasingBottomBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActivity
@@ -158,7 +159,15 @@ class ReadTrainerPurchasingBottomFragment : BottomSheetDialogFragment() {
         fragmentReadTrainerPurchasingBottomBinding.apply {
             trainerShoppingCartButton.apply {
                 setOnClickListener {
-                    Toast.makeText(readTrainerActivity, "장바구니에 담겼습니다.", Toast.LENGTH_SHORT).show()
+                    val colortrantBlack = ContextCompat.getColor(context, R.color.trantBlack)
+                    val snackbar = Snackbar.make(it, "장바구니에 담겼습니다", Snackbar.LENGTH_SHORT)
+
+                    snackbar.apply {
+                        // 메시지 색상, 배경색, 애니매이션 종류
+                        setTextColor(Color.WHITE)
+                        snackbar.setBackgroundTint(colortrantBlack)
+                        snackbar.animationMode = Snackbar.ANIMATION_MODE_SLIDE
+                    }.show()
                 }
             }
         }
