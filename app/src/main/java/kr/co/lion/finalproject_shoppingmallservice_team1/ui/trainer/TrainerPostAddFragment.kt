@@ -147,13 +147,15 @@ class TrainerPostAddFragment : Fragment() {
             val reviewIdList = tPost.reviewIdList
             val reviewCount = 15
             val reviewAvg = 4.3
+            val likeCheck = false
+            val oneDayPt = 0
 
             // 저장할 데이터를 객체에 담는다.
             val trainerPost = TrainerPost(centerId, centerName, centerLocation, centerImageUrls,
                 trainerId, trainerName, serverFileName!!, aboutMePhotosUrls,
                 trainerPostId, trainerPostTopImage, trainerType, postStatus, createDate, modifyDate,
                 notificationText, aboutMeText, memberShipText, memberShipIdList,
-                careerText, orgData, photosUrls, reviewIdList, reviewCount, reviewAvg)
+                careerText, orgData, photosUrls, reviewIdList, reviewCount, reviewAvg, likeCheck, oneDayPt)
 
             // 트레이너 게시판 데이터를 저장한다.
             Log.d("test1234", "${trainerPost}")

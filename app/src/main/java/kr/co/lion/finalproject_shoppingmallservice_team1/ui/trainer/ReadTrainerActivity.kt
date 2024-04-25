@@ -2,7 +2,6 @@ package kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer
 
 import android.os.Bundle
 import android.os.SystemClock
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.transition.MaterialSharedAxis
@@ -61,10 +60,8 @@ class ReadTrainerActivity : AppCompatActivity() {
         activityReadTrainerBinding.apply {
             if(isImageClick){
                 readTrainerMyPickImageButton.setImageResource(R.drawable.favorite_fill)
-                Toast.makeText(this@ReadTrainerActivity, "'찜' 선택 되었습니다.", Toast.LENGTH_SHORT).show()
             } else{
                 readTrainerMyPickImageButton.setImageResource(R.drawable.favorite)
-                Toast.makeText(this@ReadTrainerActivity, "'찜' 해지 되었습니다.", Toast.LENGTH_SHORT).show()
             }
         }
     }
