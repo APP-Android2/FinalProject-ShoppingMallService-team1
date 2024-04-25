@@ -40,6 +40,7 @@ data class TrainerPost(
 
     var reviewIdList: MutableList<String> = mutableListOf(),             // 리뷰 목록
     var reviewCount: Int = 0,                                            // 작성된 리뷰의 총 개수
-    var reviewAvg: Double = 0.0                                          // 리뷰 평균 별점
-
+    var reviewAvg: Double = 0.0,                                         // 리뷰 평균 별점
+    var likeCheck: Boolean = false,                                      // 찜 여부 (true: 찜 ON, false: 찜 OFF)
+    var oneDayPt: Int = 0,                                               // 일일 체험 (0: 가능, 1: 불가능)
 ): Trainer, FitnessCenter
