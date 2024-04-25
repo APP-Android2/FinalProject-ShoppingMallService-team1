@@ -8,7 +8,8 @@ interface Membership {
     var membershipType: MembershipType // 회원권 타입
     var exerciseType: ExerciseType // 운동 타입
     var price: Int  // 회원권 가격
-    var status: MembershipStatus // 회원권 상태
+    //var status: MembershipStatus // 회원권 상태
+    var status: Int // 회원권 상태 (0: 활성, 1: 삭제)
 }
 
 // 운동 센터 회원권
@@ -22,7 +23,8 @@ data class FitnessCenterMembership(
     var startDate: String = "",  // 시작 날짜
     var endDate: String = "",  // 끝나는 날짜
     override var price: Int = 0,  // 회원권 가격
-    override var status: MembershipStatus = MembershipStatus.ACTIVE, // 회원권 상태
+    //override var status: MembershipStatus = MembershipStatus.ACTIVE, // 회원권 상태
+    override var status: Int = 0, // 회원권 상태 (0: 활성, 1: 삭제)
 ) : Membership
 
 // PT 회원권
@@ -36,7 +38,9 @@ data class PTMembership(
     override var price: Int = 0,  // 회원권 가격
     var pricePerSession: Int = 0,  // 회당 가격
     var count: Int = 0,  // PT 세션 수
-    override var status: MembershipStatus = MembershipStatus.ACTIVE // 회원권 상태
+    //override var status: MembershipStatus = MembershipStatus.ACTIVE, // 회원권 상태
+    override var status: Int = 0, // 회원권 상태 (0: 활성, 1: 삭제)
+    var trainerPostId: Int = 0    // 트레이너 게시판 고유 식별자 ID
 ) : Membership
 
 enum class MembershipType(var str:String) {

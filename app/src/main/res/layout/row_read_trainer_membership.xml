@@ -48,9 +48,11 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
+                    android:layout_marginTop="3dp"
                     android:layout_marginBottom="10dp"
                     android:gravity="right"
                     android:text="총 결제금액: 600,000원"
+                    android:textStyle="bold"
                     android:textSize="@dimen/Small_T_Text_Size" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
