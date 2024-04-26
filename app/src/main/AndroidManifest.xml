@@ -99,7 +99,7 @@
         </provider>
         <!-- GoogleMap API Key -->
         <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBdQymDo5FjUv28-wP9UErjAT59Y-tZA2M" />
+            android:value="AIzaSyAnSsJhCbw_0dsv7R97eLAzhP4TAnyw-A0" />
     </application>
     <!-- 인터넷 사용 권한 -->
     <uses-permission android:name="android.permission.INTERNET" />
