@@ -12,11 +12,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kr.co.lion.finalproject_shoppingmallservice_team1.R
-import kr.co.lion.finalproject_shoppingmallservice_team1.dao.AlarmDao
 import kr.co.lion.finalproject_shoppingmallservice_team1.dao.CenterDao
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentCenterTab1Binding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowCenterTab1Binding
-import kr.co.lion.finalproject_shoppingmallservice_team1.model.Alarm
 import kr.co.lion.finalproject_shoppingmallservice_team1.model.Center
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.home.NavigationActivity
 
@@ -104,8 +102,8 @@ class CenterTab1Fragment : Fragment() {
 
         override fun onBindViewHolder(holder: CenterTab1ViewHolder, position: Int) {
             holder.rowCenterTab1Binding.tvRowCenterTypeTab1.text = "운동 종류"
-            holder.rowCenterTab1Binding.tvRowCenterNameTab1.text = "운동 센터 이름 $position"
-            holder.rowCenterTab1Binding.tvRowCenterLocationTab1.text = "주소, 거리 $position"
+            holder.rowCenterTab1Binding.tvRowCenterNameTab1.text = centerList[position].centerName
+            holder.rowCenterTab1Binding.tvRowCenterLocationTab1.text = centerList[position].centerLocation
             holder.rowCenterTab1Binding.tvRowCenterPriceTab1.text = "가격 ${position * 10000}원"
 
             holder.rowCenterTab1Binding.tvRowCenterMoreInfoTab1.text = "공지사항 / 후기 점수 / 부가 서비스 등 $position"

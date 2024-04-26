@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -196,28 +195,6 @@ class TrainerFragment : Fragment() {
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
-
-                // 찜 버튼 클릭 설정
-                this.rowTrainerBinding.apply {
-                    trainerMyPickImageButton.setOnClickListener {
-                        // 추후 DB 컬럼 값으로 변경 되도록 하기. (현재 단일 체크 가능)
-                        isImageClick = !isImageClick
-                        updateImageButton()
-                    }
-                }
-            }
-
-            // 찜 버튼 클릭에 따른 이미지 변경
-            fun  updateImageButton(){
-                rowTrainerBinding.apply {
-                    if(isImageClick){
-                        trainerMyPickImageButton.setImageResource(R.drawable.favorite_fill)
-                        Toast.makeText(navigationActivity, "'찜' 선택 되었습니다.", Toast.LENGTH_SHORT).show()
-                    } else{
-                        trainerMyPickImageButton.setImageResource(R.drawable.favorite)
-                        Toast.makeText(navigationActivity, "'찜' 해지 되었습니다.", Toast.LENGTH_SHORT).show()
-                    }
-                }
             }
         }
 
@@ -243,13 +220,22 @@ class TrainerFragment : Fragment() {
                     TrainerDao.gettingTrainerPostProfileImage(navigationActivity, fitnessPostList[position].trainerProfileImageUrl, holder.rowTrainerBinding.trainerProfileImageView)
                 }
             }
-
             // 항목 클릭 시 상세화면
             holder.rowTrainerBinding.root.setOnClickListener {
                 val readTrainerIntent = Intent(context, ReadTrainerActivity::class.java)
                 readTrainerIntent.putExtra("trainerPostId", fitnessPostList[position].trainerPostId)
 
                 startActivity(readTrainerIntent)
+            }
+            // 찜 버튼 클릭
+            holder.rowTrainerBinding.trainerMyPickImageButton.setOnClickListener {
+                if(fitnessPostList[position].likeCheck == false){
+                    fitnessPostList[position].likeCheck = true
+                    holder.rowTrainerBinding.trainerMyPickImageButton.setImageResource(R.drawable.favorite_fill)
+                }else{
+                    fitnessPostList[position].likeCheck = false
+                    holder.rowTrainerBinding.trainerMyPickImageButton.setImageResource(R.drawable.favorite)
+                }
             }
         }
     }
@@ -283,28 +269,6 @@ class TrainerFragment : Fragment() {
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
-
-                // 찜 버튼 클릭 설정
-                this.rowTrainerBinding.apply {
-                    trainerMyPickImageButton.setOnClickListener {
-                        // 추후 DB 컬럼 값으로 변경 되도록 하기. (현재 단일 체크 가능)
-                        isImageClick = !isImageClick
-                        updateImageButton()
-                    }
-                }
-            }
-
-            // 찜 버튼 클릭에 따른 이미지 변경
-            fun  updateImageButton(){
-                rowTrainerBinding.apply {
-                    if(isImageClick){
-                        trainerMyPickImageButton.setImageResource(R.drawable.favorite_fill)
-                        Toast.makeText(navigationActivity, "'찜' 선택 되었습니다.", Toast.LENGTH_SHORT).show()
-                    } else{
-                        trainerMyPickImageButton.setImageResource(R.drawable.favorite)
-                        Toast.makeText(navigationActivity, "'찜' 해지 되었습니다.", Toast.LENGTH_SHORT).show()
-                    }
-                }
             }
         }
 
@@ -338,6 +302,16 @@ class TrainerFragment : Fragment() {
 
                 startActivity(readTrainerIntent)
             }
+            // 찜 버튼 클릭
+            holder.rowTrainerBinding.trainerMyPickImageButton.setOnClickListener {
+                if(pilatesPostList[position].likeCheck == false){
+                    pilatesPostList[position].likeCheck = true
+                    holder.rowTrainerBinding.trainerMyPickImageButton.setImageResource(R.drawable.favorite_fill)
+                }else{
+                    pilatesPostList[position].likeCheck = false
+                    holder.rowTrainerBinding.trainerMyPickImageButton.setImageResource(R.drawable.favorite)
+                }
+            }
         }
     }
 
@@ -368,28 +342,6 @@ class TrainerFragment : Fragment() {
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
-
-                // 찜 버튼 클릭 설정
-                this.rowTrainerBinding.apply {
-                    trainerMyPickImageButton.setOnClickListener {
-                        // 추후 DB 컬럼 값으로 변경 되도록 하기. (현재 단일 체크 가능)
-                        isImageClick = !isImageClick
-                        updateImageButton()
-                    }
-                }
-            }
-
-            // 찜 버튼 클릭에 따른 이미지 변경
-            fun  updateImageButton(){
-                rowTrainerBinding.apply {
-                    if(isImageClick){
-                        trainerMyPickImageButton.setImageResource(R.drawable.favorite_fill)
-                        Toast.makeText(navigationActivity, "'찜' 선택 되었습니다.", Toast.LENGTH_SHORT).show()
-                    } else{
-                        trainerMyPickImageButton.setImageResource(R.drawable.favorite)
-                        Toast.makeText(navigationActivity, "'찜' 해지 되었습니다.", Toast.LENGTH_SHORT).show()
-                    }
-                }
             }
         }
 
@@ -422,6 +374,16 @@ class TrainerFragment : Fragment() {
                 readTrainerIntent.putExtra("trainerPostId", swimmingPostList[position].trainerPostId)
 
                 startActivity(readTrainerIntent)
+            }
+            // 찜 버튼 클릭
+            holder.rowTrainerBinding.trainerMyPickImageButton.setOnClickListener {
+                if(swimmingPostList[position].likeCheck == false){
+                    swimmingPostList[position].likeCheck = true
+                    holder.rowTrainerBinding.trainerMyPickImageButton.setImageResource(R.drawable.favorite_fill)
+                }else{
+                    swimmingPostList[position].likeCheck = false
+                    holder.rowTrainerBinding.trainerMyPickImageButton.setImageResource(R.drawable.favorite)
+                }
             }
         }
     }
