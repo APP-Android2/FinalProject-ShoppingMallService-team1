@@ -17,6 +17,8 @@ import kr.co.lion.finalproject_shoppingmallservice_team1.R
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.FragmentReadTrainerTab1Binding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowReadTrainerImageBinding
 import kr.co.lion.finalproject_shoppingmallservice_team1.databinding.RowReadTrainerMembershipBinding
+import kr.co.lion.finalproject_shoppingmallservice_team1.model.PTMembership
+import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.dao.ReadTrainerTabDao
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.dao.TrainerDao
 import kr.co.lion.finalproject_shoppingmallservice_team1.ui.trainer.viewmodel.ReadTrainerViewModel
 
@@ -25,6 +27,9 @@ class ReadTrainerTab1Fragment : Fragment() {
 
     lateinit var fragmentReadTrainerTab1Binding: FragmentReadTrainerTab1Binding
     lateinit var readTrainerViewModel: ReadTrainerViewModel
+
+    // 회원권 RecyclerView 구성을 위한 리스트
+    var ptMembership = mutableListOf<PTMembership>()
 
     // 전달 받을 게시글 Id
     var trainerPostId = 0
@@ -52,18 +57,21 @@ class ReadTrainerTab1Fragment : Fragment() {
      */
 
     fun settingRecyclerViewTrainerTab1(){
-        fragmentReadTrainerTab1Binding.apply {
-            recyclerViewTrainerPt.apply {
-                val membershipData = listOf("10회", "15회", "20회", "25회") // 예시 데이터
+        CoroutineScope(Dispatchers.Main).launch {
+            ptMembership = ReadTrainerTabDao.gettingTrainerMembershipList(trainerPostId)
+            fragmentReadTrainerTab1Binding.recyclerViewTrainerPt.adapter?.notifyDataSetChanged()
 
-                adapter = TrainerMembershipAdapter(membershipData)
-                layoutManager = LinearLayoutManager(context)
-            }
-            recyclerViewTrainerImage.apply {
-                val imageList = listOf(R.drawable.fitmoa_logo_background, R.drawable.fitmoa_logo_background, R.drawable.fitmoa_logo_background, R.drawable.fitmoa_logo_background, R.drawable.fitmoa_logo_background)
+            fragmentReadTrainerTab1Binding.apply {
+                recyclerViewTrainerPt.apply {
+                    adapter = TrainerMembershipAdapter(ptMembership)
+                    layoutManager = LinearLayoutManager(context)
+                }
+                recyclerViewTrainerImage.apply {
+                    val imageList = listOf(R.drawable.fitmoa_logo_background, R.drawable.fitmoa_logo_background, R.drawable.fitmoa_logo_background, R.drawable.fitmoa_logo_background, R.drawable.fitmoa_logo_background)
 
-                adapter = TrainerImageAdapter(imageList)
-                layoutManager = GridLayoutManager(context,3)
+                    adapter = TrainerImageAdapter(imageList)
+                    layoutManager = GridLayoutManager(context,3)
+                }
             }
         }
     }
@@ -87,7 +95,7 @@ class ReadTrainerTab1Fragment : Fragment() {
 
 
 // 회원권 RecyclerView
-class TrainerMembershipAdapter(val dataList: List<String>) : RecyclerView.Adapter<TrainerMembershipViewHolder>() {
+class TrainerMembershipAdapter(val dataList: MutableList<PTMembership>) : RecyclerView.Adapter<TrainerMembershipViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrainerMembershipViewHolder {
         // 뷰 홀더를 만들어준다.
         val inflater = LayoutInflater.from(parent.context)
@@ -108,10 +116,10 @@ class TrainerMembershipAdapter(val dataList: List<String>) : RecyclerView.Adapte
 
 // 회원권 ViewHolder
 class TrainerMembershipViewHolder(private val rowReadTrainerMembershipBinding: RowReadTrainerMembershipBinding) : RecyclerView.ViewHolder(rowReadTrainerMembershipBinding.root) {
-    fun holderBind(data: String) {
-        rowReadTrainerMembershipBinding.textViewMembershipCount.text = data
-        rowReadTrainerMembershipBinding.textViewMembershipMoney.text = "${data}원"
-        rowReadTrainerMembershipBinding.textViewMembershipTotalMoney.text = "총 결제금액${data}원"
+    fun holderBind(data: PTMembership) {
+        rowReadTrainerMembershipBinding.textViewMembershipCount.text = "${data.count}회"
+        rowReadTrainerMembershipBinding.textViewMembershipMoney.text = "${data.pricePerSession}원/회"
+        rowReadTrainerMembershipBinding.textViewMembershipTotalMoney.text = "총 결제금액: ${data.price}원"
     }
 }
 
