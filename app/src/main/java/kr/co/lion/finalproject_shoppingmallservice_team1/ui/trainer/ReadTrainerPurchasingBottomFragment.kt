@@ -108,10 +108,12 @@ class ReadTrainerPurchasingBottomFragment : BottomSheetDialogFragment() {
 
     fun bottomDownButtonClick(){
         fragmentReadTrainerPurchasingBottomBinding.apply {
+            // 기본 상태.
             materialCardViewOption2.visibility = View.GONE
             optionList2.visibility = View.GONE
             optionList3.visibility = View.GONE
 
+            // 닫혀있는 "옵션 선택" 바를 클릭 시.
             trainerOptionClickLayout1.setOnClickListener {
                 materialCardViewOption1.visibility = View.GONE
                 materialCardViewOption2.visibility = View.VISIBLE
@@ -121,6 +123,7 @@ class ReadTrainerPurchasingBottomFragment : BottomSheetDialogFragment() {
                 materialCardViewOption2.visibility = View.VISIBLE
             }
 
+            // 펼쳐져 있는 "옵션 선택" 바를 클릭 시.
             trainerOptionClickLayout2.setOnClickListener {
                 materialCardViewOption1.visibility = View.VISIBLE
                 materialCardViewOption2.visibility = View.GONE
@@ -130,27 +133,62 @@ class ReadTrainerPurchasingBottomFragment : BottomSheetDialogFragment() {
                 materialCardViewOption2.visibility = View.GONE
             }
 
-            textViewOptionItem1.setOnClickListener {
-                optionList2.visibility = View.VISIBLE
-                optionList3.visibility = View.VISIBLE
-                materialCardViewOption1.visibility = View.VISIBLE
-                materialCardViewOption2.visibility = View.GONE
-            }
-            textViewOptionItem2.setOnClickListener {
-                optionList2.visibility = View.VISIBLE
-                optionList3.visibility = View.VISIBLE
-                materialCardViewOption1.visibility = View.VISIBLE
-                materialCardViewOption2.visibility = View.GONE
-            }
-            textViewOptionItem3.setOnClickListener {
-                optionList2.visibility = View.VISIBLE
-                optionList3.visibility = View.VISIBLE
-                materialCardViewOption1.visibility = View.VISIBLE
-                materialCardViewOption2.visibility = View.GONE
-            }
+            // 선택되어 있는 상품을 삭제 할때.
             readTrainerItemCloseImageButton.setOnClickListener {
                 optionList2.visibility = View.GONE
                 optionList3.visibility = View.GONE
+            }
+
+            // 1번째 옵션 선택 시, 해당 물건에 대한 상품 가격
+            textViewOptionItem1.setOnClickListener {
+                optionList2.visibility = View.VISIBLE
+                optionList3.visibility = View.VISIBLE
+                itemPrice01.visibility = View.VISIBLE
+                itemPrice02.visibility = View.GONE
+                itemPrice03.visibility = View.GONE
+                materialCardViewOption1.visibility = View.VISIBLE
+                materialCardViewOption2.visibility = View.GONE
+
+                resultItem01.visibility = View.VISIBLE
+                resultItemPrice01.visibility = View.VISIBLE
+                resultItem02.visibility = View.GONE
+                resultItemPrice02.visibility = View.GONE
+                resultItem03.visibility = View.GONE
+                resultItemPrice03.visibility = View.GONE
+            }
+            // 2번째 옵션 선택 시, 해당 물건에 대한 상품 가격
+            textViewOptionItem2.setOnClickListener {
+                optionList2.visibility = View.VISIBLE
+                optionList3.visibility = View.VISIBLE
+                itemPrice01.visibility = View.GONE
+                itemPrice02.visibility = View.VISIBLE
+                itemPrice03.visibility = View.GONE
+                materialCardViewOption1.visibility = View.VISIBLE
+                materialCardViewOption2.visibility = View.GONE
+
+                resultItem01.visibility = View.GONE
+                resultItemPrice01.visibility = View.GONE
+                resultItem02.visibility = View.VISIBLE
+                resultItemPrice02.visibility = View.VISIBLE
+                resultItem03.visibility = View.GONE
+                resultItemPrice03.visibility = View.GONE
+            }
+            // 3번째 옵션 선택 시, 해당 물건에 대한 상품 가격
+            textViewOptionItem3.setOnClickListener {
+                optionList2.visibility = View.VISIBLE
+                optionList3.visibility = View.VISIBLE
+                itemPrice01.visibility = View.GONE
+                itemPrice02.visibility = View.GONE
+                itemPrice03.visibility = View.VISIBLE
+                materialCardViewOption1.visibility = View.VISIBLE
+                materialCardViewOption2.visibility = View.GONE
+
+                resultItem01.visibility = View.GONE
+                resultItemPrice01.visibility = View.GONE
+                resultItem02.visibility = View.GONE
+                resultItemPrice02.visibility = View.GONE
+                resultItem03.visibility = View.VISIBLE
+                resultItemPrice03.visibility = View.VISIBLE
             }
         }
     }
