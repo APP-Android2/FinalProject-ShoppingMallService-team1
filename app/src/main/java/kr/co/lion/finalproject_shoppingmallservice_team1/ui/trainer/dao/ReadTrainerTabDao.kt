@@ -8,6 +8,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import kr.co.lion.finalproject_shoppingmallservice_team1.model.MembershipStatus
 import kr.co.lion.finalproject_shoppingmallservice_team1.model.PTMembership
 
 class ReadTrainerTabDao {
@@ -20,8 +21,7 @@ class ReadTrainerTabDao {
 
             val job1 = CoroutineScope(Dispatchers.IO).launch {
                 val collectionReference = Firebase.firestore.collection("Memberships")
-                // 활성화 String 값을 찾지 못하는 이슈 사항으로 Int 값으로 수정.
-                var query = collectionReference.whereEqualTo("status", 0)
+                var query = collectionReference.whereEqualTo("status", MembershipStatus.ACTIVE.num)
                 query = query.whereEqualTo("trainerPostId", trainerPostId)
                 query = query.orderBy("name", Query.Direction.ASCENDING)
 

@@ -37,7 +37,9 @@ class MainActivity : AppCompatActivity() {
         // 확인할 권한 목록
         val permissionList = arrayOf(
             Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.ACCESS_MEDIA_LOCATION
+            Manifest.permission.ACCESS_MEDIA_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION,
         )
 
         // 권한 설정
