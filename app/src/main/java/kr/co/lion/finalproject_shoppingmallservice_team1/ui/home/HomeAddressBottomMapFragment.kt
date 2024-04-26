@@ -183,8 +183,35 @@ class HomeAddressBottomMapFragment : BottomSheetDialogFragment() {
 
                 // 현재 위치를 측정한다.
                 gettingMyLocation()
+
+                // 구글맵을 클릭할 때 동작하는 리스너
+                homeAddressBottomGoogleMap.setOnMapClickListener { latLng ->
+                    // 마커를 다시 표시한다.
+                    addMarker(latLng)
+
+                    // 지도를 이동한다.
+                    moveMapLocation(latLng)
+
+                    // 주소값으로 변환한다.
+                    settingAddressLocation(latLng)
+                }
             }
         }
+    }
+
+    // 마커를 표시하는 메소드
+    fun addMarker(latLng: LatLng){
+        homeAddressBottomGoogleMap.clear()
+        myMarker = homeAddressBottomGoogleMap.addMarker(MarkerOptions().position(latLng))
+    }
+
+    // 지도를 이동하는 메소드
+    fun moveMapLocation(latLng: LatLng){
+        // 지도를 이동하기 위한 객체
+        val cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 15.0f)
+
+        // 카메라를 이동시킨다.
+        homeAddressBottomGoogleMap.animateCamera(cameraUpdate)
     }
 
     // 현재 위치를 가져오는 메소드
@@ -239,12 +266,6 @@ class HomeAddressBottomMapFragment : BottomSheetDialogFragment() {
             fragmentHomeAddressBottomMapBinding.floatingActionButtonMapMyLocation.setOnClickListener {
                 settingMyLocation(location)
             }
-
-            // 주소 버튼 설정
-            settingAddressLocation(location)
-
-            // 측정된 위치로 지도를 움직인다.
-            settingMyLocation(location)
         }
     }
 
@@ -275,10 +296,14 @@ class HomeAddressBottomMapFragment : BottomSheetDialogFragment() {
 
         // 마커를 지도에 표시해준다.
         myMarker = homeAddressBottomGoogleMap.addMarker(markerOptions)
+
+        // 값 변환
+        val location1 = LatLng(location.latitude, location.longitude)
+        settingAddressLocation(location1)
     }
 
     // 주소 설정
-    fun settingAddressLocation(location: Location){
+    fun settingAddressLocation(latLng: LatLng){
         fragmentHomeAddressBottomMapBinding.apply {
             val geocoder: Geocoder = Geocoder(navigationActivity)
 
@@ -288,7 +313,7 @@ class HomeAddressBottomMapFragment : BottomSheetDialogFragment() {
                 try {
 
                     // 위도와 경도를 관리하는 객체를 생성한다.
-                    val userLocation = LatLng(location.latitude, location.longitude)
+                    val userLocation = LatLng(latLng.latitude, latLng.longitude)
 
                     // 위도와 경도의 값
                     val d1: Double = userLocation.latitude.toString().toDouble()
@@ -298,7 +323,7 @@ class HomeAddressBottomMapFragment : BottomSheetDialogFragment() {
 
                 } catch (e: Exception){
                     e.printStackTrace()
-                    settingAddressLocation(location)
+                    settingAddressLocation(latLng)
                 }
 
                 if (list != null){
