@@ -26,10 +26,10 @@ class ActivityConsultingViewModel:ViewModel() {
             val visitConsultingId = sequence + 1
             var centerId = ""
             var trainerId = ""
-            val name = editTextNameConsulting.value!!
-            val exercisePurpose = editTextPurposeConsulting.value!!
-            val applicationDate = editTextDateConsulting.value!!
-            val applicationTime = editTextTimeConsulting.value!!
+            val name = editTextNameConsulting.value.orEmpty()
+            val exercisePurpose = editTextPurposeConsulting.value.orEmpty()
+            val applicationDate = editTextDateConsulting.value.orEmpty()
+            val applicationTime = editTextTimeConsulting.value.orEmpty()
             val etcContent = editTextEtcConsulting.value
 
             val stateCheck = true
